@@ -1,0 +1,42 @@
+# Copyright 2009 Lenjoy. All Rights Reserved.
+# Author: mars.lenjoy@gmail.com
+
+
+############################################################
+# config
+############################################################
+client_root = '#..'
+out_dir = '/.build/position_arrange'
+
+
+############################################################
+# build
+############################################################
+Import('env')
+env.Library('libposition_arrange',
+            source = ['position_arrange.cc',
+                      ],
+            CPPPATH = [client_root
+                       ]
+           )
+
+
+############################################################
+# test
+############################################################
+SConscript(client_root + '/gtest/src/SConscript')
+
+env.Program('position_arrange_test',
+            source = ['position_arrange_test.cc',
+                      client_root + '/gtest/src/gtest_main.cc'
+                      ],
+            CPPPATH = [client_root,
+                       client_root + 'gtest',
+                       ],
+            LIBS = ['libposition_arrange',
+                    'libgtest-all'
+                    ],
+            LIBPATH=[client_root + out_dir,
+                     client_root + '/gtest/src'
+                     ]
+           )

@@ -1,0 +1,42 @@
+# Copyright 2009 Lenjoy. All Rights Reserved.
+# Author: mars.lenjoy@gmail.com
+
+
+############################################################
+# config
+############################################################
+client_root = '#..'
+out_dir = '/.build/algoutil'
+
+
+############################################################
+# build
+############################################################
+Import('env')
+env.Library('libstringutil',
+            source = ['stringutil.cc',
+                      ],
+            CPPPATH = [client_root
+                       ]
+           )
+
+
+############################################################
+# test
+############################################################
+SConscript(client_root + '/gtest/src/SConscript')
+
+env.Program('stringutil_test',
+            source = ['stringutil_test.cc',
+                      client_root + '/gtest/src/gtest_main.cc'
+                      ],
+            CPPPATH = [client_root,
+                       client_root + 'gtest',
+                       ],
+            LIBS = ['libstringutil',
+                    'libgtest-all'
+                    ],
+            LIBPATH=[client_root + out_dir,
+                     client_root + '/gtest/src'
+                     ]
+           )

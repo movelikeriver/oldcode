@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+      <ModulePrefs title="Search Ebay" title_url="http://rover.ebay.com/rover/1/711-53200-19255-0/1?type=1&amp;campid=5335858899&amp;toolid=10001&amp;customid=" height="55" scrolling="true" author_email="widgets@netremote.com" thumbnail="http://www.netremote.com/rss/images/ebay-search-thumbnail.gif" screenshot="http://www.netremote.com/rss/images/ebay-search-screenshot.gif"/>
+      <Content type="html">
+        <![CDATA[
+<script language="JavaScript1.1">
+<!-- 
+function redirectEnter(form){
+ var eBayURL = "http://rover.ebay.com/rover/1/711-53200-19255-0/1?type=3&campid=5335858899&toolid=10001&customid=";
+ for (var i=0;i<form.elements.length;i++){
+  var e = form.elements[i];
+  if ((e.name === "query")){
+   eBayURL += "&ext" + "=" + e.value + "&satitle" + "=" + e.value;
+  }
+ }
+ parent.location = eBayURL;
+}
+// -->
+</script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><a href="http://rover.ebay.com/rover/1/711-53200-19255-0/1?type=1&campid=5335858899&toolid=10001&customid=" target="_blank"><img src="http://pics.ebay.com/aw/pics/ebay_logo_1.gif" width="80" height="46" border="0" align="left"></a>
+      <table border="0" cellpadding="0" cellspacing="0" height="46">
+        <form action="http://search.ebay.com/search/search.dll" onsubmit="redirectEnter(this); return false;" method="get">
+          <tr>
+            <td width="95%">
+              <input type="text" name="query" style="width:98%" maxlength="100" value="" id="input"></td>
+            <td align=left>
+              <input type="submit" value="Search" name="submit">
+            </td>
+          </tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+</table>
+<script>
+var prefs__MODULE_ID__ = new _IG_Prefs(__MODULE_ID__);
+var query = prefs__MODULE_ID__.getString("query");
+var input = _gel("input");
+input.value=query.replace("ebay","");
+</script>
+        ]]>
+      </Content>
+    </Module>

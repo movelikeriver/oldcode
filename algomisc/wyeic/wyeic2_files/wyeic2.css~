@@ -1,0 +1,108 @@
+      .pictures {
+        overflow: hidden;
+        display: block;
+        height: 290px;
+        left: 0;
+        position: relative;
+        width: 800px;
+        z-index: 0;
+      }
+      .pictures ul {
+        left: 0;
+      }
+      .pictures ul li {
+        opacity: 1;
+        width: 1425px;
+      }
+      .pictures ul li img {
+        text-align: center;
+        width: 800px;
+        height: 240px;
+      }
+      .content {
+        position: relative;
+        width: 800px;
+      }
+      .column { width: 33%; float: left; padding-bottom: 30px; }
+      .column ul {
+        padding-left: 5px;
+        width: 80%;
+      }
+      .portlet {
+        margin: 0 1em 1em 0;
+        padding-top: 10px;
+      }
+      .portlet-header {
+        color:#3A8104;
+        font-size:20px;
+        margin:0;
+        padding-bottom:0;
+        padding-left:15px;
+      }
+      .portlet-header a {
+         color:#3A8104;
+         text-decoration:none;
+      }
+      .portlet-header a:hover, a:active, a:focus {
+         color:#000000;
+         text-decoration:none;
+      }
+      .portlet-content {
+        padding:5px 10px 10px;
+        font-family: serif arial;
+        font-size: 13px;
+      }
+      .portlet-content li {
+         list-style-type: none;
+         padding-bottom: 6px;
+      }
+      .ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
+      .ui-sortable-placeholder * { visibility: hidden; }
+      .footercontent {
+        border-top:1px solid #3A8104;
+        clear:both;
+        float:left;
+        font-size:10px;
+        padding:8px 0;
+        width: 800px;
+      }
+      .footercontent .signs {
+        float: right;
+        width: 430px;
+      }
+      .footercontent .signs ul {
+        clear:both;
+        float:right;
+        list-style-type:none;
+      }
+      .footercontent .signs ul li {
+        clear: none;
+        float:left;
+        list-style-type:none;
+        padding-left: 14px;
+        text-align: right;
+        color: #3A8104;
+      }
+      .footercontent .signs ul li a {
+        color:#3A8104;
+        text-decoration:underline;
+      }
+      .footercontent .signs ul li a:hover, a:active, a:focus {
+        color:#000000;
+        text-decoration:underline;
+      }
+      .smalldiv {
+        float:left;
+        width:60px
+      }
+      .bigdiv {
+        float:left;
+        width:200px
+      }
+      .bigdiv img {
+        height:150px;
+        width:150px
+      }
+      .doscrollright {
+        height:215px;
+      }

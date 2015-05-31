@@ -1,0 +1,53 @@
+# Copyright 2009 Lenjoy. All Rights Reserved.
+# Author: mars.lenjoy@gmail.com
+
+
+############################################################
+# config
+############################################################
+client_root = '#..'
+out_dir = '/.build/roman_number'
+
+
+############################################################
+# build
+############################################################
+Import('env')
+env.Library('libroman_number',
+            source = ['roman_number.cc',
+                      ],
+            CPPPATH = [client_root
+                       ]
+           )
+
+env.Program('roman_number',
+            source = ['roman_number_main.cc'
+                      ],
+            CPPPATH = [client_root,
+                       ],
+            LIBS = ['libroman_number',
+                    ],
+            LIBPATH=[client_root + out_dir,
+                     ]
+           )
+
+
+############################################################
+# test
+############################################################
+SConscript(client_root + '/gtest/src/SConscript')
+
+env.Program('roman_number_test',
+            source = ['roman_number_test.cc',
+                      client_root + '/gtest/src/gtest_main.cc'
+                      ],
+            CPPPATH = [client_root,
+                       client_root + 'gtest',
+                       ],
+            LIBS = ['libroman_number',
+                    'libgtest-all'
+                    ],
+            LIBPATH=[client_root + out_dir,
+                     client_root + '/gtest/src'
+                     ]
+           )

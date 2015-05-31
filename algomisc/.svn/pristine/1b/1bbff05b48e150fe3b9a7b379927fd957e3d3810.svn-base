@@ -1,0 +1,60 @@
+<html>
+
+  <head>
+    <meta content-type="text/html; charset=utf-8" />
+    <title>Google vs Baidu</title>
+    <style type="text/css">
+      .iframe-table { width:100%; height:100%; }
+      .iframe-row { height: 100% }
+      .iframe { width: 100%; height:100%; border: 1px solid; }
+    </style>
+    <script>
+      var exp_url = 'http://www.google.com/search?hl=zh-CN&q=';
+      var base_url = 'baidu.php?q=';
+
+      function doSearch() {
+        var query = document.getElementById('inputtext').value;
+        var exp = exp_url + query;
+        var base = base_url + query;
+        var expFrame = document.getElementById('exp');
+        var baseFrame = document.getElementById('base');
+        expFrame.src = exp_url + query;
+        baseFrame.src = base_url + query;
+      }
+
+      function doKeydown(e) {
+        var key = 0;
+       if (window.event) {
+         key = e.keyCode;
+       } else if (e.which) {
+         key = e.which;
+       }
+       switch (parseInt(key, 10)) {
+       case 13:
+         doSearch();
+         break;
+       }
+     }
+    </script>
+  </head>
+
+  <body>
+     <input id="inputtext" type="text" title="SxS search" value="" maxlength="2048" size="41" name="q" onkeydown="doKeydown(event)" />
+     <input type="submit" value="Search" name="btnG" onclick="doSearch()" />
+    <table class="iframe-table">
+      <tr height="1%">
+        <th>google</th>
+        <th>baidu</th>
+      </tr>
+      <tr class="iframe-row">
+        <td width="43%" align="center" valign="top">
+          <iframe class="iframe" id="exp" src=""></iframe>
+        </td>
+        <td width="57%" align="center" valign="top">
+          <iframe class="iframe" id="base" src=""></iframe>
+        </td>
+      </tr>
+    </table>
+
+  </body>
+</html>

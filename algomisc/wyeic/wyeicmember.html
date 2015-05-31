@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>温州青年创业与投资俱乐部 - 会员介绍</title>
+  <link type="text/css" href="wyeic2_files/themes/le-frog/ui.all.css" rel="stylesheet" />
+  <link type="text/css" href="wyeic2_files/wyeic2.css" rel="stylesheet" />
+  <script type="text/javascript" src="wyeic2_files/jquery-1.3.2.js"></script>
+  <script type="text/javascript" src="wyeic2_files/effects.core.js"></script>
+  <script type="text/javascript" src="wyeic2_files/effects.slide.js"></script>
+  <script type="text/javascript">
+    //run the currently selected effect
+    function runEffect(effect){
+      var options = {};
+      //run the effect
+      $("#membercontent").effect(effect,options,500,callback);
+    };
+	
+    //callback function to bring a hidden box back
+    function callback(){
+      setTimeout(function(){
+        $("#effect:hidden").removeAttr('style').hide().fadeIn();
+      }, 100);
+    };
+
+    function memberOnClick(memberid) {
+      var c = document.getElementById('member' + memberid);
+      var o = document.getElementById('membercontent');
+      runEffect('slide');
+      o.innerHTML = c.innerHTML;
+      return false;
+    }
+  </script>
+</head>
+<body>
+  <div class="mainmenu">
+    <ul>
+      <li><a href="index.html">网站首页</a></li>
+      <li><a href="aboutus.html">关于我们</a></li>
+      <li class="selected"><a href="wyeicmember.html">会员介绍</a></li>
+      <li><a href="#">会员活动</a></li>
+      <li><a href="#">创投项目</a></li>
+      <li><a href="#">会员专区</a></li>
+      <li><a href="#">外联伙伴</a></li>
+      <li><a href="#">申请加入</a></li>
+      <li><a href="#">联系我们</a></li>
+    </ul>
+  </div>
+  <div class="subpictures">    
+    <img src="wyeic2_files/banner.png" alt="W">
+  </div>
+  <div class="content">
+    <div class="memberlist ui-widget-content ui-corner-all">
+      <ul>
+	<li><a href="#" id="111" onclick="memberOnClick(this.id)">周宏光</a></li>
+	<li><a href="#" id="222" onclick="memberOnClick(this.id)">李建</a></li>
+	<li><a href="#" id="333" onclick="memberOnClick(this.id)">qinshi</a></li>
+	<li><a href="#" id="444" onclick="memberOnClick(this.id)">liming</a></li>
+	<li><a href="#" id="555" onclick="memberOnClick(this.id)">戴瀛</a></li>
+	<li><a href="#" id="666" onclick="memberOnClick(this.id)">建峰</a></li>
+      </ul>
+    </div>
+
+    <!-- hidden parts begin -->
+    <div id="member111" class="ui-widget-content ui-corner-all" style="display:none">
+	<div class="membercontentheader ui-widget-header ui-corner-all">
+	  周宏光
+	</div>
+	<div class="membercontentbody">
+	  <p style="text-align:center">
+	    <img src="wyeic2_files/zhouhongguang.jpg" height="300" width="200">
+	  </p>
+	  <p>
+图腾盛视（北京）科技有限公司致力于为高增长型中小企业提供信息一体化实施及专业的全程电子商务解决方案。作为美国 NetSuite 公司在中国唯一的战略合作伙伴，图腾盛视不仅拥有国际化的先进技术和管理理念，还在原有 NetSuite 系统基础上根据国内本土特点成功进行了二次开发，使之更加适应国内企业的特点，让更多的中国客户感受到著名软件 NetSuite 的独特魅力。
+	  </p>
+	</div>
+    </div>
+
+    <div id="member222" class="ui-widget-content ui-corner-all" style="display:none">
+	<div class="membercontentheader ui-widget-header ui-corner-all">
+	  李建
+	</div>
+	<div class="membercontentbody">
+	  <p style="text-align:center">
+	    <img src="wyeic2_files/qicheyouyong.jpg" height="230" width="230">
+	  </p>
+	  <p>
+图腾盛视（北京）科技有限公司致力于为高增长型中小企业提供信息一体化实施及专业的全程电子商务解决方案。作为美国 NetSuite 公司在中国唯一的战略合作伙伴，图腾盛视不仅拥有国际化的先进技术和管理理念，还在原有 NetSuite 系统基础上根据国内本土特点成功进行了二次开发，使之更加适应国内企业的特点，让更多的中国客户感受到著名软件 NetSuite 的独特魅力。
+	  </p>
+	</div>
+    </div>
+
+    <div id="member333" class="ui-widget-content ui-corner-all" style="display:none">
+	<div class="membercontentheader ui-widget-header ui-corner-all">
+	  qinshi
+	</div>
+	<div class="membercontentbody">
+	  <p style="text-align:center">
+	    <img src="wyeic2_files/dahu.jpg" height="300" width="280">
+	  </p>
+	  <p>
+图腾盛视（北京）科技有限公司致力于为高增长型中小企业提供信息一体化实施及专业的全程电子商务解决方案。作为美国 NetSuite 公司在中国唯一的战略合作伙伴，图腾盛视不仅拥有国际化的先进技术和管理理念，还在原有 NetSuite 系统基础上根据国内本土特点成功进行了二次开发，使之更加适应国内企业的特点，让更多的中国客户感受到著名软件 NetSuite 的独特魅力。
+	  </p>
+	</div>
+    </div>
+
+    <div id="member444" class="ui-widget-content ui-corner-all" style="display:none">
+	<div class="membercontentheader ui-widget-header ui-corner-all">
+	  liming
+	</div>
+	<div class="membercontentbody">
+	  <p style="text-align:center">
+	    <img src="wyeic2_files/bianxingjingang.jpg" height="300" width="280">
+	  </p>
+	  <p>
+图腾盛视（北京）科技有限公司致力于为高增长型中小企业提供信息一体化实施及专业的全程电子商务解决方案。作为美国 NetSuite 公司在中国唯一的战略合作伙伴，图腾盛视不仅拥有国际化的先进技术和管理理念，还在原有 NetSuite 系统基础上根据国内本土特点成功进行了二次开发，使之更加适应国内企业的特点，让更多的中国客户感受到著名软件 NetSuite 的独特魅力。
+	  </p>
+	</div>
+    </div>
+
+    <div id="member555" class="ui-widget-content ui-corner-all" style="display:none">
+	<div class="membercontentheader ui-widget-header ui-corner-all">
+	  戴瀛
+	</div>
+	<div class="membercontentbody">
+	  <p style="text-align:center">
+	    <img src="wyeic2_files/yujia.jpg" height="300" width="300">
+	  </p>
+	  <p>
+图腾盛视（北京）科技有限公司致力于为高增长型中小企业提供信息一体化实施及专业的全程电子商务解决方案。作为美国 NetSuite 公司在中国唯一的战略合作伙伴，图腾盛视不仅拥有国际化的先进技术和管理理念，还在原有 NetSuite 系统基础上根据国内本土特点成功进行了二次开发，使之更加适应国内企业的特点，让更多的中国客户感受到著名软件 NetSuite 的独特魅力。
+	  </p>
+	</div>
+    </div>
+
+    <div id="member666" class="ui-widget-content ui-corner-all" style="display:none">
+	<div class="membercontentheader ui-widget-header ui-corner-all">
+	  建峰
+	</div>
+	<div class="membercontentbody">
+	  <p style="text-align:center">
+	    <img src="wyeic2_files/banjiang.jpg" height="300" width="240">
+	  </p>
+	  <p>
+图腾盛视（北京）科技有限公司致力于为高增长型中小企业提供信息一体化实施及专业的全程电子商务解决方案。作为美国 NetSuite 公司在中国唯一的战略合作伙伴，图腾盛视不仅拥有国际化的先进技术和管理理念，还在原有 NetSuite 系统基础上根据国内本土特点成功进行了二次开发，使之更加适应国内企业的特点，让更多的中国客户感受到著名软件 NetSuite 的独特魅力。
+	  </p>
+	</div>
+    </div>
+    <!-- hidden parts end -->
+
+    <div class="toggler">
+      <div id="membercontent" class="membercontent ui-widget-content ui-corner-all">
+	<div class="membercontentheader ui-widget-header ui-corner-all">
+	  周宏光
+	</div>
+	<div class="membercontentbody">
+	  <p style="text-align:center">
+	    <img src="wyeic2_files/zhouhongguang.jpg" height="300" width="200">
+	  </p>
+	  <p>
+图腾盛视（北京）科技有限公司致力于为高增长型中小企业提供信息一体化实施及专业的全程电子商务解决方案。作为美国 NetSuite 公司在中国唯一的战略合作伙伴，图腾盛视不仅拥有国际化的先进技术和管理理念，还在原有 NetSuite 系统基础上根据国内本土特点成功进行了二次开发，使之更加适应国内企业的特点，让更多的中国客户感受到著名软件 NetSuite 的独特魅力。
+	  </p>
+	</div>
+      </div>
+    </div>
+  </div>
+  <div class="footercontent">
+    <div class="signs">
+      <ul>
+	<li>
+	  <p>
+	    温州青年创业与投资俱乐部
+	  </p>
+	  <p>
+	    Wenzhou Youth Enterpriser and Investment Club
+	  </p>
+	</li>
+	<li>
+	  <a href=""><img src="wyeic2_files/logo.jpg" width="60" height="60"></a>
+	</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,236 @@
+/* --- mainMenu --- */
+		
+.mainmenu {
+  margin: 5px 0 5px;
+  height: 20px;
+  width: 800px;
+}
+
+.mainmenu li {
+float: left;
+font-size: 12px;
+height: 23px;
+width: 60px;
+padding: 0 11px;
+list-style-type: none;
+}
+
+.mainmenu li a {
+position: relative;
+border-width: 0;
+display: block;
+color: #666666;
+overflow: hidden;
+}
+
+.mainmenu li.selected a,
+.mainmenu li a:hover, .mainmenu li a:active, .mainmenu li a:focus {
+color: #000000;
+}
+
+.mainmenu li a img {
+display: block;
+}
+
+      .pictures {
+        display: block;
+        height: 360px;
+        left: 0;
+        position: relative;
+        width: 800px;
+        z-index: 0;
+      }
+      .pictures ul {
+        left: 0;
+      }
+      .pictures ul li {
+        opacity: 1;
+      }
+      .pictures ul li img {
+        text-align: center;
+        width: 800px;
+        height: 340px;
+      }
+      .content {
+        position: relative;
+        width: 800px;
+      }
+      .column { width: 33%; float: left; padding-bottom: 30px; }
+      .column ul {
+        padding-left: 5px;
+        width: 80%;
+      }
+      .portlet {
+        margin: 0 1em 1em 0;
+        padding-left: 1px;
+        padding-right: 1px;
+        padding-top: 1px;
+      }
+      .portlet-header {
+        color:#ffffff;
+        font-size:15px;
+        margin:0;
+        padding-bottom:1px;
+        padding-top:1px;
+        padding-left:15px;
+      }
+      .portlet-header a {
+         color:#ffffff;
+         text-decoration:none;
+      }
+      .portlet-header a:hover, a:active, a:focus {
+         color:#000000;
+         text-decoration:none;
+      }
+      .portlet-content {
+        padding:5px 10px 10px;
+        font-family: serif arial;
+        font-size: 13px;
+      }
+      .portlet-content li {
+         list-style-type: none;
+         padding-bottom: 6px;
+      }
+      .ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
+      .ui-sortable-placeholder * { visibility: hidden; }
+      .footercontent {
+        border-top:1px solid #3A8104;
+        clear:both;
+        float:left;
+        font-size:10px;
+        padding:8px 0;
+        width: 800px;
+      }
+      .footercontent .signs {
+        float: right;
+        width: 430px;
+      }
+      .footercontent .signs ul {
+        clear:both;
+        float:right;
+        list-style-type:none;
+      }
+      .footercontent .signs ul li {
+        clear: none;
+        float:left;
+        list-style-type:none;
+        padding-left: 14px;
+        text-align: right;
+        color: #3A8104;
+      }
+      .footercontent .signs ul li a {
+        color:#3A8104;
+        text-decoration:underline;
+      }
+      .footercontent .signs ul li a:hover, a:active, a:focus {
+        color:#000000;
+        text-decoration:underline;
+      }
+      .smalldiv {
+        float:left;
+        width:60px
+      }
+      .bigdiv {
+        float:left;
+        width:200px
+      }
+      .bigdiv img {
+        height:150px;
+        width:150px
+      }
+      .doscrollright {
+        height:215px;
+      }
+
+
+	  .subpictures {
+            display: block;
+            height: 165px;
+            left: 0;
+            position: relative;
+            width: 800px;
+            z-index: 0;
+	  }
+	  .subpictures img {
+	    text-align: center;
+            width: 790px;
+            height: 150px;
+	  }
+	  .divpic {
+	    float: left;
+	    padding-right: 30px;
+	    width: 250px;
+	  }
+	  .divpic img {
+	    width: 250px;
+	    height: 350px;
+	  }
+	  .divtab {
+	    width: 500px;
+	  } 
+
+body {
+  margin: 0 auto;
+  width: 800px;
+}
+
+
+/* -- member intro page -- */
+.memberlist {
+  float: left;
+  width: 30%;
+}
+
+.memberlist ul {
+}
+
+.memberlist ul li {
+  list-style-type:none;
+  padding-bottom: 5px;
+}
+
+.memberlist ul li a {
+  color: #3A8104;
+  font-size:14px;
+  text-decoration:none;
+}
+
+.memberlist ul li a:hover, a:active, a:focus {
+  color:#000000;
+  text-decoration:underline;
+}
+
+.memberlist ul li img {
+  height: 20px;
+  width: 20px;
+}
+
+.toggler {
+  float: left;
+  padding-bottom: 10px;
+  padding-left: 3%;
+  width: 65%;
+}
+
+.membercontent {
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-top: 1px;
+}
+
+.membercontentheader {
+  font-size: 16px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-top: 5px;
+  text-decoration: none;
+  font-family: serif arial;
+}
+
+.membercontentbody {
+  font-size: 13px;
+  padding: 5px 10px 10px;
+}
+
+.membercontentbody img {
+}

@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+
+	<ModulePrefs author="LabPixies" author_email="info+miniAmazon@labpixies.com" description="Why leave your homepage to search Amazon’s website, when you can browse your own Mini Amazon gadget?! Enjoy Amazon’s never ending selection, check out the best sellers or search directly for anything you want. Mini Amazon gets all the product info you need! Links directly to the Amazon product page for easy access" thumbnail="http://cdn.labpixies.com/campaigns/mini_amazon/images/thumbnail.jpg" screenshot="http://cdn.labpixies.com/campaigns/mini_amazon/images/mini_amazon_screenshot.gif" title="Mini Amazon" title_url="http://www.amazon.com/gp/redirect.html?link_code=ur2&amp;tag=httpwwwlabpco-20&amp;camp=1789&amp;creative=9325&amp;location=http%3A%2F%2Fwww.amazon.com%2Fgp%2Fhomepage.html" height="310">
+	<Require feature="analytics"/> 
+	</ModulePrefs>
+	
+	
+				
+	<Content type="html"> <![CDATA[
+	<title>Mini Amazon</title>
+	<!-- 
+	Mini Amazon Module
+	Design & Code: LabPixies
+	All subsequent code and resources used are proprietary of LabPixies unless directly stated otherwise.
+	Copyright (C) 2006 LabPixies.    
+	www.labpixies.com
+
+	This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivs 2.5 License.
+	To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/2.5/ or
+	send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA.
+	-->
+	
+	
+	<style type="text/css">
+		
+		
+		.style1__MODULE_ID__ {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 11px;
+		}
+		.style2__MODULE_ID__ {color: #FF0000}
+		.style3__MODULE_ID__ {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 10px;
+			font-weight: normal;
+		}
+		.style5__MODULE_ID__ {font-family: Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #5d7e8f; }
+		.style6__MODULE_ID__ {color: #5d7e8f}
+		.style7__MODULE_ID__ {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 10px;
+			color: #666666;
+		}
+		.style9__MODULE_ID__ {font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #0E638F; }
+		.style10__MODULE_ID__ {
+			font-family: Arial, Helvetica, sans-serif;
+			color: #5d7e8f;
+			font-size: 11px;
+		}
+		.style22 {
+			valign: middle;
+			font-family: arial;
+			color: #0E638F;
+			font-size: 12px;
+			font-weight: bold;
+			BORDER-RIGHT: #5D7E8F 1px solid; 
+			BORDER-TOP: #5D7E8F 1px solid;  
+			BORDER-BOTTOM: #5D7E8F 1px solid
+		}
+		.style23 {
+			cursor: pointer;
+			background-color: #E2F1F7;
+		}
+
+		.style24 {
+			BORDER-TOP: #5D7E8F 1px solid; 
+			BORDER-LEFT: #5D7E8F 1px solid; 
+			BORDER-BOTTOM: #5D7E8F 1px solid
+		}
+
+		</style>
+		
+    <script type="text/javascript">
+			 var mAll = _IG_GetCachedUrl("http://www.labpixies.com/lib/lp_utils_all_cookie.js");
+       document.write('<scr'+'ipt type="text/javascript" src="'+mAll+'"></scr'+'ipt>');
+       
+       mAll = _IG_GetCachedUrl("http://www.labpixies.com/lib/xmldom.js");
+       document.write('<scr'+'ipt type="text/javascript" src="'+mAll+'"></scr'+'ipt>');
+  
+       mAll = _IG_GetCachedUrl("http://zhangyunqiao.googlepages.com/amazon_core.js");
+       document.write('<scr'+'ipt type="text/javascript" src="'+mAll+'"></scr'+'ipt>');
+  
+			_gadgetID=20;
+		</script>
+      
+	<center>
+		
+			<!-- Popup menu for country select -->
+			<table id="localPopupMenu" style="LEFT: 0px; VISIBILITY: hidden; POSITION: absolute; TOP: 0px;" width=120 border=0 cellpadding=0 cellspacing=0 >
+				<tr class="style23" onmouseover="popMenuOver(this);" onmouseout="popMenuOut(this);" onclick="selectLocal('US');">
+					<td valign=middle height="22px" width=35 align=center class="style24">
+						<img align=absmiddle src="http://cdn.labpixies.com/campaigns/mini_amazon/images/usa_flag.gif" />
+					</td>
+					<td valign=middle  class="style22">
+						amazon.com
+					</td>
+				</tr>
+				<tr class="style23" onmouseover="popMenuOver(this);" onmouseout="popMenuOut(this);" onclick="selectLocal('UK');">
+					<td height="22px" width=35 align=center class="style24" >
+						<img align=absmiddle src="http://cdn.labpixies.com/campaigns/mini_amazon/images/uk_flag.gif" />
+					</td>
+					<td valign=middle  class="style22">
+						amazon.co.uk
+					</td>
+				</tr>
+				<tr class="style23" onmouseover="popMenuOver(this);" onmouseout="popMenuOut(this);" onclick="selectLocal('DE');">
+					<td height="22px" width=35 align=center class="style24">
+						<img align=absmiddle src="http://cdn.labpixies.com/campaigns/mini_amazon/images/germany_flag.gif" />
+					</td>
+					<td valign=middle  class="style22">
+						amazon.de
+					</td>
+				</tr>
+				<tr class="style23" onmouseover="popMenuOver(this);" onmouseout="popMenuOut(this);" onclick="selectLocal('CA');">
+					<td height="22px" width=35 align=center class="style24">
+						<img align=absmiddle src="http://cdn.labpixies.com/campaigns/mini_amazon/images/canada_flag.gif" />
+					</td>
+					<td valign=middle  class="style22">
+						amazon.ca
+					</td>
+				</tr>
+				<tr class="style23" onmouseover="popMenuOver(this);" onmouseout="popMenuOut(this);" onclick="selectLocal('FR');">
+					<td height="22px" width=35 align=center class="style24">
+						<img align=absmiddle src="http://cdn.labpixies.com/campaigns/mini_amazon/images/france_flag.gif" />
+					</td>
+					<td valign=middle  class="style22">
+						amazon.fr
+					</td>
+				</tr>
+
+			</table>
+	
+			<!-- Container for the large image display, opens ontop -->
+			<table id="largeImgCon" style="LEFT: 0px; VISIBILITY: hidden; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #F6F5E7; BORDER: #5D7E8F 1px solid;"
+				height="250" width="260">
+				<tr height="20">
+					<td align="right"><img onclick="_gel('largeImgCon').style.visibility = 'hidden';" style="cursor:pointer" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/close_button.gif" /></td>
+				</tr>
+				<tr>
+					<td align="center"><img id="largeImg" height="150" width="100"></td>
+				</tr>
+			</table> 
+			
+			<!-- Searchbox, opens below the title -->
+			<div id="searchBox" style="FONT-SIZE: 10px; LEFT: 0px; VISIBILITY: hidden; FONT-FAMILY: Verdana; POSITION: absolute; TOP: 0px;">
+				<form id="searchForm1" onsubmit="return false;">
+					<table width="270" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="6" background="http://cdn.labpixies.com/campaigns/mini_amazon/images/left_border.gif"><img src="http://cdn.labpixies.com/campaigns/mini_amazon/images/left_border.gif" width="6" height="6" />
+							</td>
+							<td width="258">
+								<table width="219" border="0" align="right" cellpadding="0" cellspacing="0">
+								<tr>
+									<td width="9"><img src="http://cdn.labpixies.com/campaigns/mini_amazon/images/searchbox_left.png" width="9" height="66" /></td>
+									<td align=center width="200" valign="top" background="http://cdn.labpixies.com/campaigns/mini_amazon/images/searchbox_background.png">
+										<table width="180" border="0" cellspacing="0" cellpadding="0" >
+											<tr>
+												<td><img src="http://cdn.labpixies.com/campaigns/mini_amazon/images/transparent.gif" width="8" height="8" /></td>
+											</tr>
+											<tr align=center>
+												<td id="CategoryText" class="style3__MODULE_ID__">Category:</td>
+												<td colspan=2 id="selCont" >
+													<select id="sel" class="style3__MODULE_ID__"><option  value="Blended" selected>Amazon.com</option>
+														<option value="Books">Books</option>
+												</td>
+											</tr>
+											<tr>
+												<td><img src="http://cdn.labpixies.com/campaigns/mini_amazon/images/transparent.gif" width="8" height="8" /></td>
+											</tr>
+											<tr align=center>
+												<td id="KeyWordText" class="style3__MODULE_ID__">Keywords:</td>
+												<td align=left class="style3__MODULE_ID__"><input id="keywords" onKeyPress="keyPress(event,this);" type="text" size="20" class="style3__MODULE_ID__" />
+												</td>
+												<td width=21 align=left>
+														<img style="cursor:pointer;" id="Button1" onclick="startSearch();" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/searchbox_go_button.gif" width="21" height="21" align="absmiddle" />
+												</td>
+											</tr>
+              
+										</table>
+									</td>
+									<td width="10"><img src="http://cdn.labpixies.com/campaigns/mini_amazon/images/searchbox_right.png" width="10" height="66" /></td>
+								</tr>
+							</table>
+						</td>
+						<td width="6" background="http://cdn.labpixies.com/campaigns/mini_amazon/images/right_border.gif"><img src="http://cdn.labpixies.com/campaigns/mini_amazon/images/right_border.gif" width="6" height="6" /></td>
+					</tr>
+				</table>
+			</form>
+		</div> 
+			
+			<!-- udi's html -->
+			<div style="margin-top: 5px;">
+			<table id="mainTable"  cellSpacing="0" cellPadding="0" width="270" border="0">
+				<tr>
+					<td>
+						<table cellSpacing="0" cellPadding="0" width="270" border="0">
+							<tr>
+								<td title="Press to set your local Amazon store!" width="113"><IMG id="logoImg" style="border-style: none; cursor:pointer;" onclick="toggleLocalPopup();" height="28" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/amazon_logoUS.gif" width="113"></td>
+								<td width="58"><IMG  height="28" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/amazon_logo1.gif" width="58"></td>
+								<td><IMG id="searchImg" style="cursor:pointer;" onclick="toggleSearchBox();" height="28" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/search_buttonEN.gif" width="100"></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table id="mainInnerTable" cellSpacing="0" cellPadding="0" width="270" border="0">
+							<tr>
+								<td width="6" background="http://cdn.labpixies.com/campaigns/mini_amazon/images/left_border.gif"><IMG height="4" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/left_border.gif" width="6"></td>
+								<td width="258">
+									<table cellSpacing="0" cellPadding="0" width="258"  height=88 border="0">
+										<tr>
+											<td width="58"><IMG height="4" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/transparent.gif" width="8"></td>
+											<td width="200"><IMG height="4" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/transparent.gif" width="8"></td>
+										</tr>
+										<tr>
+											<td>
+												<table cellSpacing="0" cellPadding="0" width="58" border="0">
+													<tr>
+														<td id="imgDivContent"><IMG height="65" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/transparent.gif" width="50"></td>
+														<td><IMG height="70" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/small_icon_frame_right.gif" width="8"></td>
+													</tr>
+													<tr>
+														<td><IMG height="4" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/small_icon_frame_bottom.gif" width="50"></td>
+														<td><IMG height="4" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/transparent.gif" width="8"></td>
+													</tr>
+												</table>
+											</td>
+											<td vAlign="top">
+												<table cellSpacing="0" cellPadding="0" width="200" border="0">
+													<tr>
+														<td>
+															<table cellSpacing="0" cellPadding="0" width="200" border="0">
+																<tr>
+																	<td align=left>
+																		<div class="style1__MODULE_ID__" id="listPContainer"><strong><span id="listPriceText">List Price</span>:</strong><span style="text-decoration: line-through;" id="listP"> &nbsp;</span></div>
+																	</td>
+																	<td align=right id="AvgText">
+																		<table cellSpacing="0" cellPadding="0">
+																			<tr>
+																				<td><IMG id="star0" height="12" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/star_empty.gif" width="12"></td>
+																				<td><IMG id="star1" height="12" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/star_empty.gif" width="12"></td>
+																				<td><IMG id="star2" height="12" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/star_empty.gif" width="12"></td>
+																				<td><IMG id="star3" height="12" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/star_empty.gif" width="12"></td>
+																				<td><IMG id="star4" height="12" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/star_empty.gif" width="12"></td>
+																				<td><span class="style3__MODULE_ID__ style6__MODULE_ID__" id="revNum" align="right">&nbsp;</span></td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+																<tr>
+																	<td colspan=2>
+																		<div class="style1__MODULE_ID__" id="realPContainer"><strong><span id="PriceText">Price</span>: </strong>
+																			<span id="realP">&nbsp;</span></div>
+																		<div class="style1__MODULE_ID__" id="saveAmountContainer"><strong><span id="SaveText">You Save</span>:</strong>
+																			<span class="style2__MODULE_ID__" id="saveAmount">&nbsp;</span></div>
+																	</td>
+																</tr>
+																
+																
+															</table>
+														</td>
+													</tr>
+													
+													<tr>
+														<td valign="bottom" align="left" height="35">
+															<div id="availContiner"><span class="style7__MODULE_ID__" id="availability">&nbsp;</span></div>
+															<div class="style7__MODULE_ID__" id="usedNewContainer"><span id="usedNewNum">&nbsp;</span>
+																<span class="style2__MODULE_ID__" id="usedNewP">&nbsp;</span></div>
+															</SPAN></td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td width="6" background="http://cdn.labpixies.com/campaigns/mini_amazon/images/right_border.gif"><IMG height="4" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/right_border.gif" width="6"></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table cellSpacing="0" cellPadding="0" width="270" border="0">
+							<tr>
+								<td width="6" background="http://cdn.labpixies.com/campaigns/mini_amazon/images/left_border.gif"><IMG height="3" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/left_border.gif" width="6"></td>
+								<td width="258"><IMG height="3" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/horizontal_div_line.gif" width="258"></td>
+								<td width="6" background="http://cdn.labpixies.com/campaigns/mini_amazon/images/right_border.gif"><IMG height="3" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/right_border.gif" width="6"></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table id="anchorTable" cellSpacing="0" cellPadding="0" width="270" height=150 border="0">
+							<tr>
+								<td width="6" background="http://cdn.labpixies.com/campaigns/mini_amazon/images/left_border.gif"><IMG height="4" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/left_border.gif" width="6"></td>
+								<td width="258"><table width="258" border="0" cellspacing="0" cellpadding="0">
+										<tr height="26">
+											<td width=13>
+												<img id="simItems0" style="cursor:pointer;" onclick="getSimilarItems();" onmouseover="toggleIcon(this);" onmouseout="toggleIcon(this);"  title="Similar Items" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/related_items_icon.gif" />
+											</td>
+											<td width=13>
+												<img id="lrgImg0" style="cursor:pointer;" onclick="largerImage();" onmouseover="toggleIcon(this);" onmouseout="toggleIcon(this);" title="Larger Image" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/zoom_icon.gif" />
+											</td>
+											<td height="26" align="left" valign="center" id="almubTDContetnt0" class="style7__MODULE_ID__"><strong>Loading...</strong><br>
+												&nbsp;</td>
+										</tr>
+										<tr>
+											<td><img src="http://cdn.labpixies.com/campaigns/mini_amazon/images/transparent.gif" width="8" height="4"></td>
+										</tr>
+										<tr height="26">
+											<td width=13>
+												<img  id="simItems1" style="cursor:pointer;" onclick="getSimilarItems();" onmouseover="toggleIcon(this);" onmouseout="toggleIcon(this);" title="Similar Items" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/related_items_icon.gif" />
+											</td>
+											<td width=13>
+												<img id="lrgImg1" style="cursor:pointer;" onclick="largerImage();" onmouseover="toggleIcon(this);" onmouseout="toggleIcon(this);"  title="Larger Image" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/zoom_icon.gif" />
+											</td>
+											<td height="26" align="left" valign="center" id="almubTDContetnt1" class="style7__MODULE_ID__"><span class="style7__MODULE_ID__"><strong>Loading...</strong><br>
+												&nbsp;</span>
+											</td>
+										</tr>
+										<tr>
+											<td><img src="http://cdn.labpixies.com/campaigns/mini_amazon/images/transparent.gif" width="8" height="4"></td>
+										</tr>
+										<tr height="26">
+											<td width=13>
+												<img  id="simItems2" style="cursor:pointer;" onclick="getSimilarItems();" onmouseover="toggleIcon(this);" onmouseout="toggleIcon(this);" title="Similar Items" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/related_items_icon.gif" />
+											</td>
+											<td width=13>
+												<img id="lrgImg2" style="cursor:pointer;" onclick="largerImage();" onmouseover="toggleIcon(this);" onmouseout="toggleIcon(this);"  title="Larger Image" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/zoom_icon.gif" />
+											</td>
+											<td height="26" align="left" valign="center" id="almubTDContetnt2" class="style7__MODULE_ID__"><span class="style9__MODULE_ID__"><strong>Loading...</strong><br>
+												&nbsp;</span>
+											</td>
+										</tr>
+										<tr>
+											<td><img src="http://cdn.labpixies.com/campaigns/mini_amazon/images/transparent.gif" width="8" height="4"></td>
+										</tr>
+										<tr height="26">
+											<td width=13>
+												<img  id="simItems3" style="cursor:pointer;" onclick="getSimilarItems();" onmouseover="toggleIcon(this);" onmouseout="toggleIcon(this);"  title="Similar Items" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/related_items_icon.gif" />
+											</td>
+											<td width=13>
+												<img id="lrgImg3" style="cursor:pointer;" onclick="largerImage();" onmouseover="toggleIcon(this);" onmouseout="toggleIcon(this);"  title="Larger Image" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/zoom_icon.gif" />
+											</td>
+											<td height="26" align="left" valign="center" id="almubTDContetnt3" class="style7__MODULE_ID__"><span class="style7__MODULE_ID__"><strong>Loading...</strong><br>
+												&nbsp;</span>
+											</td>
+										</tr>
+										<tr>
+											<td><img src="http://cdn.labpixies.com/campaigns/mini_amazon/images/transparent.gif" width="8" height="4"></td>
+										</tr>
+										<tr height="26">
+											<td width=13>
+												<img  id="simItems4" style="cursor:pointer;" onclick="getSimilarItems();" onmouseover="toggleIcon(this);" onmouseout="toggleIcon(this);" title="Similar Items" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/related_items_icon.gif" />
+											</td>
+											<td width=13>
+												<img id="lrgImg4" style="cursor:pointer;" onclick="largerImage();" onmouseover="toggleIcon(this);" onmouseout="toggleIcon(this);"  title="Larger Image" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/zoom_icon.gif" />
+											</td>
+											<td height="26" align="left" valign="center" id="almubTDContetnt4" class="style7__MODULE_ID__"><span class="style7__MODULE_ID__"><strong>Loading...</strong><br>
+												&nbsp;</span>
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td width="6" background="http://cdn.labpixies.com/campaigns/mini_amazon/images/right_border.gif"><img src="http://cdn.labpixies.com/campaigns/mini_amazon/images/right_border.gif" width="6" height="4"></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				
+				<tr>
+					<td><table width="270" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td width="6" background="http://cdn.labpixies.com/campaigns/mini_amazon/images/left_border.gif"><img src="http://cdn.labpixies.com/campaigns/mini_amazon/images/left_border.gif" width="6" height="6"></td>
+								<td width="258"><table width="258" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td id="backContainer"><div  align=left><img onclick="backPressed();" ID="Button2" style="cursor:pointer;" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/back_button.gif" width="17" height="13"
+													align="absMiddle"><span id="BackText" onclick="backPressed();" style="cursor:pointer;" class="style10__MODULE_ID__">Back</span></div></td>
+											<td class="style10__MODULE_ID__"><div id="resultsNum" align="center"></div>
+											</td>
+											<td id="nextContainer"><div  align="right"><span id="NextText" onclick="changePageIndex();" style="cursor:pointer;" class="style10__MODULE_ID__">Next</span><img style="cursor:pointer;" onclick="changePageIndex();" ID="Button3" src="http://cdn.labpixies.com/campaigns/mini_amazon/images/next_button.gif" width="17"
+														height="13" align="absMiddle"></div>
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td width="6" background="http://cdn.labpixies.com/campaigns/mini_amazon/images/right_border.gif"><img src="http://cdn.labpixies.com/campaigns/mini_amazon/images/right_border.gif" width="6" height="6"></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td><img src="http://cdn.labpixies.com/campaigns/mini_amazon/images/bottom_border.gif" width="270" height="5"></td>
+				</tr>
+			</table>
+			</div>
+	
+			<table width=270>
+				<tr>
+					<td align="left" valign=middle class="style7__MODULE_ID__">
+						*all prices subject to change
+					</td>
+					<td align="right">
+						<script type="text/javascript">
+              var mURL = _IG_GetCachedUrl("http://www.labpixies.com/lib/popup/lp_menu_ann.js");
+              document.write('<scr'+'ipt type="text/javascript" src="'+mURL+'"></scr'+'ipt>');
+            </script>
+					</td>
+				</tr>
+			</table>
+				 
+
+
+								
+		<script type="text/javascript">
+			
+			//on load page functions											
+			_IG_RegisterOnloadHandler(function () {
+				setLocal();
+ 
+_gel("keywords").value=unescape(gup("up_query"));  resetGraphics();
+				setTimeout(parseCurrentFeed,100);
+			});
+
+		</script>
+
+	</center>
+	
+	<script type="text/javascript">
+		_IG_Analytics("UA-345375-1", "/mini_amazon");
+	</script>
+
+
+	]]> 
+	</Content>
+</Module>

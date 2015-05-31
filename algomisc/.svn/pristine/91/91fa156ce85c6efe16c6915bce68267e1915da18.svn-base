@@ -1,0 +1,9 @@
+# Copyright 2009 Lenjoy. All Rights Reserved.
+# Author: mars.lenjoy@gmail.com (Lenjoy)
+
+env = Environment()
+env.Library('liburlpattern', 'urlpattern.cc')
+env.Program('urlpattern', 'urlpattern_main.cc',
+            LIBS = ['liburlpattern'],
+            LIBPATH = ['.'],
+            CPPPATH = ['.'])

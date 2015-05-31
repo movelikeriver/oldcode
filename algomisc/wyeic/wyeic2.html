@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>WYEIC</title>
+    <link type="text/css" href="wyeic2_files/themes/le-frog/ui.all.css" rel="stylesheet" />
+    <link type="text/css" href="wyeic2_files/wyeic2.css" rel="stylesheet" />
+    <script type="text/javascript" src="wyeic2_files/jquery-1.3.2.js"></script>
+    <script type="text/javascript" src="wyeic2_files/ui.core.js"></script>
+    <script type="text/javascript" src="wyeic2_files/ui.sortable.js"></script>
+    <script type="text/javascript" src="wyeic2_files/jquery.cycle.all.js"></script>
+    <style type="text/css">
+    </style>
+    <script type="text/javascript">
+      $(function() {
+
+      $('.column').sortable({
+      connectWith: '.column',
+      handle: 'div.portlet-header',
+      });
+
+      $(".portlet").addClass("ui-widget ui-widget-content ui-helper-clearfix ui-corner-all")
+      .find(".portlet-header")
+      .addClass("ui-widget-header ui-corner-all");
+
+      $('.pictures ul').cycle({
+      fx: 'scrollDown,scrollLeft', 
+      timeout: 8000, 
+      cssBefore: { opacity: 1 }, 
+      animOut: { opacity: 0 },
+      animIn: { opacity: 1 }, 
+      sync: 'true',
+      });
+
+      $('.portlet-content ul.doscrollup').cycle({
+      fx: 'scrollUp', 
+      timeout: 5000, 
+      cssBefore: { opacity: 1 }, 
+      animOut: { opacity: 0 },
+      animIn: { opacity: 1 }, 
+      sync: 'true',
+      });
+
+      $('.portlet-content ul.doscrollright').cycle({
+      fx: 'scrollRight', 
+      timeout: 6000, 
+      cssBefore: { opacity: 1 }, 
+      animOut: { opacity: 0 },
+      animIn: { opacity: 1 }, 
+      sync: 'true',
+      });
+
+      });
+    </script>
+  </head>
+  <body>
+    <div class="pictures">
+      <ul>
+	<li style="display: block; z-index: 6"><img src="wyeic2_files/logobig.png" alt="W"></li>
+	<li style="display: none; z-index: 5"><img src="wyeic2_files/aboutus.png" alt="W"></li>
+	<li style="display: none; z-index: 5"><img src="wyeic2_files/active.png" alt="Slashdot - News for Nerds. Stuff that Matters."></li>
+	<li style="display: none; z-index: 5"><img src="wyeic2_files/icapital.png" alt="SourceForge - Find and build open source software"></li>
+	<li style="display: none; z-index: 5"><img src="wyeic2_files/rule.png" alt="ThinkGeek - Stuff for smart masses"></li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="column">
+	<div class="portlet">
+	  <div class="portlet-header"><a href="wyeicsub.html">关于我们</a></div>
+	  <div class="portlet-content">
+	    <p>&nbsp;&nbsp;温州青年创业与投资俱乐部（简称温青创投），是温州青年中的创业者和投资者自发组建的联谊性、非赢利性群众组织，是温州青年创业者和投资者相互之间，以及与学校、政府、其他机构和企业之间的桥梁与纽带。温青创投在业务上实行自主管理，并受温州商会的指导与监督。</p>
+	    <p>&nbsp;&nbsp;温州青年创业与投资俱乐部是北京温州企业商会下辖的二级社团组织。是温州青年中的创业者和投资者自发组建的联谊性、非赢利性群众组织，是温州青年创业者和投资者相互之间，以及与学校、政府、其他机构和企业之间的桥梁与纽带。</p>
+	    <p>&nbsp;&nbsp;温青创投英文译名为Wenzhou Youth Enterpriser and Investment Club，英文缩写为：WYEIC。</p>
+	    <p><b>愿景</b></p>
+	    <p>&nbsp;&nbsp;创业、投资、交流、学习、合作</p>
+	    <p><b>宗旨</b></p>
+	    <p>&nbsp;&nbsp;创业、投资、交流、学习、合作</p>
+	    <p><b>使命</b></p>
+	    <p>&nbsp;&nbsp;发挥温州商会的平台效应和资源优势，引导和组织青年创业者和投资者开展有益于创业和投资的各类活动，并通过各类活动为温青创投内的青年创业者和投资者提供必要的支持与服务，促进青年创业者及其创业企业的发展，和为投资者带来收益。</p>
+	  </div>
+	</div>
+      </div>
+      <div class="column">
+	<div class="portlet">
+	  <div class="portlet-header"><a href="">会员介绍</a></div>
+	  <div class="portlet-content">
+	    <ul class="doscrollup">
+	      <li style="display: block; z-index: 6">
+		<div class="smalldiv">
+		  <img src="wyeic2_files/logo.jpg" width="50" height="50">
+		  </div>
+		  <div>
+		    111111111会员信息会员信息会员信息会员信息会员信息会员信息会员信息会员信息
+		  </div>
+		</li>
+	      <li style="display: none; z-index: 5">
+		<div class="smalldiv">
+		  <img src="wyeic2_files/logo.jpg" width="50" height="50">
+		</div>
+		<div>
+		  222222222会员信息会员信息会员信息会员信息会员信息会员信息会员信息会员信息
+		</div>
+	      </li>
+	      <li style="display: none; z-index: 5">
+		<div class="smalldiv">
+		  <img src="wyeic2_files/logo.jpg" width="50" height="50">
+		</div>
+		<div>
+		  3333333333会员信息会员信息会员信息会员信息会员信息会员信息会员信息会员信息
+		</div>
+	      </li>
+	    </ul>
+	  </div>
+	</div>
+	<div class="portlet">
+	  <div class="portlet-header"><a href="">会员活动</a></div>
+	  <div class="portlet-content">
+	    <ul>
+	      <li><a href="">会员活动会员活动会员活动</a></li>
+	      <li><a href="">会员活动会员活动会员活动</a></li>
+	      <li><a href="">会员活动会员活动会员活动</a></li>
+	      <li><a href="">会员活动会员活动会员活动</a></li>
+	      <li><a href="">会员活动会员活动会员活动</a></li>
+	      <li><a href="">会员活动会员活动会员活动</a></li>
+	      <li><a href="">会员活动会员活动会员活动</a></li>
+	    </ul>
+	  </div>
+	</div>
+	<div class="portlet">
+	  <div class="portlet-header"><a href="">会员专区</a></div>
+	  <div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+	</div>
+      </div>
+      <div class="column">
+	<div class="portlet">
+	  <div class="portlet-header"><a href="">创投项目</a></div>
+	  <div class="portlet-content">
+	    <ul class="doscrollright">
+	      <li style="display: block; z-index: 6">
+		<div class="bigdiv">
+		  <img src="wyeic2_files/logo.jpg">
+       	  </div>
+		  <div>
+		    111111111创投项目创投项目创投项目创投项目创投项目创投项目创投项目创投项目
+		  </div>
+		</li>
+	      <li style="display: none; z-index: 5">
+		<div class="bigdiv">
+		  <img src="wyeic2_files/logo.jpg">
+		</div>
+		<div>
+		  222222222创投项目创投项目创投项目创投项目创投项目创投项目创投项目创投项目
+		</div>
+	      </li>
+	      <li style="display: none; z-index: 5">
+		<div class="bigdiv">
+		  <img src="wyeic2_files/logo.jpg">
+		</div>
+		<div>
+		  3333333333创投项目创投项目创投项目创投项目创投项目创投项目创投项目创投项目
+		</div>
+	      </li>
+	    </ul>
+	  </div>
+	</div>
+
+	<div class="portlet">
+	  <div class="portlet-header"><a href="">外联伙伴</a></div>
+	  <div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+	</div>
+	<div class="portlet">
+	  <div class="portlet-header"><a href="">申请加入</a></div>
+	  <div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+	</div>
+	<div class="portlet">
+	  <div class="portlet-header"><a href="">联系我们</a></div>
+	  <div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+	</div>
+      </div>
+    </div>
+    <div class="footercontent">
+      <div class="signs">
+	<ul>
+	  <li>
+	    <p>
+	      温州青年创业与投资俱乐部
+	    </p>
+	    <p>
+	      Wenzhou Youth Enterpriser and Investment Club
+	    </p>
+	  </li>
+	  <li>
+	    <a href=""><img src="wyeic2_files/logo.jpg" width="60" height="60"></a>
+	  </li>
+	</ul>
+      </div>
+    </div>
+  </body>
+</html>
+

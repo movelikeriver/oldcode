@@ -1,0 +1,310 @@
+/* Always show scrollbar on right side, because when height is changing, the screen will left-right shaking because of scroll bar appears. */
+html {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+body {
+  clear: both;
+  float: left;
+  height: 100%;
+  width: 100%;
+}
+
+.ulnav {
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+
+
+/* -- Layout -- */
+.sitewrapper {
+  position: relative;
+  width: 960px;
+  margin: 0 auto;
+}
+
+
+/* --- siteHeader --- */
+.siteheader {
+position: relative;
+left: 0;
+top: 0;
+float: left;
+clear: both;
+width: 100%;
+height: 220px;
+/*overflow: hidden;*/
+}
+	
+/* --- mainMenu --- */
+		
+#mainMenu {
+  float: left;
+  margin: 25px 0 5px;
+  width: 100%;
+}
+
+#mainMenu li {
+float: left;
+height: 23px;
+width: 60px;
+padding: 0 11px;
+}
+
+#mainMenu li a {
+position: relative;
+border-width: 0;
+display: block;
+color: #666666;
+overflow: hidden;
+}
+
+#mainMenu li.selected a,
+#mainMenu li a:hover, #mainMenu li a:active, #mainMenu li a:focus {
+color: #000000;
+}
+					
+#mainMenu li a img {
+display: block;
+}
+
+/* --- headerContent --- */
+#headerContent {
+clear: both;
+font-size: 1.5em;
+letter-spacing: -0.1em;
+line-height: 1.15em;
+color: #000000;
+width: 100%;
+height: 170px;
+background: #99cc33;
+}
+
+#headerContent.invert {
+color: #ffffff;
+background-color: #666666;
+}
+
+.main #headerContent {
+width: 960px;
+height: 479px;
+padding: 0;
+border-bottom: 1px solid #bfbfbf;
+}
+
+.main #headerContent.flash-replaced {
+height: 480px;
+border-style: none;
+}
+
+#headerContent p {
+margin-bottom: 0
+}
+	
+/* --- siteLogo --- */
+#siteLogo {
+float: left;
+position: relative;
+left: 5px;
+top: 5px;
+width: 80%;
+}
+
+#siteLogoWord {
+float: left;
+position: relative;
+left: 1px;
+top: 115px;
+width: 20%;
+}
+			
+#siteLogo * {
+display: block;
+}
+				
+* html #siteLogo a {
+width:80px;
+height:80px;
+}
+				
+#siteLogo a:focus {
+outline-color: #666666;
+}
+.logoColour {
+background-color: blue;
+}
+				
+/* --- pageQuote --- */
+		
+#headerContent blockquote {
+width: 100%;
+font-family: Arial, Helvetica, sans-serif;
+letter-spacing:0;
+margin-bottom: 0;
+padding-top: 26px;
+background: url(/images/ColoursWebsite/layout/bg_header_quote.png) transparent no-repeat left top;
+}
+* html #headerContent blockquote { background-image: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/ColoursWebsite/layout/bg_header_quote.png", sizingMethod="crop"); }
+			
+#headerContent.invert blockquote {
+background-position: -270px 0;
+}
+* html #headerContent.invert blockquote { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/ColoursWebsite/layout/bg_header_quote_ie6_invert.png", sizingMethod="crop"); }
+			
+/* --- pageSlogan --- */
+			
+#pageSlogan {
+color: #ffffff;
+font-size: 23px;
+font-weight: bold;
+line-height: 1.25em;
+font-family: Arial, Helvetica, sans-serif;
+letter-spacing:0;
+}
+			
+.main #pageSlogan {
+position: absolute;
+left: 40px;
+top: 220px;
+font-size: 2.5em;
+width: 410px;
+}
+			
+			/* --- headerContent about --- will be removed from DOM if flash topVisual is inserted --- */
+			
+			#headerContent .about {
+				position: relative;
+				left: 0;
+				top: 400px;
+				width: 100%;
+				height: 69px;
+				padding: 10px 0 0;
+				background-color: #ffffff;
+			}
+				
+				#headerContent .about blockquote {
+					float: left;
+					width: 575px;
+					padding: 0 25px 0 40px;
+					background-position: -540px 3px;
+				}
+				* html #headerContent .about blockquote { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/ColoursWebsite/layout/bg_header_quote_ie6_about.png", sizingMethod="crop"); }
+				
+				#headerContent .contributing {
+					float: right;
+					width: 320px;
+				}
+				#headerContent .contributingNoTitle {
+					float:right;
+					width:auto;
+				}
+					#headerContent .contributing h2, #headerContent .contributingNoTitle h2 {
+						font-weight: normal;
+						margin: 0;
+						padding: 0;
+						font-family: Arial, Helvetica, sans-serif;
+						letter-spacing:0;
+					}
+				
+					#headerContent .contributing ul, #headerContent .contributingNoTitle ul {
+						font-size: 0.55em;
+						letter-spacing: normal;
+						line-height: 1.6em;
+						padding-top: 9px;
+					}
+							#headerContent .contributing li, #headerContent .contributingNoTitle li {
+								float: left;
+								clear: none;
+								padding: 0 11px 0 1px;
+							}
+						
+								#headerContent .contributing li a, #headerContent .contributingNoTitle li a {
+									text-decoration: none;
+									padding-left: 7px;
+									background: url(/images/ColoursWebsite/layout/ico_link_IE6.gif) transparent no-repeat 0 0.55em;
+								}
+								
+								#headerContent .contributing li a:hover, #headerContent .contributing li a:active, #headerContent .contributing li a:focus , #headerContent .contributingNoTitle li a:hover, #headerContent .contributingNoTitle li a:active, #headerContent .contributingNoTitle li a:focus {
+									text-decoration: underline;
+								}
+
+						
+/* --- siteBody --- */
+.sitebody {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0 5px;
+}
+
+/* --- siteContent --- */
+		
+#siteContent {
+float: left;
+clear: both;
+width: 100%;
+margin: 20px 0 17px;
+background: url(/images/ColoursWebsite/layout/divider_sitecontent_1.gif) transparent repeat-y 0;
+}
+		
+.main #siteContent {
+margin: 0;
+background-image: none;
+}
+			
+.contentTabs #mainContent {
+padding-top: 31px;
+}
+		
+/* --- mainContent --- */
+			
+#mainContent {
+position: relative;
+float: left;
+width: 100%;
+}
+			
+.noSidebar #mainContent {
+width: 100%;
+}
+			
+.main #mainContent {
+font-size: 0.9em;
+line-height: 1.5em;
+}
+
+
+#footerleft {
+float: left;
+}
+
+#footerleft h2 {
+margin: 4px 0 6px;
+position: relative;
+top: 0pt;
+left: 50px;
+}
+
+ #shortcuts {
+ float: right;
+ width: 320px;
+ }
+
+ #shortcuts ul {
+ float: right;
+ clear: both;
+ }
+
+ #shortcuts li {
+ float: left;
+ clear: none;
+ padding-left: 15px;
+ }
+
+ #shortcuts .first li {
+ font-weight: bold;
+ padding: 0 0 4px 20px;
+ }

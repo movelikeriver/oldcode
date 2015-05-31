@@ -1,0 +1,6 @@
+# author: mars.lenjoy@gmail.com
+
+env = Environment()
+env.StaticLibrary(target='libgtest-all',
+                  source=['gtest-all.cc'],
+                  CPPPATH=['..'])

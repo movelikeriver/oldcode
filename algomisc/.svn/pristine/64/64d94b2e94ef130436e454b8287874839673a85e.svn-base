@@ -1,0 +1,1967 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+	<ModulePrefs author="LabPixies" author_email="info@labpixies.com" description="__MSG_description__" screenshot="http://www.labpixies.com/campaigns/converter/images/screenshot.png" title="__MSG_title__" title_url="http://www.labpixies.com" category="tools" thumbnail="http://www.labpixies.com/campaigns/converter/images/thumbnail.jpg" height="226" render_inline="never">
+   
+  	<Require feature="setprefs"/>	
+  	<Require feature="analytics"/> 	
+  	<Require feature="views"/>
+  	<Require feature="dynamic-height"/>
+		<Locale messages="http://www.labpixies.com/campaigns/converter/i20/all_all.xml"/> 			
+		<Locale lang="bg" messages="http://www.labpixies.com/campaigns/converter/i20/bg_all.xml"/>
+		<Locale lang="ca" messages="http://www.labpixies.com/campaigns/converter/i20/ca_all.xml"/>
+		<Locale lang="cs" messages="http://www.labpixies.com/campaigns/converter/i20/cs_all.xml"/>
+		<Locale lang="da" messages="http://www.labpixies.com/campaigns/converter/i20/da_all.xml"/>
+		<Locale lang="de" messages="http://www.labpixies.com/campaigns/converter/i20/de_all.xml"/>
+		<Locale lang="el" messages="http://www.labpixies.com/campaigns/converter/i20/el_all.xml"/>
+		<Locale lang="en-GB" messages="http://www.labpixies.com/campaigns/converter/i20/en_gb_all.xml"/>
+		<Locale lang="es" messages="http://www.labpixies.com/campaigns/converter/i20/es_all.xml"/>		
+		<Locale lang="fi" messages="http://www.labpixies.com/campaigns/converter/i20/fi_all.xml"/>		
+		<Locale lang="fr" messages="http://www.labpixies.com/campaigns/converter/i20/fr_all.xml"/>
+		<Locale lang="hi" messages="http://www.labpixies.com/campaigns/converter/i20/hi_all.xml"/>
+		<Locale lang="hr" messages="http://www.labpixies.com/campaigns/converter/i20/hr_all.xml"/>
+		<Locale lang="hu" messages="http://www.labpixies.com/campaigns/converter/i20/hu_all.xml"/>				
+		<Locale lang="it" messages="http://www.labpixies.com/campaigns/converter/i20/it_all.xml"/>
+		<Locale lang="iw" messages="http://www.labpixies.com/campaigns/converter/i20/iw_all.xml"/>
+		<Locale lang="ja" messages="http://www.labpixies.com/campaigns/converter/i20/ja_all.xml"/>
+		<Locale lang="ko" messages="http://www.labpixies.com/campaigns/converter/i20/ko_all.xml"/>
+		<Locale lang="lt" messages="http://www.labpixies.com/campaigns/converter/i20/lt_all.xml"/>
+		<Locale lang="lv" messages="http://www.labpixies.com/campaigns/converter/i20/lv_all.xml"/>
+		<Locale lang="ms" messages="http://www.labpixies.com/campaigns/converter/i20/ms_all.xml"/>
+		<Locale lang="nl" messages="http://www.labpixies.com/campaigns/converter/i20/nl_all.xml"/>
+		<Locale lang="no" messages="http://www.labpixies.com/campaigns/converter/i20/no_all.xml"/>
+		<Locale lang="pl" messages="http://www.labpixies.com/campaigns/converter/i20/pl_all.xml"/>
+		<Locale lang="pt-BR" messages="http://www.labpixies.com/campaigns/converter/i20/pt_br_all.xml"/>
+		<Locale lang="pt-PT" messages="http://www.labpixies.com/campaigns/converter/i20/pt_pt_all.xml"/>
+		<Locale lang="ro" messages="http://www.labpixies.com/campaigns/converter/i20/ro_all.xml"/>
+		<Locale lang="ru" messages="http://www.labpixies.com/campaigns/converter/i20/ru_all.xml"/>
+		<Locale lang="sk" messages="http://www.labpixies.com/campaigns/converter/i20/sk_all.xml"/>
+		<Locale lang="sl" messages="http://www.labpixies.com/campaigns/converter/i20/sl_all.xml"/>
+		<Locale lang="sr" messages="http://www.labpixies.com/campaigns/converter/i20/sr_all.xml"/>
+		<Locale lang="sv" messages="http://www.labpixies.com/campaigns/converter/i20/sv_all.xml"/>
+		<Locale lang="th" messages="http://www.labpixies.com/campaigns/converter/i20/th_all.xml"/>
+		<Locale lang="tl" messages="http://www.labpixies.com/campaigns/converter/i20/tl_all.xml"/>
+		<Locale lang="tr" messages="http://www.labpixies.com/campaigns/converter/i20/tr_all.xml"/>
+		<Locale lang="uk" messages="http://www.labpixies.com/campaigns/converter/i20/uk_all.xml"/>
+		<Locale lang="vi" messages="http://www.labpixies.com/campaigns/converter/i20/vi_all.xml"/>
+		<Locale lang="zh-CN" messages="http://www.labpixies.com/campaigns/converter/i20/zh_cn_all.xml"/>
+		<Locale lang="zh-TW" messages="http://www.labpixies.com/campaigns/converter/i20/zh_tw_all.xml"/>	
+	
+			</ModulePrefs>
+	<UserPref name="recents" default_value="[]" datatype="hidden"/>
+	
+<Content type="html" view="home,profile">
+<![CDATA[
+<title>Unit Converter</title>
+
+<style type="text/css">
+body {
+  text-align:center;
+  font-family:arial;
+}
+
+#main {
+  margin:0 auto;  
+  width:245px;
+  height:132px;  
+}
+#header_container {
+  width:225px;
+  height:34px;
+  line-height:34px;
+  margin-left:10px;
+  margin-right:10px;
+  overflow: hidden;
+}
+#convert_title{
+  /*font-size: 16px;*/
+  font-size: __MSG_profile_title_size__;
+  font-weight: bold;
+  color: #B6E32B;
+  float:left;
+} 
+.cat_item {
+  padding-left:2px;
+  padding-right:4px;
+  height:18px;
+  line-height:18px;
+  font-size: 11px;
+  color: #324E34;
+  cursor:pointer;
+}
+.option_unit{
+  font-size: 12px; 
+  color: #000000;
+}
+.bottom_button{
+  font-size: __MSG_profile_bottom_button_size__; 
+  color:  #335236;
+}
+
+</style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+<script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script>
+<!-- PUT THIS TAG IN THE head SECTION -->
+<script type="text/javascript" src="http://partner.googleadservices.com/gampad/google_service.js">
+</script>
+<script type="text/javascript">
+  GS_googleAddAdSenseService("ca-pub-8123415297019784");
+  GS_googleEnableAllServices();
+</script>
+<script type="text/javascript">
+  GA_googleAddSlot("ca-pub-8123415297019784", "unit_converter_txt");
+</script>
+<script type="text/javascript">
+  GA_googleFetchAds();
+</script>
+<!-- END OF TAG FOR head SECTION -->
+
+<script type="text/javascript">
+  var $lp = jQuery.noConflict();
+  var _gadgetID=47;
+
+  var lp_pageTracker = _gat._getTracker("UA-345375-1");
+  lp_pageTracker._initData();
+  
+  function lp_trackEvent(eventName,eventLable,eventVar) {
+      try {
+          lp_pageTracker._trackEvent("Unit Converter V2 - Profile",eventName,eventLable, eventVar);
+      } catch(ee) {}
+  }
+  
+  //var mSIDEBAR = _IG_GetCachedUrl("http://cdn.labpixies.com/infra/js/lp_sidebar.js");
+  //document.write('<scr'+'ipt type="text/javascript" src="'+mSIDEBAR+'"></scr'+'ipt>');
+	
+  var IMAGES_BASE = 'http://cdn.labpixies.com/campaigns/converter/images/v2/profile/';
+  var prefs = new _IG_Prefs();
+  
+  var recentArray=[];
+  var categoriesForEvents=[];
+  var g_category = 1;
+  var labels = [];
+  var currencyNames = [];  //will simply hold the shortcuts to the array (USD, EUR...)
+  var lastFrom = 0;        //default from select value
+  var lastTo = 1;         //default to select value
+  
+
+  
+  function init() { 
+    loadImages();    
+    //lpgadgets.lp.sidebar.deploy('container');
+    
+    var json = prefs.getString('recents');
+    try{
+  	  json = lpgadgets.lp.utils.unescapeString(json);
+  	  recentArray = lpgadgets.lp.utils.jsonParse(json);
+  	}
+  	catch (ee) {
+  	   lp_trackEvent("Error", "parse json catch");
+  	}
+	  
+    //get units names from bundle to fill in the drop down lists
+    getUnitsNames();
+    currencyNames = prefs.getMsg("currencies_short").split(",");
+    categoriesForEvents = prefs.getMsg("english_categories_arr").split(",");
+    setOnClickHandlers();
+    getUnitsNames();
+    //set initial settings (category and units, from prefs or defaults).
+    setInitialSettings();
+  }
+  
+  function setInitialSettings(){
+    //if we have recents convertions takes from prefs the initial values
+    if (recentArray.length>0) {
+      var lastSettings = recentArray[recentArray.length-1];
+      g_category = lastSettings.category;
+      lastFrom = lastSettings.from;
+      lastTo = lastSettings.to;
+    }
+    if (g_category!=7) {
+      fillOptions(lastFrom,"from_container");
+      fillOptions(lastTo,"to_container");
+    }
+    else{
+      fillCurrenciesOptions(lastFrom,"from_container");
+      fillCurrenciesOptions(lastTo,"to_container");
+    } 
+    document.getElementById("categories_left").innerHTML=prefs.getMsg("cat_"+g_category);
+    _IG_AdjustIFrameHeight();
+  }
+  
+  //we use this funciton because we want the categories drop down to have a regular drop down behavior (open/close behavior)
+  function setOnClickHandlers() {
+    document.getElementById("container").onclick = function(e) {
+        document.getElementById("categories_menu").style.display="none";
+    };
+    document.getElementById("categories_button_tr").onclick = function(e) {
+        stopEventPropogation(e);
+        toggleCategoriesMenu();
+    };
+  }
+  
+  function stopEventPropogation(event){
+      //IE      
+      if(!event){           
+        window.event.cancelBubble = true;  
+      }       
+      //OTHER NAVIGATORS      
+      else if (event.stopPropagation) {event.stopPropagation();}
+	}
+  
+  
+  function loadImages(){
+    document.getElementById('main').style.background = 'transparent url'+'('+getCachedImage('gadget_sprite.png')+') 0px 0px no-repeat';
+    document.getElementById("categories_left").style.background = "transparent url"+"("+getCachedImage('gadget_sprite.png')+") 0px -132px no-repeat";
+    document.getElementById("categories_right").style.background = "transparent url"+"("+getCachedImage('gadget_sprite.png')+") right -132px no-repeat";
+    document.getElementById("convert_left").style.background = "transparent url"+"("+getCachedImage('gadget_sprite.png')+") 0px -176px no-repeat";
+    document.getElementById("convert_right").style.background = "transparent url"+"("+getCachedImage('gadget_sprite.png')+") right -176px no-repeat";
+    document.getElementById("currency_rates_icon").style.background = "transparent url"+"("+getCachedImage('gadget_sprite.png')+") 0px -218px no-repeat";
+    document.getElementById("more_options_icon").style.background = "transparent url"+"("+getCachedImage('gadget_sprite.png')+") 0px -246px no-repeat";
+  }
+  
+  function getCachedImage(src){
+    return (_IG_GetImageUrl(IMAGES_BASE+src));	
+	}
+	
+	//filling the drop downs options
+  function fillOptions(selected, dropDownContainer) {
+    //getting the category units
+  	var tmplabels = labels[g_category-1];
+  	var out=[];
+  	out.push('<select id="select_'+dropDownContainer+'" style="height:18px; border:1px solid #355438;  font-size:__MSG_profile_dd_font_size__;">');
+  	for (i=0; i<tmplabels.length; i++) {
+  		if (i==selected)
+  		  out.push('<option class="option_unit" selected>'+tmplabels[i]+'</option>');
+  		else
+  		  out.push('<option class="option_unit">'+tmplabels[i]+'</option>');
+  	}
+  	out.push('</select>');
+  	document.getElementById(dropDownContainer).innerHTML = out.join('');
+	}
+	
+	function changeCategory(catID){
+	  lp_trackEvent('Change Category',categoriesForEvents[catID-1]);
+	  if (g_category!=catID) {
+	      clearInput();
+    	  g_category = catID;
+        if (g_category!=7) {
+          fillOptions(0,"from_container");
+          fillOptions(1,"to_container");
+        }
+        else{
+          fillCurrenciesOptions(0,"from_container");
+          fillCurrenciesOptions(1,"to_container");
+        }
+        document.getElementById("categories_left").innerHTML=prefs.getMsg("cat_"+g_category);
+    }
+    document.getElementById("categories_menu").style.display="none";
+	}
+	
+	function menuItemRollOver(element){ element.style.backgroundColor='#C5F62F'; }
+	
+	function menuItemRollOut(element){ element.style.backgroundColor='#FFFFFF';	}
+	
+	function buttonRollOver(elementID){
+	  var height="";
+	  document.getElementById(elementID+"_left").style.color='#4E3131';
+	  if (elementID=="categories") height = '-154px';
+	  if (elementID=="convert")  height = '-197px';
+	  document.getElementById(elementID+"_left").style.backgroundPosition='0px '+height;
+	  document.getElementById(elementID+"_right").style.backgroundPosition='right '+height;
+	}
+	
+	function buttonRollOut(elementID){
+	  var height="";;
+	  if (elementID=="categories") height = '-132px';
+	  if (elementID=="convert")  height = '-176px';
+	  document.getElementById(elementID+"_left").style.color='#324E34';
+	  document.getElementById(elementID+"_left").style.backgroundPosition='0px '+height;
+	  document.getElementById(elementID+"_right").style.backgroundPosition='right '+height;
+	}
+	
+	function linkToCanvasOver(id){
+	  if(id=="more_options") 
+	     document.getElementById(id+"_icon").style.backgroundPosition='0px -260px';
+	  if(id=="currency_rates") 
+	     document.getElementById(id+"_icon").style.backgroundPosition='0px -232px';
+	  document.getElementById(id).style.color='#F36E28';
+	  document.getElementById(id).style.textDecoration='underline';
+	}
+	
+	function linkToCanvasOut(id){
+	  if(id=="more_options") 
+	     document.getElementById(id+"_icon").style.backgroundPosition='0px -246px';
+	  if(id=="currency_rates") 
+	     document.getElementById(id+"_icon").style.backgroundPosition='0px -218px';
+	  document.getElementById(id).style.color='#335236';
+	  document.getElementById(id).style.textDecoration='none';
+	}
+	
+	function getUnitsNames(){
+	  for (var i=0; i<7; i++) {
+	     var arr = prefs.getMsg("arr_"+(i+1)).split(",");
+	     labels[i]=arr;
+	  }
+	}
+	
+	function toggleCategoriesMenu(){
+	  if (document.getElementById("categories_menu").style.display=="none") {
+  	  var position = $lp('#categories').offset();
+  	  var buttonWidth = $lp('#categories').width();
+  	  var buttonHeight = $lp('#categories').height();
+  	  var menuWidth = $lp('#categories_menu').width();
+      document.getElementById("categories_menu").style.left = position.left+buttonWidth-menuWidth-2+"px";
+      document.getElementById("categories_menu").style.top = position.top+buttonHeight-1+"px";
+      document.getElementById("categories_menu").style.display="";
+    }
+    else {
+      document.getElementById("categories_menu").style.display="none";
+    }
+	}
+	
+  function switchToCanvas(buttonType){
+    var params=[];
+    //deciding wether to send params to canvas mode
+    if (buttonType=="convert") {
+      var numToConvert = document.getElementById("convert_input").value;
+      var from = document.getElementById("select_from_container").selectedIndex;
+      var to = document.getElementById("select_to_container").selectedIndex;
+      params = [buttonType,g_category, from, to, numToConvert];
+    }
+    if (buttonType=="currency") params = [buttonType];
+  	var views = gadgets.views.getSupportedViews();
+    gadgets.views.requestNavigateTo(views['canvas'], params);	
+  }
+  
+  //getting units names from bundle
+	function getUnitsNames(){
+	  for (var i=0; i<7; i++) {
+	     var arr = prefs.getMsg("arr_"+(i+1)).split(",");
+	     labels[i]=arr;
+	  }
+	}
+	
+  function fillCurrenciesOptions(selected, dropDownContainer) {
+  	var tmpLabels = labels[g_category-1];
+  	var out=[];
+  	out.push('<select id="select_'+dropDownContainer+'" style="height:18px; border:1px solid #355438;  font-size:11px;">');
+  	for (i=0; i<tmpLabels.length; i++) {
+      if (i==selected)
+  		  out.push('<option class="option_unit" selected value="'+currencyNames[i]+'">'+tmpLabels[i]+'</option>');
+  		else
+  		  out.push('<option class="option_unit" value="'+currencyNames[i]+'">'+tmpLabels[i]+'</option>');
+  	}
+  	out.push('</select>');
+  	document.getElementById(dropDownContainer).innerHTML = out.join('');
+	}
+	
+	function clearInput(){
+	  if (document.getElementById("convert_input").value!='__MSG_insert_value__')
+	    document.getElementById("convert_input").value="";
+	}
+  
+  function clearAndMarkBox(element){
+    if (element.value=='__MSG_insert_value__') {
+      element.value = "";
+      element.style.color="#000000";
+    }
+    element.select();
+  }
+  
+  _IG_RegisterOnloadHandler(init);
+  _IG_Analytics("UA-345375-1", "/Converter_V2_Profile");
+	
+</script>
+
+<div id="container">
+<center>
+  <div style="height:10px;font-size:1px;"></div>
+  <div style="width:245px;">
+    <div id="main">
+      <div id="header_container">
+        <div id="convert_title">__MSG_convert_txt__:</div>
+        <div id="categories" style="float:right; margin-top:6px;">
+          <table height="22" cellpadding="0" cellspacing="0" border="0">
+             <tr id="categories_button_tr" onmouseover="buttonRollOver('categories');" onmouseout="buttonRollOut('categories');">
+                <td id="categories_left" style="height:22px; font-size:__MSG_profile_cat_button_size__; font-weight:bold; color:#324E34; padding-left:7px; cursor:pointer; padding-top:2px;" valign="top"></td>
+                <td id="categories_right" style="height:22px; width:24px; cursor:pointer;"></td>
+             </tr>
+          </table>
+        </div>
+      </div>
+      <div style="height:9px; font-size:1px;"></div>
+      <div id="input_container" style="height:23px; margin-left:10px; margin-right:10px;" align="left">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tr>  
+            <td style="width:105px; height:23px;" valign="middle" align="left">
+              <form onsubmit="lp_trackEvent('Open Canvas','Enter pressed'); switchToCanvas('convert'); return false;" style="padding: 0px; margin: 0px;" >
+                <input type="text" id="convert_input" maxlength="12" style="width:100px; border: #355438 1px solid; font-size:13px; color:#999999; padding-left:2px;" value="__MSG_insert_value__" onclick="clearAndMarkBox(this);" />
+              </form>
+            </td>
+            <td style="height:23px; width:10px; font-size:1px;"></td>
+            <td style="height:23px;" align="left">
+              <table height="21" cellpadding="0" cellspacing="0" border="0" valign="middle">
+                <tr onclick="lp_trackEvent('Open Canvas','Convert button'); switchToCanvas('convert');" onmouseover="buttonRollOver('convert');" onmouseout="buttonRollOut('convert');">
+                  <td id="convert_left" style="height:21px; font-size:__MSG_profile_convert_size__; font-weight:bold; color:#324E34; padding-left:7px; cursor:pointer; padding-top:2px;" valign="top">__MSG_convert_txt__&nbsp;&gt;</td>
+                  <td id="convert_right" style="height:21px; width:7px; cursor:pointer;"></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div style="height:9px; font-size:1px; clear:both;"></div>
+      <div style="margin-left:10px;">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td class="bottom_button" style="height:20px; line-height:20px;" nowrap>__MSG_from_min__</td>
+            <td id="from_container" style="padding-left:2px; height:20px; width:100%;" align="left"></td>
+          </tr>
+          <tr><td colspan="2" style="height:9px; font-size:1px;"></td></tr>
+          <tr>
+            <td class="bottom_button" style="height:20px; line-height:20px;" nowrap>__MSG_to_min__</td>
+            <td id="to_container" style="padding-left:2px; height:20px; width:100%;" align="left"></td>
+          </tr>
+        </table>
+      </div>
+      <div style="height:8px; font-size:1px;clear:both;"></div>
+    </div>
+    <div style="height:5px; font-size:1px;"></div>
+    <div id="bottom" style="height:15px; margin-left:5px; margin-right:5px;">
+      <div style="float:left; cursor:pointer;" onmouseover="linkToCanvasOver('currency_rates');" onmouseout="linkToCanvasOut('currency_rates');" onclick="lp_trackEvent('Open Canvas','Currency rates button'); switchToCanvas('currency');">
+        <div id="currency_rates_icon" style="height:14px; width:14px; overflow:hidden; float:left;"></div>
+        <span id="currency_rates" class="bottom_button" style="float:left;" >__MSG_currency_rates__</span>
+      </div>
+      <div style="float:right; cursor:pointer;" onmouseover="linkToCanvasOver('more_options');" onmouseout="linkToCanvasOut('more_options');" onclick="lp_trackEvent('Open Canvas','More options button'); switchToCanvas('more options');">
+        <div id="more_options_icon" style="height:14px; width:14px; overflow:hidden; float:left;"></div>
+        <span id="more_options" class="bottom_button" style="float:left; margin-left:2px;" >__MSG_more_options__</span>  
+      </div>
+    </div>
+  </div>
+</center>
+</div>
+<div id="categories_menu" style="position:absolute; display:none;">
+  <table style="border: 1px solid #355438; background:#FFFFFF;" cellpadding="0" cellspacing="0">
+    <tr><td id="cat_7" class="cat_item" style="border-bottom: 1px solid #355438;" onmouseover="menuItemRollOver(this);" onmouseout="menuItemRollOut(this);" onclick="changeCategory(7);">__MSG_cat_7__<span style="color:#F36E28;">&nbsp;-&nbsp;__MSG_new__</span></td></tr>
+    <tr><td id="cat_1" class="cat_item" style="border-bottom: 1px solid #355438;" onmouseover="menuItemRollOver(this);" onmouseout="menuItemRollOut(this);" onclick="changeCategory(1);">__MSG_cat_1__</td></tr>
+    <tr><td id="cat_2" class="cat_item" style="border-bottom: 1px solid #355438;" onmouseover="menuItemRollOver(this);" onmouseout="menuItemRollOut(this);" onclick="changeCategory(2);">__MSG_cat_2__</td></tr>
+    <tr><td id="cat_3" class="cat_item" style="border-bottom: 1px solid #355438;" onmouseover="menuItemRollOver(this);" onmouseout="menuItemRollOut(this);" onclick="changeCategory(3);">__MSG_cat_3__</td></tr>
+    <tr><td id="cat_4" class="cat_item" style="border-bottom: 1px solid #355438;" onmouseover="menuItemRollOver(this);" onmouseout="menuItemRollOut(this);" onclick="changeCategory(4);">__MSG_cat_4__</td></tr>
+    <tr><td id="cat_5" class="cat_item" style="border-bottom: 1px solid #355438;" onmouseover="menuItemRollOver(this);" onmouseout="menuItemRollOut(this);" onclick="changeCategory(5);">__MSG_cat_5__</td></tr>
+    <tr><td id="cat_6" class="cat_item" onmouseover="menuItemRollOver(this);" onmouseout="menuItemRollOut(this);" onclick="changeCategory(6);">__MSG_cat_6__</td></tr>
+  </table>
+</div>
+<div style="margin-top:5px; clear:both;">
+  <script type="text/javascript">
+    GA_googleFillSlot("unit_converter_txt");
+  </script>
+</div>
+
+<div>
+	<script type="text/javascript">
+		var mMENU = _IG_GetCachedUrl("http://cdn.labpixies.com/infra/js/lp_footer.js");
+	  document.write('<scr'+'ipt type="text/javascript" src="'+mMENU+'"></scr'+'ipt>');
+	</script>
+</div>
+<iframe width="1" height="1" style="width:1px; height:1px; overflow:hidden; position:absolute; visibility:hidden;" src="http://static.labpixies.com/campaigns/converter/analytics.html"></iframe>
+]]>
+</Content>
+
+<Content type="html" view="canvas">
+<![CDATA[
+<title>Unit Converter</title>
+
+<style type="text/css">
+#container {
+  width:520px;
+  overflow:hidden;
+  text-align:left;
+  margin-left:2px;
+}
+#convert_title{
+  font-size: __MSG_profile_title_size__;
+  font-weight: bold;
+  color: #B6E32B;
+  float:left;
+  margin-left: 15px;
+  display: inline;
+} 
+.cat_item {
+  padding-left:2px;
+  padding-right:4px;
+  height:18px;
+  line-height:18px;
+  font-size: 11px;
+  color: #324E34;
+  cursor:pointer;
+}
+.recent_item {
+  padding-left:4px;
+  padding-right:4px;
+  height:18px;
+  line-height:18px;
+  font-size: 10px;
+  color: #324E34;
+  cursor:pointer;
+}
+#result {
+  font-size: 14px;
+  font-weight: bold;
+  color: #38573B;
+  margin-left: 4px;
+}
+#table_header{
+  width:491px; 
+  height:21px; 
+  overflow:hidden;
+  line-height:21px; 
+}
+#table_header_txt{
+  height:21px;
+  line-height:19px;
+  margin-left: 18px;
+  float:left;
+  font-size: 14px;
+  font-weight: bold;
+  color: #B6E32B;
+  display: inline;
+}
+.table_unit{
+  font-size: 11px;
+  color: #304C32;
+  text-decoration:none;
+}
+.table_td{
+  width: 33%;
+  height: 15px;
+  vertical-align:middle;
+}
+.flags{
+  width:20px; 
+  height:14px;
+  overflow:hidden;
+}
+.rates{
+  font-size:10px;
+  color:#555555;
+  height:24px;
+  line-height:12px;
+  margin-top:5px;
+}
+.rate_container{
+  float:left; 
+  width:55px;
+  cursor:pointer; 
+}
+.eToro{
+  float:right; 
+  margin-right:5px; 
+  margin-top:3px;
+}
+
+.eToro a,.eToro a:active,.eToro a:visited  {font-size: __MSG_etoro_link_size__; color: #000000; font-weight:bold; text-decoration:none;}
+.eToro a:hover {text-decoration: underline;}
+.table_td a:active {font-size: 11px; color: #304C32;}
+.table_td a:visited {font-size: 11px; color: #304C32;}
+.table_td a:hover {text-decoration: underline;}
+
+</style>
+
+<script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+
+<!-- PUT THIS TAG IN THE head SECTION -->
+<script type="text/javascript" src="http://partner.googleadservices.com/gampad/google_service.js">
+</script>
+<script type="text/javascript">
+  GS_googleAddAdSenseService("ca-pub-8123415297019784");
+  GS_googleEnableAllServices();
+</script>
+<script type="text/javascript">
+  GA_googleAddSlot("ca-pub-8123415297019784", "converter_leaderboard_top");
+  GA_googleAddSlot("ca-pub-8123415297019784", "converter_box"); 
+  GA_googleAddSlot("ca-pub-8123415297019784", "converter_custom_1");
+  GA_googleAddSlot("ca-pub-8123415297019784", "converter_custom_2");
+</script>
+<script type="text/javascript">
+  GA_googleFetchAds();
+</script>
+<!-- END OF TAG FOR head SECTION -->
+
+<script type="text/javascript">
+
+  var $lp=jQuery.noConflict();
+  var _gadgetID=47;
+  
+  var lp_pageTracker = _gat._getTracker("UA-345375-1");
+  lp_pageTracker._initData();
+  
+  function lp_trackEvent(eventName,eventLable,eventVar) {
+      try {
+          lp_pageTracker._trackEvent("Unit Converter V2 - Canvas",eventName,eventLable, eventVar);
+      } catch(ee) {}
+  }
+
+  //var mSIDEBAR = _IG_GetCachedUrl("http://cdn.labpixies.com/infra/js/lp_sidebar.js");
+  //document.write('<scr'+'ipt type="text/javascript" src="'+mSIDEBAR+'"></scr'+'ipt>');
+
+  var IMAGES_BASE = "http://cdn.labpixies.com/campaigns/converter/images/v2/canvas/";
+  var recentArray=[];
+  var g_category = 1;
+  var prefs = new _IG_Prefs();
+  var lastCat = -1;
+  var lastFrom = 0;
+  var lastTo = 1;
+  var labels =[];
+  var currencies = [];   //a table to hold all currencies rates
+  var currencyNames = [];
+  var categoriesForEvents = []; 
+  var feedParsed = false;
+  var lastFeedTime = 0;
+
+
+  //cat_1=length, cat_2 = mass, cat_3 = temperature, cat_4 = volume, cat_5 = bits and bytes, cat_6 = speed
+  var values = {"cat_1":[0.01,0.3048,0.3048/12,1000,4828.0417,5556,1,(0.3048/12)*(1/1000000), 0.3048*5280,0.001,0.9144],
+                "cat_2":[0.00001,0.0001,0.01,0.45359237/256,0.00006479891,
+                    		0.001,0.1,0.45359237*112,0.45359237*100,1,0.45359237,0.45359237*2240,
+                    		1000,1000,1.0e-9,0.000001,0.45359237/16,0.45359237,0.45359237*2000,
+		                    0.45359237*2240,1000,0.45359237*2000,1000,0.03110347679999],
+		            "cat_4":[0.028316847*43560,1233.489238468,0.028316847*3630,
+                      		0.00454609*31.5,0.00454609*36,(0.0037854118/231)*7056,
+                      		0.0037854118*31,0.0037854118*31.5,0.0037854118*42,
+                      		((0.0037854118/231)*1728)/12,0.00454609*4,0.0037854118*5,
+                      		0.00454609*8,0.0044048838*8,0.00001,0.028316847*128,0.028316847*16,
+                      		0.000001,0.144,0.001,1000,(0.0037854118/231)*1728,0.0037854118/231,
+                      		1.0e+9,1,(((0.0037854118/231)*1728)*43560)*3379200,1.0e-18,1.0e-9,
+                      		((0.0037854118/231)*1728)*27,0.00454609*0.05,0.00025,0.0037854118/16,
+                      		0.0001,0.01,(0.0037854118/128)/8,0.0037854118*55,0.001*200,
+                      		0.0037854118/5,0.00454609,0.0044048838,0.0037854118,0.00454609/32,
+                      		0.0037854118/32,10000,0.1,0.00454609*63,0.0037854118*63,
+                      		(0.0037854118/128)*1.5,1,0.001,0.0077,1000,1.0e-9,0.000001,
+                      		(0.00454609/160)/480,(0.0037854118/128)/480,0.00454609/160,
+                      		0.0037854118/128,0.00454609*2,0.0044048838*2,0.00454609/8,
+                      		0.0044048838/8,0.0037854118/8,0.00454609*108,0.0037854118*126,
+                      		0.0037854118/128,0.00114504,0.00108,0.00454609/4,0.0044048838/4,
+                      		0.0037854118/4,0.00454609*64,0.00001,0.0037854118/128,1,0.000015,
+                      		(0.00454609/160)/2,(0.0037854118/128)/2,0.000005,(0.00454609/160)/8,
+                      		(0.0037854118/128)/6,((0.0037854118/231)*1728)*27],
+                "cat_5":[1,8,1024,1024*8,1024*1024,1024*1024*8,
+                      	1024*1024*1024,1024*1024*1024*8,
+                      	1024*1024*1024*1024,1024*1024*1024*1024*8,
+                      	1024*1024*1024*1024*1024,1024*1024*1024*1024*1024*8,
+                      	1024*1024*1024*1024*1024*1024,1024*1024*1024*1024*1024*1024*8],
+                "cat_6":[0.00016666666666666666,0.01,0.00008466683600033866,0.00508,0.3048,0.0004233341800016934,0.0254,0.2777777777777778,1000,0.5144444444444444444,0.51477,340.2933,0.0002777777777777778,0.016666666666666666,1,0.44704,26.8224,1609.344,299792458 ,0.000254000508001016,0.01524,0.9144]};
+                
+  
+  _IG_RegisterOnloadHandler(function() {	
+      loadImages();
+      
+  	  //var addSidebarParams = {}; // contains the texts for notification areas
+	  //  var addMenuParams = {}; // contains menu parameters
+
+      // deploy sidebar
+    	//lpgadgets.lp.sidebar.deploy('container', addSidebarParams, addMenuParams);
+
+    	var json = prefs.getString('recents');
+    	try {
+  		  json = lpgadgets.lp.utils.unescapeString(json);
+  		  recentArray = lpgadgets.lp.utils.jsonParse(json);
+  		}  	
+      catch (ee) {
+  	   lp_trackEvent("Error", "parse json catch");
+  	  }
+      
+      setOnClickHandlers();
+      //getting units names
+      currencyNames = prefs.getMsg("currencies_short").split(",");
+      categoriesForEvents = prefs.getMsg("english_categories_arr").split(",");
+      getUnitsNames();
+      
+      //getting and parsing rates feed and after setting the initial settings
+      setInitialSettings();
+      
+	});
+	
+	//we use this funciton because we want the categories drop down to have a regular drop down behavior (open/close behavior)
+	function setOnClickHandlers(){
+	    document.onclick = function(e) {
+          document.getElementById("recents_container").style.display="none";
+          document.getElementById("categories_menu").style.display="none";
+      };
+      document.getElementById("recent_button_tr").onclick = function(e) {
+          stopEventPropogation(e);
+          toggleRecents();
+      };
+      document.getElementById("categories_button_tr").onclick = function(e) {
+          stopEventPropogation(e);
+          toggleCategoriesMenu();
+      };
+	}
+	
+	function stopEventPropogation(event){
+      //IE      
+      if(!event){           
+        window.event.cancelBubble = true;  
+      }       
+      //OTHER NAVIGATORS      
+      else if (event.stopPropagation) {event.stopPropagation();}
+	}
+	
+	
+	function setInitialSettings(){
+	    var params = gadgets.views.getParams();   //getting params from profile mode
+      var toConvert = false;
+      var fromIndex = 0;
+      var toIndex = 1;
+      
+      //if we have params from profile mode takes them
+      if (params.length>0) {
+        if (params[0]=='convert') {
+          g_category = params[1];
+          fromIndex = params[2];
+          toIndex = params[3];
+          if ((params[4]!="") && (params[4]!='__MSG_insert_value__')){
+            document.getElementById("from_input").value = params[4];
+            document.getElementById("from_input").style.color="#000000";
+            toConvert = true;
+          }
+        }
+        if (params[0]=='currency') {
+          g_category = 7;
+        }
+      }
+      //if we don't have params from profile mode, we will try to take from most recent convertion
+      else{
+        if (recentArray.length>0) {
+          var lastSettings = recentArray[recentArray.length-1];
+          g_category = lastSettings.category;
+          fromIndex = lastSettings.from;
+          toIndex = lastSettings.to;
+        }
+      }
+      //anyway we need to set the last category/from/to to the most recent ones (if we have any, if not lastCat is -1 by default and its ok)
+      if (recentArray.length>0) {
+        var lastSettings = recentArray[recentArray.length-1];
+        lastCat = lastSettings.category;
+        lastFrom = lastSettings.from;
+        lastTo = lastSettings.to;
+        document.getElementById("recent_button").style.display="inline";
+      }
+      
+      document.getElementById("categories_left").innerHTML=prefs.getMsg("cat_"+g_category);
+      
+      //currencies
+	    if (g_category!=7) {
+        fillOptions(fromIndex,"from_container");
+        fillOptions(toIndex,"to_container");
+        document.getElementById("table_header_txt").innerHTML=prefs.getMsg("cat_"+g_category)+" "+prefs.getMsg("units_available");
+        fillUnitsTable();
+        if (toConvert) convert();
+      }
+      //other categories
+      else{
+        fillCurrenciesOptions(fromIndex,"from_container");
+        fillCurrenciesOptions(toIndex,"to_container");
+        updateCurrencyRates();
+        parseCurrencyFeed(function() {
+          updateCurrencyRates();
+          if (toConvert) convert();
+        });
+        document.getElementById("table_header_txt").innerHTML=prefs.getMsg("available_currencies");
+        document.getElementById("currencies_container").style.display="";
+        fillUnitsTable();
+      }
+
+    _IG_AdjustIFrameHeight();
+	}
+	
+	//getting units names from bundle
+	function getUnitsNames(){
+	  for (var i=0; i<7; i++) {
+	     var arr = prefs.getMsg("arr_"+(i+1)).split(",");
+	     labels[i]=arr;
+	  }
+	}
+	
+	
+	function loadImages() {
+	  $lp(".flags").css('background',"transparent url"+"("+getCachedImage('flags.png')+") 0px 0px no-repeat");
+	  document.getElementById("header_buttons").style.background="transparent url"+"("+getCachedImage('canvas_sprite.png')+") 0px 0px no-repeat";
+		document.getElementById("categories_left").style.background = "transparent url"+"("+getCachedImage('canvas_sprite.png')+") 0px -48px no-repeat";
+    document.getElementById("categories_right").style.background = "transparent url"+"("+getCachedImage('canvas_sprite.png')+") right -48px no-repeat";
+    document.getElementById("recent_left").style.background = "transparent url"+"("+getCachedImage('canvas_sprite.png')+") 0px -92px no-repeat";
+    document.getElementById("recent_right").style.background = "transparent url"+"("+getCachedImage('canvas_sprite.png')+") right -92px no-repeat";
+    document.getElementById("swap_img").style.background = "transparent url"+"("+getCachedImage('canvas_sprite.png')+") 0px -212px no-repeat";
+    document.getElementById("table_header").style.background = "transparent url"+"("+getCachedImage('canvas_sprite.png')+") 0px -170px no-repeat";
+    document.getElementById("bottom_img").style.background = "transparent url"+"("+getCachedImage('canvas_sprite.png')+") 0px -34px no-repeat";
+    document.getElementById("convert_left").style.background = "transparent url"+"("+getCachedImage('canvas_sprite.png')+") 0px -128px no-repeat";
+    document.getElementById("convert_right").style.background = "transparent url"+"("+getCachedImage('canvas_sprite.png')+") right -128px no-repeat";
+    document.getElementById("etoro_logo").src = getCachedImage('etoro_logo.png');
+  } 
+  
+  function fillOptions(selected, dropDownContainer) {
+  	var tmpLabels = labels[g_category-1];
+  	var out=[];
+  	out.push('<select id="select_'+dropDownContainer+'" onchange="lp_trackEvent(\'Set Configuration\',\'Drop down\'); convert();" style="height:18px; border:1px solid #355438;  font-size:11px;">');
+  	for (i=0; i<tmpLabels.length; i++) {
+  		if (i==selected)
+  		  out.push('<option class="option_unit" selected>'+tmpLabels[i]+'</option>');
+  		else
+  		  out.push('<option class="option_unit">'+tmpLabels[i]+'</option>');
+  	}
+  	out.push('</select>');
+  	document.getElementById(dropDownContainer).innerHTML = out.join('')+" ";
+	}
+	
+	function refreshCurrencies(bringFeed){
+	   updateCurrencyRates();
+	   if (!feedParsed || bringFeed){
+	     parseCurrencyFeed(updateCurrencyRates);
+	   }
+	}
+	
+	function fillCurrenciesOptions(selected, dropDownContainer) {
+  	var tmpLabels = labels[g_category-1];
+  	var out=[];
+  	out.push('<select id="select_'+dropDownContainer+'" onchange="lp_trackEvent(\'Set Configuration\',\'Drop down\'); refreshCurrencies(false); convert();" style="height:18px; border:1px solid #355438;  font-size:11px;">');
+  	for (i=0; i<tmpLabels.length; i++) {
+      if (i==selected)
+  		  out.push('<option class="option_unit" selected value="'+currencyNames[i]+'">'+tmpLabels[i]+'</option>');
+  		else
+  		  out.push('<option class="option_unit" value="'+currencyNames[i]+'">'+tmpLabels[i]+'</option>');
+  	}
+  	out.push('</select>');
+  	document.getElementById(dropDownContainer).innerHTML = out.join('')+" ";
+	}
+	
+  function getCachedImage(src){
+    return (_IG_GetImageUrl(IMAGES_BASE+src));	
+	}
+	
+	//use this function when a category or drop down is being changed, will clean input and result display
+	function clearInputAndResult(){
+	   document.getElementById("result").innerHTML="";
+	   if (document.getElementById("from_input").value!='__MSG_insert_value__')
+	     document.getElementById("from_input").value="";
+	}
+	
+	function menuItemRollOver(element){ element.style.backgroundColor='#C5F62F';}
+	
+	function menuItemRollOut(element){ element.style.backgroundColor='#FFFFFF';	}
+	
+	function buttonRollOver(elementID){
+	  var height="";
+	  document.getElementById(elementID+"_left").style.color='#4E3131';
+	  if (elementID=="categories") height = '-70px';
+	  if (elementID=="recent")  height = '-110px';
+	  if (elementID=="convert")  height = '-149px';
+	  document.getElementById(elementID+"_left").style.backgroundPosition='0px '+height;
+	  document.getElementById(elementID+"_right").style.backgroundPosition='right '+height;
+	}
+	
+	function buttonRollOut(elementID){
+	   var height="";
+  	 if (elementID=="categories") height = '-48px';
+  	 if (elementID=="recent")  height = '-92px';
+  	 if (elementID=="convert")  height = '-128px';
+	   document.getElementById(elementID+"_left").style.color='#324E34';
+	   document.getElementById(elementID+"_left").style.backgroundPosition='0px '+height;
+	   document.getElementById(elementID+"_right").style.backgroundPosition='right '+height;
+	}
+	
+	function swapRollOut(){ document.getElementById("swap_img").style.backgroundPosition="0px -212px";}
+	
+	function swapRollOver(){ document.getElementById("swap_img").style.backgroundPosition="0px -234px";}
+	
+	function toggleCategoriesMenu(){
+	  //open
+	  if (document.getElementById("categories_menu").style.display=="none") {
+  	  var position = $lp('#categories').offset();
+  	  var buttonHeight = $lp('#categories').height();
+      document.getElementById("categories_menu").style.left = position.left+2+"px";
+      document.getElementById("categories_menu").style.top = position.top+buttonHeight-1+"px";
+      document.getElementById("categories_menu").style.display="";
+      //closing recents if it was open
+      if (document.getElementById("recents_container").style.display==""){
+        document.getElementById("recents_container").style.display="none";
+      }
+    }
+    //close
+    else {
+      document.getElementById("categories_menu").style.display="none";
+    }
+	}
+	
+	
+	function changeCategory(catID){
+	  if (g_category != catID) {
+  	  clearInputAndResult();
+  	  g_category = catID;
+      if (g_category!=7) {
+        fillOptions(0,"from_container");
+        fillOptions(1,"to_container");
+        document.getElementById("table_header_txt").innerHTML=prefs.getMsg("cat_"+g_category)+" "+prefs.getMsg("units_available");
+        document.getElementById("currencies_container").style.display="none";
+      }
+      else{
+        fillCurrenciesOptions(0,"from_container");
+        fillCurrenciesOptions(1,"to_container");
+        refreshCurrencies(true);
+        document.getElementById("table_header_txt").innerHTML=prefs.getMsg("available_currencies");
+        document.getElementById("currencies_container").style.display="";
+      }
+      fillUnitsTable();
+      document.getElementById("categories_left").innerHTML=prefs.getMsg("cat_"+g_category);
+    }
+    document.getElementById("categories_menu").style.display="none";
+    _IG_AdjustIFrameHeight();
+	}
+  
+  function swapDropDowns(){
+    lp_trackEvent('Swap From&To', 'Swap button');
+    var from = document.getElementById("select_from_container").selectedIndex;
+    var to = document.getElementById("select_to_container").selectedIndex;
+    document.getElementById("select_from_container").selectedIndex = to;
+    document.getElementById("select_to_container").selectedIndex = from;  
+    if (g_category==7)
+      refreshCurrencies(false);
+    convert();
+  }
+  
+  //building the units table according to the current category
+  function fillUnitsTable(){
+    var labels = prefs.getMsg("arr_"+g_category).split(",");
+    var numOfLabels = labels.length;
+    var numInCol = Math.ceil(numOfLabels/3);
+    var tmpTable = [];
+    tmpTable[0]=[];
+    tmpTable[1]=[];
+    tmpTable[2]=[];
+    var labelsCounter = 0;
+    for (var i=0; i<numInCol; i++){
+      tmpTable[0][i] = [labels[labelsCounter],labelsCounter];
+      labelsCounter++;
+    }
+    for (var j=0; j<numInCol; j++){
+      tmpTable[1][j] = [labels[labelsCounter], labelsCounter];
+      labelsCounter++
+    }
+    var numInLastCol = (numOfLabels-labelsCounter);
+    for (var k=0; k<numInLastCol; k++){
+      tmpTable[2][k] = [labels[labelsCounter], labelsCounter];
+      labelsCounter++;
+    }
+    var out=[];
+    labelsCounter=0;
+    out.push('<table width="491" id="units_table" style="background:#FFFFFF; padding-left:8px; padding-bottom:2px; padding-top:2px;" cellpadding="0" cellspacing="0" border="0">');
+    for (var i=0; i<(numInLastCol); i++){
+      out.push('<tr><td class="table_td"><div style="width:150px; height:14px; overflow:hidden;" title="'+tmpTable[0][i][0]+'"><a href="javascript:void(0);" onclick="updateFromValue('+tmpTable[0][i][1]+');" class="table_unit">'+tmpTable[0][i][0]+'</a></div></td>');
+      labelsCounter = labelsCounter+1;
+      out.push('<td class="table_td"><div style="width:150px; height:14px; overflow:hidden;" title="'+tmpTable[1][i][0]+'"><a href="javascript:void(0);" onclick="updateFromValue('+tmpTable[1][i][1]+');" class="table_unit">'+tmpTable[1][i][0]+'</a></div></td>');
+      labelsCounter = labelsCounter+1;
+      out.push('<td class="table_td"><div style="width:150px; height:14px; overflow:hidden;" title="'+tmpTable[2][i][0]+'"><a href="javascript:void(0);" onclick="updateFromValue('+tmpTable[2][i][1]+');" class="table_unit">'+tmpTable[2][i][0]+'</a></div></td></tr>');
+      labelsCounter = labelsCounter+1;
+    }
+    //last rows (when third col is empty)
+    if (numInLastCol<numInCol) {
+      for (var i=0; i<(numInCol-numInLastCol); i++){
+        out.push('<tr><td class="table_td"><div style="width:150px; height:14px; overflow:hidden;" title="'+tmpTable[0][numInLastCol+i][0]+'"><a class="table_unit" onclick="updateFromValue('+tmpTable[0][numInLastCol+i][1]+');" href="javascript:void(0);">'+tmpTable[0][numInLastCol+i][0]+'</a></div></td>');
+        out.push('<td class="table_td"><div style="width:150px; height:14px; overflow:hidden;" title="'+tmpTable[1][numInLastCol+i][0]+'"><a class="table_unit" onclick="updateFromValue('+tmpTable[1][numInLastCol+i][1]+');" href="javascript:void(0);">'+tmpTable[1][numInLastCol+i][0]+'</a></div></td>');
+        out.push('<td></td></tr>');
+      }
+    }
+    out.push('</table>');
+    document.getElementById("units_table_container").innerHTML = out.join('');
+    _IG_AdjustIFrameHeight();
+  } 
+  
+  //function to handle a click on a unit from the units table
+  function updateFromValue(index){
+    lp_trackEvent('Set Configuration', 'Bottom list');
+    document.getElementById("select_from_container").selectedIndex = index;
+    if (g_category==7) 
+      refreshCurrencies(false);
+    convert();
+  }
+  
+  function toggleUnitsTable(){
+    //open
+    if (document.getElementById("units_table_container").style.display=="none"){
+      document.getElementById("units_table_container").style.display="";
+      document.getElementById("table_header").style.backgroundPosition = "0px -170px";
+    }
+    //close
+    else {
+      document.getElementById("units_table_container").style.display="none";
+      document.getElementById("table_header").style.backgroundPosition = "0px -191px";
+    }
+    _IG_AdjustIFrameHeight();
+  }
+  
+  
+  function convert() {
+    var numToConvert = document.getElementById("from_input").value;
+    //if there is no value, stops here
+    if (!numToConvert || numToConvert =="" || numToConvert == "__MSG_insert_value__") return;
+    
+    lp_trackEvent('Convert Unit',categoriesForEvents[g_category-1]);
+    
+    var fromIndex = document.getElementById("select_from_container").selectedIndex;
+    var toIndex = document.getElementById("select_to_container").selectedIndex;
+    
+    document.getElementById("result").innerHTML="";
+    document.getElementById("result").style.fontWeight="bold";
+    document.getElementById("result").style.fontSize="14px";
+
+    //if the settings were changed from the last coversion
+    if ((lastCat != g_category) || (lastFrom != fromIndex) || (lastTo != toIndex)) {
+      updateRecents(g_category, fromIndex, toIndex);
+    }
+    lastCat = g_category;
+    lastFrom = fromIndex;
+    lastTo = toIndex;
+    if (isNaN(numToConvert)){
+      document.getElementById("result").style.fontWeight="normal";
+      document.getElementById("result").style.fontSize="11px";
+      document.getElementById("result").innerHTML = '__MSG_only_numbers__';
+      return;
+    }
+    else {
+      //temperature
+      if (g_category==3){
+        numToConvert = parseFloat(numToConvert);
+        convertTemprature(numToConvert, fromIndex, toIndex);
+      }
+      else{
+        if (g_category==7) {
+          if (feedParsed) {
+            var fromUnitName = document.getElementById("select_from_container").options[fromIndex].value;
+            var toUnitName = document.getElementById("select_to_container").options[toIndex].value;
+            var rate = currencies[fromUnitName][toUnitName];
+            var str = "(("+numToConvert+") * ("+rate+"))";
+            var res = eval(str);
+            document.getElementById("result").innerHTML =" = "+ fixTralingNumbers(res)+" "+toUnitName;
+          }
+          else{
+            document.getElementById("result").style.fontWeight="normal";
+            document.getElementById("result").style.fontSize="11px";
+            document.getElementById("result").innerHTML ="__MSG_unavailable__";
+          }
+        }
+        else {
+          var currentValues = values["cat_"+g_category];
+          var fromUnit = currentValues[fromIndex];
+          var toUnit = currentValues[toIndex];
+          var str = "(("+numToConvert+") * ("+fromUnit+"))/("+toUnit+")";
+          var res = eval(str);
+          document.getElementById("result").innerHTML =" = "+ fixTralingNumbers(res);
+    	  }
+  	  }
+    }
+  }
+  
+  function updateRecents(category, from, to){
+    recentArray.push({'category':category,'from':from, 'to':to});     
+    if (recentArray.length>10)
+      recentArray.shift(); 
+      
+    if (document.getElementById("recent_button").style.display=="none") 
+      document.getElementById("recent_button").style.display = "inline";
+      
+    prefs.set('recents', lpgadgets.lp.utils.jsonStringify(recentArray));
+  }
+  
+  function convertTemprature(numToConvert, fromUnits, toUnits){
+  	// first convert to kelvin
+  	if (fromUnits == 0){
+  		numToConvert = numToConvert + 273.15;
+  	} else if (fromUnits == 1){
+  		numToConvert = ((numToConvert - 32)/ 1.8) + 273.15;
+  	} else if (fromUnits == 2){
+  		numToConvert = numToConvert / 1.8;
+  	} else if (fromUnits == 3){
+  		numToConvert = (numToConvert * 1.25) + 273.15;
+  	}
+  	
+  	if (numToConvert < 0){
+  		// Below absolute zero
+      document.getElementById("result").style.fontWeight="normal";
+      document.getElementById("result").style.fontSize="11px";
+  		document.getElementById("result").innerHTML ="__MSG_below_abs_0__";
+  		return;
+  	}
+  	// now convert kelvin to unit
+  	if (toUnits == 0){
+  		numToConvert = numToConvert - 273.15;
+  	} else if (toUnits == 1){
+  		numToConvert = (1.8 * (numToConvert -273.15)) + 32;
+  	} else if (toUnits == 2){
+  		numToConvert = numToConvert * 1.8;
+  	} else if (toUnits == 3){
+  		numToConvert = (numToConvert - 273.15) / 1.25;
+  	}
+  
+  	// round it ofromVal
+  	if (Number.prototype.toFixed) {
+  		numToConvert = numToConvert.toFixed(7);
+  		numToConvert = parseFloat(numToConvert);
+  	}
+  	else {
+  		var leftSide = Math.floor(numToConvert);
+  		var rightSide = numToConvert - leftSide;
+  		numToConvert = leftSide + Math.round(rightSide *10000000)/10000000;
+  	}
+  	document.getElementById("result").innerHTML =" = "+fixTralingNumbers(numToConvert);
+  }
+  
+  function fixTralingNumbers(evalResult) {
+	
+  	var strTmp = evalResult.toString();
+  	var fPoint = strTmp.indexOf(".");
+  	if (fPoint == -1) {
+  		if (strTmp.length > 10)
+  			return evalResult.toPrecision(10);
+  		else 
+  			return evalResult;
+  	}
+  	var pres = (fPoint>7)?10:(fPoint+3);	 	
+  	var tmp = evalResult.toPrecision(pres);
+  	strTmp = tmp.toString();
+  	if (strTmp.indexOf("e") != -1)
+  		return strTmp;
+  	var index = strTmp.indexOf(".");
+  	if ( index != -1) {
+  	
+  		strTmp = strTmp.replace(/0*$/,"");
+  		if (strTmp == "")
+  			strTmp = "0";
+  		strTmp = strTmp.replace(/[.]$/,"");
+  	}
+  	return strTmp;
+  }
+  
+  function setFromRecents(cat, from, to){
+    lp_trackEvent('Set Recent Configuration','Recent configuration drop down list');
+    changeCategory(cat);
+    if (cat==7) refreshCurrencies(true);
+    document.getElementById("select_to_container").selectedIndex = to;
+    document.getElementById("select_from_container").selectedIndex = from;
+    document.getElementById("recents_container").style.display="none";
+    if (cat==g_category)
+      convert();
+  }
+  
+  function toggleRecents(){
+    //open
+    if (document.getElementById("recents_container").style.display=="none") {
+      var out = [];
+      out.push('<table style="border: 1px solid #355438; background:#FFFFFF;" cellpadding="0" cellspacing="0">');
+      var catIndex;
+      var toIndex;
+      var fromIndex;
+      for (var i=(recentArray.length-1); i>0; i--) {
+        catIndex = recentArray[i].category; 
+        toIndex = recentArray[i].to; 
+        fromIndex = recentArray[i].from; 
+        out.push('<tr><td id="recent_'+i+'" class="recent_item" style="border-bottom: 1px solid #355438;" onmouseover="menuItemRollOver(this);" onmouseout="menuItemRollOut(this);" onclick="setFromRecents('+catIndex+','+fromIndex+','+toIndex+');"><strong>'+prefs.getMsg("cat_"+catIndex)+':&nbsp;</strong>'+labels[catIndex-1][fromIndex]+'&nbsp;&gt;&nbsp;'+labels[catIndex-1][toIndex]+'</td></tr>');
+      }
+      catIndex = recentArray[0].category; 
+      toIndex = recentArray[0].to; 
+      fromIndex = recentArray[0].from; 
+      out.push('<tr><td id="recent_0" class="recent_item" onmouseover="menuItemRollOver(this);" onmouseout="menuItemRollOut(this);" onclick="setFromRecents('+catIndex+','+fromIndex+','+toIndex+');"><strong>'+prefs.getMsg("cat_"+catIndex)+':&nbsp;</strong>'+labels[catIndex-1][fromIndex]+'&nbsp;&gt;&nbsp;'+labels[catIndex-1][toIndex]+'</td></tr>');
+      out.push('</table>');
+      document.getElementById("recents_container").innerHTML = out.join('');
+      
+  	  var position = $lp('#recent_button').offset();
+  	  var buttonHeight = $lp('#recent_button').height();
+  	  var buttonWidth = $lp('#recent_button').width();
+  	  var menuWidth = $lp('#recents_container').width();
+      document.getElementById("recents_container").style.left = position.left+buttonWidth-menuWidth-2+"px";
+      document.getElementById("recents_container").style.top = position.top+buttonHeight-1+"px";
+      document.getElementById("recents_container").style.display="";
+      //closing categories menu if it was open
+      if (document.getElementById("categories_menu").style.display==""){
+        document.getElementById("categories_menu").style.display="none";
+      }
+    }
+    else {
+      document.getElementById("recents_container").style.display="none";
+    }
+  }
+  
+  function parseCurrencyFeed(cbFunction) {
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      
+      _IG_FetchXmlContent("http://widgets.etoro.com/rates/feed.aspx?"+currentTime, function (response) {
+         if (response == null || typeof(response) != "object" || response.firstChild == null) {
+            if (!feedParsed) {
+              document.getElementById("symbols_container").style.fontSize = "11px";
+              document.getElementById("symbols_container").style.color = "#990030";
+              document.getElementById("symbols_container").style.fontWeight = "bold";
+              document.getElementById("symbols_container").innerHTML = '__MSG_rates_unavailable__';
+            }
+            return;
+         }
+         for (var i=0; i<currencyNames.length; i++) {
+            currencies[currencyNames[i]] = [] ;
+         }
+         var itemList = response.getElementsByTagName("Pair");
+         var name;
+         var rate;
+         var node;
+         var nodeList;
+         var from;
+         var to;
+         // Loop through all <pair> nodes
+         for (var i = 0; i < itemList.length ; i++) { 
+           // For each <pair> node, get child nodes.
+           nodeList = itemList.item(i).childNodes;
+           // Loop through child nodes. Extract data from the text nodes that are
+           // the children of the associated name, price, and calories element nodes.
+           for (var j = 0; j < nodeList.length ; j++) {
+              node = nodeList.item(j);
+              if (node.nodeName == "Name") {
+                name = node.firstChild.nodeValue;
+              }
+              if (node.nodeName == "Rate") {
+                rate = node.firstChild.nodeValue;
+              }
+           } 
+            from = name.substring(0,3);
+            to = name.substring(4,7);
+            if ((typeof(currencies[from]) != "undefined") && (typeof(currencies[to]) != "undefined")){
+                currencies[from][to] = rate;
+                if (rate != 0)
+                  currencies[to][from] = (1/rate).toPrecision(3);
+            }
+          
+        }
+        //now filling all table using the USD rates
+        var usDollarName = currencyNames[0];
+        for (var i=0; i<currencyNames.length; i++) {
+          for (var j=0; j<currencyNames.length; j++) {
+            if( i!=j && currencies[currencyNames[i]][currencyNames[j]]==null){
+              currencies[currencyNames[i]][currencyNames[j]] = ((currencies[currencyNames[i]][usDollarName])*(currencies[usDollarName][currencyNames[j]])).toPrecision(4); 
+            }
+            if (i==j) {
+              currencies[currencyNames[i]][currencyNames[j]]=1;
+            }
+          }
+        }
+        feedParsed = true;
+        cbFunction();
+    });
+  }
+  
+  function setToDropDown(index){
+    document.getElementById("select_to_container").selectedIndex = index;
+    convert();
+  }
+  
+  
+  function updateCurrencyRates() {
+    var from = document.getElementById("select_from_container").selectedIndex;
+    var tmpLabels = labels[g_category-1];
+  	var outRates = [];
+    var convertOptions = currencies[currencyNames[from]];
+    var flagIndex=1;
+    document.getElementById("symbols_container").style.fontSize = "";
+    document.getElementById("symbols_container").style.color = "";
+    document.getElementById("symbols_container").style.fontWeight = "";
+    
+    for (var i=0; i<currencyNames.length; i++) {
+      if (from!=i) { 
+        if (flagIndex==1){
+  		    outRates.push('<div onclick="setToDropDown('+i+');" class="rate_container" style="margin-left:8px;">');
+        }
+        else {
+  		    outRates.push('<div onclick="setToDropDown('+i+');" class="rate_container" style="margin-left:15px;">');
+        }
+          outRates.push('<div id="flag_'+flagIndex+'" class="flags" style="background-position:'+-20*i+'px 0px;"></div>');
+          if (feedParsed)
+              outRates.push('<div id="rate_'+flagIndex+'" class="rates" align="center">'+currencyNames[i]+'<br />'+convertOptions[currencyNames[i]]+'</div>');
+          else
+              outRates.push('<div id="rate_'+flagIndex+'" class="rates" align="center">'+currencyNames[i]+'<br />__MSG_loading__</div>');
+          outRates.push('</div>');
+          flagIndex++;
+      }
+    }
+      
+    document.getElementById("current_currency_header").innerHTML = '__MSG_exchange_rate__&nbsp;-&nbsp;'+labels[g_category-1][from];
+  	document.getElementById("symbols_container").innerHTML = outRates.join('');
+  	$lp(".flags").css('background-image',"url("+getCachedImage('flags.png')+")");
+  	
+    _IG_AdjustIFrameHeight();
+  }
+  
+  function toggleDisclaimer(){
+    //open
+    if (document.getElementById("disclaimer_container").style.display=="none") {
+      lp_trackEvent('View Disclaimer','disclaimer button');
+      document.getElementById("disclaimer_container").style.display="";
+    }
+    //close
+    else {
+      document.getElementById("disclaimer_container").style.display="none";
+    }
+      
+    _IG_AdjustIFrameHeight(); 
+  }
+  
+  function clearAndMarkBox(element){
+    if (element.value=='__MSG_insert_value__') {
+      element.value = "";
+      element.style.color="#000000";
+    }
+    element.select();
+  }
+  
+//CANVAS HTML
+</script>
+<center>
+<div style="margin-left:23px;width:760px; height:106px; background-image:url(http://cdn.labpixies.com/infra/images/ad_unit_bg_760.png)">
+	<div style="text-align:left; margin-left:22px; padding-top:9px;">
+  	<script type="text/javascript">
+      GA_googleFillSlot("converter_leaderboard_top");
+    </script>
+  </div>
+</div>
+
+<table cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;">
+<tr>
+<td width="520" valign="top">
+<div id="container">
+  <div id="header_buttons" style="height:34px; width:519px; line-height:34px;overflow:hidden;">
+    <div id="convert_title">__MSG_convert_txt__:</div>
+    <div id="categories" style="float:left; margin-top:7px; margin-left:10px;">
+      <table height="22" cellpadding="0" cellspacing="0" border="0">
+         <tr id="categories_button_tr" onmouseover="buttonRollOver('categories');" onmouseout="buttonRollOut('categories');">
+            <td id="categories_left" style="height:22px; font-size:14px; font-weight:bold; color:#324E34; padding-left:7px; cursor:pointer; padding-top:2px;" valign="top"></td>
+            <td id="categories_right" style="height:22px; width:24px; cursor:pointer;"></td>
+         </tr>
+      </table>
+    </div>
+    <div id="recent_button" style="float:right; margin-top:9px; margin-right:10px; display:none;">
+      <table height="18" cellpadding="0" cellspacing="0" border="0">
+         <tr id="recent_button_tr" onmouseover="buttonRollOver('recent');" onmouseout="buttonRollOut('recent');">
+            <td id="recent_left" style="height:18px; font-size:11px; color:#324E34; padding-left:7px; cursor:pointer; padding-top:1px;" valign="top">__MSG_recent_configuration__</td>
+            <td id="recent_right" style="height:18px; width:24px; cursor:pointer;"></td>
+         </tr>
+      </table>
+    </div>
+  </div>
+  <div id="main_div" style="width:519px; background:#CDEDAE;">
+    <div style="height:18px; font-size:1px;"></div>
+    <table style="margin-left:16px;" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td style="width:156px;" align="left">
+          <form onsubmit="convert(); return false;" style="padding: 0px; margin: 0px;" >
+            <input type="text" maxlength="12" id="from_input"  style="width:150px; border: #355438 1px solid;font-size:13px;color:#999999; padding-left:2px;" value="__MSG_insert_value__" onclick="clearAndMarkBox(this);"/>
+          </form>
+        </td>
+        <td style="width:12px; font-size:1px;"></td>
+        <td style="width:335px;" align="left">
+          <table height="21" cellpadding="0" cellspacing="0" border="0" valign="middle">
+            <tr onclick="convert();" onmouseover="buttonRollOver('convert');" onmouseout="buttonRollOut('convert');">
+              <td id="convert_left" style="height:21px; font-size:12px; font-weight:bold; color:#324E34; padding-left:7px; cursor:pointer; padding-top:2px;" valign="top">__MSG_convert_txt__&nbsp;&gt;</td>
+              <td id="convert_right" style="height:21px; width:7px; cursor:pointer;"></td>
+              <td style="width:8px; font-size:1px;"></td>
+              <td><span id="result"></span></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <div style="height:12px; font-size:1px;"></div>
+    <div id="dropdowns" style="margin-left:16px;">
+      <div id="from_container" style="height:22px; margin-right:20px; margin-top:2px; overflow:hidden; float:left;"></div>
+      <div id="swap_img"  title="__MSG_swap_units__" style="width:31px; height:22px; overflow: hidden; float:left; cursor:pointer;" onmouseover="swapRollOver();" onmouseout="swapRollOut();" onclick="swapDropDowns();"></div>
+      <div id="to_container" style="height:22px; margin-left:20px; margin-top:2px; overflow:hidden; float:left;"></div>
+    </div><br />
+    <div style="height:15px; font-size:1px;"></div>
+    <div id="currencies_container" style="margin-left:14px; width:491px; background:#E7F6D7; display:none;">
+      <div id="currencies header">
+        <div id="current_currency_header" style="float:left; margin-left:5px; margin-top:2px; font-size:__MSG_currency_header_size__; font-weight:bold; color:#464646;"></div>
+        <div class="eToro"><a target="_blank" href="__MSG_etoro_link__" onclick="lp_trackEvent('Open eToro.com', 'eToro.com link');">__MSG_rates_by__</a></div>
+        <div style="float:right; margin-top:2px; margin-right:2px;"><a target="_blank" href="http://secure.fxcash.com/z/345/CD740/" onclick="lp_trackEvent('Open eToro.com', 'eToro.com link');"><img id="etoro_logo" src="__MSG_etoro_link__" height="12" width="17" border="0"/></a></div>
+      </div> 
+      <div style="height:15px; font-size:1px; clear:both;"></div>
+      <div id="symbols_container" style="clear:both;" align="center">  </div>
+      <div style="height:15px; font-size:1px; clear:both;"></div>
+      <div style="font-size:10px; color:#345337; margin-left:8px;">__MSG_disclaimer_header__&nbsp;-&nbsp;<span style="font-weight:bold; text-decoration:underline; cursor:pointer;" onclick="toggleDisclaimer();">__MSG_disclaimer_button__</span></div>
+      <div style="height:6px; font-size:1px; clear:both;"></div>
+      <div id="disclaimer_container" style="display:none; margin:2px 8px 0px 8px;">
+        <div style="height:16px; font-size:12px; font-weight:bold; color:#000000;">__MSG_disclaimer_title__</div>
+        <div style="font-size:12px; color:#000000;">__MSG_disclaimer_content__</div>
+        <div style="font-size:10px; font-weight:bold; color:#FF3300; margin-top:2px; cursor:pointer;" onclick="toggleDisclaimer();">__MSG_disclaimer_close__</div>
+        <div style="height:6px; font-size:1px; clear:both;"></div>
+      </div> 
+    </div>
+    <div style="height:12px; font-size:1px; clear:both;"></div>
+    <div style="margin-left:14px;">  
+      <div id="table_header" onclick="toggleUnitsTable();" style="cursor:pointer;"><div id="table_header_txt"></div></div>
+      <div id="units_table_container"></div>
+    </div>
+    <div id="bottom_img" style="height:14px; width:519px; overflow:hidden;"></div>
+  </div>
+</div>
+</td>
+			
+<td width="20"></td>
+
+<td style="width:200px;" align="right" valign="top">
+	<div style="width:200px; margin-bottom:10px;">
+		<script type="text/javascript">
+		  GA_googleFillSlot("converter_custom_1");
+		</script>
+	</div>
+	<div style="width:200px;">
+		<script type="text/javascript">
+		  GA_googleFillSlot("converter_custom_2");
+		</script>
+	</div>
+		<div style="width:200px; margin-top:10px;">
+		<script type="text/javascript">
+		  GA_googleFillSlot("converter_box");
+		</script>
+	</div>
+</td>
+</tr>
+</table>
+
+
+
+<div style="height:10px; font-size:1px; clear:both;"></div>
+<div style="margin-left:20px; width:760px; clear:both;" align="center">
+  <script type="text/javascript">
+  google_ad_client = "pub-8123415297019784";
+  /* Converter - Link Unit - Middle */
+  google_ad_slot = "4810823768";
+  google_ad_width = 728;
+  google_ad_height = 15;
+  </script>
+  <script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+  </script>
+</div>
+<div style="height:34px; font-size:1px;"></div>
+<div id="categories_menu" style="position:absolute; display:none;">
+  <table style="border: 1px solid #355438; background:#FFFFFF;" cellpadding="0" cellspacing="0">
+    <tr><td id="cat_7" class="cat_item" style="border-bottom: 1px solid #355438;" onmouseover="menuItemRollOver(this);" onmouseout="menuItemRollOut(this);" onclick="changeCategory(7);">__MSG_cat_7__<span style="color:#F36E28;">&nbsp;-&nbsp;__MSG_new__</span></td></tr>
+    <tr><td id="cat_1" class="cat_item" style="border-bottom: 1px solid #355438;" onmouseover="menuItemRollOver(this);" onmouseout="menuItemRollOut(this);" onclick="changeCategory(1);">__MSG_cat_1__</td></tr>
+    <tr><td id="cat_2" class="cat_item" style="border-bottom: 1px solid #355438;" onmouseover="menuItemRollOver(this);" onmouseout="menuItemRollOut(this);" onclick="changeCategory(2);">__MSG_cat_2__</td></tr>
+    <tr><td id="cat_3" class="cat_item" style="border-bottom: 1px solid #355438;" onmouseover="menuItemRollOver(this);" onmouseout="menuItemRollOut(this);" onclick="changeCategory(3);">__MSG_cat_3__</td></tr>
+    <tr><td id="cat_4" class="cat_item" style="border-bottom: 1px solid #355438;" onmouseover="menuItemRollOver(this);" onmouseout="menuItemRollOut(this);" onclick="changeCategory(4);">__MSG_cat_4__</td></tr>
+    <tr><td id="cat_5" class="cat_item" style="border-bottom: 1px solid #355438;" onmouseover="menuItemRollOver(this);" onmouseout="menuItemRollOut(this);" onclick="changeCategory(5);">__MSG_cat_5__</td></tr>
+    <tr><td id="cat_6" class="cat_item" onmouseover="menuItemRollOver(this);" onmouseout="menuItemRollOut(this);" onclick="changeCategory(6);">__MSG_cat_6__</td></tr>
+  </table>
+</div>
+<div id="recents_container" style="position:absolute; display:none;"></div>
+</center>
+<div>
+	<script type="text/javascript">
+		var mMENU = _IG_GetCachedUrl("http://cdn.labpixies.com/infra/js/lp_footer.js");
+	  document.write('<scr'+'ipt type="text/javascript" src="'+mMENU+'"></scr'+'ipt>');
+	</script>
+</div>
+<script type="text/javascript">
+	_IG_Analytics("UA-345375-1", "/Converter_V2_Canvas");
+</script>
+<iframe width="1" height="1" style="width:1px; height:1px; overflow:hidden; position:absolute; visibility:hidden;" src="http://static.labpixies.com/campaigns/converter/analytics.html"></iframe>
+]]>
+</Content>
+<Content type="html">
+		<![CDATA[
+<title>Unit Converter</title>
+
+<style type="text/css">
+<!--
+.style1 {font-size: 1px}
+
+.conv_type_style {
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	color: #ffffff;
+}
+.style6 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #354f37;
+	width: 140px;
+	height: 18px;
+	border: 0px;
+	background-color: #ffffff;
+	border: 1px solid #244428;
+	padding-left: 3px;
+	
+}
+select{
+	
+	border: 1px solid #244428;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #244326;	
+	background-color: #BBF21B;
+	display: none;
+	
+	
+}
+
+Option{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	background-color: #BBF21B;
+	color: #244326;	
+	
+}
+
+-->
+</style>
+
+<!-- PUT THIS TAG IN THE head SECTION -->
+<script type="text/javascript" src="http://partner.googleadservices.com/gampad/google_service.js">
+</script>
+<script type="text/javascript">
+  GS_googleAddAdSenseService("ca-pub-8123415297019784");
+  GS_googleEnableAllServices();
+</script>
+<script type="text/javascript">
+  GA_googleAddSlot("ca-pub-8123415297019784", "unit_converter_txt");
+</script>
+<script type="text/javascript">
+  GA_googleFetchAds();
+</script>
+<!-- END OF TAG FOR head SECTION -->
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+<script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var _gadgetID=47;
+  
+  var mMENU = _IG_GetCachedUrl("http://cdn.labpixies.com/infra/js/lp_menu.js");
+	document.write('<scr'+'ipt type="text/javascript" src="'+mMENU+'"></scr'+'ipt>');
+
+var IMAGES_BASE = "http://cdn.labpixies.com/campaigns/converter/images/";
+var unitTypeEl = null;
+var fromUnitAncEl = null;
+var toUnitAncEl = null;
+var fromValueEl = null;
+var toValueEl = null;
+var selectUnitElArr = new Array(8);
+var prefs = new _IG_Prefs();
+
+function printLengthOptions(selected) {
+	labels = prefs.getMsg("arr_1").split(",");
+	values = new Array (0.01,0.3048,0.3048/12,1000,4828.0417,5556,1,2.54e-08,
+		0.3048*5280,0.001,0.9144);
+	for (i=0; i<labels.length; i++) {
+		if (i==selected)
+			document.write('<option selected value="'+values[i]+'">'+labels[i]+'</option>');
+		else
+			document.write('<option value="'+values[i]+'">'+labels[i]+'</option>');
+
+	}
+}
+function printMassOptions(selected) {
+	labels = prefs.getMsg("arr_2").split(",");
+	values = new Array (0.00001,0.0001,0.01,0.45359237/256,0.00006479891,
+		0.001,0.1,0.45359237*112,0.45359237*100,1,0.45359237,0.45359237*2240,
+		1000,1000,1.0e-9,0.000001,0.45359237/16,0.45359237,0.45359237*2000,
+		0.45359237*2240,1000,0.45359237*2000,1000,0.03110347679999);
+	for (i=0; i<labels.length; i++) {
+		if (i==selected)
+			document.write('<option selected value="'+values[i]+'">'+labels[i]+'</option>');
+		else
+			document.write('<option value="'+values[i]+'">'+labels[i]+'</option>');
+	}
+}
+function printTemperatureOptions(selected) {
+	labels = prefs.getMsg("arr_3").split(",");
+	for (i=0; i<labels.length; i++) {
+		if (i==selected)
+			document.write('<option selected value="'+i+'">'+labels[i]+'</option>');
+		else
+			document.write('<option value="'+i+'">'+labels[i]+'</option>');
+	}
+}
+function printVolumeOptions(selected) {
+	labels = prefs.getMsg("arr_4").split(",");
+	values = new Array (0.028316847*43560,0.028316847*3630,0.028316847*3630,
+		0.00454609*31.5,0.00454609*36,(0.0037854118/231)*7056,
+		0.0037854118*31,0.0037854118*31.5,0.0037854118*42,
+		((0.0037854118/231)*1728)/12,0.00454609*4,0.0037854118*5,
+		0.00454609*8,0.0044048838*8,0.00001,0.028316847*128,0.028316847*16,
+		0.000001,0.144,0.001,1000,(0.0037854118/231)*1728,0.0037854118/231,
+		1.0e+9,1,(((0.0037854118/231)*1728)*43560)*3379200,1.0e-18,1.0e-9,
+		((0.0037854118/231)*1728)*27,0.00454609*0.05,0.00025,0.0037854118/16,
+		0.0001,0.01,(0.0037854118/128)/8,0.0037854118*55,0.001*200,
+		0.0037854118/5,0.00454609,0.0044048838,0.0037854118,0.00454609/32,
+		0.0037854118/32,10000,0.1,0.00454609*63,0.0037854118*63,
+		(0.0037854118/128)*1.5,1,0.001,0.0077,1000,1.0e-9,0.000001,
+		(0.00454609/160)/480,(0.0037854118/128)/480,0.00454609/160,
+		0.0037854118/128,0.00454609*2,0.0044048838*2,0.00454609/8,
+		0.0044048838/8,0.0037854118/8,0.00454609*108,0.0037854118*126,
+		0.0037854118/128,0.00114504,0.00108,0.00454609/4,0.0044048838/4,
+		0.0037854118/4,0.00454609*64,0.00001,0.0037854118/128,1,0.000015,
+		(0.00454609/160)/2,(0.0037854118/128)/2,0.000005,(0.00454609/160)/8,
+		(0.0037854118/128)/6,((0.0037854118/231)*1728)*27);
+	for (i=0; i<labels.length; i++) {
+		if (i==selected)
+			document.write('<option selected value="'+values[i]+'">'+labels[i]+'</option>');
+		else
+			document.write('<option value="'+values[i]+'">'+labels[i]+'</option>');
+	}
+}
+function printBitsOptions(selected) {
+	labels = prefs.getMsg("arr_5").split(",");
+	values = new Array (1,8,1024,1024*8,1024*1024,1024*1024*8,
+	1024*1024*1024,1024*1024*1024*8,
+	1024*1024*1024*1024,1024*1024*1024*1024*8,
+	1024*1024*1024*1024*1024,1024*1024*1024*1024*1024*8,
+	1024*1024*1024*1024*1024*1024,1024*1024*1024*1024*1024*1024*8);
+	for (i=0; i<labels.length; i++) {
+		if (i==selected)
+			document.write('<option selected value="'+values[i]+'">'+labels[i]+'</option>');
+		else
+			document.write('<option value="'+values[i]+'">'+labels[i]+'</option>');
+	}
+}
+function printSpeedOptions(selected) {
+	labels = prefs.getMsg("arr_6").split(",");
+	values = new Array (0.00016666666666666666,0.01,0.00008466683600033866,0.00508,0.3048,0.0004233341800016934,0.0254,0.2777777777777778,1000,0.5144444444444444444,0.51477,340.2933,0.0002777777777777778,0.016666666666666666,1,0.44704,26.8224,1609.344,2.9979e8,0.000254000508001016,0.01524,0.9144);
+	for (i=0; i<labels.length; i++) {
+		if (i==selected)
+			document.write('<option selected value="'+values[i]+'">'+labels[i]+'</option>');
+		else
+			document.write('<option value="'+values[i]+'">'+labels[i]+'</option>');
+	}
+}
+
+
+function init() {
+	
+	for (var i=0; i < 6; i++) {
+		selectUnitElArr[i*2] = document.getElementById("unit_"+(i)+"_from");
+		selectUnitElArr[i*2+1] = document.getElementById("unit_"+(i)+"_to");
+	}
+	
+	unitTypeEl = document.getElementById("conv_type_menu");
+	unitTypeEl.options[0].selected = true;
+		
+	fromValueEl = document.getElementById("from_value_tf");
+	toValueEl = document.getElementById("to_value_tf");
+	fromValueEl.value = "";
+	toValueEl.value = "";
+	
+	fromUnitAncEl = document.getElementById("from_unit_select_anchor");
+	toUnitAncEl = document.getElementById("to_unit_select_anchor");
+	
+	onChangeUnitType();
+
+	document.getElementById("main-table").style.background = "transparent url("+_IG_GetImageUrl(IMAGES_BASE+'background.png')+") 0px 0px no-repeat";
+}
+
+function onChangeUnitType() {
+	
+	
+	fromValueEl.value = "";
+	toValueEl.value = "";
+	
+	for (var i=0; i < 8; i++) {
+		selectUnitElArr[i].style.display = "none";
+	}
+		
+	fromUnitAncEl.removeChild(fromUnitAncEl.firstChild);
+	toUnitAncEl.removeChild(toUnitAncEl.firstChild);
+	fromUnitAncEl.appendChild(selectUnitElArr[unitTypeEl.selectedIndex*2]);
+	toUnitAncEl.appendChild(selectUnitElArr[unitTypeEl.selectedIndex*2+1]);
+	selectUnitElArr[unitTypeEl.selectedIndex*2].style.display = "block";
+	selectUnitElArr[unitTypeEl.selectedIndex*2+1].style.display = "block";
+	
+}
+
+function convert() {
+
+	reportInteraction();
+	
+	var fromUnitEl = selectUnitElArr[unitTypeEl.selectedIndex*2];
+	var toUnitEl = selectUnitElArr[unitTypeEl.selectedIndex*2+1];
+	var fromUnit = fromUnitEl[fromUnitEl.selectedIndex].value;
+	var toUnit = toUnitEl.options[toUnitEl.selectedIndex].value;
+	
+	var frm = document.getElementById("from_value_tf");
+	var tar = document.getElementById("to_value_tf");
+	var fromVal = frm.value;
+	var toEl = tar;
+		
+	if (!fromVal || fromVal =="")
+		return;		
+	switch (unitTypeEl.selectedIndex) {
+	
+		case 2:
+			
+			fromVal = parseFloat(fromVal);
+			if (isNaN(fromVal))
+				fromVal = 0;
+			convertTemprature(fromVal, toEl, fromUnit,toUnit);
+			break;
+		
+		default:
+			if (isNaN(fromVal))
+				fromVal = 0;
+			calcConversion(fromVal, toEl, fromUnit, toUnit);
+			break;
+	}
+	
+}
+
+function calcConversion(fromVal, toEl, fromUnit, toUnit) {
+
+	var str = "(("+fromVal+") * ("+fromUnit+"))/("+toUnit+")";
+	var res = eval(str);
+	toEl.value = fixTralingNumbers(res);
+}
+
+function convertTemprature(fromVal, toEl, fromUnit,toUnit){
+ 	
+	// first convert to kelvin
+	if (fromUnit == 0){
+		fromVal = fromVal + 273.15;
+	} else if (fromUnit == 1){
+		fromVal = ((fromVal - 32)/ 1.8) + 273.15;
+	} else if (fromUnit == 2){
+		fromVal = fromVal / 1.8;
+	} else if (fromUnit == 3){
+		fromVal = (fromVal * 1.25) + 273.15;
+	}
+	
+	
+	if (fromVal < 0){
+		// Below absolute zero
+		return "Below Absolute Zero";
+	}
+
+	// now convert kelvin to unit
+	if (toUnit == 0){
+		fromVal = fromVal - 273.15;
+	} else if (toUnit == 1){
+		fromVal = (1.8 * (fromVal -273.15)) + 32;
+	} else if (toUnit == 2){
+		fromVal = fromVal * 1.8;
+	} else if (toUnit == 3){
+		fromVal = (fromVal - 273.15) / 1.25;
+	}
+
+	// round it ofromVal
+	if (Number.prototype.toFixed) {
+		fromVal = fromVal.toFixed(7);
+		fromVal = parseFloat(fromVal);
+	}
+	else {
+		var leftSide = Math.floor(fromVal);
+		var rightSide = fromVal - leftSide;
+		fromVal = leftSide + Math.round(rightSide *10000000)/10000000;
+	}
+
+	toEl.value = fixTralingNumbers(fromVal);
+}
+
+function fixTralingNumbers(evalResult) {
+	
+	var strTmp = evalResult.toString();
+	var fPoint = strTmp.indexOf(".");
+	if (fPoint == -1) {
+		if (strTmp.length > 10)
+			return evalResult.toPrecision(10);
+		else 
+			return evalResult;
+	}
+	var pres = (fPoint>7)?10:(fPoint+3);	 	
+	var tmp = evalResult.toPrecision(pres);
+	strTmp = tmp.toString();
+	if (strTmp.indexOf("e") != -1)
+		return strTmp;
+	var index = strTmp.indexOf(".");
+	if ( index != -1) {
+	
+		strTmp = strTmp.replace(/0*$/,"");
+		if (strTmp == "")
+			strTmp = "0";
+		strTmp = strTmp.replace(/[.]$/,"");
+	}
+	return strTmp;
+}
+
+//document.onclick = closeUnitTable;
+//function checkInput(e) {
+//		
+//	var charCode = (e.which) ? e.which : event.keyCode;
+//	if (charCode > 31 && (charCode < 48 || charCode > 57))
+//		return false;
+//
+//  return true;
+//}
+
+    
+</script>
+<center>
+<!--<div id="menu_div" style='height:23px; margin-bottom:10px;'></div>-->
+<table id="main-table" width="240" height="172" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="18" colspan="2" class="style1"></td>
+  </tr>
+  <tr>
+    <td height="20" colspan="2">
+		<table width="240" height="20" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td width="113" height="20" style="style1"></td>
+			<td width="127" height="20" align="left">
+				<select id="conv_type_menu" onChange="onChangeUnitType();" style="width:102px; display:block;">
+					<option value="0" selected>__MSG_cat_1__</option>
+					<option value="1">__MSG_cat_2__</option>
+					<option value="2">__MSG_cat_3__</option>
+					<option value="3">__MSG_cat_4__</option>
+					<option value="4">__MSG_cat_5__</option>
+					<option value="3">__MSG_cat_6__</option>
+				</select>
+			</td>
+		</tr>
+		</table>
+	</td>
+  </tr>
+  <tr>
+    <td height="10" class="style1" colspan="2"></td>
+  </tr>
+  <tr>
+    <td height="18" width="70" class="style1"></td>
+	<td height="18" width="170" align="left">
+		<input type="text" id="from_value_tf" value="" class="style6" onKeyUp="convert();" NAME="Text1"/>
+	</td>
+  </tr>
+  <tr>
+    <td height="5" class="style1" colspan="2"></td>
+  </tr>
+  <tr>
+    <td height="22" width="70" class="style1"></td>
+	<td id="from_unit_select_anchor" height="22" width="170" align="left"><div>&nbsp;</div></td>
+  </tr>
+  <tr>
+    <td height="12" class="style1" colspan="2"></td>
+  </tr>
+  <tr>
+    <td height="18" width="70" class="style1"></td>
+    <td height="18" width="170" align="left">
+		<input type="text" id="to_value_tf" value="" class="style6" readonly="readonly" /></td>
+    </td>
+  </tr>
+  <tr>
+    <td height="6" class="style1" colspan="2"></td>
+  </tr>
+  <tr>
+    <td height="22" width="70" class="style1"></td>
+	<td id="to_unit_select_anchor" height="22" width="170" align="left"><div>&nbsp;</div></td>
+  </tr>
+  <tr>
+    <td height="21" class="style1" colspan="2"></td>
+  </tr>
+</table>
+
+
+<div style="margin-top:2px;">
+	<!-- PUT THIS TAG IN DESIRED LOCATION OF SLOT unit_converter_txt -->
+	<script type="text/javascript">
+	  GA_googleFillSlot("unit_converter_txt");
+	</script>
+	<!-- END OF TAG FOR SLOT unit_converter_txt -->
+</div>
+
+
+</center>
+
+<select id="unit_0_from" onChange="convert();">
+	<script type="text/javascript">printLengthOptions(0)</script>
+ </select>
+
+<select id="unit_0_to" onChange="convert();" >
+	<script type="text/javascript">printLengthOptions(2)</script>
+ </select>
+
+ 
+ <select id="unit_1_from" onChange="convert();">
+	<script type="text/javascript">printMassOptions(9)</script>
+</select>
+
+<select id="unit_1_to" onChange="convert();">
+	<script type="text/javascript">printMassOptions(10)</script>
+</select>
+
+<select id="unit_2_from" onChange="convert();">
+	<script type="text/javascript">printTemperatureOptions(0)</script>
+</select>
+
+<select id="unit_2_to" onChange="convert();">
+	<script type="text/javascript">printTemperatureOptions(1)</script>
+</select>
+
+<select id="unit_3_from" onChange="convert();">
+	<script type="text/javascript">printVolumeOptions(24)</script>
+</select>
+<select id="unit_3_to" onChange="convert();">
+	<script type="text/javascript">printVolumeOptions(21)</script>
+</select>
+
+<select id="unit_4_from" onChange="convert();">
+	<script type="text/javascript">printBitsOptions(4)</script>
+</select>
+<select id="unit_4_to" onChange="convert();">
+	<script type="text/javascript">printBitsOptions(5)</script>
+</select>
+
+<select id="unit_5_from" onChange="convert();">
+	<script type="text/javascript">printSpeedOptions(14)</script>
+</select>
+<select id="unit_5_to" onChange="convert();">
+	<script type="text/javascript">printSpeedOptions(7)</script>
+</select>
+
+
+<script type="text/javascript">							
+	var $lp=jQuery.noConflict();
+	var pageTracker = _gat._getTracker("UA-345375-1");
+	pageTracker._initData();		
+	
+	var alreadyInteracted = false;
+	function reportInteraction() {		
+		
+		if (alreadyInteracted) return;
+		pageTracker._trackEvent('converter',"Click");
+		alreadyInteracted = true;
+	}
+	
+	_IG_RegisterOnloadHandler(function () {
+		
+		init();
+		$lp(function(){
+			//lpgadgets.lp.menu.deploy("menu_div",{"textDirection":"__MSG_tdDir__","lang":"__MSG_lang__"});
+		});
+		
+	});
+	_IG_Analytics("UA-345375-1", "/converter");
+
+</script>
+<iframe width="1" height="1" style="width:1px; height:1px; overflow:hidden; position:absolute; visibility:hidden;" src="http://static.labpixies.com/campaigns/converter/analytics.html"></iframe>
+
+<div>
+	<script type="text/javascript">
+		var mMENU = _IG_GetCachedUrl("http://cdn.labpixies.com/infra/js/lp_footer.js");
+	  document.write('<scr'+'ipt type="text/javascript" src="'+mMENU+'"></scr'+'ipt>');
+	</script>
+</div>
+	
+]]>
+</Content>
+</Module>

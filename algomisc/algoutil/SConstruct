@@ -1,0 +1,24 @@
+# Copyright 2009 Lenjoy. All Rights Reserved.
+# Author: mars.lenjoy@gmail.com
+
+############################################################
+# config
+############################################################
+client_root = '#..'
+out_dir = '/.build/algoutil'
+
+env = Environment()
+Export('env')
+
+# using scons debug=1 to trigger it.
+debug = ARGUMENTS.get('debug', 0)
+
+if int(debug):
+  env.Append(CCFLAGS = ['-g'])
+
+VariantDir(client_root + '/.build',
+           client_root,
+           duplicate=0)
+
+SConscript(client_root + out_dir + '/SConscript',
+           exports=['env'])

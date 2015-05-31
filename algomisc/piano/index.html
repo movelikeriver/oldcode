@@ -1,0 +1,171 @@
+<html>
+  <head>
+    <meta content-type="text/html; charset=utf-8" />
+    <title>夏日肖邦</title>
+    <style type="text/css">
+      .iframe-table { width:100%; height:100%; }
+      .iframe-row { height: 100% }
+      .iframe { width: 100%; height:800; border: 0px solid; }
+    </style>
+    <script>
+      var current = 0;
+      var values;
+
+      function update() {
+        var songFrame = document.getElementById('song');
+        var curValue = values[current]
+        songFrame.src = curValue[0];
+        var s = document.getElementById('selectedQuery');
+        s.selectedIndex = current;
+        var crScore = document.getElementById('crScore'); 
+        crScore.value = curValue[1];
+        var box = document.getElementById('copyBox');
+        box.value = s.options[s.selectedIndex].text;
+        box.select();
+      }
+
+      function goPrevious() {
+        if (current > 0) {
+          current = current - 1;
+          update();
+        }
+      }
+
+      function goNext() {
+        if (current < values.length - 1) {
+          current = current + 1;
+          update();
+        }
+      }
+
+      function selectQuery() {
+        var s = document.getElementById('selectedQuery');
+        current = s.selectedIndex;
+        update();
+      }
+
+      function loadIndex() {
+        var csvFile = doGet('data/index.csv', loadIndex_);
+      }
+      
+      function parseCsv(csvText) {
+        var parts = csvText.match(/\r\n?|\n|,|[^\r\n,"]+|"(?:""|[^"])*"/g);
+        var totalProcessed = 0;
+        var rows = [];
+        var row = [];
+        for (var i = 0; i < parts.length; ++i) {
+          var part = parts[i];
+          totalProcessed += part.length;
+          switch (part.charCodeAt(0)) {
+            case 0x2c: break; // comma
+            case 0x22:
+              row.push(part.substring(1, part.length - 1).replace(/""/g, '"'));
+              break;
+            case 0xa: case 0xd:  // linebreak
+              rows.push(row);
+              row = [];
+              break;
+            default:
+              row.push(part);
+          }
+        }
+        if (row.length) { rows.push(row); }
+        if (totalProcessed !== csvText.length) { throw new Error('Mismatched parentheses'); }
+        return rows;
+      }
+
+      function loadIndex_(url, req) {
+        // The UI of index.html is dynamically populated from the info in csv file.
+        // Would be nicer if it was index.json.
+        values = [];
+        var selectedQuery = document.getElementById('selectedQuery');
+        selectedQuery.innerHTML = '';
+
+        var lines = parseCsv(req.responseText);
+        for (var lineNum in lines) {
+          var items = lines[lineNum];
+
+          // Populate drop-down menu.
+          var query = items[0];
+          var optionElem = document.createElement('option');
+          optionElem.setAttribute('id', lineNum);
+          optionElem.appendChild(document.createTextNode(query));
+          selectedQuery.appendChild(optionElem);
+
+          // Populate internal 'values' array.
+          var filePath = items[1];
+          var crScore = 1.0;
+          values.push([filePath, crScore]);
+        }
+        update();
+      }
+
+      function extractName(file) {
+        var lastSlash = file.lastIndexOf('/');
+        return file.substr(lastSlash + 1);
+      }
+
+      function getXMLHttpRequest() {
+        if (window.XMLHttpRequest) {
+          return new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+          try {
+            return new ActiveXObject('Microsoft.XMLHTTP');
+          } catch(e) {
+            try {
+              return new ActiveXObject('Msxml2.XMLHttp');
+            } catch(e2) { }
+          }
+        }
+        return null;
+      }
+
+      const READY_STATE_COMPLETED = 4;
+      function doGet(url, callback) {
+        var req = getXMLHttpRequest();
+        req.open('GET', url, true);
+        req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        req.onreadystatechange = function() {
+          if (req.readyState == READY_STATE_COMPLETED) {
+            callback(url, req);
+          }
+        }
+        req.send(null);
+      }
+    </script>
+  </head>
+  <body onLoad="loadIndex()">
+    <table class="iframe-table">
+      <tr>
+        <td width="80%">
+          <form>
+            <input type="button" onclick="goPrevious()" value="Previous"/>
+            <select id="selectedQuery" onchange="selectQuery()">
+              <!-- dynamically populated by javascript -->
+            </select>
+            <input type="button" onclick="goNext()" value="Next"/>
+            <input type="text" size="40" id="copyBox" readonly="1">
+              <!-- dynamically populated by javascript -->
+            </input>
+            <input type="text" size="15" id="crScore" readonly="1">
+              <!-- dynamically populated by javascript -->
+            </input>
+          </form>
+          <p> <font size="3" face="Times New Roman">
+          Click the icon when ready!
+          </font> </p>
+        <embed type="application/x-shockwave-flash"
+               src="piano1.swf"
+               name="plugin"
+               height="80"
+               width="100">
+        </td>
+      </tr>
+      <tr>
+        <td width="80%" align="left" valign="top">
+          <iframe class="iframe" id="song" src=""></iframe>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

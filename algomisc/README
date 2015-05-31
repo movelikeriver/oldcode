@@ -1,0 +1,2 @@
+after code review approval, you can use the follow command to merge to main stream in another main client
+svn merge https://algomisc.googlecode.com/svn/trunk/ https://algomisc.googlecode.com/svn/branches/b1/ .

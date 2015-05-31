@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+  <ModulePrefs title="Live Forex Quotes" description="Live foreign exchange (Forex) rates for 40 currency pairs. New version offers ability to add/remove currency pairs, change data refresh rate, font size and color. Ideal for forex trading professionals or anyone wishing to monitor live currency rates." author="FXUniversal" author_email="info@fxuniversal.com" screenShot="http://www.fxtec.com/widgets/images/screenshot.gif" thumbnail="http://www.fxtec.com/widgets/images/thumb.gif"> 
+  <Require feature="setprefs"/>
+  <Require feature="settitle"/> 
+  <Require feature="opensocial-0.7"/>
+  <Require feature="dynamic-height"/>
+  </ModulePrefs>
+  <UserPref datatype="string" name="title" display_name="Title" default_value="Live Forex Quotes" required="true"/>
+  <UserPref name="fontsize" display_name="Font Size" default_value="11" required="true"/>
+  <UserPref name="headcolor" display_name="Color" default_value="Blue" datatype="enum">
+    <EnumValue value="Vista"/>
+    <EnumValue value="Blue"/>
+    <EnumValue value="Red"/>
+    <EnumValue value="Orange"/>
+    <EnumValue value="Pink"/>
+    <EnumValue value="Gray"/>
+    <EnumValue value="Green"/>
+  </UserPref>
+  <UserPref name="interval" display_name="Refresh Interval" default_value="300000" datatype="enum">
+    <EnumValue value="30000" display_value="30 Seconds"/>
+    <EnumValue value="60000" display_value="1 Minute"/>
+    <EnumValue value="300000" display_value="5 Minutes"/>
+    <EnumValue value="1500000" display_value="15 Minutes"/>
+    <EnumValue value="3000000" display_value="30 Minutes"/>
+    <EnumValue value="6000000" display_value="1 Hour"/>
+  </UserPref> 
+  <UserPref name="highlow" display_name="Show High/Low" datatype="bool" default_value="true"/>    
+  <UserPref name="showtime" display_name="Show Time" datatype="bool" default_value="true"/>    
+  <UserPref name="pairs" display_name="Add Pair" datatype="list" default_value="EUR/USD|GBP/USD|USD/JPY|USD/CHF|USD/CAD|AUD/USD"/>
+  
+  
+    <Content type="html">
+    <![CDATA[
+	<style type="text/css">
+	 .tablestyle { font-size: __UP_fontsize__px; font-family:Verdana, Arial, Helvetica, sans-serif; width:100%;  text-align:center; border:#EEEEEE 1px solid;
+	 }
+	 .thstyle { font-weight:bold; background-repeat:repeat-x; background-image:url(http://www.fxtec.com/widgets/images/title_bg___UP_headcolor__.gif); color:#FFFFFF; }
+	 .trstyle { background-repeat:repeat-x; background-image:url(http://www.fxtec.com/widgets/images/row_bg.gif); }
+	</style> 
+	
+	<div id="content_div">
+		<div id="content"></div>
+		<div id="footer"></div>
+	</div>
+  	
+	<script type="text/javascript"> 
+    var prefs = new _IG_Prefs();
+	var interval = prefs.getInt("interval");
+	var pairs = prefs.getArray("pairs");
+	var highlow = prefs.getBool("highlow");
+	var showtime = prefs.getBool("showtime");
+	
+	var html = "";
+    var url = "http://www.fxtec.com/db4_scripts/gadget_quotes.php5?ky=816";
+
+	function makeJSONRequest(){
+		_IG_FetchContent(url, response, {refreshInterval: 30});
+	}
+	
+	function getMatchingPair(sym, quotesArray){
+		var found = -1;
+		sym = sym.toUpperCase();
+		for(var i = 0; i < quotesArray.length; i++){
+			if(quotesArray[i].sym.indexOf(sym) != -1){
+				return i;
+			} else {
+				found = -1;
+			}
+		}
+		return found;
+	}
+
+    function response(responseText) {
+		var jsondata = eval(responseText);
+		var arrowstr = "";
+		var fontcolor = "";		
+		var id = -1;
+		html = "<table cellpadding=\"2\" cellspacing=\"0\" id=\"theTable\" class=\"tablestyle\"><tr class=\"thstyle\"><td>Symbol</td><td>Rate</td>";
+		html += "<td>Change</td>";
+		html +=  (highlow) ? "<td>High</td><td>Low</td>" : "";
+		html += (showtime) ? "<td>Time</td>" : "";
+		html += "</tr>";	
+			    		
+		if (pairs.length === 0){
+    		html += "<tr><td colspan=\"4\">Edit your settings to add some currencies.</td></tr>";
+	    }else{
+		
+			for (var i = 0; i < pairs.length ; i++){
+		  		id = getMatchingPair(pairs[i], jsondata);
+				if(id != -1){
+					arrowstr = (jsondata[id].cdir == 1)? "up" : "dn";
+					fontcolor = (jsondata[id].cdir == 1)? "#669900" : "#993300";
+					html += "<tr class=\"trstyle\">";
+					html += "<td><b>" + jsondata[id].sym + "</b></td>";
+					html += "<td><b><font color=\"" + fontcolor +"\">" + jsondata[id].ask + "</font></b></td>";
+					html += "<td><img src=\"http://www.fxtec.com/widgets/images/arrow_" + arrowstr + ".gif\" /></td>";
+					html += (highlow) ? "<td>"+jsondata[id].high+"</td><td>"+jsondata[id].low+"</td>" : "";
+					html += (showtime) ? "<td>" + jsondata[id].time + "</td>" : "";
+					html += "</tr>";
+					
+				}
+	    	}
+		}
+		html += "</table>";
+	    document.getElementById('content').innerHTML = html;
+		_IG_AdjustIFrameHeight();		
+    }
+	document.getElementById('footer').innerHTML = "<table cellpadding=\"1\" border=\"0\" style=\"font-size:10px;\" width=\"100%\" border=\"1\"><tr><td scope=\"col\"><a href=\"http://www.fxuniversal.com?utm_source=ratesgadget&amp;utm_campaign=google\" target=\"_blank\" title=\"Trade Forex with FX Universal\">Trade Forex</a></td><td align=\"right\" scope=\"col\"><a href=\"http://www.google.com/ig/directory?url=www.fxtec.com/widgets/converter/converter.xml\" target=\"_blank\">Converter</a> | <a href=\"http://www.fxuniversal.com/dc-forex-charts.html?utm_source=ratesgadget&utm_campaign=google\" target=\"_blank\"> Charts</a> | <a href=\"http://www.fxuniversal.com/tools/rates_gadget.html?utm_source=ratesgadget&amp;utm_campaign=google\" target=\"_blank\">Help</a></td></tr></table>";
+    _IG_RegisterOnloadHandler(makeJSONRequest);
+	setInterval(makeJSONRequest, interval);	
+	var title = prefs.getString("title");
+	_IG_SetTitle(title);
+     </script>
+ ]]>
+  </Content> 
+  
+  
+     <Content type="html" view="home">
+    <![CDATA[
+	<style type="text/css">
+	 .tablestyle { font-size: __UP_fontsize__px; font-family:Verdana, Arial, Helvetica, sans-serif; width:100%;  text-align:center; border:#EEEEEE 1px solid;
+	 }
+	 .thstyle { font-weight:bold; background-repeat:repeat-x; background-image:url(http://www.fxtec.com/widgets/images/title_bg___UP_headcolor__.gif); color:#FFFFFF; }
+	 .trstyle { background-repeat:repeat-x; background-image:url(http://www.fxtec.com/widgets/images/row_bg.gif); }
+	</style> 
+	
+	<div id="content_div">
+		<div id="content"></div>
+		<div id="footer"></div>
+	</div>
+  	
+	<script type="text/javascript"> 
+    var prefs = new _IG_Prefs();
+	var interval = prefs.getInt("interval");
+	var pairs = prefs.getArray("pairs");
+	var highlow = prefs.getBool("highlow");
+	var showtime = prefs.getBool("showtime");
+	
+	var html = "";
+    var url = "http://www.fxtec.com/db4_scripts/gadget_quotes.php5?ky=816";
+
+	function makeJSONRequest(){
+		_IG_FetchContent(url, response, {refreshInterval: 30});
+	}
+	
+	function getMatchingPair(sym, quotesArray){
+		var found = -1;
+		sym = sym.toUpperCase();
+		for(var i = 0; i < quotesArray.length; i++){
+			if(quotesArray[i].sym.indexOf(sym) != -1){
+				return i;
+			} else {
+				found = -1;
+			}
+		}
+		return found;
+	}
+
+    function response(responseText) {
+		var jsondata = eval(responseText);
+		var arrowstr = "";
+		var fontcolor = "";		
+		var id = -1;
+		html = "<table cellpadding=\"2\" cellspacing=\"0\" id=\"theTable\" class=\"tablestyle\"><tr class=\"thstyle\"><td>Symbol</td><td>Rate</td>";
+		html += "<td>Change</td>";
+		html +=  (highlow) ? "<td>High</td><td>Low</td>" : "";
+		html += (showtime) ? "<td>Time</td>" : "";
+		html += "</tr>";	
+			    		
+		if (pairs.length === 0){
+    		html += "<tr><td colspan=\"4\">Edit your settings to add some currencies.</td></tr>";
+	    }else{
+		
+			for (var i = 0; i < pairs.length ; i++){
+		  		id = getMatchingPair(pairs[i], jsondata);
+				if(id != -1){
+					arrowstr = (jsondata[id].cdir == 1)? "up" : "dn";
+					fontcolor = (jsondata[id].cdir == 1)? "#669900" : "#993300";
+					html += "<tr class=\"trstyle\">";
+					html += "<td><b>" + jsondata[id].sym + "</b></td>";
+					html += "<td><b><font color=\"" + fontcolor +"\">" + jsondata[id].ask + "</font></b></td>";
+					html += "<td><img src=\"http://www.fxtec.com/widgets/images/arrow_" + arrowstr + ".gif\" /></td>";
+					html += (highlow) ? "<td>"+jsondata[id].high+"</td><td>"+jsondata[id].low+"</td>" : "";
+					html += (showtime) ? "<td>" + jsondata[id].time + "</td>" : "";
+					html += "</tr>";
+					
+				}
+	    	}
+		}
+		html += "</table>";
+	    document.getElementById('content').innerHTML = html;
+		_IG_AdjustIFrameHeight();		
+    }
+	document.getElementById('footer').innerHTML = "<table cellpadding=\"1\" border=\"0\" style=\"font-size:10px;\" width=\"100%\" border=\"1\"><tr><td scope=\"col\"><a href=\"http://www.fxuniversal.com?utm_source=ratesgadget&amp;utm_campaign=google\" target=\"_blank\" title=\"Try online currency trading with FX Universal with a Free practice account\">Trade Forex</a></td><td align=\"right\" scope=\"col\"><a href=\"http://www.google.com/ig/directory?url=www.fxtec.com/widgets/converter/converter.xml\" target=\"_blank\" title=\"Looking for a currency converter? Click here\">Converter</a> | <a href=\"http://www.fxuniversal.com/tools/live_forex_charts.html?utm_source=ratesgadget&utm_campaign=google\" target=\"_blank\" title=\"Forex charts\">Charts</a> | <a href=\"http://www.fxuniversal.com/tools/rates_gadget.html?utm_source=ratesgadget&amp;utm_campaign=google\" target=\"_blank\">Help</a></td></tr></table>";
+    _IG_RegisterOnloadHandler(makeJSONRequest);
+	setInterval(makeJSONRequest, interval);	
+	var title = prefs.getString("title");
+	_IG_SetTitle(title);
+     </script>
+ ]]>
+  </Content> 
+  
+      <Content type="html" view="canvas">
+    <![CDATA[
+	<style type="text/css">
+	 .tablestyle { font-size: __UP_fontsize__px; font-family:Verdana, Arial, Helvetica, sans-serif; width:100%;  text-align:center; border:#EEEEEE 1px solid;
+	 }
+	 .thstyle { font-weight:bold; background-repeat:repeat-x; background-image:url(http://www.fxtec.com/widgets/images/title_bg___UP_headcolor__.gif); color:#FFFFFF; }
+	 .trstyle { background-repeat:repeat-x; background-image:url(http://www.fxtec.com/widgets/images/row_bg.gif); }
+	</style> 
+	
+	<div id="content_div">
+		<div id="content"></div>
+		<div id="footer"></div>
+	</div>
+  	
+	<script type="text/javascript"> 
+    var prefs = new _IG_Prefs();
+	var interval = prefs.getInt("interval");
+	var pairs = prefs.getArray("pairs");
+	var highlow = prefs.getBool("highlow");
+	var showtime = prefs.getBool("showtime");
+	
+	var html = "";
+    var url = "http://www.fxtec.com/db4_scripts/gadget_quotes.php5?ky=816";
+
+	function makeJSONRequest(){
+		_IG_FetchContent(url, response, {refreshInterval: 30});
+	}
+	
+	function getMatchingPair(sym, quotesArray){
+		var found = -1;
+		sym = sym.toUpperCase();
+		for(var i = 0; i < quotesArray.length; i++){
+			if(quotesArray[i].sym.indexOf(sym) != -1){
+				return i;
+			} else {
+				found = -1;
+			}
+		}
+		return found;
+	}
+
+    function response(responseText) {
+		var jsondata = eval(responseText);
+		var arrowstr = "";
+		var fontcolor = "";		
+		var id = -1;
+		html = "<table cellpadding=\"2\" cellspacing=\"0\" id=\"theTable\" class=\"tablestyle\"><tr class=\"thstyle\"><td>Symbol</td><td>Rate</td>";
+		html += "<td>Change</td>";
+		html +=  (highlow) ? "<td>High</td><td>Low</td>" : "";
+		html += (showtime) ? "<td>Time</td>" : "";
+		html += "</tr>";	
+			    		
+		if (pairs.length === 0){
+    		html += "<tr><td colspan=\"4\">Edit your settings to add some currencies.</td></tr>";
+	    }else{
+		
+			for (var i = 0; i < pairs.length ; i++){
+		  		id = getMatchingPair(pairs[i], jsondata);
+				if(id != -1){
+					arrowstr = (jsondata[id].cdir == 1)? "up" : "dn";
+					fontcolor = (jsondata[id].cdir == 1)? "#669900" : "#993300";
+					html += "<tr class=\"trstyle\">";
+					html += "<td><b>" + jsondata[id].sym + "</b></td>";
+					html += "<td><b><font color=\"" + fontcolor +"\">" + jsondata[id].ask + "</font></b></td>";
+					html += "<td><img src=\"http://www.fxtec.com/widgets/images/arrow_" + arrowstr + ".gif\" /></td>";
+					html += (highlow) ? "<td>"+jsondata[id].high+"</td><td>"+jsondata[id].low+"</td>" : "";
+					html += (showtime) ? "<td>" + jsondata[id].time + "</td>" : "";
+					html += "</tr>";
+					
+				}
+	    	}
+		}
+		html += "</table>";
+	    document.getElementById('content').innerHTML = html;
+		_IG_AdjustIFrameHeight();		
+    }
+	document.getElementById('footer').innerHTML = "<table cellpadding=\"1\" border=\"0\" style=\"font-size:10px;\" width=\"100%\" border=\"1\"><tr><td scope=\"col\"><a href=\"http://www.fxuniversal.com?utm_source=ratesgadget&amp;utm_campaign=google\" target=\"_blank\" title=\"Try forex trading with FX Universal by opening a freee practice account.\">Trade Forex</a></td><td align=\"right\" scope=\"col\"><a href=\"http://www.google.com/ig/directory?url=www.fxtec.com/widgets/converter/converter.xml\" target=\"_blank\">Converter</a> | <a href=\"http://www.fxuniversal.com/tools/live_forex_charts.html?utm_source=ratesgadget&utm_campaign=google\" target=\"_blank\">Forex Charts</a> | <a href=\"http://www.fxuniversal.com/tools/rates_gadget.html?utm_source=ratesgadget&amp;utm_campaign=google\" target=\"_blank\">Help</a></td></tr></table>";
+    _IG_RegisterOnloadHandler(makeJSONRequest);
+	setInterval(makeJSONRequest, interval);	
+	var title = prefs.getString("title");
+	_IG_SetTitle(title);
+     </script>
+ ]]>
+  </Content>  
+  
+
+</Module>
