@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <title>Buzz Toy</title>
+    <style type=text/css>
+      td  { vertical-align: top; padding: 0.5em }
+      img { border:0 }
+    </style>
+  </head>
+  <body>
+    <p><a href="{{ logout }}">Logout</a></p>
+    <a href="/">@me</a>
+    <div>debug_str: [{{ debug_str }}]</div>
+
+      ========================================<br/>
+      @following: {{ followinglist.totalResults }}
+      <table border=0>
+      <tr valign=top>
+      {% for entry in followinglist.entry %}
+        <td>
+          <a href="{{ entry.profileUrl }}">
+	    <img src="{{ entry.thumbnailUrl }}"
+		 width=36 height=36>
+	  </a><br>
+          <a href="/?user_id={{ entry.id }}">
+	    {{ entry.displayName }}</a></td>
+      <td>
+        {{ entry.aboutMe }}
+        </td>
+      {% endfor %}
+      </tr>
+      </table>
+
+      ========================================<br/>
+      @followers: {{ followerslist.totalResults }}
+      <table border=0>
+      <tr valign=top>
+      {% for entry in followerslist.entry %}
+        <td>
+          <a href="{{ entry.profileUrl }}">
+	    <img src="{{ entry.thumbnailUrl }}"
+		 width=36 height=36>
+	  </a><br>
+          <a href="/?user_id={{ entry.id }}">
+	    {{ entry.displayName }}</a></td>
+      <td>
+        {{ entry.aboutMe }}
+        </td>
+      {% endfor %}
+      </tr>
+      </table>
+
+      ========================================<br/>
+      @self:
+      <table border=0>
+      {% for item in selflist.items %}
+      <tr valign=top>
+        <td>
+          <a href="/?user_id={{ item.actor.id }}">
+	    <img width=36 height=36
+		 src="{{ item.actor.thumbnailUrl }}"></a><br>
+          <a href="{{ item.actor.profileUrl }}">{{ item.actor.name }}</a>
+	  {{ item.updated }}
+	</td>
+	<td>
+          {{ item.object.content }}
+        </td>
+        <td>
+          <a href="{{ item.object.links.alternate.0.href }}"><img
+            src="/static/go.png"></a>
+        </td>
+      </tr>
+      {% endfor %}
+      </table>
+  </body>
+</html>
