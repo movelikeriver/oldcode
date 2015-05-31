@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="__MSG_title__"
+               width="560"
+               height="100"
+               author="Lenjoy"
+               author_email="lenjoy@google.com"
+               author_affiliation="Google Inc."
+               author_location="Beijing, China"
+               screenshot="__MSG_screenshot__"
+               thumbnail="__MSG_thumbnail__">
+    <Require feature="dynamic-height" />
+    <Locale messages="http://gadgetmisc.googlecode.com/svn/trunk/amazon/ALL_ALL.xml" />
+  </ModulePrefs>
+  <UserPref name="showsearchbox"
+            display_name="Show Search Box"
+            datatype="bool"
+            default_value="true" />
+  <UserPref name="query"
+            display_name="Input Query"
+            datatype="string"
+            default_value="" />
+  <UserPref name="item_num"
+            display_name="Item Number"
+            datatype="string"
+            default_value="3" />
+  <Content type="html">
+<![CDATA[
+<style>body{background-color:#fff;margin:0;padding:0}.searchbox__MODULE_ID__{border:0;background-color:#146EB4;display:none}.tablestyle__MODULE_ID__{border:1px none #3F9;font-family:arial,sans-serif;width:100%}.tdhint__MODULE_ID__{color:#00f;font-size:13px;text-align:left}.tdmenu__MODULE_ID__{font-size:13px;text-align:center}.tdimage__MODULE_ID__{margin:0 2px;padding-right:6px;padding-top:6px;vertical-align:top}.tdtitle__MODULE_ID__{font-size:13px;text-align:left;padding-top:6px;vertical-align:top}.tdprice__MODULE_ID__{font-size:16px;font-weight:bold;text-align:right;padding-left:9px;padding-top:6px;vertical-align:top}.navLogo__MODULE_ID__{background-image:url(http://g-ecx.images-amazon.com/images/G/01/gno/images/orangeBlue/navPackedSprites_v10._V224330185_.png);background-position:-9px -8px;display:block;height:31px;left:3px;position:relative;top:3px;width:151px}.navSearchBar__MODULE_ID__{text-align:left;height:35px}.query__MODULE_ID__{background-color:#fff;font-family:arial,sans-serif;font-size:10pt}.navSprite__MODULE_ID__{background-image:url(http://g-ecx.images-amazon.com/images/G/01/gno/images/orangeBlue/navPackedSprites_v10._V224330185_.png);background-position:0 -415px;border:0 none;display:block;height:35px;margin:0;padding:0;position:relative;width:32px}</style>
+<body>
+<table class=searchbox__MODULE_ID__ id=searchbox__MODULE_ID__>
+<tr>
+<td class=navSearchBar__MODULE_ID__>
+<input class=query__MODULE_ID__ id=query__MODULE_ID__ maxlength=200 onkeydown=doKeydown(event) size=22 />
+</td>
+<td align=left width=25>
+<div class=navSprite__MODULE_ID__>
+<input onclick=goSearch() src=http://g-ecx.images-amazon.com/images/G/01/x-locale/common/transparent-pixel._V42752373_.gif type=image value="__MSG_search__" />
+</div>
+</td>
+</table>
+<div id=results__MODULE_ID__>
+<table class=tablestyle__MODULE_ID__ frame=void id=itemstable__MODULE_ID__ rules=rows />
+</div>
+<script>var prefs__MODULE_ID__=new _IG_Prefs(__MODULE_ID__),g_showsearchbox=prefs__MODULE_ID__.getBool("showsearchbox"),g_queryKeyword=prefs__MODULE_ID__.getString("query");if(g_showsearchbox){_gel("searchbox__MODULE_ID__").style.display="block";_gel("query__MODULE_ID__").value=g_queryKeyword}var g_item_num=parseInt(prefs__MODULE_ID__.getString("item_num"),10),g_reqUrl="http://ecs.amazonaws.com/onca/xml?Service=AWSECommerceService&Operation=ItemSearch&SearchIndex=All&ResponseGroup=Large&AWSAccessKeyId=AKIAJ6U4ZM7AARBXOUTA&AssociateTag=aa01000-20&Keywords=";
+function doKeydown(b){var c=0;if(window.event)c=b.keyCode;else if(b.which)c=b.which;switch(parseInt(c,10)){case 13:goSearch();break}}function changeColor(b){b.style.background="#e0e040"}function returnColor(b){b.style.background="#ffffff"}
+function goSearch(){if(g_showsearchbox)g_queryKeyword=_trim(_gel("query__MODULE_ID__").value);var b=_gel("itemstable__MODULE_ID__");if(g_queryKeyword.length==0)b.innerHTML='<tr><td class="tdhint__MODULE_ID__"><br />__MSG_hint__</td></tr>';else{b.innerHTML='<tr><td class="tdhint__MODULE_ID__">__MSG_loading__</td></tr>';var c=g_reqUrl+_esc(g_queryKeyword);_IG_FetchXmlContent(c,function(i){var f=['<tr><td class="tdhint__MODULE_ID__"><b>',g_queryKeyword,"</b>&nbsp;__MSG_no_result__</td></tr>"].join("");
+if(typeof i=="undefined")b.innerHTML=f;else{var e=i.getElementsByTagName("Item");b.innerHTML='<tr><td height="55" width="85%" colspan="2"><span class="navLogo__MODULE_ID__" /></td><td width="15%" /></tr>';if(!e.length||e.length==0)b.innerHTML=f;else{for(var g=0,h=0;h<e.length&&g<g_item_num;h++){var d=e[h],a=d.getElementsByTagName("DetailPageURL");if(!(!a||a.length==0)){var j=a[0].textContent;a=d.getElementsByTagName("SmallImage");if(!(!a||a.length==0)){a=a[0].getElementsByTagName("URL");if(!(!a||
+a.length==0)){var n=a[0].textContent;a=d.getElementsByTagName("ItemAttributes");if(!(!a||a.length==0)){a=a[0].getElementsByTagName("Title");if(!(!a||a.length==0)){var o=a[0].textContent;a=d.getElementsByTagName("OfferSummary");if(!(!a||a.length==0)){a=a[0].getElementsByTagName("LowestNewPrice");if(!(!a||a.length==0)){a=a[0].getElementsByTagName("FormattedPrice");if(!(!a||a.length==0)){var p=a[0].textContent;a=d.getElementsByTagName("CustomerReviews");if(!(!a||a.length==0)){var k=a[0],q=k.getElementsByTagName("AverageRating")[0].textContent,
+l=parseFloat(q),m=Math.floor(l),r=l>m?"5":"0",s=k.getElementsByTagName("TotalReviews")[0].textContent;b.innerHTML+='<tr onmouseover="changeColor(this)" onmouseout="returnColor(this)"><td width="10%"><a href="'+j+'" target="_blank"><img class="tdimage__MODULE_ID__" src="'+n+'"></a></td><td width="75%" class="tdtitle__MODULE_ID__"><a href="'+j+'" target="_blank">'+o+'</a><br /><span style="padding: 3px 20px 0 0;white-space: nowrap"><img width="55" height="12" border="0" align="absbottom" src="http://g-ecx.images-amazon.com/images/G/01/x-locale/common/customer-reviews/ratings/stars-'+
+m+"-"+r+'._V25749362_.gif" />  ('+s+')</span></td><td width="15%" class="tdprice__MODULE_ID__">'+p+"</td></tr>";g+=1}}}}}}}}}}if(g==0)b.innerHTML=f;_IG_AdjustIFrameHeight()}}})}}goSearch();</script>
+]]>
+  </Content>
+</Module> 

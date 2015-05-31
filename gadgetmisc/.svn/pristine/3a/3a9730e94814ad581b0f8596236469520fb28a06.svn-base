@@ -1,0 +1,11 @@
+<messagebundle>
+  <msg name="title">Taobao Gadget</msg>
+  <msg name="screenshot">/ig/modules/chinagadgets/biosphere/taobao/ALL_ALL.png</msg>
+  <msg name="thumbnail">/ig/modules/chinagadgets/biosphere/taobao/ALL_ALL-thm.png</msg>
+  <msg name="price">Price(rmb)</msg>
+  <msg name="search">Taobao Search</msg>
+  <msg name="loading">Loading...</msg>
+  <msg name="hint">Welcome to try some product queries in Taobao.</msg>
+  <msg name="no_result">Try another query? No result found for </msg>
+  <msg name="tryagain"> please try again!</msg>
+</messagebundle>

@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="__MSG_title__"
+               width="560"
+               height="100"
+               author="Lenjoy"
+               author_email="lenjoy@google.com"
+               author_affiliation="Google Inc."
+               author_location="Beijing, China">
+    <Require feature="dynamic-height" />
+    <Locale messages="http://gadgetmisc.googlecode.com/svn/trunk/shenghuo/ALL_ALL.xml" />
+  </ModulePrefs>
+  <UserPref name="query"
+            display_name="Input Query"
+            datatype="string"
+            default_value="" />
+  <UserPref name="item_num"
+            display_name="Item Number"
+            datatype="string"
+            default_value="20" />
+  <Content type="html">
+<![CDATA[
+
+<style type="text/css">#gbar{height:22px}.gbh,.gbd{border-top:1px solid #c9d7f1;font-size:1px}.gbh{height:0;position:absolute;top:24px;width:100%}#gbi,#gbg,#gbs{background:#fff;left:0;position:absolute;text-align:left;visibility:hidden;z-index:1000}#gbi,#gbg{border:1px solid;border-color:#c9d7f1 #36c #36c #a2bae7;z-index:1001}#guser{padding-bottom:7px !important;text-align:right}#gbar,#guser{font-size:13px;padding-top:1px !important}@media all{.gb1,.gb3{height:22px;margin-right:.5em;vertical-align:top}#gbar{float:left}}.gb2{display:block;padding:.2em .5em}a.gb1,a.gb2,a.gb3{color:#00c !important}.gb2,.gb3{text-decoration:none}a.gb2:hover{background:#36c;color:#fff !important}</style>
+<script type="text/javascript">window.gbar={};(function(){function i(a,c,f){var e="on"+c;if(a.addEventListener)a.addEventListener(c,f,false);else if(a.attachEvent)a.attachEvent(e,f);else{var d=a[e];a[e]=function(){var b=d.apply(this,arguments),g=f.apply(this,arguments);return b==undefined?g:g==undefined?b:g&&b}}};var j=window.gbar,k,l;function m(a){var c=window.encodeURIComponent&&(document.forms[0].q||"").value;if(c)a.href=a.href.replace(/([?&])q=[^&]*|$/,function(f,e){return(e||"&")+"q="+encodeURIComponent(c)})}j.qs=m;function n(a,c,f,e,d,b){var g=document.getElementById(a),h=g.style;if(g){h.left=e?"auto":c+"px";h.right=e?c+"px":"auto";h.top=f+"px";h.visibility=l?"hidden":"visible";if(d){h.width=d+"px";h.height=b+"px"}else{n(k,c,f,e,g.offsetWidth,g.offsetHeight);l=l?"":a}}}j.tg=function(a){a=a||window.event;var c=0,f,e=window.navExtra,d,b=a.target||a.srcElement;a.cancelBubble=true;if(b.className!="gb3")b=b.parentNode;if(!k){d=document.createElement(Array.every||window.createPopup?"iframe":"div");d.frameBorder="0";d.src="javascript:''";k=b.parentNode.appendChild(d).id="gbs";i(document,"click",j.close)}a=b.getAttribute("aria-owns")||"gbi";d=b.offsetWidth;var g=b.offsetTop>20?46:24,h;do c+=b.offsetLeft||0;while(b=b.offsetParent);if(a=="gbi")for(d=document.getElementById(a);e&&(f=e.pop());)d.insertBefore(f,d.firstChild).className="gb2";else h=c=(document.documentElement.clientWidth||document.body.clientWidth)-c-d;l!=a&&j.close();n(a,c,g,h)};j.close=function(){l&&n(l,0,0)}})();</script>
+<style>
+body{font-family:Arial,Hei,sans-serif;color:#333;background-color:#fff;margin-top:3;margin-bottom:0;padding-bottom:0}ul{list-style:none;padding:0;margin:0}.SubTab{padding-top:2px;padding-bottom:2px;border-top:2px solid #39c}.SubTabOn{padding-top:2px;border-left:2px solid #39c;border-right:2px solid #39c;border-bottom:2px solid #39c;background-color:#e5ecf9;font-weight:bold}.SubTabOn a{text-decoration:none;;color:#000;;font-weight:bold}input,select{font-size:12px}a,.csl{text-decoration:underline;color:#24d;cursor:pointer}a img{border:0}.sprs{width:100%;background:#d5dff3;color:#000;padding:5px 1px 4px;border:0;border-top:1px solid #36c !important}.csct{font-weight:bold;background-color:#d5dff3;border-left:2px solid #36c;border-right:2px solid #36c;border-bottom:2px solid #36c;text-align:center;padding:3 8 0 8px}.cst{border-top:2px solid #36c;text-align:center;padding:3 8 0 8px}.cset{border-top:2px solid #36c}.Tab3{font-weight:bold;background-color:#d5dff3;border-left:1px solid #36c;border-right:1px solid #36c;border-top:1px solid #36c;text-align:center}.Tab4{border-bottom:1px solid #36c;text-align:center}.csp{position:absolute;visibility:hidden;padding:6px;z-index:10100;background:#fff;border-top:1px solid #c9d7f1;border-right:1px solid #36C;border-bottom:1px solid #36C;border-left:1px solid #a2bae7}.csst{width:100%;border:0}.Pop1{padding:6px;border:5px solid #c9d7f1}.GrayRow{background-color:#f1fcff}.cshlr{background-color:#d0d8ff}.cshrr{background-color:#ffeac0}.csh{color:#a8a8a8}.csmf{font-size:85%}.cssf{font-size:75%}.cstf{font-size:12px}.MouseHoverRow{background-color:#e8f4f7}.WebSource{font-size:10px}.WebSource A:active{color:green}.WebSource A:visited{color:green}.WebSource A:link{color:green}.TitleWidth{width:auto}.AutoWidth{width:auto}.AttributeWidth{width:10%}.StarPicWidth{width:16}TABLE.TableHeader{border-top:0 solid #ccc}.Bar1{background-image:url(http://shenghuo.google.cn/shenghuo/images/header_bg1.gif);background-position:bottom;background-repeat:repeat-x;background-color:#e4e9f3;border-right:1px solid #ccc;font-weight:bold;color:#000;padding:6 3 0 3px}.Bar2{background-image:url(http://shenghuo.google.cn/shenghuo/images/header_bg.gif);background-position:bottom;background-repeat:repeat-x;background-color:#e4e9f3;border-right:1px solid #ccc;font-weight:bold;color:#000;padding:6 3 0 3px}.Bar3{background-color:#e4e9f3;border-top:1px solid #a6a6a6;border-right:1px solid #ccc;font-weight:bold;color:#000;padding:3 3 0 3px}.Bar4{background-color:#e4e9f3;border-top:1px solid #fff;border-right:1px solid #ccc;font-weight:bold;color:#000;padding:3 3 0 3px}.Bar4_nobold{background-color:#e4e9f3;border-top:1px solid #fff;border-right:1px solid #ccc;color:#000;padding:3 3 0 3px}.Bar4_hover{background-color:#ffeac0;border-top:1px solid #fff;border-right:1px solid #ccc;font-weight:bold;color:#000;padding:3 3 0 3px}.pnp{font-size:12pt;font-weight:bold;color:#00c;text-align:right;vertical-align:top}.pnc{color:#a00;font-size:10pt;font-weight:bold;text-align:center}.pnpg{text-align:center;font-size:10pt;color:#000}.pnn{font-size:12pt;font-weight:bold;color:#00c;text-align:center;vertical-align:top}#sprc{background-color:#e8eef7;width:170px;padding:5px;vertical-align:top;top:0}#spff{width:170px;position:absolute}.spsm{width:168px;height:200px;border:1px solid #00C}.spbm{width:100%;height:100%;overflow:hidden}.sprt,.sprft{border:1px solid #ccc;line-height:140%}tbody#spras td{border-bottom:1px solid #eee;padding:6 0 6 3px}.spap{padding:2px;margin:5px 3px 5px 3px;white-space:nowarp}#spmvmt{width:100%;position:relative}#spmvlc{position:absolute;top:0;left:0;width:350px;height:0;overflow-y:auto;overflow-x:hidden}#spmvrc{position:relative;left:350px;margin-right:350px}.sbarf{border-bottom:1px solid #a6a6a6;padding:2 3 3 3px;vertical-align:top}.sbr{background-image:url(http://shenghuo.google.cn/shenghuo/images/header_bg3.gif);background-position:center bottom;background-repeat:repeat-x;line-height:140%}.sboh{background-color:#ffeac0;background-image:url(http://shenghuo.google.cn/shenghuo/images/header_bg3_1.gif);background-position:center bottom;background-repeat:repeat-x}.sbsa{background-image:url(http://shenghuo.google.cn/shenghuo/images/header_bg1.gif);background-position:center top;background-repeat:repeat-x;background-color:#fff}.sbi{width:100%}.sbseb{border-top:#f7f7f7 solid 1px;border-left:#f7f7f7 solid 1px;border-right:#96969D solid 1px;border-bottom:#96969D solid 1px;background-color:#ebecec;float:right;font-size:12px;text-align:center;vertical-align:middle;cursor:pointer;padding:1px;line-height:120%}.sbsm{font-family:simsun;float:right;margin:0 -3px 0 -8px}.sbasc{background-color:#fff;border:1px solid #bbb;width:100%}.sbwd{background-image:url(http://shenghuo.google.cn/shenghuo/images/arrow.gif);background-position:right center;background-repeat:no-repeat}.sbas{padding:1px 3px 1px 3px;border:0;width:100%;vertical-align:middle}.short_msg{white-space:pre-wrap;white-space:-moz-pre-wrap}.goog-date-picker th{text-align:center;font-size:75%;font-weight:bolder}.goog-date-picker td{text-align:center;vertical-align:middle;border:1px solid white;border-width:0 1px 1px 0;padding:1px 0;font-weight:bolder;font-size:75%}.goog-date-picker{-moz-user-focus:normal;-moz-user-select:none;position:absolute;border:1px solid #999;float:left;padding-left:1px;background:#fff}.goog-date-picker table{margin:inherit}.goog-date-picker-menu{position:absolute;background:threedface;border:1px solid gray;-moz-user-focus:normal}.goog-date-picker-menu ul{list-style:none;margin:0;padding:0}.goog-date-picker-menu ul li{cursor:default}.goog-date-picker-menu-selected{background:#ccf}.goog-date-picker td div{float:left}.goog-date-picker button{padding:0;margin:1px;border:1px solid gray;background:#fff}.goog-date-picker-week{padding:1px 3px}.goog-date-picker-wday{padding:1px 4px;color:#000}.goog-date-picker-today-cont{text-align:left !important}.goog-date-picker-none-cont{text-align:right !important}.goog-date-picker-head td{text-align:center;background:#ebeff9}.goog-date-picker-month{width:12ex}.goog-date-picker-other-month{color:#999}.goog-date-picker-year{width:6ex}.goog-date-picker table{border-collapse:collapse}.goog-date-picker-selected{background:#ccf !important;color:#00f !important}.goog-date-picker-today{font-weight:bolder !important;background-color:#69c;color:#fff}.sat{background:#fcc}.sun{background:#fcc;color:red}#hac{padding-top:12px;position:relative;*height:1%}#hac #har{position:absolute;bottom:0;right:0;margin:5px;font-size:75%;padding-left:18px;background:url(http://shenghuo.google.cn/shenghuo/images/rss.gif) no-repeat}#spilt{background-color:#ff8;font-weight:bold}#spwlt{}#spelt{background-color:#c00;color:#fff;font-weight:bold}.csfs{line-height:200%;padding:0 5px 0 5px;white-space:nowrap;float:left}#spd,#spsd{width:100%}.csrctl{width:20px;height:20px;background-image:url(http://shenghuo.google.cn/shenghuo/images/round_corner.gif)}.csrctr{width:20px;height:20px;background-image:url(http://shenghuo.google.cn/shenghuo/images/round_corner.gif);background-position:20px 0}.csrcbr{width:20px;height:20px;background-image:url(http://shenghuo.google.cn/shenghuo/images/round_corner.gif);background-position:20px 20px}.csrcbl{width:20px;height:20px;background-image:url(http://shenghuo.google.cn/shenghuo/images/round_corner.gif);background-position:0 20px}.csrct{background:#fff;border-top:1px solid #ababab}.csrcl{background:#fff;border-left:1px solid #ababab}.csrcr{background:#fff;border-right:1px solid #ababab}.csrcb{background:#fff;border-bottom:1px solid #ababab}.cssrc{width:4px;height:4px;overflow:hidden}.csnlb{background-image:url(http://shenghuo.google.cn/shenghuo/images/nav_logo.png)}.csmbb{background-image:url(http://shenghuo.google.cn/shenghuo/images/map_btns.png)}a .csbt,.csbt{font-weight:bold}.spmvi{width:auto}.csrf{padding:0 14px;line-height:150%}.csrts{font-size:14px}.csrfc{color:#666}tbody#spras .csett,.csett{color:#888;padding:1px;border-bottom:0}tbody#spras .csetc,.csetc{padding:1px;border-bottom:0;line-height:16px}.csetm{float:left;vertical-align:middle;margin-right:3px}.cseti{width:1px;height:100%;vertical-align:top;margin:10px 10px 0 10px}.csetr{margin:10px 10px 0 5px;vertical-align:top;height:100%}.csedi{width:1px;height:100%;vertical-align:top;margin:10px}.csedt{text-align:left;margin:12px 5px 10px 5px;font-size:16px;font-weight:bold}.csedth{border-right:2px solid #fff;padding:4px;font-weight:bold;background-color:#e8ecf9}.csedtr{border-bottom:1px solid #f1f1f1;height:100%;padding:0 5px}.tabNiftyleft{text-align:center;width:100%;cursor:pointer;font-size:12px;color:#24d;padding:2px 0;margin:0;border-bottom:1px solid #8ac}.niftyActive{text-align:center;cursor:pointer;font-size:12px;color:#000;background:#fff;padding:2px 0 2px 0;margin:0;border-right:1px solid #8ac;border-left:1px solid #8ac;font-weight:bolder}.tabNifty{text-align:center;cursor:pointer;font-size:12px;color:#24d;padding:2px 0;margin:0;border-bottom:1px solid #8ac}.tabNifty.s{width:59px}.niftyActive.s{width:60px}.b3f,.b4f{font-size:1px;overflow:hidden;display:block;height:1px}.b4f{margin:0 1px;border-right:1px solid #8ac;border-left:1px solid #8ac;background:#fff}.b3f{background:#8ac;margin:0 2px}.ticket_inputbox{width:116px;height:25px;font-size:12px;padding:3px 0}.clear{clear:both}.w310{width:310px;height:1px;font-size:1px}.w320{width:320px;height:1px;font-size:1px}.w620{width:620px;height:1px;font-size:1px}.w12{width:12px;height:1px;font-size:1px}#main{min-width:950px;*width:100%}#header{margin:0 30px;height:86px;position:relative}#header .logo01{width:144px;height:50px;position:absolute;top:12px;left:-10px}#header .seabox{width:300px;position:absolute;top:22px;left:146px}.wleft{width:304px}.ltop{background:url(http://shenghuo.google.cn/shenghuo/images/leftbox.gif) no-repeat;height:26px;font-size:90%;color:#24d;font-weight:bold}.ltop_r{background:url(http://shenghuo.google.cn/shenghuo/images/leftbox.gif) no-repeat 100% 0;width:7px;height:26px;float:right}.ltop_l{float:left;position:relative;bottom:-4px;left:4px;width:95%}.ltop span{display:block;float:left;padding:4px;padding-bottom:0}.ltop span.mlr{margin:0}.ltop span.havbg{border:1px solid #c9d3ec;border-bottom:0;background-color:#fff;height:22px}.lcon{border-left:1px solid #bbb;border-right:1px solid #bbb;border-bottom:1px solid #bbb;font-size:75%}.allq{width:288px;*width:302px;_width:302px;position:absolute;background-color:#fff;padding:7px;border-bottom:1px solid #bbb}.allq a{display:block;float:left;margin-right:8px;white-space:nowrap;margin-bottom:6px;height:14px}.scstr{float:left;margin-top:6px;margin-right:6px}.topbar{background-color:#e5ebf9;height:26px;padding-left:12px;padding-right:6px;font-size:90%;line-height:26px;font-weight:bold;color:#24d}.topbartb{border-left:1px solid #fff;border-right:1px solid #fff;background-color:#e5ebf9;height:1px;font-size:1px}.topbar select{float:right;margin-top:4px;margin-left:15px}.hometab td{padding-bottom:30px}.hlist{padding-top:8px;padding-left:6px}.hlist li{padding-left:24px;padding-bottom:8px;position:relative}.hlist li .hlitem{padding-left:16px}.hlist li .hlname{font-size:85%;padding-bottom:4px}.hlist li .hlname a{line-height:25px;padding-left:4px;_height:25px;*height:1%}.nbrhl{background:#e8ecf9}.hlist li .hltwobox{padding-left:4px}.hlist li .downico{background:url(http://shenghuo.google.cn/shenghuo/images/btn_d.gif) no-repeat;width:13px;height:12px;float:right;margin-top:6px;margin-right:6px;display:inline}.hlist li .hlimg{float:left;width:42px;margin-right:10px;position:relative}.hlist li .hlinfo{font-size:75%;display:table;*height:42px;position:relative}.hlist li .hlinfo div{padding-bottom:4px}.hlist li .hlinfo span{margin-right:8px}.hlist .morea{padding-left:51px;font-size:75%}.leftmap{text-align:center;padding-bottom:6px}.linum{top:3px;position:absolute;margin-left:-26px;padding-right:2px;width:20px;height:34px;font-size:75%;padding-top:2px;font-weight:bold;text-align:center}.linum.cor1{background:url(http://shenghuo.google.cn/shenghuo/images/p.gif)}.linum.cor2{background:url(http://shenghuo.google.cn/shenghuo/images/p.gif) -22px 0}.linum.cor3{background:url(http://shenghuo.google.cn/shenghuo/images/p.gif) -44px 0}.linum.cor4{background:url(http://shenghuo.google.cn/shenghuo/images/p.gif) -66px 0}.star{position:absolute;top:5px}.topbar .sel{float:left;margin:4px 5px;width:100px;height:24px}.topbar .sel td{padding-bottom:0}.topbar .sel div{line-height:140%;font-weight:normal;color:#000}.topbar .sel td input{padding-right:0}.hlimg img{width:42px;height:42px}.hlist li .hlimg.cyhlimg{width:70px;border:1px solid #ccc;padding:1px;text-align:center;height:70px}.hlist li .hlimg.cyhlimg img{width:70px;height:70px}.coms{line-height:1.8em;display:block}.hlist li .hlitem.cyhlitem{padding-left:0}.hlist li .hlname.syhlname a{display:inline;font-size:14px}.hlist li .hlname.syhlname span a{color:green;font-weight:normal;font-size:85%;text-decoration:none}.hlist li .hlinfo.syhlinfo{_float:left;*float:left;margin-left:4px;_height:1px}.topbar span{margin:0 8px}.topbar.sytopbar select{float:none;margin-top:4px;width:80px;margin-left:15px}.syresbox{padding-top:14px}.syresinfo{padding-left:24px;position:relative;float:left;width:370px;line-height:180%;font-size:75%;margin-right:10px}.syresname{font-size:14px;font-weight:bold}.syrespho span{margin-right:20px}.syrestj{margin-top:15px}.syrestj span{float:left}.syrestj a{white-space:nowrap;margin-right:10px;float:left}.syresbus{padding:15px 0}.syresbus a{margin-right:20px}.syresbb{padding-left:24px;font-size:75%}.syrescoms{line-height:150%}.syrespf{color:#999;line-height:160%}.syresurl{font-size:90%;padding-top:4px;padding-bottom:20px}.syresurl a{color:green;margin-right:15px}.syresstar{position:absolute;top:2px;left:4px}.hlyellow{border:1px double #ffd7d7;background:#fffae0;margin:10px 0}.pjitem{font-size:75%;padding:8px;padding-bottom:0}.pjitem td{line-height:150%;padding-bottom:20px;font-size:75%}.pjitem td.pjimgs{padding-top:2px}.pjurl{color:#999}.pjurl a{text-decoration:none}.pjurl a.dp{color:green}.srname{text-align:center;font-size:11px}.srname a{text-decoration:none;color:green}.srpiclist{font-size:90%;padding-top:15px;padding-left:15px}.srpiclist li{width:128px;float:left;margin-right:60px;padding-bottom:20px}.srpiclist li img{border:0}.rmitem{padding:10px}.rmtit{font-size:85%;padding-left:2px;font-weight:bold}.rmas{font-size:85%;width:240px;padding-top:10px}.rmas a{white-space:nowrap;margin-right:10px;float:left;display:block;padding:2px;margin-bottom:5px;font-weight:bold}.rmas a:hover{background:#6784C7;color:#fff;text-decoration:none}.xgtit{padding-bottom:10px;color:#24d;font-weight:bold;font-size:85%}.xgitem{padding-bottom:15px}.xgitem a{font-size:85%;font-weight:bold}.xgitem a.dp{font-size:75%;color:green;font-weight:normal;text-decoration:none;margin-left:10px}.xgstars{padding-top:4px}.hlist li .hlimg.eventimg{width:70px;border:1px solid #24d;text-align:center;height:70px}.hlist li .hlimg.eventimg img{width:70px;height:70px}.hlist li span.event_font,.event_font{color:#999;margin:0}.v3f,.v4f{font-size:1px;overflow:hidden;display:block;height:1px}.v4f{margin:0 1px;border-right:1px solid #bbb;border-left:1px solid #bbb;background-color:#fff}.v3f{background:#bbb;margin:0 2px}.v2f{border-right:1px solid #bbb;border-left:1px solid #bbb}.datem{position:relative}.ddline{position:absolute;width:304px;height:1px;background:#e6e6e6;font-size:1px;top:48px}.datem td,.datem th{padding:0;text-align:center}.datetop{font-size:85%;background:#ebeff9;line-height:200%;font-weight:bold;text-align:center}.datetop span{padding:0 3px}.datetop span.blue a{text-decoration:none}.datecontent{font-size:75%;font-weight:bold;line-height:180%}.black{color:#000}.event_d span{margin:0 8px 0 0}.event_d span.event_font{margin:0}.nonespace{padding:4px 0}.bordblue{border:1px solid #24d}.Ticketslist{margin:8px 0 0 0;line-height:180%;font-size:85%}.Ticketslist td{padding:0 0 0 8px;border-bottom:1px solid #f1f1f1}.Ticketslist td.csedth{border-right:2px solid #fff;padding:4px;font-weight:bold;background-color:#e8ecf9;line-height:140%;border:0}.Ticketslist a{color:green}.syresimg{float:left;padding-right:4px}#tabrow td{padding:0}.thlst{padding:0 5px;line-height:200%}.text_beside_searchbox{margin-bottom:6px}.text_beside_searchbox span{white-space:nowrap}
+</style>
+<script type="text/javascript">
+function CALL() {};
+var LIFESTYLE_hdf = {};
+LIFESTYLE_hdf["CGI.base_name"] = "SearchPage";
+LIFESTYLE_hdf["Debug"] = false;
+LIFESTYLE_hdf["CGI.HL"] = "zh-CN";
+LIFESTYLE_hdf["CGI.GL"] = "CN";
+LIFESTYLE_hdf["pageType"] = "search";
+LIFESTYLE_hdf["staticMap"] = true;
+LIFESTYLE_hdf["csi"] = true;
+LIFESTYLE_hdf["eventId"] = "EeqdStnHJJmqrQOA4ND6AQ";
+LIFESTYLE_hdf["cityAttributeName"] = "城市";
+</script>
+<script>
+LIFESTYLE_hdf["project"] = "shenghuo";
+</script>
+<style></style><style></style>
+
+<body style="height: auto;">
+<div id="gbar"><nobr><a href="http://www.google.cn/search?q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;hl=zh-CN&amp;tab=8w" onclick="gbar.qs(this)" class="gb1">网页</a> <a href="http://images.google.cn/images?q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;hl=zh-CN&amp;tab=8i" onclick="gbar.qs(this)" class="gb1">图片</a> <a href="http://video.google.cn/videosearch?q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;hl=zh-CN&amp;tab=8v" onclick="gbar.qs(this)" class="gb1">视频</a> <a href="http://ditu.google.cn/maps?q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;hl=zh-CN&amp;tab=8l" onclick="gbar.qs(this)" class="gb1">地图</a> <a href="http://news.google.cn/news?q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;hl=zh-CN&amp;tab=8n" onclick="gbar.qs(this)" class="gb1">资讯</a> <a href="http://wenda.tianya.cn/wenda/search?q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;hl=zh-CN&amp;tab=8H" onclick="gbar.qs(this)" class="gb3" style="color: green ! important;"><u style="height: 22px; vertical-align: top;">问答</u>»</a> <a href="http://laiba.tianya.cn/laiba/UniversalSearch?q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;hl=zh-CN&amp;tab=8G" onclick="gbar.qs(this)" class="gb3" style="color: green ! important;"><u style="height: 22px; vertical-align: top;">来吧</u>»</a> <a href="http://www.google.cn/products?q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;hl=zh-CN&amp;tab=8f" onclick="gbar.qs(this)" class="gb1">购物</a> <a href="http://www.google.cn/intl/zh-CN/options/" onclick="this.blur();gbar.tg(event);return !1" aria-haspopup="true" class="gb3"><u style="height: 22px; vertical-align: top;">更多</u> <small>▼</small></a><div id="gbi"><a href="http://www.google.cn/finance?q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;hl=zh-CN&amp;tab=8e" onclick="gbar.qs(this)" class="gb2">财经</a> <a href="http://blogsearch.google.cn/blogsearch?q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;hl=zh-CN&amp;tab=8b" onclick="gbar.qs(this)" class="gb2">博客</a> <a href="http://translate.google.cn/translate_t?q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;hl=zh-CN&amp;tab=8T" onclick="gbar.qs(this)" class="gb2">翻译</a> <a href="http://www.265.com/?q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;hl=zh-CN&amp;tab=8A" onclick="gbar.qs(this)" class="gb2">265导航</a> <div class="gb2"><div class="gbd"></div></div><a href="http://www.google.com/calendar/render?tab=8c" class="gb2">日历</a> <a href="http://picasaweb.google.com/lh/view?q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;hl=zh-CN&amp;tab=8q" onclick="gbar.qs(this)" class="gb2">照片</a> <a href="http://docs.google.com/?tab=8o" class="gb2">文档</a> <div class="gb2"><div class="gbd"></div></div><a href="http://tools.google.com/pinyin/?q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;hl=zh-CN&amp;tab=8I" onclick="gbar.qs(this)" class="gb2">输入法</a> <a href="http://toolbar.google.com/?q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;hl=zh-CN&amp;tab=8O" onclick="gbar.qs(this)" class="gb2">工具栏</a> <a href="http://pack.google.cn/?q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;hl=zh-CN&amp;tab=8P" onclick="gbar.qs(this)" class="gb2">软件精选</a> <div class="gb2"><div class="gbd"></div></div><a href="http://www.google.cn/intl/zh-CN/options/" class="gb2">更多 »</a> </div></nobr></div><div class="gbh" style="left: 0pt;"></div><div class="gbh" style="right: 0pt;"></div>
+<div style="padding-bottom: 4px;" align="right"><font size="-1"><a href="http://shenghuo.google.cn/shenghuo/savedlocation?type=read">我的收藏</a>&nbsp;&nbsp;<a href="http://www.google.cn/intl/zh-CN/shenghuo/about.html">帮助</a></font></div>
+<div style="clear: both; visibility: hidden;"></div>
+<table id="spil" style="border: 0pt none ; position: absolute; left: 874px; top: 0px; display: none;" cellpadding="0" cellspacing="0"><tbody><tr><td style="background: rgb(255, 255, 136) none repeat scroll 0% 0%; width: 4px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"></td><td id="spilt">正在载入，请稍候...</td><td style="background: rgb(255, 255, 136) none repeat scroll 0% 0%; width: 4px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"></td></tr><tr><td class="cssrc" style="background: transparent url(http://shenghuo.google.cn/shenghuo/rc?a=af&amp;c=FFFF88&amp;w=4&amp;h=4) repeat scroll 0pt 4px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"></td><td style="background: rgb(255, 255, 136) none repeat scroll 0% 0%; height: 4px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"></td><td class="cssrc" style="background: transparent url(http://shenghuo.google.cn/shenghuo/rc?a=af&amp;c=FFFF88&amp;w=4&amp;h=4) repeat scroll 4px 4px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"></td></tr></tbody></table>
+<table id="spwl" style="border: 0pt none ; position: absolute; display: none;" cellpadding="0" cellspacing="0"><tbody><tr><td style="background: rgb(255, 255, 136) none repeat scroll 0% 0%; width: 4px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"></td><td id="spwlt"></td><td style="background: rgb(255, 255, 136) none repeat scroll 0% 0%; width: 4px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"></td></tr><tr><td class="cssrc" style="background: transparent url(http://shenghuo.google.cn/shenghuo/rc?a=af&amp;c=FFFF88&amp;w=4&amp;h=4) repeat scroll 0pt 4px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"></td><td style="background: rgb(255, 255, 136) none repeat scroll 0% 0%; height: 4px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"></td><td class="cssrc" style="background: transparent url(http://shenghuo.google.cn/shenghuo/rc?a=af&amp;c=FFFF88&amp;w=4&amp;h=4) repeat scroll 4px 4px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"></td></tr></tbody></table>
+<table id="spel" style="border: 0pt none ; position: absolute; display: none;" cellpadding="0" cellspacing="0"><tbody><tr><td style="background: rgb(204, 0, 0) none repeat scroll 0% 0%; width: 4px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"></td><td id="spelt"></td><td style="background: rgb(204, 0, 0) none repeat scroll 0% 0%; width: 4px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"></td></tr><tr><td class="cssrc" style="background: transparent url(http://shenghuo.google.cn/shenghuo/rc?a=af&amp;c=CC0000&amp;w=4&amp;h=4) repeat scroll 0pt 4px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"></td><td style="background: rgb(204, 0, 0) none repeat scroll 0% 0%; height: 4px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"></td><td class="cssrc" style="background: transparent url(http://shenghuo.google.cn/shenghuo/rc?a=af&amp;c=CC0000&amp;w=4&amp;h=4) repeat scroll 4px 4px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"></td></tr></tbody></table>
+<div id="hac"><a id="har" href="http:/http://shenghuo.google.cn/shenghuo.google.cnhttp://shenghuo.google.cn/shenghuo/rss?a_n0=%E6%88%BF%E5%B1%8B&amp;a_n1=%E7%B1%BB%E5%88%AB&amp;a_y1=1&amp;a_o1=0&amp;a_v1=%E5%87%BA%E7%A7%9F&amp;a_n2=%E5%9F%8E%E5%B8%82&amp;a_y2=1&amp;a_o2=0&amp;a_v2=%E5%8C%97%E4%BA%AC&amp;scoring=ad_%E6%97%A5%E6%9C%9F:7&amp;start=0&amp;num=20&amp;q=%E4%BA%94%E9%81%93%E5%8F%A3">RSS</a>
+<table style="margin: 0pt 0pt 10px;" cellpadding="0" cellspacing="2">
+<form id="hahf" onsubmit="return false;"></form>
+<input name="q" value="五道口" type="hidden">
+<tbody><tr>
+<td rowspan="2" nowrap="nowrap" valign="bottom" width="195"><a href="http://shenghuo.google.cn/shenghuo/">
+<div style="width: 185px; height: 40px; background-position: 0pt -26px;" class="csnlb" id="logo"></div></a>
+</td>
+<td width="340">
+<table bgcolor="#e8ecf9" cellspacing="0" height="25">
+<tbody><tr id="tabrow" valign="bottom">
+<td width="10"><div class="tabNiftyleft" style="width: 10px;"></div></td><td><b class="b3f"></b><b class="b4f"></b>
+<div class="niftyActive s">房屋</div></td><td>
+<a style="outline-color: -moz-use-text-color; outline-style: none; outline-width: 0pt;" href="http://shenghuo.google.cn/shenghuo/search?a_n0=%E5%B7%A5%E4%BD%9C&amp;a_n1=%E5%9F%8E%E5%B8%82&amp;a_y1=1&amp;a_o1=0&amp;a_v1=%E5%8C%97%E4%BA%AC"><div class="tabNifty s">工作</div></a></td><td>
+<a style="outline-color: -moz-use-text-color; outline-style: none; outline-width: 0pt;" href="http://shenghuo.google.cn/shenghuo/search?a_n0=%E7%81%AB%E8%BD%A6%E7%A5%A8&amp;a_n1=%E5%9F%8E%E5%B8%82&amp;a_y1=1&amp;a_o1=0&amp;a_v1=%E5%8C%97%E4%BA%AC"><div class="tabNifty s">火车票</div></a></td><td>
+<a style="outline-color: -moz-use-text-color; outline-style: none; outline-width: 0pt;" href="http://shenghuo.google.cn/shenghuo/search?a_n0=%E9%A4%90%E9%A5%AE&amp;nl=%E5%8C%97%E4%BA%AC::::"><div class="tabNifty s">餐饮</div></a></td><td>
+<a style="outline-color: -moz-use-text-color; outline-style: none; outline-width: 0pt;" href="http://shenghuo.google.cn/shenghuo/search?a_n0=%E7%94%B5%E5%BD%B1%E4%BF%A1%E6%81%AF&amp;nl=%E5%8C%97%E4%BA%AC::::"><div class="tabNifty s">影讯</div></a></td><td>
+<a style="outline-color: -moz-use-text-color; outline-style: none; outline-width: 0pt;" href="http://shenghuo.google.cn/shenghuo/search?a_n0=%E6%B4%BB%E5%8A%A8&amp;nl=%E5%8C%97%E4%BA%AC::::"><div class="tabNifty s">活动</div></a></td><td>
+<a style="outline-color: -moz-use-text-color; outline-style: none; outline-width: 0pt;" href="http://shenghuo.google.cn/shenghuo/search?a_n0=%E5%A8%B1%E4%B9%90&amp;nl=%E5%8C%97%E4%BA%AC::::"><div class="tabNifty s">娱乐场所</div></a></td><td width="10"><div class="tabNiftyleft" style="width: 10px;"></div></td>
+</tr></tbody></table></td>
+<td></td></tr>
+<tr>
+<td style="font-size: 12px; white-space: nowrap;" height="37" valign="top">
+<input autocomplete="off"
+       id="haq" maxlength="512" value=""
+       style="padding: 3px 0pt; width: 100%; height: 25px; font-size: 12px; visibility: visible;"
+       hint="示例:国贸 或 五道口" ishint="0"
+       onfocus="CALL('sh.Hint.onInputFocus', this)"
+       onkeydown="doKeydown(event)"
+       onblur="goSearch()"
+       type="text">
+</td>
+<td valign="top"><input value="搜索房屋" style="padding: 0pt 8px; width: 90px; font-size: 12px; margin-left: 5px;" type="submit"></td>
+<td valign="top"><div class="text_beside_searchbox"><span style="padding: 0pt 0.5em;" class="csmf">
+北京</span>
+<span id="hamc" onclick="CALL('sh.CitySelector.popCities')" class="csl cssf">切换城市<img src="http://shenghuo.google.cn/shenghuo/images/arrow.gif" height="12" width="12"></span><span><span class="cssf csl" style="padding: 0pt 0.5em; margin-left: 5px;">
+<a href="http://shenghuo.google.cn/shenghuo/neighborhood?nl=%E5%8C%97%E4%BA%AC::::" onclick="CALL('sh.neighborhood.gotoHomepage', event)">搜索吃喝玩乐</a></span><span style="color: rgb(255, 0, 0); font-size: 11px; position: relative; top: -5px; left: -6px;">新!</span></span></div></td></tr>
+
+</tbody></table></div><div class="clear"></div>
+<div id="hacp" style="width: 210px;" class="csp">
+
+</div>
+<script type="text/javascript">
+LIFESTYLE_hdf.cityData = [
+"ABCDFGH",
+"JKLMNPQ",
+"RSTWXYZ"
+];
+</script>
+<table class="sprs" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td>
+<span>
+<span>
+<span name="类别" style="padding: 0pt 5px; font-weight: bold;" value="0|||出租" id="spha_0">
+出租</span>
+<span name="类别" class="csl" style="padding: 0pt 5px;" onclick="CALL('sh.SearchBox.switchToSubItemType','房屋', '类别', '出售')" value="0|||出售" id="spha_1">
+出售</span>
+<span name="类别" class="csl" style="padding: 0pt 5px;" onclick="CALL('sh.SearchBox.switchToSubItemType','房屋', '类别', '合租')" value="0|||合租" id="spha_2">
+合租</span>
+</span>
+<span name="小区" class="csl" style="padding: 0pt 5px;" id="havn小区" onclick="CALL('sh.SearchBox.switchToItemType','小区')" value="小区">楼盘</span>
+</span>
+</td>
+<td style="visibility: visible;" id="prs" nowrap="nowrap" align="right">
+<font size="-1">约有<b id="ptr">4095</b>项搜索结果，以下是第<b id="psn">1</b><b>-</b><b id="pen">20</b>项&nbsp;</font></td>
+</tr>
+</tbody>
+</table>
+<table class="csst" cellpadding="0" cellspacing="0">
+<form id="spmf" onsubmit="return false;"><input value="f" name="aq" type="hidden"><input disabled="disabled" value="五道口" name="oq" type="hidden"><input value="f" name="aq" type="hidden"><input disabled="disabled" value="五道口" name="oq" type="hidden"></form>
+<colgroup>
+<col>
+<col style="width: 200px;">
+</colgroup>
+<tbody><tr>
+<td valign="top">
+<div style="background-color: rgb(232, 238, 247);">
+<div><div id="spsd" style="display: none; width: 100%;"></div></div><div><div id="spds" style="width: 100%;"><span style="font-weight: bold;" class="cstf csfs">北京:</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '海淀区', false,{index:'0', env:'district_list'})">海淀区</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '朝阳区', false,{index:'1', env:'district_list'})">朝阳区</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '东城区', false,{index:'2', env:'district_list'})">东城区</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '西城区', false,{index:'3', env:'district_list'})">西城区</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '崇文区', false,{index:'4', env:'district_list'})">崇文区</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '宣武区', false,{index:'5', env:'district_list'})">宣武区</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '丰台区', false,{index:'6', env:'district_list'})">丰台区</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '石景山区', false,{index:'7', env:'district_list'})">石景山区</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '房山区', false,{index:'8', env:'district_list'})">房山区</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '大兴区', false,{index:'9', env:'district_list'})">大兴区</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '通州区', false,{index:'10', env:'district_list'})">通州区</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '顺义区', false,{index:'11', env:'district_list'})">顺义区</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '昌平区', false,{index:'12', env:'district_list'})">昌平区</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '密云县', false,{index:'13', env:'district_list'})">密云县</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '怀柔区', false,{index:'14', env:'district_list'})">怀柔区</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '延庆县', false,{index:'15', env:'district_list'})">延庆县</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '平谷区', false,{index:'16', env:'district_list'})">平谷区</span><span class="csl cstf csfs" onclick="CALL('sh.SearchPageMapView.clearLocationRestrict'); CALL('sh.SearchBox.searchByClick', '地区', '门头沟区', false,{index:'17', env:'district_list'})">门头沟区</span><div class="clear"></div></div></div><input id="spd_海淀区" value="中关村,北京大学,清华大学,上地,白颐路,西三环,学院路,西直门外,紫竹院,八里庄,公主坟,五道口,双榆树,西三旗,清河,马连洼,青龙桥,香山,田村路,永定路,万寿路,羊坊店,甘家口,北航,北下关,北太平庄,万柳,东升,四季青,西北旺,温泉镇,苏家坨,上庄,魏公村,航天桥,花园路,动物园" type="hidden"><input id="spd_朝阳区" value="亚运村,三元桥,建外大街,国展,三里屯,劲松,燕莎,团结湖,京广桥,望京,安贞桥,潘家园,酒仙桥,呼家楼,双井,垡头,六里屯,麦子店,左家庄,香河园,首都机场,小关,和平街,小红门,十八里店,豆各庄,黑庄户,王四营,南磨房,三间房,管庄,高碑店,常营,平房,东风,东坝,金盏,将台,崔各庄,孙河,来广营,太阳宫,大屯,奥运村,国贸,西坝河,朝外大街,红庙,八里庄,花家地,安华桥,将台路" type="hidden"><input id="spd_东城区" value="东直门,北新桥,交道口,景山,东四十条,工体,朝阳门,建国门,北京站,和平里,雍和宫,东直门外,王府井,东单,东四,东华门,安定门" type="hidden"><input id="spd_西城区" value="白云路,西便门,南礼士路,月坛,阜成门,展览路,西单,西四,西直门,新街口,什刹海,地安门,鼓楼,德外,金融街,西长安街,德胜门" type="hidden"><input id="spd_崇文区" value="前门,天坛,崇文门外,龙潭湖,东花市,体育馆路,永定门外" type="hidden"><input id="spd_宣武区" value="白广路,大观园,菜市口,虎坊桥,长椿街,和平门,天桥,宣武门,大栅栏,珠市口,牛街,白纸坊,陶然亭,椿树街道,广安门内,广安门外" type="hidden"><input id="spd_丰台区" value="玉泉营,方庄,丰台路,卢沟桥,太平桥,长辛店,云岗,新村,右安门,马家堡,西罗园,大红门,南苑,东高地,东铁匠营" type="hidden"><input id="spd_石景山区" value="八宝山,古城,苹果园,鲁谷,老山,八角,金顶街,广宁,五里坨" type="hidden"><input id="spd_房山区" value="城关,东风,向阳,迎风,新镇,星城,良乡,琉璃河,周口店,长阳,阎村,窦店,韩村河,石楼,长沟,大石窝,张坊,十渡,青龙湖,河北镇,佛子庄,大安山,史家营,南窖,霞云岭,蒲洼" type="hidden"><input id="spd_大兴区" value="兴丰,清源,林校路,黄村,西红门,旧宫,亦庄,瀛海,青云店,长子营,采育,安定,魏善庄,礼贤,榆垡,庞各庄,北臧村" type="hidden"><input id="spd_通州区" value="北苑,中仓,新华,玉桥,永顺,梨园,宋庄,潞城,张家湾,台湖,马驹桥,西集,漷县,永乐店" type="hidden"><input id="spd_顺义区" value="胜利,光明,石园,仁和,马坡,牛栏山,杨镇,南法信,后沙峪,天竺,北小营,南彩,木林,龙湾屯,张镇,大孙各庄,北务,李遂,李桥,高丽营,赵全营,北石槽" type="hidden"><input id="spd_昌平区" value="城北,城南,南口,马池口,沙河,回龙观,天通苑,流村,阳坊,十三陵,长陵,南邵,崔村,兴寿,小汤山,百善,东小口,北七家" type="hidden"><input id="spd_密云县" value="密云,十里堡,河南寨,东邵渠,巨各庄,大城子,北庄,太师屯,新城子,古北口,高岭,不老屯,冯家峪,石城,西田各庄,溪翁庄,穆家峪" type="hidden"><input id="spd_怀柔区" value="龙山,泉河,庙城,雁栖,怀柔,杨宋,北房,怀北,渤海镇,九渡河,桥梓,琉璃庙,汤河口,宝山" type="hidden"><input id="spd_延庆县" value="延庆,康庄,八达岭,大榆树,井庄,永宁,四海,千家店,旧县,沈家营,张山营,大庄科,香营,刘斌堡,珍珠泉" type="hidden"><input id="spd_平谷区" value="滨河,兴谷,渔阳,峪口,马坊,金海湖,平谷镇,大兴庄,马昌营,东高村,夏各庄,南独乐河,镇罗营,大华山,刘家店,王辛庄,山东庄,黄松峪,熊儿寨" type="hidden"><input id="spd_门头沟区" value="大峪,城子街道,东辛房,大台,王平,龙泉,永定,潭柘寺,军庄,妙峰山,雁翅,斋堂,清水" type="hidden"><input id="spda" value="地区" type="hidden"><input id="spdl" value="海淀区,朝阳区,东城区,西城区,崇文区,宣武区,丰台区,石景山区,房山区,大兴区,通州区,顺义区,昌平区,密云县,怀柔区,延庆县,平谷区,门头沟区" type="hidden">
+</div>
+<div id="communityResult" style="padding: 5px; background-color: rgb(232, 238, 247); display: none;">
+</div>
+<div id="sbso" class="csp cssf" style="width: 100px;">
+</div>
+<table cellpading="0" class="csst sprft" border="0" cellspacing="0">
+<colgroup>
+<col class="TitleWidth">
+<col class="AttributeWidth">
+<col class="AttributeWidth">
+<col class="AttributeWidth">
+<col class="AttributeWidth">
+<col class="AttributeWidth">
+<col class="AttributeWidth">
+<col style="display: none;">
+</colgroup>
+<tbody id="spar">
+<tr class="cssf">
+<td class="sbarf">
+<div style="overflow: hidden; width: 170px; height: 1px;"></div>
+<span style="font-weight: bold;">
+房屋信息
+</span><br>
+<table class="csst cstf" cellpadding="0" cellspacing="0"><tbody><tr>
+<td width="1"><nobr>包含关键字:
+<input autocomplete="off" id="sbkw" value=""
+       maxlength="512"
+       onkeydown="doIKeydown(event)"
+       onblur="goISearch()"
+       type="text"></nobr></td>
+<td><input value="搜索" id="sbs" type="submit" onclick="goSearch()"></td>
+
+</tr></tbody></table>
+</td>
+<td class="sbarf" id="sbarf价格" name="sbarf">
+<div style="overflow: hidden; width: 68px; height: 1px;"></div>
+<span id="sbseb价格" class="sbseb">排序</span><b id="sbsm价格" class="sbsm"></b>
+<span style="font-weight: bold;">价格</span><div>
+<table onclick="CALL('sh.Select.expandOptions', 'sbai价格', this);" class="sbasc sbwd" cellpadding="0" cellspacing="0">
+<colgroup>
+<col>
+<col style="width: 14px;">
+</colgroup>
+<tbody><tr>
+<td><input class="sbas" style="cursor: default;" readonly="readonly" id="sbai价格" maxlength="100" value="不限" internalvalue="" unrestrictedvalue="不限" type="text"></td><td></td>
+</tr>
+</tbody></table>
+<div class="csp cstf" style="width: auto;" id="sossbai价格">
+<div id="sosbai价格_0" internalvalue="1||2000|" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai价格', '1||2000|', '￥2,000以下');" nowrap="">
+￥2,000以下
+</div>
+<div id="sosbai价格_1" internalvalue="3|2000|3000|" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai价格', '3|2000|3000|', '￥2,000至￥3,000');" nowrap="">
+￥2,000至￥3,000
+</div>
+<div id="sosbai价格_2" internalvalue="3|3000|4000|" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai价格', '3|3000|4000|', '￥3,000至￥4,000');" nowrap="">
+￥3,000至￥4,000
+</div>
+<div id="sosbai价格_3" internalvalue="3|4000|5000|" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai价格', '3|4000|5000|', '￥4,000至￥5,000');" nowrap="">
+￥4,000至￥5,000
+</div>
+<div id="sosbai价格_4" internalvalue="3|5000|9000|" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai价格', '3|5000|9000|', '￥5,000至￥9,000');" nowrap="">
+￥5,000至￥9,000
+</div>
+<div id="sosbai价格_5" internalvalue="2|9000||" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai价格', '2|9000||', '￥9,000以上');" nowrap="">
+￥9,000以上
+</div>
+<div id="sosbai价格_6" internalvalue="" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai价格', '', '不限');" nowrap="">
+不限
+</div>
+<div style="white-space: nowrap;">
+<input id="sosbai价格_f" style="width: 60px;" maxlength="16">
+-
+<input id="sosbai价格_t" style="width: 60px;" maxlength="16">
+</div>
+<div>
+<button id="sosbai价格_b" class="cstf" style="float: right;">确认</button>
+<span class="cstf" style="display: none; color: rgb(255, 0, 0);" id="sosbai价格_i"></span>
+</div>
+</div>
+</div>
+</td>
+<td class="sbarf" id="sbarf地区" name="sbarf">
+<div style="overflow: hidden; width: 68px; height: 1px;"></div>
+<span style="font-weight: bold;">房屋位置</span><div>
+<table onclick="CALL('sh.Select.expandOptions', 'sbai地区', this);" class="sbasc sbwd" cellpadding="0" cellspacing="0">
+<colgroup>
+<col>
+<col style="width: 14px;">
+</colgroup>
+<tbody><tr>
+<td><input class="sbas" style="cursor: default;" readonly="readonly" id="sbai地区" maxlength="100" value="不限" internalvalue="" unrestrictedvalue="不限" type="text"></td><td></td>
+</tr>
+</tbody></table>
+<div class="csp cstf" style="width: auto;" id="sossbai地区">
+<div id="sosbai地区_0" internalvalue="0|||朝阳 区" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai地区', '0|||朝阳 区', '朝阳 区');" nowrap="">
+朝阳 区
+</div>
+<div id="sosbai地区_1" internalvalue="0|||海淀 区" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai地区', '0|||海淀 区', '海淀 区');" nowrap="">
+海淀 区
+</div>
+<div id="sosbai地区_2" internalvalue="0|||丰台 区" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai地区', '0|||丰台 区', '丰台 区');" nowrap="">
+丰台 区
+</div>
+<div id="sosbai地区_3" internalvalue="0|||东 城区" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai地区', '0|||东 城区', '东 城区');" nowrap="">
+东 城区
+</div>
+<div id="sosbai地区_4" internalvalue="0|||西 城区" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai地区', '0|||西 城区', '西 城区');" nowrap="">
+西 城区
+</div>
+<div id="sosbai地区_5" internalvalue="0|||昌平 区" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai地区', '0|||昌平 区', '昌平 区');" nowrap="">
+昌平 区
+</div>
+<div id="sosbai地区_6" internalvalue="0|||宣武 区" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai地区', '0|||宣武 区', '宣武 区');" nowrap="">
+宣武 区
+</div>
+<div id="sosbai地区_7" internalvalue="0|||崇文 区" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai地区', '0|||崇文 区', '崇文 区');" nowrap="">
+崇文 区
+</div>
+<div id="sosbai地区_8" internalvalue="0|||石景山 区" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai地区', '0|||石景山 区', '石景山 区');" nowrap="">
+石景山 区
+</div>
+<div id="sosbai地区_9" internalvalue="0|||通州 区" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai地区', '0|||通州 区', '通州 区');" nowrap="">
+通州 区
+</div>
+<div id="sosbai地区_10" internalvalue="" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai地区', '', '不限');" nowrap="">
+不限
+</div>
+</div>
+</div>
+</td>
+<td class="sbarf" id="sbarf房型" name="sbarf">
+<div style="overflow: hidden; width: 68px; height: 1px;"></div>
+<span style="font-weight: bold;">房型</span><div>
+<table onclick="CALL('sh.Select.expandOptions', 'sbai房型', this);" class="sbasc sbwd" cellpadding="0" cellspacing="0">
+<colgroup>
+<col>
+<col style="width: 14px;">
+</colgroup>
+<tbody><tr>
+<td><input class="sbas" style="cursor: default;" readonly="readonly" id="sbai房型" maxlength="100" value="不限" internalvalue="" unrestrictedvalue="不限" type="text"></td><td></td>
+</tr>
+</tbody></table>
+<div class="csp cstf" style="width: auto;" id="sossbai房型">
+<div id="sosbai房型_0" internalvalue="0|||1室" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai房型', '0|||1室', '1室');" nowrap="">
+1室
+</div>
+<div id="sosbai房型_1" internalvalue="0|||2室" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai房型', '0|||2室', '2室');" nowrap="">
+2室
+</div>
+<div id="sosbai房型_2" internalvalue="0|||3室" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai房型', '0|||3室', '3室');" nowrap="">
+3室
+</div>
+<div id="sosbai房型_3" internalvalue="0|||4室" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai房型', '0|||4室', '4室');" nowrap="">
+4室
+</div>
+<div id="sosbai房型_4" internalvalue="" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai房型', '', '不限');" nowrap="">
+不限
+</div>
+</div>
+</div>
+</td>
+<td class="sbarf" id="sbarf面积" name="sbarf">
+<div style="overflow: hidden; width: 68px; height: 1px;"></div>
+<span id="sbseb面积" class="sbseb">排序</span><b id="sbsm面积" class="sbsm"></b>
+<span style="font-weight: bold;">面积</span><div>
+<table onclick="CALL('sh.Select.expandOptions', 'sbai面积', this);" class="sbasc sbwd" cellpadding="0" cellspacing="0">
+<colgroup>
+<col>
+<col style="width: 14px;">
+</colgroup>
+<tbody><tr>
+<td><input class="sbas" style="cursor: default;" readonly="readonly" id="sbai面积" maxlength="100" value="不限" internalvalue="" unrestrictedvalue="不限" type="text"></td><td></td>
+</tr>
+</tbody></table>
+<div class="csp cstf" style="width: auto;" id="sossbai面积">
+<div id="sosbai面积_0" internalvalue="1||40|" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai面积', '1||40|', '40以下');" nowrap="">
+40以下
+</div>
+<div id="sosbai面积_1" internalvalue="3|40|60|" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai面积', '3|40|60|', '40至60');" nowrap="">
+40至60
+</div>
+<div id="sosbai面积_2" internalvalue="3|60|70|" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai面积', '3|60|70|', '60至70');" nowrap="">
+60至70
+</div>
+<div id="sosbai面积_3" internalvalue="3|70|80|" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai面积', '3|70|80|', '70至80');" nowrap="">
+70至80
+</div>
+<div id="sosbai面积_4" internalvalue="3|80|100|" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai面积', '3|80|100|', '80至100');" nowrap="">
+80至100
+</div>
+<div id="sosbai面积_5" internalvalue="3|100|200|" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai面积', '3|100|200|', '100至200');" nowrap="">
+100至200
+</div>
+<div id="sosbai面积_6" internalvalue="2|200||" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai面积', '2|200||', '200以上');" nowrap="">
+200以上
+</div>
+<div id="sosbai面积_7" internalvalue="" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai面积', '', '不限');" nowrap="">
+不限
+</div>
+<div style="white-space: nowrap;">
+<input id="sosbai面积_f" style="width: 60px;" maxlength="16">
+-
+<input id="sosbai面积_t" style="width: 60px;" maxlength="16">
+</div>
+<div>
+<button id="sosbai面积_b" class="cstf" style="float: right;">确认</button>
+<span class="cstf" style="display: none; color: rgb(255, 0, 0);" id="sosbai面积_i"></span>
+</div>
+</div>
+</div>
+</td>
+<td class="sbarf sbsa" id="sbarf日期" name="sbarf">
+<div style="overflow: hidden; width: 100px; height: 1px;"></div>
+<span id="sbseb日期" class="sbseb">排序</span><b id="sbsm日期" class="sbsm">↓</b>
+<span style="font-weight: bold;">更新时间</span><div>
+<table onclick="CALL('sh.Select.expandOptions', 'sbai日期', this);" class="sbasc sbwd" cellpadding="0" cellspacing="0">
+<colgroup>
+<col>
+<col style="width: 14px;">
+</colgroup>
+<tbody><tr>
+<td><input class="sbas" style="cursor: default;" readonly="readonly" id="sbai日期" maxlength="100" value="不限" internalvalue="" unrestrictedvalue="不限" type="text"></td><td></td>
+</tr>
+</tbody></table>
+<div class="csp cstf" style="width: auto;" id="sossbai日期">
+<div id="sosbai日期_0" internalvalue="3|0|0|" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai日期', '3|0|0|', ' 一天内');" nowrap="">
+一天内
+</div>
+<div id="sosbai日期_1" internalvalue="3|1|0|" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai日期', '3|1|0|', ' 两天内');" nowrap="">
+两天内
+</div>
+<div id="sosbai日期_2" internalvalue="3|6|0|" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai日期', '3|6|0|', '一周内');" nowrap="">
+一周内
+</div>
+<div id="sosbai日期_3" internalvalue="3|29|0|" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai日期', '3|29|0|', '一个月内');" nowrap="">
+一个月内
+</div>
+<div id="sosbai日期_4" internalvalue="" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai日期', '', '不限');" nowrap="">
+不限
+</div>
+</div>
+</div>
+</td>
+<td class="sbarf" id="sbarf来源" name="sbarf">
+<div style="overflow: hidden; width: 68px; height: 1px;"></div>
+<span style="font-weight: bold;">来源</span><div>
+<table onclick="CALL('sh.Select.expandOptions', 'sbai来源', this);" class="sbasc sbwd" cellpadding="0" cellspacing="0">
+<colgroup>
+<col>
+<col style="width: 14px;">
+</colgroup>
+<tbody><tr>
+<td><input class="sbas" style="cursor: default;" readonly="readonly" id="sbai来源" maxlength="100" value="不限" internalvalue="" unrestrictedvalue="不限" type="text"></td><td></td>
+</tr>
+</tbody></table>
+<div class="csp cstf" style="width: auto;" id="sossbai来源">
+<div id="sosbai来源_0" internalvalue="0|||中介" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai来源', '0|||中介', '中介');" nowrap="">
+中介
+</div>
+<div id="sosbai来源_1" internalvalue="0|||个人" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai来源', '0|||个人', '个人');" nowrap="">
+个人
+</div>
+<div id="sosbai来源_2" internalvalue="" style="cursor: default; width: 100%;" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" onclick="CALL('sh.Select.onOptionClick', 'sbai来源', '', '不限');" nowrap="">
+不限
+</div>
+</div>
+</div>
+</td>
+<td style="display: none;"></td>
+</tr>
+</tbody>
+<tbody id="spras">
+         
+         
+</tbody></table>
+</tbody>
+</table>
+</td>
+<td id="sprc">
+
+
+<div id="sprq"><p style="margin: 0.75em 0pt;">
+<table border="0" cellpadding="1" cellspacing="1" width="100%">
+<tbody>
+<tr>
+<td class="cstf csrfc" nowrap="nowrap" valign="top" width="60">
+相关搜索:
+</td>
+<td valign="top">
+<table border="0" cellpadding="0" cellspacing="1">
+<tbody>
+<tr>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '中关村', false, {index:'1',isRelatedQuery:true});" valign="top">中关村</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '学院路', false, {index:'2',isRelatedQuery:true});" valign="top">学院路</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '华清嘉园', false, {index:'3',isRelatedQuery:true});" valign="top">华清嘉园</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '清华', false, {index:'4',isRelatedQuery:true});" valign="top">清华</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '语言大学', false, {index:'5',isRelatedQuery:true});" valign="top">语言大学</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '清华大学', false, {index:'6',isRelatedQuery:true});" valign="top">清华大学</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '林业大学', false, {index:'7',isRelatedQuery:true});" valign="top">林业大学</td>
+</tr>
+<tr>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '上地', false, {index:'8',isRelatedQuery:true});" valign="top">上地</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '北大', false, {index:'9',isRelatedQuery:true});" valign="top">北大</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '北航', false, {index:'10',isRelatedQuery:true});" valign="top">北航</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '中关村学院', false, {index:'11',isRelatedQuery:true});" valign="top">中关村学院</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '知春路', false, {index:'12',isRelatedQuery:true});" valign="top">知春路</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '展春园', false, {index:'13',isRelatedQuery:true});" valign="top">展春园</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '学清路', false, {index:'14',isRelatedQuery:true});" valign="top">学清路</td>
+</tr>
+<tr>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '清华东路', false, {index:'15',isRelatedQuery:true});" valign="top">清华东路</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '成府路', false, {index:'16',isRelatedQuery:true});" valign="top">成府路</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '东王庄小区', false, {index:'17',isRelatedQuery:true});" valign="top">东王庄小区</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '金码大厦', false, {index:'18',isRelatedQuery:true});" valign="top">金码大厦</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '北京大学', false, {index:'19',isRelatedQuery:true});" valign="top">北京大学</td>
+<td class="csl csrf csrts" onclick="CALL('sh.SearchBox.searchByClick', 'q', '清河', false, {index:'20',isRelatedQuery:true});" valign="top">清河</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</p></div>
+                                                                                                    
+<div style="display: none;" id="sptc"></div>
+<br><br>
+<center id="pp"><table cellpadding="0" cellspacing="0"><tbody><tr><td id="pnp" valign="top"><div style="overflow: hidden; float: right; width: 18px; height: 26px; background-position: -26px 0pt;" class="csnlb"></div></td><td id="pnpg1" class="pnc" valign="top"><div style="overflow: hidden; width: 16px; height: 26px; background-position: -45px 0pt;" class="csnlb"></div>1</td><td id="pnpg2" class="pnpg csl" valign="top"><a href="http://shenghuo.google.cn/shenghuo/search?a_y0=9&amp;a_n0=%E6%88%BF%E5%B1%8B&amp;q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;view=Table&amp;scoring=ad_%E6%97%A5%E6%9C%9F%3A7&amp;a_n1=%E5%9F%8E%E5%B8%82&amp;a_y1=1&amp;a_o1=0&amp;a_v1=%E5%8C%97%E4%BA%AC&amp;a_n2=%E6%97%A5%E6%9C%9F&amp;a_y2=7&amp;a_o2=3&amp;a_f2=2%2F9%2F2009&amp;a_t2=2%2F9%2F2009&amp;a_n3=%E7%B1%BB%E5%88%AB&amp;a_y3=1&amp;a_o3=0&amp;a_v3=%E5%87%BA%E7%A7%9F&amp;num=20&amp;start=20"><div style="overflow: hidden; width: 16px; height: 26px; background-position: -60px 0pt;" class="csnlb"></div>2</a></td><td id="pnpg3" class="pnpg csl" valign="top"><a href="http://shenghuo.google.cn/shenghuo/search?a_y0=9&amp;a_n0=%E6%88%BF%E5%B1%8B&amp;q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;view=Table&amp;scoring=ad_%E6%97%A5%E6%9C%9F%3A7&amp;a_n1=%E5%9F%8E%E5%B8%82&amp;a_y1=1&amp;a_o1=0&amp;a_v1=%E5%8C%97%E4%BA%AC&amp;a_n2=%E6%97%A5%E6%9C%9F&amp;a_y2=7&amp;a_o2=3&amp;a_f2=2%2F9%2F2009&amp;a_t2=2%2F9%2F2009&amp;a_n3=%E7%B1%BB%E5%88%AB&amp;a_y3=1&amp;a_o3=0&amp;a_v3=%E5%87%BA%E7%A7%9F&amp;num=20&amp;start=40"><div style="overflow: hidden; width: 16px; height: 26px; background-position: -60px 0pt;" class="csnlb"></div>3</a></td><td id="pnpg4" class="pnpg csl" valign="top"><a href="http://shenghuo.google.cn/shenghuo/search?a_y0=9&amp;a_n0=%E6%88%BF%E5%B1%8B&amp;q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;view=Table&amp;scoring=ad_%E6%97%A5%E6%9C%9F%3A7&amp;a_n1=%E5%9F%8E%E5%B8%82&amp;a_y1=1&amp;a_o1=0&amp;a_v1=%E5%8C%97%E4%BA%AC&amp;a_n2=%E6%97%A5%E6%9C%9F&amp;a_y2=7&amp;a_o2=3&amp;a_f2=2%2F9%2F2009&amp;a_t2=2%2F9%2F2009&amp;a_n3=%E7%B1%BB%E5%88%AB&amp;a_y3=1&amp;a_o3=0&amp;a_v3=%E5%87%BA%E7%A7%9F&amp;num=20&amp;start=60"><div style="overflow: hidden; width: 16px; height: 26px; background-position: -60px 0pt;" class="csnlb"></div>4</a></td><td id="pnpg5" class="pnpg csl" valign="top"><a href="http://shenghuo.google.cn/shenghuo/search?a_y0=9&amp;a_n0=%E6%88%BF%E5%B1%8B&amp;q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;view=Table&amp;scoring=ad_%E6%97%A5%E6%9C%9F%3A7&amp;a_n1=%E5%9F%8E%E5%B8%82&amp;a_y1=1&amp;a_o1=0&amp;a_v1=%E5%8C%97%E4%BA%AC&amp;a_n2=%E6%97%A5%E6%9C%9F&amp;a_y2=7&amp;a_o2=3&amp;a_f2=2%2F9%2F2009&amp;a_t2=2%2F9%2F2009&amp;a_n3=%E7%B1%BB%E5%88%AB&amp;a_y3=1&amp;a_o3=0&amp;a_v3=%E5%87%BA%E7%A7%9F&amp;num=20&amp;start=80"><div style="overflow: hidden; width: 16px; height: 26px; background-position: -60px 0pt;" class="csnlb"></div>5</a></td><td id="pnpg6" class="pnpg csl" valign="top"><a href="http://shenghuo.google.cn/shenghuo/search?a_y0=9&amp;a_n0=%E6%88%BF%E5%B1%8B&amp;q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;view=Table&amp;scoring=ad_%E6%97%A5%E6%9C%9F%3A7&amp;a_n1=%E5%9F%8E%E5%B8%82&amp;a_y1=1&amp;a_o1=0&amp;a_v1=%E5%8C%97%E4%BA%AC&amp;a_n2=%E6%97%A5%E6%9C%9F&amp;a_y2=7&amp;a_o2=3&amp;a_f2=2%2F9%2F2009&amp;a_t2=2%2F9%2F2009&amp;a_n3=%E7%B1%BB%E5%88%AB&amp;a_y3=1&amp;a_o3=0&amp;a_v3=%E5%87%BA%E7%A7%9F&amp;num=20&amp;start=100"><div style="overflow: hidden; width: 16px; height: 26px; background-position: -60px 0pt;" class="csnlb"></div>6</a></td><td id="pnpg7" class="pnpg csl" valign="top"><a href="http://shenghuo.google.cn/shenghuo/search?a_y0=9&amp;a_n0=%E6%88%BF%E5%B1%8B&amp;q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;view=Table&amp;scoring=ad_%E6%97%A5%E6%9C%9F%3A7&amp;a_n1=%E5%9F%8E%E5%B8%82&amp;a_y1=1&amp;a_o1=0&amp;a_v1=%E5%8C%97%E4%BA%AC&amp;a_n2=%E6%97%A5%E6%9C%9F&amp;a_y2=7&amp;a_o2=3&amp;a_f2=2%2F9%2F2009&amp;a_t2=2%2F9%2F2009&amp;a_n3=%E7%B1%BB%E5%88%AB&amp;a_y3=1&amp;a_o3=0&amp;a_v3=%E5%87%BA%E7%A7%9F&amp;num=20&amp;start=120"><div style="overflow: hidden; width: 16px; height: 26px; background-position: -60px 0pt;" class="csnlb"></div>7</a></td><td id="pnpg8" class="pnpg csl" valign="top"><a href="http://shenghuo.google.cn/shenghuo/search?a_y0=9&amp;a_n0=%E6%88%BF%E5%B1%8B&amp;q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;view=Table&amp;scoring=ad_%E6%97%A5%E6%9C%9F%3A7&amp;a_n1=%E5%9F%8E%E5%B8%82&amp;a_y1=1&amp;a_o1=0&amp;a_v1=%E5%8C%97%E4%BA%AC&amp;a_n2=%E6%97%A5%E6%9C%9F&amp;a_y2=7&amp;a_o2=3&amp;a_f2=2%2F9%2F2009&amp;a_t2=2%2F9%2F2009&amp;a_n3=%E7%B1%BB%E5%88%AB&amp;a_y3=1&amp;a_o3=0&amp;a_v3=%E5%87%BA%E7%A7%9F&amp;num=20&amp;start=140"><div style="overflow: hidden; width: 16px; height: 26px; background-position: -60px 0pt;" class="csnlb"></div>8</a></td><td id="pnpg9" class="pnpg csl" valign="top"><a href="http://shenghuo.google.cn/shenghuo/search?a_y0=9&amp;a_n0=%E6%88%BF%E5%B1%8B&amp;q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;view=Table&amp;scoring=ad_%E6%97%A5%E6%9C%9F%3A7&amp;a_n1=%E5%9F%8E%E5%B8%82&amp;a_y1=1&amp;a_o1=0&amp;a_v1=%E5%8C%97%E4%BA%AC&amp;a_n2=%E6%97%A5%E6%9C%9F&amp;a_y2=7&amp;a_o2=3&amp;a_f2=2%2F9%2F2009&amp;a_t2=2%2F9%2F2009&amp;a_n3=%E7%B1%BB%E5%88%AB&amp;a_y3=1&amp;a_o3=0&amp;a_v3=%E5%87%BA%E7%A7%9F&amp;num=20&amp;start=160"><div style="overflow: hidden; width: 16px; height: 26px; background-position: -60px 0pt;" class="csnlb"></div>9</a></td><td id="pnpg10" class="pnpg csl" valign="top"><a href="http://shenghuo.google.cn/shenghuo/search?a_y0=9&amp;a_n0=%E6%88%BF%E5%B1%8B&amp;q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;view=Table&amp;scoring=ad_%E6%97%A5%E6%9C%9F%3A7&amp;a_n1=%E5%9F%8E%E5%B8%82&amp;a_y1=1&amp;a_o1=0&amp;a_v1=%E5%8C%97%E4%BA%AC&amp;a_n2=%E6%97%A5%E6%9C%9F&amp;a_y2=7&amp;a_o2=3&amp;a_f2=2%2F9%2F2009&amp;a_t2=2%2F9%2F2009&amp;a_n3=%E7%B1%BB%E5%88%AB&amp;a_y3=1&amp;a_o3=0&amp;a_v3=%E5%87%BA%E7%A7%9F&amp;num=20&amp;start=180"><div style="overflow: hidden; width: 16px; height: 26px; background-position: -60px 0pt;" class="csnlb"></div>10</a></td><td id="pnn" class="pnn csl" valign="top"><a href="http://shenghuo.google.cn/shenghuo/search?a_y0=9&amp;a_n0=%E6%88%BF%E5%B1%8B&amp;q=%E4%BA%94%E9%81%93%E5%8F%A3&amp;view=Table&amp;scoring=ad_%E6%97%A5%E6%9C%9F%3A7&amp;a_n1=%E5%9F%8E%E5%B8%82&amp;a_y1=1&amp;a_o1=0&amp;a_v1=%E5%8C%97%E4%BA%AC&amp;a_n2=%E6%97%A5%E6%9C%9F&amp;a_y2=7&amp;a_o2=3&amp;a_f2=2%2F9%2F2009&amp;a_t2=2%2F9%2F2009&amp;a_n3=%E7%B1%BB%E5%88%AB&amp;a_y3=1&amp;a_o3=0&amp;a_v3=%E5%87%BA%E7%A7%9F&amp;num=20&amp;start=20"><div style="overflow: hidden; width: 74px; height: 26px; background-position: -76px 0pt; margin-right: 26px;" class="csnlb"></div>下一页</a></td></tr></tbody></table></center>
+<script>
+LIFESTYLE_hdf.paginationRange = 10;
+LIFESTYLE_hdf.resultSizePerPage = 20;
+</script>
+<div style="width: 350px; visibility: hidden; left: 409px; top: 466px; display: none;" id="sprp" class="csp"><table style="border: 0pt none ; width: 350px;" cellpadding="1" cellspacing="0"><tbody><tr id="sprpc"><td><table style="border: 0pt none ; width: 100%;" class="cssf" cellpadding="2" cellspacing="0"><tbody><tr><td>室1厅1卫有80平米，家电齐全精装修。房子装修很好，适合居住。有 【非中介】超值！五道口城铁华清嘉园小区2居室出租4200<br>地址:华清嘉园</td></tr><tr><td class="WebSource" id="sprpc_WebSource"><a target="_blank" onclick="CALL('sh.ClickTracker.trackResultSource', '7', this, {popup:true})" href="http://www.edeng.cn/">edeng.cn</a></td></tr></tbody></table></td></tr><tr><td><div id="spstpp"></div></td></tr></tbody></table></div>
+<div style="display: none;"><input id="ErrorCode" value="" type="hidden"></div>
+<div id="spml" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; position: absolute; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; opacity: 0.3; left: 1702px; top: 171.333px; width: 170px; height: 202px; display: none;">
+<table style="width: 100%; height: 100%;"><tbody><tr>
+<td style="vertical-align: middle; text-align: center;">
+<img src="http://shenghuo.google.cn/shenghuo/images/loading.gif">
+</td></tr></tbody></table>
+</div>
+<center>
+<font size="-1">
+<div style="color: rgb(103, 103, 103);">信息均为第三方提供，仅供参考。</div>
+<br>
+<a href="http://www.google.cn/ads/">Google广告计划</a>&nbsp;-&nbsp;
+<a href="http://www.google.cn/about.html">Google大全</a>&nbsp;-&nbsp;
+<a href="http://www.google.cn/intl/zh-CN/shenghuo/about.html">关于生活搜索</a>&nbsp;-&nbsp;
+<a href="http://www.google.cn/intl/zh-CN/privacy.html">隐私政策</a>&nbsp;-&nbsp;
+<a href="http://www.google.cn/accounts/TOS">服务条款</a></font>
+<p><font size="-1">©2009 Google<font size="-2"> - <a href="http://www.miibeian.gov.cn/" target="_blank">ICP证合字B2-20070004号</a>&nbsp;&nbsp;<img src="http://shenghuo.google.cn/shenghuo/images/cn_icp.gif" alt="icp" align="absmiddle" height="19" width="15"></font></font></p>
+</center>
+<table style="visibility: hidden; left: 78px; top: 218px; width: 135px;" class="google-ac-m" id="completeTable" cellpadding="0" cellspacing="0"></table><table style="visibility: hidden; left: 207px; top: 91px; width: 436px;" class="google-ac-m" id="headerAreacompleteTable" cellpadding="0" cellspacing="0"></table><div id="LOAD_DONE" style="display: none;"></div><div style="display: none;" id="TRENDS_DONE"></div><div style="position: absolute; visibility: hidden; left: -5000px; top: -5000px;"><div style="width: 100px; visibility: hidden; left: 6410px; top: 5192px; display: none;" class="csp cssf" id="sbso_日期"><div class="csl" onclick="CALL('sh.AttributeRefinement.日期_7.sort', 'aa')" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" style="width: 100%;">从旧到新</div><div class="csl" onclick="CALL('sh.AttributeRefinement.日期_7.sort', 'ad')" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" style="width: 100%;">从新到旧</div><div class="csl" onclick="CALL('sh.AttributeRefinement.日期_7.sort', 'r')" onmouseover="CALL('sh.Ui.highlight', this)" onmouseout="CALL('sh.Ui.cancelHighlight', this)" style="width: 100%;">取消</div></div></div><div style="display: none;" id="AJAX_DONE"></div>
+</body>
+
+<script>
+var prefs__MODULE_ID__ = new _IG_Prefs(__MODULE_ID__);
+var g_queryKeyword = prefs__MODULE_ID__.getString('query');
+_gel('haq').value = g_queryKeyword;
+_gel('sbkw').value = g_queryKeyword;
+
+var g_item_num = parseInt(prefs__MODULE_ID__.getString('item_num'), 10);
+
+var g_housingSearch = null;
+var g_container = _gel('spras');
+var g_results_str = '';
+
+// used for setTimeout.
+var g_index = 0;
+var g_val;
+var g_results;
+
+function doIKeydown(e) {
+  var key = 0;
+  if (window.event) {
+    key = e.keyCode;
+  } else if (e.which) {
+    key = e.which;
+  }
+  switch (parseInt(key, 10)) {
+  case 13:
+    goISearch();
+    break;
+  }
+}
+
+function goISearch() {
+  var info = ['Thank you for trying this Realtime Search demo,\n',
+              'please use the search box above!\n',
+              '  --Lenjoy'].join('');
+  alert(info);
+}
+
+function doKeydown(e) {
+  var key = 0;
+  if (window.event) {
+    key = e.keyCode;
+  } else if (e.which) {
+    key = e.which;
+  }
+  switch (parseInt(key, 10)) {
+  case 13:
+    goSearch();
+    break;
+  }
+}
+
+function init() {
+  var resultsNum = parseInt(prefs__MODULE_ID__.getString('item_num'), 20);
+  g_housingSearch = new google.lifestyle.HousingSearch();
+  g_housingSearch.setSearchCompleteCallback(null, handleResponse);
+  g_housingSearch.setResultSetSize(resultsNum);
+  goSearch();
+}
+
+_IG_RegisterOnloadHandler(init);
+
+function handleResponse(resultSet) {
+  var entries = resultSet.results;
+  if (!entries || entries.length == 0) {
+    g_container.innerHTML = 'no result';
+    return;
+  }
+  g_results_str = '';
+  g_container.innerHTML = '';
+  g_results = displayResults(entries);
+  showNextResult();
+}
+
+function showNextResult() {
+  if (g_index >= g_results.length || !g_crawling_on) {
+    clearTimeout(g_val);
+  } else {
+    g_results_str = g_results[g_index] + g_results_str;
+    g_container.innerHTML = '<tr><td style="color:red;font-size:16px">__MSG_crawling__</td></tr>' + g_results_str;
+    g_index++;
+    g_val = setTimeout("showNextResult()", Math.random() * 8000);
+  }
+}
+
+function displayResults(entries) {
+  var strArr = new Array;
+  for (var i = 0; i < entries.length; ++i) {
+    var item = entries[i].attributes;
+    strArr.push(['<tr id="sprr', i, '" class="cssf" ',
+                 'style="border-right: 1px solid rgb(204, 204, 204); line-height: 140%;">',
+                 '<td id="sprrt', i, '">',
+                 '<a target="_blank" href="" ',
+                 'onclick="CALL(\'sh.ClickTracker.trackPrimaryResultLink\', \'', i, '\', this)">',
+                 entries[i].title, '</a>',
+                 '<span class="WebSource"> -',
+                 '<a id="sprrs', i, '" target="_blank" href="http://www.soufun.com/" onclick="CALL(\'sh.ClickTracker.trackResultSource\', \'', i, '\', this)">',
+                 'soufun.com', '</a>',
+                 '</span>',
+                 '</td>',
+                 '<td>', ('价格' in item) ? item['价格'].values : '不详', '</td>',
+                 '<td>', ('地区' in item) ? item['地区'].values : '不详', '</td>',
+                 '<td>', ('房型' in item) ? item['房型'].values : '不详', '</td>',
+                 '<td>', ('面积' in item) ? item['面积'].values : '不详', '</td>',
+                 '<td>', ('日期' in item) ? item['日期'].values : '不详', '</td>',
+                 '<td>', ('来源' in item) ? item['来源'].values : '不详', '</td>',
+                 '<td style="display: none;">',
+                 '<input id="sprrl', i, '" value="40.003974:116.342446:false" type="hidden">',
+                 '</td>',
+                 '</tr>'].join(''));
+  }
+  return strArr;
+}
+
+function goSearch() {
+  g_queryKeyword = _trim(_gel('haq').value);
+  _gel('sbkw').value = g_queryKeyword;
+  var container = _gel('spras');
+  if (g_queryKeyword.length == 0) {
+    container.innerHTML =
+        '<tr><td class="tdhint__MODULE_ID__">' +
+        '<br />__MSG_hint__' +
+        '</td></tr>';
+    return;
+  }
+  container.innerHTML = '<tr><td class="tdhint__MODULE_ID__">' +
+                        '__MSG_loading__' + '</td></tr>';
+
+  var city = '北京';
+  var type = '出租';
+  g_housingSearch.clearAllAttributes();
+  var HousingAttributes = google.lifestyle.HousingSearch.Attributes;
+  if (city) {
+    g_housingSearch.setCity(city);
+  }
+  if (type) {
+    g_housingSearch.setAttribute(HousingAttributes.CATEGORY, type);
+  }
+  g_housingSearch.setSorting('r');
+  g_housingSearch.execute(g_queryKeyword, 0);
+}
+</script>
+<script type="text/javascript" src="http://shenghuo.google.cn/shenghuo/api/searchapi_mini.js"></script>
+
+]]>
+  </Content>
+</Module> 

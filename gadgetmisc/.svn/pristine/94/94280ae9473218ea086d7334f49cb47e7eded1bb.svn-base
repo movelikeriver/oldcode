@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Results>
+  <AuthorInfo description="Train Ticket subscribed link" author="Qiao Jian" />
+  <ResultSpec id="TrainKeywordsIP">
+    <Query>[TrainKeywords]</Query>
+    <Call service="les">
+      <Input name="ip">[loc.ip]</Input>
+      <Input name="get_user_location">true</Input>
+    </Call>
+    <Extract type="TrainStation" after_call="true">[1.city]</Extract>
+    <Response format="image_right">
+      <Output name="title">[2.name]出发的火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&oi=prbx]]></Output>
+      <Output name="text1" require="[2.hot1.to]">去</Output>
+      <Output name="link1" require="[2.hot1.to]">[2.hot1.to]</Output>
+      <Output name="url1" require="[2.hot1.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.hot1.to]&oi=prbx]]></Output>
+      <Output name="text1b">　共有[2.hot1.count]条火车线路</Output>
+      <Output name="text2" require="[2.hot2.to]">去</Output>
+      <Output name="link2" require="[2.hot2.to]">[2.hot2.to]</Output>
+      <Output name="url2" require="[2.hot2.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.hot2.to]&oi=prbx]]></Output>
+      <Output name="text2b">　共有[2.hot2.count]条火车线路</Output>
+      <Output name="link3" require="[2.hot3.to]">[2.hot3.to]</Output>
+      <Output name="url3" require="[2.hot3.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.hot3.to]&oi=prbx]]></Output>
+      <Output name="text3b" require="[2.hot4.to]">　</Output>
+      <Output name="link3b" require="[2.hot4.to]">[2.hot4.to]</Output>
+      <Output name="url3b" require="[2.hot4.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.hot4.to]&oi=prbx]]></Output>
+      <Output name="text3c" require="[2.hot5.to]">　</Output>
+      <Output name="link3c" require="[2.hot5.to]">[2.hot5.to]</Output>
+      <Output name="url3c" require="[2.hot5.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.hot5.to]&oi=prbx]]></Output>
+      <Output name="text3d" require="[2.hot6.to]">　</Output>
+      <Output name="link3d" require="[2.hot6.to]">[2.hot6.to]</Output>
+      <Output name="url3d" require="[2.hot6.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.hot6.to]&oi=prbx]]></Output>
+      <Output name="text3e" require="[2.hot6.to]">　</Output>
+      <Output name="link3e" require="[2.hot6.to]">更多到达站»</Output>
+      <Output name="url3e" require="[2.hot6.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainKeywords">
+    <Query>[TrainKeywords]</Query>
+    <Response format="image_right">
+      <Output name="title">火车票信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&oi=prbx]]></Output>
+      <Output name="link1">[0.cities.city1]</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.cities.city1]&oi=prbx]]></Output>
+      <Output name="text1b">　</Output>
+      <Output name="link1b">[0.cities.city2]</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.cities.city2]&oi=prbx]]></Output>
+      <Output name="text1c">　</Output>
+      <Output name="link1c">[0.cities.city3]</Output>
+      <Output name="url1c"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.cities.city3]&oi=prbx]]></Output>
+      <Output name="text1d">　</Output>
+      <Output name="link1d">[0.cities.city4]</Output>
+      <Output name="url1d"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.cities.city4]&oi=prbx]]></Output>
+      <Output name="text1e">　</Output>
+      <Output name="link1e">[0.cities.city5]</Output>
+      <Output name="url1e"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.cities.city5]&oi=prbx]]></Output>
+      <Output name="link2">[0.cities.city6]</Output>
+      <Output name="url2"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.cities.city6]&oi=prbx]]></Output>
+      <Output name="text2b">　</Output>
+      <Output name="link2b">[0.cities.city7]</Output>
+      <Output name="url2b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.cities.city7]&oi=prbx]]></Output>
+      <Output name="text2c">　</Output>
+      <Output name="link2c">[0.cities.city8]</Output>
+      <Output name="url2c"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.cities.city8]&oi=prbx]]></Output>
+      <Output name="text2d">　</Output>
+      <Output name="link2d">[0.cities.city9]</Output>
+      <Output name="url2d"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.cities.city9]&oi=prbx]]></Output>
+      <Output name="text2e">　</Output>
+      <Output name="link2e">更多始发站»</Output>
+      <Output name="url2e"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&oi=prbx]]></Output>
+      <Output name="text3">查找二手火车票及车次信息</Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainArriveStationIP">
+    <Query>[RE:到|去][TrainStation][RE:的?][TrainKeywords]</Query>
+    <Call service="les">
+      <Input name="ip">[loc.ip]</Input>
+      <Input name="get_user_location">true</Input>
+    </Call>
+    <Extract type="TrainStationStation" after_call="true">[4.city][1.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[5.from]到[1.name]的火车票信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[5.from]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&oi=prbx]]></Output>
+      <Output name="text1">共有[5.count]条火车线路　</Output>
+      <Output name="link1" require="[5.id1.name]">[5.id1.name]</Output>
+      <Output name="url1" require="[5.id1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[5.from]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[5.id1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[5.id2.name]">　</Output>
+      <Output name="link1b" require="[5.id2.name]">[5.id2.name]</Output>
+      <Output name="url1b" require="[5.id2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[5.from]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[5.id2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[5.id3.name]">　</Output>
+      <Output name="link1c" require="[5.id3.name]">[5.id3.name]</Output>
+      <Output name="url1c" require="[5.id3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[5.from]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[5.id3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[5.id4.name]">　</Output>
+      <Output name="link1d" require="[5.id4.name]">[5.id4.name]</Output>
+      <Output name="url1d" require="[5.id4.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[5.from]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[5.id4.name]&oi=prbx]]></Output>
+      <Output name="text1e" require="[5.id5.name]">　</Output>
+      <Output name="link1e" require="[5.id5.name]">更多»</Output>
+      <Output name="url1e" require="[5.id5.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[5.from]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[5.hot1.name]">[5.hot1.name]</Output>
+      <Output name="url2" require="[5.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[5.from]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[5.hot1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[5.hot1.name]">　[5.hot1.from]([5.hot1.time1])  [5.hot1.to]([5.hot1.time2])  [5.hot1.duration]  [5.hot1.distance]</Output>
+      <Output name="link3" require="[5.hot2.name]">[5.hot2.name]</Output>
+      <Output name="url3" require="[5.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[5.from]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[5.hot2.name]&oi=prbx]]></Output>
+      <Output name="text3b" require="[5.hot2.name]">　[5.hot2.from]([5.hot2.time1])  [5.hot2.to]([5.hot2.time2])  [5.hot2.duration]  [5.hot2.distance]</Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainArriveStation">
+    <Query>[RE:到|去][TrainStation][RE:的?][TrainKeywords]</Query>
+    <Response format="image_right">
+      <Output name="title">到[1.name]的火车票信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&oi=prbx]]></Output>
+      <Output name="link1">[3.cities.city1]</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[3.cities.city1]&oi=prbx]]></Output>
+      <Output name="text1b">　</Output>
+      <Output name="link1b">[3.cities.city2]</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[3.cities.city2]&oi=prbx]]></Output>
+      <Output name="text1c">　</Output>
+      <Output name="link1c">[3.cities.city3]</Output>
+      <Output name="url1c"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[3.cities.city3]&oi=prbx]]></Output>
+      <Output name="text1d">　</Output>
+      <Output name="link1d">[3.cities.city4]</Output>
+      <Output name="url1d"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[3.cities.city4]&oi=prbx]]></Output>
+      <Output name="text1e">　</Output>
+      <Output name="link1e">[3.cities.city5]</Output>
+      <Output name="url1e"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[3.cities.city5]&oi=prbx]]></Output>
+      <Output name="link2">[3.cities.city6]</Output>
+      <Output name="url2"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[3.cities.city6]&oi=prbx]]></Output>
+      <Output name="text2b">　</Output>
+      <Output name="link2b">[3.cities.city7]</Output>
+      <Output name="url2b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[3.cities.city7]&oi=prbx]]></Output>
+      <Output name="text2c">　</Output>
+      <Output name="link2c">[3.cities.city8]</Output>
+      <Output name="url2c"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[3.cities.city8]&oi=prbx]]></Output>
+      <Output name="text2d">　</Output>
+      <Output name="link2d">[3.cities.city9]</Output>
+      <Output name="url2d"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[3.cities.city9]&oi=prbx]]></Output>
+      <Output name="text2e">　</Output>
+      <Output name="link2e">更多始发站»</Output>
+      <Output name="url2e"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&oi=prbx]]></Output>
+      <Output name="text3">查找二手火车票及车次信息</Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainStation">
+    <Query>[RE:从?][TrainStation][RE:(出发)?][RE:的?][TrainKeywords]</Query>
+    <Response format="image_right">
+      <Output name="title">[1.name]出发的火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&oi=prbx]]></Output>
+      <Output name="text1" require="[1.hot1.to]">去</Output>
+      <Output name="link1" require="[1.hot1.to]">[1.hot1.to]</Output>
+      <Output name="url1" require="[1.hot1.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.hot1.to]&oi=prbx]]></Output>
+      <Output name="text1b">　共有[1.hot1.count]条火车线路</Output>
+      <Output name="text2" require="[1.hot2.to]">去</Output>
+      <Output name="link2" require="[1.hot2.to]">[1.hot2.to]</Output>
+      <Output name="url2" require="[1.hot2.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.hot2.to]&oi=prbx]]></Output>
+      <Output name="text2b">　共有[1.hot2.count]条火车线路</Output>
+      <Output name="link3" require="[1.hot3.to]">[1.hot3.to]</Output>
+      <Output name="url3" require="[1.hot3.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.hot3.to]&oi=prbx]]></Output>
+      <Output name="text3b" require="[1.hot4.to]">　</Output>
+      <Output name="link3b" require="[1.hot4.to]">[1.hot4.to]</Output>
+      <Output name="url3b" require="[1.hot4.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.hot4.to]&oi=prbx]]></Output>
+      <Output name="text3c" require="[1.hot5.to]">　</Output>
+      <Output name="link3c" require="[1.hot5.to]">[1.hot5.to]</Output>
+      <Output name="url3c" require="[1.hot5.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.hot5.to]&oi=prbx]]></Output>
+      <Output name="text3d" require="[1.hot6.to]">　</Output>
+      <Output name="link3d" require="[1.hot6.to]">[1.hot6.to]</Output>
+      <Output name="url3d" require="[1.hot6.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.hot6.to]&oi=prbx]]></Output>
+      <Output name="text3e" require="[1.hot6.to]">　</Output>
+      <Output name="link3e" require="[1.hot6.to]">更多到达站»</Output>
+      <Output name="url3e" require="[1.hot6.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainStation2">
+    <Query>[TrainKeywords][TrainStation][TrainKeywords{0+}]</Query>
+    <Response format="image_right">
+      <Output name="title">[1.name]出发的火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&oi=prbx]]></Output>
+      <Output name="text1" require="[1.hot1.to]">去</Output>
+      <Output name="link1" require="[1.hot1.to]">[1.hot1.to]</Output>
+      <Output name="url1" require="[1.hot1.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.hot1.to]&oi=prbx]]></Output>
+      <Output name="text1b">　共有[1.hot1.count]条火车线路</Output>
+      <Output name="text2" require="[1.hot2.to]">去</Output>
+      <Output name="link2" require="[1.hot2.to]">[1.hot2.to]</Output>
+      <Output name="url2" require="[1.hot2.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.hot2.to]&oi=prbx]]></Output>
+      <Output name="text2b">　共有[1.hot2.count]条火车线路</Output>
+      <Output name="link3" require="[1.hot3.to]">[1.hot3.to]</Output>
+      <Output name="url3" require="[1.hot3.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.hot3.to]&oi=prbx]]></Output>
+      <Output name="text3b" require="[1.hot4.to]">　</Output>
+      <Output name="link3b" require="[1.hot4.to]">[1.hot4.to]</Output>
+      <Output name="url3b" require="[1.hot4.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.hot4.to]&oi=prbx]]></Output>
+      <Output name="text3c" require="[1.hot5.to]">　</Output>
+      <Output name="link3c" require="[1.hot5.to]">[1.hot5.to]</Output>
+      <Output name="url3c" require="[1.hot5.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.hot5.to]&oi=prbx]]></Output>
+      <Output name="text3d" require="[1.hot6.to]">　</Output>
+      <Output name="link3d" require="[1.hot6.to]">[1.hot6.to]</Output>
+      <Output name="url3d" require="[1.hot6.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.hot6.to]&oi=prbx]]></Output>
+      <Output name="text3e" require="[1.hot6.to]">　</Output>
+      <Output name="link3e" require="[1.hot6.to]">更多到达站»</Output>
+      <Output name="url3e" require="[1.hot6.to]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainId">
+    <Query>[TrainKeywords{0+}][TrainId][TrainKeywords]</Query>
+    <Response format="image_right">
+      <Output name="title">[0.name]火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=&a_n2=车次&a_y2=1&a_o2=0&a_v2=[0.name]&oi=prbx]]></Output>
+      <Output name="link1">[0.name]</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=&a_n2=车次&a_y2=1&a_o2=0&a_v2=[0.name]&oi=prbx]]></Output>
+      <Output name="text1b">　[0.from]([0.time1])　[0.to]([0.time2])　[0.duration]　[0.distance]　</Output>
+      <Output name="link1b">查看详情</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=&a_n2=车次&a_y2=1&a_o2=0&a_v2=[0.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainId2">
+    <Query>[TrainKeywords][TrainId]</Query>
+    <Response format="image_right">
+      <Output name="title">[1.name]火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=&a_n2=车次&a_y2=1&a_o2=0&a_v2=[1.name]&oi=prbx]]></Output>
+      <Output name="link1">[1.name]</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=&a_n2=车次&a_y2=1&a_o2=0&a_v2=[1.name]&oi=prbx]]></Output>
+      <Output name="text1b">　[1.from]([1.time1])　[1.to]([1.time2])　[1.duration]　[1.distance]　</Output>
+      <Output name="link1b">查看详情</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=&a_n2=车次&a_y2=1&a_o2=0&a_v2=[1.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainStationId">
+    <Query>[TrainKeywords{0+}][RE:从?][TrainStation][RE:(出发)?][RE:的?][TrainId][TrainKeywords]</Query>
+    <Extract type="TrainStationId">[1.name][4.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[1.name]出发的[4.name]火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=车次&a_y2=1&a_o2=0&a_v2=[4.name]&oi=prbx]]></Output>
+      <Output name="link1">[4.name]</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=车次&a_y2=1&a_o2=0&a_v2=[4.name]&oi=prbx]]></Output>
+      <Output name="text1b">　[6.from]([6.time1])　[6.to]([6.time2])　[6.duration]　[6.distance]　</Output>
+      <Output name="link1b">查看详情</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=车次&a_y2=1&a_o2=0&a_v2=[4.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainStationId2">
+    <Query>[TrainKeywords][TrainStation][TrainId]</Query>
+    <Extract type="TrainStationId">[1.name][2.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[1.name]出发的[2.name]火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=车次&a_y2=1&a_o2=0&a_v2=[2.name]&oi=prbx]]></Output>
+      <Output name="link1">[2.name]</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=车次&a_y2=1&a_o2=0&a_v2=[2.name]&oi=prbx]]></Output>
+      <Output name="text1b">　[3.from]([3.time1])　[3.to]([3.time2])　[3.duration]　[3.distance]　</Output>
+      <Output name="link1b">查看详情</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=车次&a_y2=1&a_o2=0&a_v2=[2.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainIdStationId3">
+    <Query>[TrainKeywords][TrainId][TrainStation]</Query>
+    <Extract type="TrainStationId">[2.name][1.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[2.name]出发的[1.name]火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=车次&a_y2=1&a_o2=0&a_v2=[1.name]&oi=prbx]]></Output>
+      <Output name="link1">[1.name]</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=车次&a_y2=1&a_o2=0&a_v2=[1.name]&oi=prbx]]></Output>
+      <Output name="text1b">　[3.from]([3.time1])　[3.to]([3.time2])　[3.duration]　[3.distance]　</Output>
+      <Output name="link1b">查看详情</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=车次&a_y2=1&a_o2=0&a_v2=[1.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainIdStationId4">
+    <Query>[TrainKeywords{0+}][TrainId][TrainStation][TrainKeywords]</Query>
+    <Extract type="TrainStationId">[1.name][0.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[1.name]出发的[0.name]火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=车次&a_y2=1&a_o2=0&a_v2=[0.name]&oi=prbx]]></Output>
+      <Output name="link1">[0.name]</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=车次&a_y2=1&a_o2=0&a_v2=[0.name]&oi=prbx]]></Output>
+      <Output name="text1b">　[3.from]([3.time1])　[3.to]([3.time2])　[3.duration]　[3.distance]　</Output>
+      <Output name="link1b">查看详情</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=车次&a_y2=1&a_o2=0&a_v2=[0.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainStationStation">
+    <Query>[TrainKeywords{0+}][TrainStation][TrainStation][TrainKeywords]</Query>
+    <Extract type="TrainStationStation">[0.name][1.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[0.name]到[1.name]的火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&oi=prbx]]></Output>
+      <Output name="text1">共有[3.count]条火车线路　</Output>
+      <Output name="link1" require="[3.id1.name]">[3.id1.name]</Output>
+      <Output name="url1" require="[3.id1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[3.id1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[3.id2.name]">　</Output>
+      <Output name="link1b" require="[3.id2.name]">[3.id2.name]</Output>
+      <Output name="url1b" require="[3.id2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[3.id2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[3.id3.name]">　</Output>
+      <Output name="link1c" require="[3.id3.name]">[3.id3.name]</Output>
+      <Output name="url1c" require="[3.id3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[3.id3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[3.id4.name]">　</Output>
+      <Output name="link1d" require="[3.id4.name]">[3.id4.name]</Output>
+      <Output name="url1d" require="[3.id4.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[3.id4.name]&oi=prbx]]></Output>
+      <Output name="text1e" require="[3.id5.name]">　</Output>
+      <Output name="link1e" require="[3.id5.name]">更多»</Output>
+      <Output name="url1e" require="[3.id5.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[3.hot1.name]">[3.hot1.name]</Output>
+      <Output name="url2" require="[3.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[3.hot1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[3.hot1.name]">　[3.hot1.from]([3.hot1.time1])  [3.hot1.to]([3.hot1.time2])  [3.hot1.duration]  [3.hot1.distance]</Output>
+      <Output name="link3" require="[3.hot2.name]">[3.hot2.name]</Output>
+      <Output name="url3" require="[3.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[3.hot2.name]&oi=prbx]]></Output>
+      <Output name="text3b" require="[3.hot2.name]">　[3.hot2.from]([3.hot2.time1])  [3.hot2.to]([3.hot2.time2])  [3.hot2.duration]  [3.hot2.distance]</Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainStationStation2">
+    <Query>[TrainKeywords{0+}][RE:从?][TrainStation][RE:到|至|(出发)|-|－][TrainStation][RE:的?][TrainKeywords]</Query>
+    <Extract type="TrainStationStation">[1.name][3.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[1.name]到[3.name]的火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[3.name]&oi=prbx]]></Output>
+      <Output name="text1">共有[6.count]条火车线路　</Output>
+      <Output name="link1" require="[6.id1.name]">[6.id1.name]</Output>
+      <Output name="url1" require="[6.id1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[3.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[6.id1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[6.id2.name]">　</Output>
+      <Output name="link1b" require="[6.id2.name]">[6.id2.name]</Output>
+      <Output name="url1b" require="[6.id2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[3.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[6.id2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[6.id3.name]">　</Output>
+      <Output name="link1c" require="[6.id3.name]">[6.id3.name]</Output>
+      <Output name="url1c" require="[6.id3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[3.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[6.id3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[6.id4.name]">　</Output>
+      <Output name="link1d" require="[6.id4.name]">[6.id4.name]</Output>
+      <Output name="url1d" require="[6.id4.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[3.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[6.id4.name]&oi=prbx]]></Output>
+      <Output name="text1e" require="[6.id5.name]">　</Output>
+      <Output name="link1e" require="[6.id5.name]">更多»</Output>
+      <Output name="url1e" require="[6.id5.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[3.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[6.hot1.name]">[6.hot1.name]</Output>
+      <Output name="url2" require="[6.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[3.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[6.hot1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[6.hot1.name]">　[6.hot1.from]([6.hot1.time1])  [6.hot1.to]([6.hot1.time2])  [6.hot1.duration]  [6.hot1.distance]</Output>
+      <Output name="link3" require="[6.hot2.name]">[6.hot2.name]</Output>
+      <Output name="url3" require="[6.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[3.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[6.hot2.name]&oi=prbx]]></Output>
+      <Output name="text3b" require="[6.hot2.name]">　[6.hot2.from]([6.hot2.time1])  [6.hot2.to]([6.hot2.time2])  [6.hot2.duration]  [6.hot2.distance]</Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainStationStation3">
+    <Query>[TrainKeywords][TrainStation][TrainStation][TrainKeywords{0+}]</Query>
+    <Extract type="TrainStationStation">[1.name][2.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[1.name]到[2.name]的火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.name]&oi=prbx]]></Output>
+      <Output name="text1">共有[3.count]条火车线路　</Output>
+      <Output name="link1" require="[3.id1.name]">[3.id1.name]</Output>
+      <Output name="url1" require="[3.id1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[3.id1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[3.id2.name]">　</Output>
+      <Output name="link1b" require="[3.id2.name]">[3.id2.name]</Output>
+      <Output name="url1b" require="[3.id2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[3.id2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[3.id3.name]">　</Output>
+      <Output name="link1c" require="[3.id3.name]">[3.id3.name]</Output>
+      <Output name="url1c" require="[3.id3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[3.id3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[3.id4.name]">　</Output>
+      <Output name="link1d" require="[3.id4.name]">[3.id4.name]</Output>
+      <Output name="url1d" require="[3.id4.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[3.id4.name]&oi=prbx]]></Output>
+      <Output name="text1e" require="[3.id5.name]">　</Output>
+      <Output name="link1e" require="[3.id5.name]">更多»</Output>
+      <Output name="url1e" require="[3.id5.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[3.hot1.name]">[3.hot1.name]</Output>
+      <Output name="url2" require="[3.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[3.hot1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[3.hot1.name]">　[3.hot1.from]([3.hot1.time1])  [3.hot1.to]([3.hot1.time2])  [3.hot1.duration]  [3.hot1.distance]</Output>
+      <Output name="link3" require="[3.hot2.name]">[3.hot2.name]</Output>
+      <Output name="url3" require="[3.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[3.hot2.name]&oi=prbx]]></Output>
+      <Output name="text3b" require="[3.hot2.name]">　[3.hot2.from]([3.hot2.time1])  [3.hot2.to]([3.hot2.time2])  [3.hot2.duration]  [3.hot2.distance]</Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainStationStation4">
+    <Query>[TrainKeywords][RE:从?][TrainStation][RE:到|至|(出发)|-|－][TrainStation][RE:的?][TrainKeywords{0+}]</Query>
+    <Extract type="TrainStationStation">[2.name][4.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[2.name]到[4.name]的火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[4.name]&oi=prbx]]></Output>
+      <Output name="text1">共有[6.count]条火车线路　</Output>
+      <Output name="link1" require="[6.id1.name]">[6.id1.name]</Output>
+      <Output name="url1" require="[6.id1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[4.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[6.id1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[6.id2.name]">　</Output>
+      <Output name="link1b" require="[6.id2.name]">[6.id2.name]</Output>
+      <Output name="url1b" require="[6.id2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[4.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[6.id2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[6.id3.name]">　</Output>
+      <Output name="link1c" require="[6.id3.name]">[6.id3.name]</Output>
+      <Output name="url1c" require="[6.id3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[4.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[6.id3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[6.id4.name]">　</Output>
+      <Output name="link1d" require="[6.id4.name]">[6.id4.name]</Output>
+      <Output name="url1d" require="[6.id4.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[4.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[6.id4.name]&oi=prbx]]></Output>
+      <Output name="text1e" require="[6.id5.name]">　</Output>
+      <Output name="link1e" require="[6.id5.name]">更多»</Output>
+      <Output name="url1e" require="[6.id5.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[4.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[6.hot1.name]">[6.hot1.name]</Output>
+      <Output name="url2" require="[6.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[4.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[6.hot1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[6.hot1.name]">　[6.hot1.from]([6.hot1.time1])  [6.hot1.to]([6.hot1.time2])  [6.hot1.duration]  [6.hot1.distance]</Output>
+      <Output name="link3" require="[6.hot2.name]">[6.hot2.name]</Output>
+      <Output name="url3" require="[6.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[4.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[6.hot2.name]&oi=prbx]]></Output>
+      <Output name="text3b" require="[6.hot2.name]">　[6.hot2.from]([6.hot2.time1])  [6.hot2.to]([6.hot2.time2])  [6.hot2.duration]  [6.hot2.distance]</Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainStationStationId">
+    <Query>[TrainKeywords{0+}][TrainStation][TrainStation][TrainId][TrainKeywords]</Query>
+    <Extract type="TrainStationStationId">[0.name][1.name][2.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[0.name]到[1.name]的[2.name]火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[2.name]&oi=prbx]]></Output>
+      <Output name="link1">[4.name]</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[2.name]&oi=prbx]]></Output>
+      <Output name="text1b">　[4.from]([4.time1])　[4.to]([4.time2])　[4.duration]　[4.distance]　</Output>
+      <Output name="link1b">查看详情</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[1.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[2.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainStationStationId2">
+    <Query>[TrainKeywords{0+}][RE:从?][TrainStation][RE:到|至|出发|-|－][TrainStation][RE:的?][TrainId][TrainKeywords]</Query>
+    <Extract type="TrainStationStationId">[1.name][3.name][5.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[1.name]到[3.name]的[5.name]火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[3.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[5.name]&oi=prbx]]></Output>
+      <Output name="link1">[7.name]</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[3.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[5.name]&oi=prbx]]></Output>
+      <Output name="text1b">　[7.from]([7.time1])　[7.to]([7.time2])　[7.duration]　[7.distance]　</Output>
+      <Output name="link1b">查看详情</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[3.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[5.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainStationStationId3">
+    <Query>[TrainKeywords][TrainStation][TrainStation][TrainId]</Query>
+    <Extract type="TrainStationStationId">[1.name][2.name][3.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[1.name]到[2.name]的[3.name]火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[3.name]&oi=prbx]]></Output>
+      <Output name="link1">[4.name]</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[3.name]&oi=prbx]]></Output>
+      <Output name="text1b">　[4.from]([4.time1])　[4.to]([4.time2])　[4.duration]　[4.distance]　</Output>
+      <Output name="link1b">查看详情</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[2.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[3.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TrainStationStationId4">
+    <Query>[TrainKeywords][RE:从?][TrainStation][RE:到|至|出发|-|－][TrainStation][RE:的?][TrainId][TrainKeywords{0+}]</Query>
+    <Extract type="TrainStationStationId">[2.name][4.name][6.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[2.name]到[4.name]的[6.name]火车票及车次信息</Output>
+      <Output name="title_right_link">添加到iGoogle</Output>
+      <Output name="title_right_url"><![CDATA[http://www.google.cn/ig/adde?pid=china&moduleurl=www.google.com/ig/modules/china/train_schedule.xml&bpig=1]]></Output>
+      <Output name="image_src">/images/transit.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[4.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[6.name]&oi=prbx]]></Output>
+      <Output name="link1">[7.name]</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[4.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[6.name]&oi=prbx]]></Output>
+      <Output name="text1b">　[7.from]([7.time1])　[7.to]([7.time2])　[7.duration]　[7.distance]　</Output>
+      <Output name="link1b">查看详情</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=火车票&a_n1=始发站&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=到达站&a_y2=1&a_o2=0&a_v2=[4.name]&a_n3=车次&a_y3=1&a_o3=0&a_v3=[6.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+</Results>

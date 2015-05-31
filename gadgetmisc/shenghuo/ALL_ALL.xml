@@ -1,0 +1,9 @@
+<messagebundle>
+  <msg name="title">Google 生活搜索 - 房屋</msg>
+  <msg name="search">Search</msg>
+  <msg name="crawling">Realtime crawling......</msg>
+  <msg name="loading">Loading...</msg>
+  <msg name="hint"></msg>
+  <msg name="no_result">did not match any products, please try another query?</msg>
+  <msg name="tryagain"> please try again!</msg>
+</messagebundle>

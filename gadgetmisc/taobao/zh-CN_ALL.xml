@@ -1,0 +1,11 @@
+<messagebundle>
+  <msg name="title">淘宝小工具</msg>
+  <msg name="screenshot">/ig/modules/chinagadgets/biosphere/taobao/zh-CN_ALL.png</msg>
+  <msg name="thumbnail">/ig/modules/chinagadgets/biosphere/taobao/zh-CN_ALL-thm.png</msg>
+  <msg name="price">一口价(元)</msg>
+  <msg name="search">淘宝搜索</msg>
+  <msg name="loading">加载中...</msg>
+  <msg name="hint">欢迎使用淘宝小工具，您可以搜索宝贝名</msg>
+  <msg name="no_result">没找到宝贝 </msg>
+  <msg name="tryagain"> 再试一次？</msg>
+</messagebundle>

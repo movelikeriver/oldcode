@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Results>
+  <AuthorInfo description="Job subscribed link" author="Qiao Jian" />
+  <ResultSpec id="TravelSight">
+    <Query>[TravelSight][TravelKeywords{0+}]</Query>
+    <Response format="image_right">
+      <Output name="title">[0.name]</Output>
+      <Output name="image_src">[0.image]</Output>
+      <Output name="image_size">landscape</Output>
+      <Output name="more_url"><![CDATA[[0.link]]]></Output>
+      <Output name="text1">[0.city][0.address]</Output>
+      <Output name="text2">推荐指数：[0.star]</Output>
+      <Output name="text3">[0.description]</Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="TravelSightBeijing">
+    <Query>北京[TravelKeywords{0+}]</Query>
+    <Response format="image_right">
+      <Output name="title">北京</Output>
+      <Output name="image_src">http://jiaguang.googlecode.com/files/s2.gif</Output>
+      <Output name="image_size">landscape</Output>
+      <Output name="more_url"><![CDATA[http://i.xucheng.googlepages.com/travel_home.html]]></Output>
+      <Output name="text1">北京概况</Output>
+      <Output name="text2">北京是中华人民共和国的首都，是中国的政治文化中心。北京有3000多年的建城史和850年的建都史...</Output>
+      <Output name="link3">北京美食</Output>
+      <Output name="url3"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=]]></Output>
+      <Output name="link3b">北京景点</Output>
+      <Output name="url3b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=]]></Output>
+      <Output name="link4">北京住宿</Output>
+      <Output name="url4"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=]]></Output>
+      <Output name="link4b">北京购物</Output>
+      <Output name="url4b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=]]></Output>
+    </Response>
+  </ResultSpec>
+</Results>

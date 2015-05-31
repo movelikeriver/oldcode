@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="__MSG_title__"
+               width="560"
+               height="100"
+               author="Lenjoy"
+               author_email="lenjoy@google.com"
+               author_affiliation="Google Inc."
+               author_location="Beijing, China">
+    <Require feature="dynamic-height" />
+    <Locale messages="http://gadgetmisc.googlecode.com/svn/trunk/shenghuo/ALL_ALL.xml" />
+  </ModulePrefs>
+  <UserPref name="showsearchbox"
+            display_name="Show Search Box"
+            datatype="bool"
+            default_value="true" />
+  <UserPref name="query"
+            display_name="Input Query"
+            datatype="string"
+            default_value="" />
+  <UserPref name="item_num"
+            display_name="Item Number"
+            datatype="string"
+            default_value="20" />
+  <Content type="html">
+<![CDATA[
+<style>
+</style>
+<body>
+<table id="searchbox__MODULE_ID__" class="searchbox__MODULE_ID__">
+  <tr>
+    <td class="navSearchBar__MODULE_ID__">
+      <input id="query__MODULE_ID__" type="text" size="22" maxlength="200"
+             class="query__MODULE_ID__" onkeydown="doKeydown(event)" />
+    </td>
+    <td width="25" align="left">
+      <div class="navSprite__MODULE_ID__">
+         <input onclick="goSearch()" type="image"
+                src="http://g-ecx.images-amazon.com/images/G/01/x-locale/common/transparent-pixel._V42752373_.gif"
+                value="__MSG_search__" />
+      </div>
+    </td>
+  </tr>
+</table>
+<div id="results__MODULE_ID__">
+  <table id="itemstable__MODULE_ID__" class="tablestyle__MODULE_ID__"
+         rules="rows" frame="void" />
+</div>
+
+<div id="debug" />
+</body>
+
+<script>
+var prefs__MODULE_ID__ = new _IG_Prefs(__MODULE_ID__);
+var g_showsearchbox = prefs__MODULE_ID__.getBool('showsearchbox');
+var g_queryKeyword = prefs__MODULE_ID__.getString('query');
+if (g_showsearchbox) {
+  _gel('searchbox__MODULE_ID__').style.display = 'block';
+  _gel('query__MODULE_ID__').value = g_queryKeyword;
+}
+
+var g_item_num = parseInt(prefs__MODULE_ID__.getString('item_num'), 10);
+
+var g_housingSearch = null;
+var g_container = _gel('itemstable__MODULE_ID__');
+
+
+function doKeydown(e) {
+  var key = 0;
+  if (window.event) {
+    key = e.keyCode;
+  } else if (e.which) {
+    key = e.which;
+  }
+  switch (parseInt(key, 10)) {
+  case 13:
+    goSearch();
+    break;
+  }
+}
+
+function init() {
+  var resultsNum = parseInt(prefs__MODULE_ID__.getString('item_num'), 20);
+  g_housingSearch = new google.lifestyle.HousingSearch();
+  g_housingSearch.setSearchCompleteCallback(null, handleResponse);
+  g_housingSearch.setResultSetSize(resultsNum);
+  goSearch();
+}
+
+_IG_RegisterOnloadHandler(init);
+
+function handleResponse(resultSet) {
+  var entries = resultSet.results;
+  if (!entries || entries.length == 0) {
+    g_container.innerHTML = 'no result';
+    return;
+  }
+  g_container.innerHTML = displayResults(entries);
+}
+
+function displayResults(entries) {
+  var strArr = new Array;
+  for (var i = 0; i < entries.length; ++i) {
+    var item = entries[i];
+    strArr.push('<tr><td>' + item.title + '</td></tr>');
+  }
+  return strArr.join('');
+}
+
+function goSearch() {
+  if (g_showsearchbox) {
+    g_queryKeyword = _trim(_gel('query__MODULE_ID__').value);
+  }
+  var container = _gel('itemstable__MODULE_ID__');
+  if (g_queryKeyword.length == 0) {
+    container.innerHTML =
+        '<tr><td class="tdhint__MODULE_ID__">' +
+        '<br />__MSG_hint__' +
+        '</td></tr>';
+    return;
+  }
+  container.innerHTML = '<tr><td class="tdhint__MODULE_ID__">' +
+                        '__MSG_loading__' + '</td></tr>';
+
+  var city = '北京';
+  var type = '出租';
+  g_housingSearch.clearAllAttributes();
+  var HousingAttributes = google.lifestyle.HousingSearch.Attributes;
+  if (city) {
+    g_housingSearch.setCity(city);
+  }
+  if (type) {
+    g_housingSearch.setAttribute(HousingAttributes.CATEGORY, type);
+  }
+  g_housingSearch.setSorting('');
+  g_housingSearch.execute(g_queryKeyword, 0);
+}
+</script>
+<script type="text/javascript" src="http://shenghuo.google.cn/shenghuo/api/searchapi_mini.js"></script>
+]]>
+  </Content>
+</Module> 

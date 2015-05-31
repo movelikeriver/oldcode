@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE GSP SYSTEM "google.dtd">
+<GSP VER="3.2">
+<TM>0.698556</TM><Q>aaa</Q>
+<PARAM name="q" value="aaa" original_value="aaa"/>
+<PARAM name="num" value="3" original_value="3"/>
+<PARAM name="opti" value="select_corpus:instantlayer" original_value="select_corpus:instantlayer"/>
+<PARAM name="client" value="google" original_value="google"/>
+<PARAM name="output" value="xml" original_value="xml"/>
+<RelatedSearches><RelatedTerm>aaa berkeley</RelatedTerm><RelatedTerm>aaa san jose</RelatedTerm><RelatedTerm>aaa discounts</RelatedTerm><RelatedTerm>aaa insurance</RelatedTerm><RelatedTerm>aaa careers</RelatedTerm><RelatedTerm>aaa jobs</RelatedTerm><RelatedTerm>aaa locations</RelatedTerm><RelatedTerm>aaa gas prices</RelatedTerm></RelatedSearches><DICTIONARY><U>http://www.google.com/url?q=http://www.answers.com/aaa%26r%3D67&amp;ei=CJyoSoSWOoWV-pAKytGBhAg&amp;sa=X&amp;oi=dict&amp;ct=d&amp;cd=1&amp;usg=AFQjCNFhRGbSVp4i1S_KqfGr1As7VmCbrQ</U><WORD>aaa</WORD></DICTIONARY>
+<RES SN="1" EN="3">
+<M>60900</M>
+<NB><NU>/search?q=aaa&amp;opti=select_corpus:instantlayer&amp;hl=en&amp;client=google&amp;num=3&amp;output=xml&amp;ie=UTF-8&amp;start=3&amp;sa=N</NU>
+</NB>
+
+<R N="1"><U>http://www.csaa.com/portal/site/CSAA?zip=94043</U><UE>http://www.csaa.com/portal/site/CSAA%3Fzip%3D94043</UE><T>&lt;b&gt;AAA&lt;/b&gt; — Membership, Insurance, Emergency Road Service, Discounts...</T><RK>0</RK><S>For just pennies a day, &lt;b&gt;AAA&lt;/b&gt; Membership saves you money, time and worry &lt;b&gt;....&lt;/b&gt; &lt;b&gt;AAA&lt;/b&gt; &lt;br&gt;  Aids Homeowners: &lt;b&gt;AAA&lt;/b&gt; helps those affected by the 49er fire in Auburn, CA. &lt;b&gt;...&lt;/b&gt;</S><LANG>en</LANG><DEBUG><IND_DEBUG></IND_DEBUG><DOC_DEBUG></DOC_DEBUG><RESULT_DEBUG></RESULT_DEBUG><PERS_CATS></PERS_CATS><IND_PROTO_DEBUG></IND_PROTO_DEBUG><SOURCELIST><SOURCE SC="3" UC="1" SI="2" /></SOURCELIST></DEBUG><HAS><L/><RT/></HAS></R>
+
+<R N="2" L="2"><U>http://www.csaa.com/</U><UE>http://www.csaa.com/</UE><T>California State Automobile Association - Insurance, Automotive &lt;b&gt;...&lt;/b&gt;</T><RK>0</RK><S>&lt;b&gt;AAA&lt;/b&gt; of Northern California , Nevada, and Utah delivers comprehensive travel and &lt;br&gt;  automotive services, complete insurance coverage options, &lt;b&gt;...&lt;/b&gt;</S><LANG>en</LANG><DEBUG><IND_DEBUG></IND_DEBUG><DOC_DEBUG></DOC_DEBUG><RESULT_DEBUG></RESULT_DEBUG><PERS_CATS></PERS_CATS><IND_PROTO_DEBUG></IND_PROTO_DEBUG><SOURCELIST><SOURCE SC="3" UC="1" SI="2" /></SOURCELIST></DEBUG><HAS><L/><RT/></HAS></R>
+
+<R N="3"><U>http://www.fuelgaugereport.com/</U><UE>http://www.fuelgaugereport.com/</UE><T>&lt;b&gt;AAA&lt;/b&gt; Fuel Gauge Report</T><RK>0</RK><S>The &lt;b&gt;American Automobile Association&amp;#39;s&lt;/b&gt; media site for retail gas prices. Lists &lt;br&gt;  many different urban areas in the United States.</S><LANG>en</LANG><DEBUG><IND_DEBUG></IND_DEBUG><DOC_DEBUG></DOC_DEBUG><RESULT_DEBUG></RESULT_DEBUG><PERS_CATS></PERS_CATS><IND_PROTO_DEBUG></IND_PROTO_DEBUG><SOURCELIST><SOURCE SC="3" UC="1" SI="2" /></SOURCELIST></DEBUG><HAS><L/><RT/></HAS></R>
+</RES>
+</GSP>

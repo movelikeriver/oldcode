@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="New York Times" width="380" height="100">
+    <Require feature="dynamic-height"/>
+    <Require feature="analytics"/>  
+  </ModulePrefs>
+  <UserPref name="query" display_name="Input Query" datatype="string" default_value="" />
+  <UserPref name="num_entries" display_name="Number of results" datatype="int" default_value="5" />
+  <UserPref name="displaytitle" display_name="Display Title" default_value=""/>
+  <Content type="html">
+  <![CDATA[
+<style>
+.modboxin__MODULE_ID__ a {
+  margin-left:15px;
+  font-size:14px;
+}
+.datespan__MODULE_ID__ {
+  color:#6F6F6F;
+  font-size:12px;
+  margin-left:15px
+}
+.description__MODULE_ID__ {
+  margin-left:15px;
+  font-color:#6F6F6F;
+  font-size:12px;
+}
+</style>
+
+<div id="content_div__MODULE_ID__" class="modboxin__MODULE_ID__"></div>
+
+<script type="text/javascript">
+_IG_Analytics("UA-5279764-1", "/nytimes_article_search");
+var has_actions = false;
+function track (tag) {
+  try {
+    if (!has_actions) {
+      _IG_Analytics("UA-5279764-1", "/nytimes_article_search_has_actions");
+      has_actions = true;
+    }
+  } catch(err){}
+}
+</script>
+
+<script type="text/javascript">
+var prefs = new _IG_Prefs(__MODULE_ID__);
+var query = prefs.getString('query');
+var num = prefs.getInt('num_entries');
+
+function smartcut(string, len) {
+  if (string.length < len) {
+    return string;
+  }
+  var pos = len - 1;
+  while (string.charAt(pos) != ' ' && pos > 0) pos--;
+  return string.substr(0, pos) + " ...";
+}
+
+function fixTitle(title) {
+  return smartcut(title, 50);
+}
+
+function fixSummary(summary) {
+  return smartcut(summary, 210);
+}
+
+function parseDate(yyyymmdd) {
+  var yyyy = parseInt(yyyymmdd.substr(0, 4));
+  var mm = parseInt(yyyymmdd.substr(4, 2));
+  var dd = parseInt(yyyymmdd.substr(6, 2));
+  var date = new Date(yyyy, mm, dd);
+  return date.toDateString();
+}
+
+function makeJSONRequest() {
+  if (query == '') {
+    _gel('content_div').innerHTML = '<i>you should set query</i>';
+    return;
+  }
+  var params = {};
+  params[gadgets.io.RequestParameters.CONTENT_TYPE] =
+      gadgets.io.ContentType.JSON;
+  // API refer to http://developer.nytimes.com/docs/article_search_api/
+  var url = ['http://api.nytimes.com/svc/search/v1/article?query=title:',
+             query,
+             '%20abstract:',
+             query,
+             '&fields=url,nytd_title,date,abstract',
+             '&api-key=6ed73b6b4fbd4f08e2e1bbfd9875e63c:0:58693864'].join('');
+  gadgets.io.makeRequest(url, response, params);
+};
+
+function response(obj) { 
+  var jsondata = obj.data;
+  var html = '';
+  var value = jsondata['results'];
+  // If 'value' is an array, render its contents as a bulleted list
+  if (value instanceof Array) {
+    for (var j = 0; j < Math.min(value.length, num); j++) {
+      var elem = value[j];
+      html += ['<a target="_blank" href="',
+               elem.url,
+               '" onClick="javascript:track(',
+               elem.url,
+               ')">',
+               fixTitle(elem.nytd_title),
+               '</a>',
+               '<nobr><span class="datespan__MODULE_ID__">',
+               parseDate(elem.date),
+               '</span></nobr><br/>'].join('');
+      var myReg = /<.+?>|&nbsp;/g
+      var abstract = elem.abstract.replace(myReg, '');
+      html += '<div class="description__MODULE_ID__">' +
+              fixSummary(abstract) + '</div>';
+    }
+  } else {
+    html = '<i>No related news articles.</i>';
+  }
+  _gel('content_div__MODULE_ID__').innerHTML = html;
+};
+
+_gel('content_div__MODULE_ID__').innerHTML = 'Loading...';
+gadgets.util.registerOnLoadHandler(makeJSONRequest);
+</script>
+
+]]>
+  </Content>
+</Module>

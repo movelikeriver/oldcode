@@ -1,0 +1,10 @@
+<messagebundle>
+  <msg name="title">Amazon Gadget</msg>
+  <msg name="screenshot">/ig/modules/chinagadgets/biosphere/amazon/ALL_ALL.png</msg>
+  <msg name="thumbnail">/ig/modules/chinagadgets/biosphere/amazon/ALL_ALL-thm.png</msg>
+  <msg name="search">Search</msg>
+  <msg name="loading">Loading...</msg>
+  <msg name="hint">Please try some queries, e.g. ipod, gphone, etc.</msg>
+  <msg name="no_result">did not match any products, please try another query?</msg>
+  <msg name="tryagain"> please try again!</msg>
+</messagebundle>

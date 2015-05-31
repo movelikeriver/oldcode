@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Results>
+  <AuthorInfo description="Housing subscribed link" author="Qiao Jian" />
+  <ResultSpec id="HousingKeywordsIP">
+    <Query>[HousingKeywords]</Query>
+    <Call service="les">
+      <Input name="ip">[loc.ip]</Input>
+      <Input name="get_user_location">true</Input>
+    </Call>
+    <Extract type="HousingCity" after_call="true">[1.city]</Extract>
+    <Response format="image_right">
+      <Output name="title">[2.name][0.name]</Output>
+      <Output name="image_src">/images/res_img.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=[0.category]&oi=prbx]]></Output>
+      <Output name="link1" require="[0.isrent.name]">租房([2.rentnum])</Output>
+      <Output name="url1" require="[0.isrent.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&oi=prbx]]></Output>
+      <Output name="text1b" require="[0.isrent.name]">　</Output>
+      <Output name="link1b" require="[0.isrent.name]">合租([2.tenantnum])</Output>
+      <Output name="url1b" require="[0.isrent.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=合租&oi=prbx]]></Output>
+      <Output name="text1c" require="[0.isrent.name]">　</Output>
+      <Output name="link1c" require="[0.issell.name]">二手房([2.sellnum])</Output>
+      <Output name="url1c" require="[0.issell.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&oi=prbx]]></Output>
+      <Output name="link2" require="[0.rentline.name][2.hotrent1.name]">[2.hotrent1.name]([2.hotrent1.rentnum])</Output>
+      <Output name="url2" require="[0.rentline.name][2.hotrent1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[2.hotrent1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[0.rentline.name][2.hotrent1.name]">　</Output>
+      <Output name="link2b" require="[0.rentline.name][2.hotrent2.name]">[2.hotrent2.name]([2.hotrent2.rentnum])</Output>
+      <Output name="url2b" require="[0.rentline.name][2.hotrent2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[2.hotrent2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[0.rentline.name][2.hotrent2.name]">　</Output>
+      <Output name="link2c" require="[0.rentline.name][2.hotrent3.name]">[2.hotrent3.name]([2.hotrent3.rentnum])</Output>
+      <Output name="url2c" require="[0.rentline.name][2.hotrent3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[2.hotrent3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[0.rentline.name][2.hotrent3.name]">　</Output>
+      <Output name="link2d" require="[0.rentline.name][2.hotrent3.name]">更多[2.name]热租地区»</Output>
+      <Output name="url2d" require="[0.rentline.name][2.hotrent3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&oi=prbx]]></Output>
+      <Output name="link3" require="[0.sellline.name][2.hotsell1.name]">[2.hotsell1.name]([2.hotsell1.sellnum])</Output>
+      <Output name="url3" require="[0.sellline.name][2.hotsell1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[2.hotsell1.name]&oi=prbx]]></Output>
+      <Output name="text3b" require="[0.sellline.name][2.hotsell1.name]">　</Output>
+      <Output name="link3b" require="[0.sellline.name][2.hotsell2.name]">[2.hotsell2.name]([2.hotsell2.sellnum])</Output>
+      <Output name="url3b" require="[0.sellline.name][2.hotsell2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[2.hotsell2.name]&oi=prbx]]></Output>
+      <Output name="text3c" require="[0.sellline.name][2.hotsell2.name]">　</Output>
+      <Output name="link3c" require="[0.sellline.name][2.hotsell3.name]">[2.hotsell3.name]([2.hotsell3.sellnum])</Output>
+      <Output name="url3c" require="[0.sellline.name][2.hotsell3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[2.hotsell3.name]&oi=prbx]]></Output>
+      <Output name="text3d" require="[0.sellline.name][2.hotsell3.name]">　</Output>
+      <Output name="link3d" require="[0.sellline.name][2.hotsell3.name]">更多[2.name]二手房地区»</Output>
+      <Output name="url3d" require="[0.sellline.name][2.hotsell3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="HousingKeywords">
+    <Query>[HousingKeywords]</Query>
+    <Response format="image_right">
+      <Output name="title">[0.name]</Output>
+      <Output name="image_src">/images/res_img.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=类别&a_y1=1&a_o1=0&a_v1=[0.category]&oi=prbx]]></Output>
+      <Output name="link1">[0.cities.city1]</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city1]&a_n2=类别&a_y2=1&a_o2=0&a_v2=[0.category]&oi=prbx]]></Output>
+      <Output name="text1b">　</Output>
+      <Output name="link1b">[0.cities.city2]</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city2]&a_n2=类别&a_y2=1&a_o2=0&a_v2=[0.category]&oi=prbx]]></Output>
+      <Output name="text1c">　</Output>
+      <Output name="link1c">[0.cities.city3]</Output>
+      <Output name="url1c"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city3]&a_n2=类别&a_y2=1&a_o2=0&a_v2=[0.category]&oi=prbx]]></Output>
+      <Output name="text1d">　</Output>
+      <Output name="link1d">[0.cities.city4]</Output>
+      <Output name="url1d"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city4]&a_n2=类别&a_y2=1&a_o2=0&a_v2=[0.category]&oi=prbx]]></Output>
+      <Output name="text1e">　</Output>
+      <Output name="link1e">[0.cities.city5]</Output>
+      <Output name="url1e"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city5]&a_n2=类别&a_y2=1&a_o2=0&a_v2=[0.category]&oi=prbx]]></Output>
+      <Output name="link2">[0.cities.city6]</Output>
+      <Output name="url2"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city6]&a_n2=类别&a_y2=1&a_o2=0&a_v2=[0.category]&oi=prbx]]></Output>
+      <Output name="text2b">　</Output>
+      <Output name="link2b">[0.cities.city7]</Output>
+      <Output name="url2b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city7]&a_n2=类别&a_y2=1&a_o2=0&a_v2=[0.category]&oi=prbx]]></Output>
+      <Output name="text2c">　</Output>
+      <Output name="link2c">[0.cities.city8]</Output>
+      <Output name="url2c"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city8]&a_n2=类别&a_y2=1&a_o2=0&a_v2=[0.category]&oi=prbx]]></Output>
+      <Output name="text2d">　</Output>
+      <Output name="link2d">[0.cities.city9]</Output>
+      <Output name="url2d"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city9]&a_n2=类别&a_y2=1&a_o2=0&a_v2=[0.category]&oi=prbx]]></Output>
+      <Output name="text2e">　</Output>
+      <Output name="link2e">更多»</Output>
+      <Output name="url2e"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=&a_n2=类别&a_y2=1&a_o2=0&a_v2=[0.category]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="HousingCity">
+    <Query>[HousingKeywords{0+}][HousingCity][HousingKeywords]</Query>
+    <Response format="image_right">
+      <Output name="title">[0.name][1.name]</Output>
+      <Output name="image_src">/images/res_img.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=[1.category]&oi=prbx]]></Output>
+      <Output name="link1" require="[1.isrent.name]">租房([0.rentnum])</Output>
+      <Output name="url1" require="[1.isrent.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&oi=prbx]]></Output>
+      <Output name="text1b" require="[1.isrent.name]">　</Output>
+      <Output name="link1b" require="[1.isrent.name]">合租([0.tenantnum])</Output>
+      <Output name="url1b" require="[1.isrent.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=合租&oi=prbx]]></Output>
+      <Output name="text1c" require="[1.isrent.name]">　</Output>
+      <Output name="link1c" require="[1.issell.name]">二手房([0.sellnum])</Output>
+      <Output name="url1c" require="[1.issell.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&oi=prbx]]></Output>
+      <Output name="link2" require="[1.rentline.name][0.hotrent1.name]">[0.hotrent1.name]([0.hotrent1.rentnum])</Output>
+      <Output name="url2" require="[1.rentline.name][0.hotrent1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[0.hotrent1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[1.rentline.name][0.hotrent1.name]">　</Output>
+      <Output name="link2b" require="[1.rentline.name][0.hotrent2.name]">[0.hotrent2.name]([0.hotrent2.rentnum])</Output>
+      <Output name="url2b" require="[1.rentline.name][0.hotrent2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[0.hotrent2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[1.rentline.name][0.hotrent2.name]">　</Output>
+      <Output name="link2c" require="[1.rentline.name][0.hotrent3.name]">[0.hotrent3.name]([0.hotrent3.rentnum])</Output>
+      <Output name="url2c" require="[1.rentline.name][0.hotrent3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[0.hotrent3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[1.rentline.name][0.hotrent3.name]">　</Output>
+      <Output name="link2d" require="[1.rentline.name][0.hotrent3.name]">更多[0.name]热租地区»</Output>
+      <Output name="url2d" require="[1.rentline.name][0.hotrent3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&oi=prbx]]></Output>
+      <Output name="link3" require="[1.sellline.name][0.hotsell1.name]">[0.hotsell1.name]([0.hotsell1.sellnum])</Output>
+      <Output name="url3" require="[1.sellline.name][0.hotsell1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[0.hotsell1.name]&oi=prbx]]></Output>
+      <Output name="text3b" require="[1.sellline.name][0.hotsell1.name]">　</Output>
+      <Output name="link3b" require="[1.sellline.name][0.hotsell2.name]">[0.hotsell2.name]([0.hotsell2.sellnum])</Output>
+      <Output name="url3b" require="[1.sellline.name][0.hotsell2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[0.hotsell2.name]&oi=prbx]]></Output>
+      <Output name="text3c" require="[1.sellline.name][0.hotsell2.name]">　</Output>
+      <Output name="link3c" require="[1.sellline.name][0.hotsell3.name]">[0.hotsell3.name]([0.hotsell3.sellnum])</Output>
+      <Output name="url3c" require="[1.sellline.name][0.hotsell3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[0.hotsell3.name]&oi=prbx]]></Output>
+      <Output name="text3d" require="[1.sellline.name][0.hotsell3.name]">　</Output>
+      <Output name="link3d" require="[1.sellline.name][0.hotsell3.name]">更多[0.name]二手房地区»</Output>
+      <Output name="url3d" require="[1.sellline.name][0.hotsell3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="HousingCity2">
+    <Query>[HousingKeywords][HousingCity]</Query>
+    <Response format="image_right">
+      <Output name="title">[1.name][0.name]</Output>
+      <Output name="image_src">/images/res_img.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=[0.category]&oi=prbx]]></Output>
+      <Output name="link1" require="[0.isrent.name]">租房([1.rentnum])</Output>
+      <Output name="url1" require="[0.isrent.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&oi=prbx]]></Output>
+      <Output name="text1b" require="[0.isrent.name]">　</Output>
+      <Output name="link1b" require="[0.isrent.name]">合租([1.tenantnum])</Output>
+      <Output name="url1b" require="[0.isrent.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=合租&oi=prbx]]></Output>
+      <Output name="text1c" require="[0.isrent.name]">　</Output>
+      <Output name="link1c" require="[0.issell.name]">二手房([1.sellnum])</Output>
+      <Output name="url1c" require="[0.issell.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&oi=prbx]]></Output>
+      <Output name="link2" require="[0.rentline.name][1.hotrent1.name]">[1.hotrent1.name]([1.hotrent1.rentnum])</Output>
+      <Output name="url2" require="[0.rentline.name][1.hotrent1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[1.hotrent1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[0.rentline.name][1.hotrent1.name]">　</Output>
+      <Output name="link2b" require="[0.rentline.name][1.hotrent2.name]">[1.hotrent2.name]([1.hotrent2.rentnum])</Output>
+      <Output name="url2b" require="[0.rentline.name][1.hotrent2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[1.hotrent2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[0.rentline.name][1.hotrent2.name]">　</Output>
+      <Output name="link2c" require="[0.rentline.name][1.hotrent3.name]">[1.hotrent3.name]([1.hotrent3.rentnum])</Output>
+      <Output name="url2c" require="[0.rentline.name][1.hotrent3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[1.hotrent3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[0.rentline.name][1.hotrent3.name]">　</Output>
+      <Output name="link2d" require="[0.rentline.name][1.hotrent3.name]">更多[1.name]热租地区»</Output>
+      <Output name="url2d" require="[0.rentline.name][1.hotrent3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&oi=prbx]]></Output>
+      <Output name="link3" require="[0.sellline.name][1.hotsell1.name]">[1.hotsell1.name]([1.hotsell1.sellnum])</Output>
+      <Output name="url3" require="[0.sellline.name][1.hotsell1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[1.hotsell1.name]&oi=prbx]]></Output>
+      <Output name="text3b" require="[0.sellline.name][1.hotsell1.name]">　</Output>
+      <Output name="link3b" require="[0.sellline.name][1.hotsell2.name]">[1.hotsell2.name]([1.hotsell2.sellnum])</Output>
+      <Output name="url3b" require="[0.sellline.name][1.hotsell2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[1.hotsell2.name]&oi=prbx]]></Output>
+      <Output name="text3c" require="[0.sellline.name][1.hotsell2.name]">　</Output>
+      <Output name="link3c" require="[0.sellline.name][1.hotsell3.name]">[1.hotsell3.name]([1.hotsell3.sellnum])</Output>
+      <Output name="url3c" require="[0.sellline.name][1.hotsell3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[1.hotsell3.name]&oi=prbx]]></Output>
+      <Output name="text3d" require="[0.sellline.name][1.hotsell3.name]">　</Output>
+      <Output name="link3d" require="[0.sellline.name][1.hotsell3.name]">更多[1.name]二手房地区»</Output>
+      <Output name="url3d" require="[0.sellline.name][1.hotsell3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="HousingDistrict">
+    <Query>[HousingKeywords{0+}][HousingDistrict][HousingKeywords]</Query>
+    <Response format="image_right">
+      <Output name="title">[0.city][0.name][1.name]</Output>
+      <Output name="image_src">/images/res_img.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=[1.category]&a_n3=地区&a_y3=1&a_o3=0&a_v3=[0.name]&oi=prbx]]></Output>
+      <Output name="link1" require="[1.isrent.name]">租房([0.rentnum])</Output>
+      <Output name="url1" require="[1.isrent.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&a_n3=地区&a_y3=1&a_o3=0&a_v3=[0.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[1.isrent.name]">　</Output>
+      <Output name="link1b" require="[1.isrent.name]">合租([0.tenantnum])</Output>
+      <Output name="url1b" require="[1.isrent.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=合租&a_n3=地区&a_y3=1&a_o3=0&a_v3=[0.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[1.isrent.name]">　</Output>
+      <Output name="link1c" require="[1.issell.name]">二手房([0.sellnum])</Output>
+      <Output name="url1c" require="[1.issell.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&a_n3=地区&a_y3=1&a_o3=0&a_v3=[0.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[1.rentline.name][0.hotrent1.name]">[0.hotrent1.name]([0.hotrent1.rentnum])</Output>
+      <Output name="url2" require="[1.rentline.name][0.hotrent1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[0.hotrent1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[1.rentline.name][0.hotrent1.name]">　</Output>
+      <Output name="link2b" require="[1.rentline.name][0.hotrent2.name]">[0.hotrent2.name]([0.hotrent2.rentnum])</Output>
+      <Output name="url2b" require="[1.rentline.name][0.hotrent2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[0.hotrent2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[1.rentline.name][0.hotrent2.name]">　</Output>
+      <Output name="link2c" require="[1.rentline.name][0.hotrent3.name]">[0.hotrent3.name]([0.hotrent3.rentnum])</Output>
+      <Output name="url2c" require="[1.rentline.name][0.hotrent3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[0.hotrent3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[1.rentline.name][0.hotrent3.name]">　</Output>
+      <Output name="link2d" require="[1.rentline.name][0.hotrent3.name]">更多[0.name]热租地区»</Output>
+      <Output name="url2d" require="[1.rentline.name][0.hotrent3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&a_n3=地区&a_y3=1&a_o3=0&a_v3=[0.name]&oi=prbx]]></Output>
+      <Output name="link3" require="[1.sellline.name][0.hotsell1.name]">[0.hotsell1.name]([0.hotsell1.sellnum])</Output>
+      <Output name="url3" require="[1.sellline.name][0.hotsell1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[0.hotsell1.name]&oi=prbx]]></Output>
+      <Output name="text3b" require="[1.sellline.name][0.hotsell1.name]">　</Output>
+      <Output name="link3b" require="[1.sellline.name][0.hotsell2.name]">[0.hotsell2.name]([0.hotsell2.sellnum])</Output>
+      <Output name="url3b" require="[1.sellline.name][0.hotsell2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[0.hotsell2.name]&oi=prbx]]></Output>
+      <Output name="text3c" require="[1.sellline.name][0.hotsell2.name]">　</Output>
+      <Output name="link3c" require="[1.sellline.name][0.hotsell3.name]">[0.hotsell3.name]([0.hotsell3.sellnum])</Output>
+      <Output name="url3c" require="[1.sellline.name][0.hotsell3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[0.hotsell3.name]&oi=prbx]]></Output>
+      <Output name="text3d" require="[1.sellline.name][0.hotsell3.name]">　</Output>
+      <Output name="link3d" require="[1.sellline.name][0.hotsell3.name]">更多[0.name]二手房地区»</Output>
+      <Output name="url3d" require="[1.sellline.name][0.hotsell3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&a_n3=地区&a_y3=1&a_o3=0&a_v3=[0.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="HousingDistrict2">
+    <Query>[HousingKeywords][HousingDistrict]</Query>
+    <Response format="image_right">
+      <Output name="title">[1.city][1.name][0.name]</Output>
+      <Output name="image_src">/images/res_img.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=[0.category]&a_n3=地区&a_y3=1&a_o3=0&a_v3=[1.name]&oi=prbx]]></Output>
+      <Output name="link1" require="[0.isrent.name]">租房([1.rentnum])</Output>
+      <Output name="url1" require="[0.isrent.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&a_n3=地区&a_y3=1&a_o3=0&a_v3=[1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[0.isrent.name]">　</Output>
+      <Output name="link1b" require="[0.isrent.name]">合租([1.tenantnum])</Output>
+      <Output name="url1b" require="[0.isrent.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=合租&a_n3=地区&a_y3=1&a_o3=0&a_v3=[1.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[0.isrent.name]">　</Output>
+      <Output name="link1c" require="[0.issell.name]">二手房([1.sellnum])</Output>
+      <Output name="url1c" require="[0.issell.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&a_n3=地区&a_y3=1&a_o3=0&a_v3=[1.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[0.rentline.name][1.hotrent1.name]">[1.hotrent1.name]([1.hotrent1.rentnum])</Output>
+      <Output name="url2" require="[0.rentline.name][1.hotrent1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[1.hotrent1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[0.rentline.name][1.hotrent1.name]">　</Output>
+      <Output name="link2b" require="[0.rentline.name][1.hotrent2.name]">[1.hotrent2.name]([1.hotrent2.rentnum])</Output>
+      <Output name="url2b" require="[0.rentline.name][1.hotrent2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[1.hotrent2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[0.rentline.name][1.hotrent2.name]">　</Output>
+      <Output name="link2c" require="[0.rentline.name][1.hotrent3.name]">[1.hotrent3.name]([1.hotrent3.rentnum])</Output>
+      <Output name="url2c" require="[0.rentline.name][1.hotrent3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[1.hotrent3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[0.rentline.name][1.hotrent3.name]">　</Output>
+      <Output name="link2d" require="[0.rentline.name][1.hotrent3.name]">更多[1.name]热租地区»</Output>
+      <Output name="url2d" require="[0.rentline.name][1.hotrent3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&a_n3=地区&a_y3=1&a_o3=0&a_v3=[1.name]&oi=prbx]]></Output>
+      <Output name="link3" require="[0.sellline.name][1.hotsell1.name]">[1.hotsell1.name]([1.hotsell1.sellnum])</Output>
+      <Output name="url3" require="[0.sellline.name][1.hotsell1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[1.hotsell1.name]&oi=prbx]]></Output>
+      <Output name="text3b" require="[0.sellline.name][1.hotsell1.name]">　</Output>
+      <Output name="link3b" require="[0.sellline.name][1.hotsell2.name]">[1.hotsell2.name]([1.hotsell2.sellnum])</Output>
+      <Output name="url3b" require="[0.sellline.name][1.hotsell2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[1.hotsell2.name]&oi=prbx]]></Output>
+      <Output name="text3c" require="[0.sellline.name][1.hotsell2.name]">　</Output>
+      <Output name="link3c" require="[0.sellline.name][1.hotsell3.name]">[1.hotsell3.name]([1.hotsell3.sellnum])</Output>
+      <Output name="url3c" require="[0.sellline.name][1.hotsell3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[1.hotsell3.name]&oi=prbx]]></Output>
+      <Output name="text3d" require="[0.sellline.name][1.hotsell3.name]">　</Output>
+      <Output name="link3d" require="[0.sellline.name][1.hotsell3.name]">更多[1.name]二手房地区»</Output>
+      <Output name="url3d" require="[0.sellline.name][1.hotsell3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&a_n3=地区&a_y3=1&a_o3=0&a_v3=[1.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="HousingNeighborhood">
+    <Query>[HousingKeywords{0+}][HousingNeighborhood][RE:((附近)的?)?][HousingKeywords]</Query>
+    <Response format="image_right">
+      <Output name="title">[0.city][0.name][2.name]</Output>
+      <Output name="image_src">/images/res_img.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=[2.category]&q=[0.name]&oi=prbx]]></Output>
+      <Output name="link1" require="[2.isrent.name]">租房([0.rentnum])</Output>
+      <Output name="url1" require="[2.isrent.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[0.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[2.isrent.name]">　</Output>
+      <Output name="link1b" require="[2.isrent.name]">合租([0.tenantnum])</Output>
+      <Output name="url1b" require="[2.isrent.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=合租&q=[0.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[2.isrent.name]">　</Output>
+      <Output name="link1c" require="[2.issell.name]">二手房([0.sellnum])</Output>
+      <Output name="url1c" require="[2.issell.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[0.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[2.rentline.name][0.relatedrent1.name]">[0.relatedrent1.name]([0.relatedrent1.rentnum])</Output>
+      <Output name="url2" require="[2.rentline.name][0.relatedrent1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[0.relatedrent1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[2.rentline.name][0.relatedrent1.name]">　</Output>
+      <Output name="link2b" require="[2.rentline.name][0.relatedrent2.name]">[0.relatedrent2.name]([0.relatedrent2.rentnum])</Output>
+      <Output name="url2b" require="[2.rentline.name][0.relatedrent2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[0.relatedrent2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[2.rentline.name][0.relatedrent2.name]">　</Output>
+      <Output name="link2c" require="[2.rentline.name][0.relatedrent3.name]">[0.relatedrent3.name]([0.relatedrent3.rentnum])</Output>
+      <Output name="url2c" require="[2.rentline.name][0.relatedrent3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[0.relatedrent3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[2.rentline.name][0.relatedrent3.name]">　</Output>
+      <Output name="link2d" require="[2.rentline.name][0.relatedrent3.name]">更多[0.name]附近热租地区»</Output>
+      <Output name="url2d" require="[2.rentline.name][0.relatedrent3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[0.name]&oi=prbx]]></Output>
+      <Output name="link3" require="[2.sellline.name][0.relatedsell1.name]">[0.relatedsell1.name]([0.relatedsell1.sellnum])</Output>
+      <Output name="url3" require="[2.sellline.name][0.relatedsell1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[0.relatedsell1.name]&oi=prbx]]></Output>
+      <Output name="text3b" require="[2.sellline.name][0.relatedsell1.name]">　</Output>
+      <Output name="link3b" require="[2.sellline.name][0.relatedsell2.name]">[0.relatedsell2.name]([0.relatedsell2.sellnum])</Output>
+      <Output name="url3b" require="[2.sellline.name][0.relatedsell2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[0.relatedsell2.name]&oi=prbx]]></Output>
+      <Output name="text3c" require="[2.sellline.name][0.relatedsell2.name]">　</Output>
+      <Output name="link3c" require="[2.sellline.name][0.relatedsell3.name]">[0.relatedsell3.name]([0.relatedsell3.sellnum])</Output>
+      <Output name="url3c" require="[2.sellline.name][0.relatedsell3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[0.relatedsell3.name]&oi=prbx]]></Output>
+      <Output name="text3d" require="[2.sellline.name][0.relatedsell3.name]">　</Output>
+      <Output name="link3d" require="[2.sellline.name][0.relatedsell3.name]">更多[0.name]附近二手房地区»</Output>
+      <Output name="url3d" require="[2.sellline.name][0.relatedsell3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[0.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="HousingNeighborhood2">
+    <Query>[HousingKeywords][HousingNeighborhood]</Query>
+    <Response format="image_right">
+      <Output name="title">[1.city][1.name][0.name]</Output>
+      <Output name="image_src">/images/res_img.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=[0.category]&q=[1.name]&oi=prbx]]></Output>
+      <Output name="link1" require="[0.isrent.name]">租房([1.rentnum])</Output>
+      <Output name="url1" require="[0.isrent.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[0.isrent.name]">　</Output>
+      <Output name="link1b" require="[0.isrent.name]">合租([1.tenantnum])</Output>
+      <Output name="url1b" require="[0.isrent.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=合租&q=[1.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[0.isrent.name]">　</Output>
+      <Output name="link1c" require="[0.issell.name]">二手房([1.sellnum])</Output>
+      <Output name="url1c" require="[0.issell.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[1.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[0.rentline.name][1.relatedrent1.name]">[1.relatedrent1.name]([1.relatedrent1.rentnum])</Output>
+      <Output name="url2" require="[0.rentline.name][1.relatedrent1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[1.relatedrent1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[0.rentline.name][1.relatedrent1.name]">　</Output>
+      <Output name="link2b" require="[0.rentline.name][1.relatedrent2.name]">[1.relatedrent2.name]([1.relatedrent2.rentnum])</Output>
+      <Output name="url2b" require="[0.rentline.name][1.relatedrent2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[1.relatedrent2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[0.rentline.name][1.relatedrent2.name]">　</Output>
+      <Output name="link2c" require="[0.rentline.name][1.relatedrent3.name]">[1.relatedrent3.name]([1.relatedrent3.rentnum])</Output>
+      <Output name="url2c" require="[0.rentline.name][1.relatedrent3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[1.relatedrent3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[0.rentline.name][1.relatedrent3.name]">　</Output>
+      <Output name="link2d" require="[0.rentline.name][1.relatedrent3.name]">更多[1.name]附近热租地区»</Output>
+      <Output name="url2d" require="[0.rentline.name][1.relatedrent3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出租&q=[1.name]&oi=prbx]]></Output>
+      <Output name="link3" require="[0.sellline.name][1.relatedsell1.name]">[1.relatedsell1.name]([1.relatedsell1.sellnum])</Output>
+      <Output name="url3" require="[0.sellline.name][1.relatedsell1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[1.relatedsell1.name]&oi=prbx]]></Output>
+      <Output name="text3b" require="[0.sellline.name][1.relatedsell1.name]">　</Output>
+      <Output name="link3b" require="[0.sellline.name][1.relatedsell2.name]">[1.relatedsell2.name]([1.relatedsell2.sellnum])</Output>
+      <Output name="url3b" require="[0.sellline.name][1.relatedsell2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[1.relatedsell2.name]&oi=prbx]]></Output>
+      <Output name="text3c" require="[0.sellline.name][1.relatedsell2.name]">　</Output>
+      <Output name="link3c" require="[0.sellline.name][1.relatedsell3.name]">[1.relatedsell3.name]([1.relatedsell3.sellnum])</Output>
+      <Output name="url3c" require="[0.sellline.name][1.relatedsell3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[1.relatedsell3.name]&oi=prbx]]></Output>
+      <Output name="text3d" require="[0.sellline.name][1.relatedsell3.name]">　</Output>
+      <Output name="link3d" require="[0.sellline.name][1.relatedsell3.name]">更多[1.name]附近二手房地区»</Output>
+      <Output name="url3d" require="[0.sellline.name][1.relatedsell3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=房屋&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类别&a_y2=1&a_o2=0&a_v2=出售&q=[1.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+</Results>

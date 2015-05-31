@@ -1,0 +1,32 @@
+<Results>
+<AuthorInfo description="My first XML-based subscribed link" author="Your Name"/>
+
+<!--The result specification is the main guts of your custom results-->
+<ResultSpec id="onebox1_xml" test="true">
+
+<!--The result specification includes one query.-->
+  <Query>rmb currency1</Query>
+
+<!--The query triggers this response-->
+  <Response>
+
+    <Output name="title">Google Subscribed Links API</Output>
+    <Output name="more_url">www.google.com/coop/subscribedlinks</Output>
+
+    <Output name="text1">Hello, world!</Output>
+    <Output name="link1">Link to the Reference Directory, </Output>
+    <Output name="url1">http://www.google.com/coop/subscribedlinks/directory/Reference</Output>
+    <Output name="text1b">Google Subscribed Links allow you to put your own</Output>
+    <Output name="link1b">link to the News Directory, </Output>
+    <Output name="url1b">http://www.google.com/coop/subscribedlinks/directory/News</Output>
+    <Output name="text1c">content on the Google search results page.</Output>
+    <Output name="link1c">and link to the Movie Directory.</Output>
+    <Output name="url1c">http://www.google.com/coop/subscribedlinks/directory/Movies</Output>
+
+  </Response>
+
+</ResultSpec>
+
+<!--You can create more result specifications.-->
+
+</Results>

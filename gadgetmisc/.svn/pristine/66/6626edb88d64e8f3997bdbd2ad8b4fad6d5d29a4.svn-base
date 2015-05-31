@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Results>
+<AuthorInfo description="Table Format Example" author="Lenjoy"/>
+
+<ResultSpec id="TableFormatExample08252008">
+
+  <Query>3po table format example</Query>
+
+  <Response format="table">
+    <Output name="title">3PO Table Example Title</Output>
+    <Output name="more_url">http://www.google.com/</Output>
+    <Output name="title_right_link">Add to iGoogle</Output>
+    <Output name="title_right_url">www.google.com/ig</Output>
+    <Output name="title_right_link_2">Another title right link</Output>
+    <Output name="title_right_url_2">www.google.com/</Output>
+
+    <Output name="image_src">/images/addons.gif</Output>
+    <Output name="inline_image_width">30</Output>
+    <Output name="inline_image_height">30</Output>
+
+    <Output name="table_above_text">2008 Olympics Medal Count</Output>
+
+    <Output name="table_width_1d">10</Output>
+
+    <Output name="table_text_1e">Gold</Output>
+    <Output name="table_text_1f">Silver</Output>
+    <Output name="table_text_1g">Bronze</Output>
+    <Output name="table_text_1h">Total</Output>
+
+    <Output name="table_text_2">1.</Output>
+    <Output name="table_image_src_2b">/images/flags/CHN.gif</Output>
+    <Output name="table_image_width_2b">24</Output>
+    <Output name="table_image_height_2b">14</Output>
+    <Output name="table_image_alt_2b">China</Output>
+    <Output name="table_text_2c">China</Output>
+    <Output name="table_text_2e">51</Output>
+    <Output name="table_text_2f">21</Output>
+    <Output name="table_text_2g">28</Output>
+    <Output name="table_text_2h">100</Output>
+
+    <Output name="table_text_3">2.</Output>
+    <Output name="table_image_src_3b">/images/flags/USA.gif</Output>
+
+    <Output name="table_image_width_3b">24</Output>
+    <Output name="table_image_height_3b">14</Output>
+    <Output name="table_image_alt_3b">United States</Output>
+    <Output name="table_text_3c">United States</Output>
+    <Output name="table_text_3e">36</Output>
+    <Output name="table_text_3f">38</Output>
+    <Output name="table_text_3g">36</Output>
+    <Output name="table_text_3h">110</Output>
+
+    <Output name="table_text_4">3.</Output>
+    <Output name="table_image_src_4b">/images/flags/AUS.gif</Output>
+    <Output name="table_image_width_4b">24</Output>
+    <Output name="table_image_height_4b">14</Output>
+    <Output name="table_image_alt_4b">Russia</Output>
+    <Output name="table_text_4c">Russia</Output>
+    <Output name="table_text_4e">23</Output>
+    <Output name="table_text_4f">21</Output>
+    <Output name="table_text_4g">28</Output>
+    <Output name="table_text_4h">72</Output>
+
+    <Output name="table_below_text">See you in 2012 London.</Output>
+
+  </Response>
+
+</ResultSpec>
+
+</Results>

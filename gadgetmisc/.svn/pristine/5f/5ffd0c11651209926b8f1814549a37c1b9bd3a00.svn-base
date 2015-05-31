@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+  <ModulePrefs title="__MSG_title__"
+               width="560"
+               height="100"
+               author="Lenjoy"
+               author_email="lenjoy@google.com"
+               author_affiliation="Google Inc."
+               author_location="Beijing, China"
+               screenshot="__MSG_screenshot__"
+               thumbnail="__MSG_thumbnail__">
+    <Require feature="dynamic-height" />
+    <Require feature="analytics"/>
+    <Locale messages="/ig/modules/chinagadgets/biosphere/ebay/ALL_ALL.xml" />
+  </ModulePrefs>
+  <UserPref name="showsearchbox"
+            display_name="Show Search Box"
+            datatype="bool"
+            default_value="true" />
+  <UserPref name="query"
+            display_name="Input Query"
+            datatype="string"
+            default_value="" />
+  <UserPref name="dollar"
+            display_name="Dollar"
+            datatype="string"
+            default_value="$" />
+  <UserPref name="item_num"
+            display_name="Item Number"
+            datatype="string"
+            default_value="3" />
+  <Content type="html">
+<![CDATA[
+<style>
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0
+}
+
+.searchbox__MODULE_ID__ {
+  display: none;
+  height: 40px
+}
+
+.gobt__MODULE_ID__ {
+  vertical-align: middle
+}
+
+.tablestyle__MODULE_ID__ {
+  border: 1px none #efefef;
+  font-family: arial, sans-serif;
+  width: 100%
+}
+
+.tdhint__MODULE_ID__ {
+  color: blue;
+  font-size: 13px;
+  text-align: left  
+}
+
+.tdmenuprice__MODULE_ID__ {
+  font-size: 13px;
+  padding-bottom: 6px;
+  text-align: right;
+  vertical-align: text-bottom
+}
+
+.tdmenushipping__MODULE_ID__ {
+  font-size: 13px;
+  text-align: center;
+  padding-bottom: 6px;
+  vertical-align: text-bottom
+}
+
+.tdmenutimeleft__MODULE_ID__ {
+  font-size: 13px;
+  padding-bottom: 6px;
+  text-align: right;
+  vertical-align: text-bottom
+}
+
+.tdimage__MODULE_ID__ {
+  height: 50px;
+  margin: 0 2px;
+  padding-right: 6px;
+  padding-top: 6px;
+  vertical-align: top;
+  width: 40px
+}
+
+.tdtitle__MODULE_ID__ {
+  font-size: 13px;
+  padding-top: 6px;
+  text-align: left;
+  vertical-align: top
+}
+
+.tdprice__MODULE_ID__ {
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 9px;
+  padding-top: 6px;
+  text-align: right;
+  vertical-align: top
+}
+
+.tdshipping__MODULE_ID__ {
+  font-size: 13px;
+  padding-left: 9px;
+  padding-top: 6px;
+  text-align: center;
+  vertical-align: top
+}
+
+.tdtimeleft__MODULE_ID__ {
+  font-size: 13px;
+  padding-left: 9px;
+  padding-top: 6px;
+  text-align: right;
+  vertical-align: top
+}
+</style>
+<body>
+<div id="searchbox__MODULE_ID__" class="searchbox__MODULE_ID__">
+  <input id="query__MODULE_ID__" type="text" size="22" maxlength="200"
+         onkeydown="doKeydown(event)" value="">
+  <input onclick="window.goSearch();track('/ebay_search_icon')"
+         type="image"
+         src="http://w-1.ebay.com/images/go.gif"
+         class="gobt__MODULE_ID__">
+</div>
+<div id="results__MODULE_ID__">
+  <table id="itemstable__MODULE_ID__" class="tablestyle__MODULE_ID__"
+         rules="rows" frame="void" />
+</div>
+</body>
+
+<script>
+var prefs__MODULE_ID__ = new _IG_Prefs(__MODULE_ID__);
+var g_showsearchbox = prefs__MODULE_ID__.getBool('showsearchbox');
+var g_queryKeyword = prefs__MODULE_ID__.getString('query');
+
+if (g_showsearchbox) {
+  _gel('searchbox__MODULE_ID__').style.display = 'block';
+  _gel('query__MODULE_ID__').value = g_queryKeyword;
+}
+
+var g_item_num = parseInt(prefs__MODULE_ID__.getString('item_num'), 10);
+var g_dollar = prefs__MODULE_ID__.getString('dollar');
+
+function changeColor(e) {
+  e.style.background = '#e0e040';
+}
+
+function returnColor(e) {
+  e.style.background = '#ffffff';
+}
+
+/**
+ * @param {Event} e The keyboard event
+ */
+function doKeydown(e) {
+  var key = 0;
+  if (window.event) {
+    key = e.keyCode;
+  } else if (e.which) {
+    key = e.which;
+  }
+  switch (parseInt(key, 10)) {
+  case 13:
+    window.goSearch();
+    track('/ebay_search_icon');
+    break;
+  }
+}
+</script>
+
+<script type="text/javascript" src="http://w-1.ebay.com/js/2.0/min/Shopping.js">
+</script>
+
+<script type="text/javascript">
+var _ANALYTICS_ID = 'UA-5279764-1';
+_IG_Analytics(_ANALYTICS_ID, '/ebay');
+
+// The boolean actions status map.
+var _ACTIONS = new Object();
+_ACTIONS['/ebay_has_click_actions'] = false;
+_ACTIONS['/ebay_has_hover_actions'] = false;
+
+
+/**
+ * Tracks the click, hover and search actions.
+ * @param {String} tag The action tag
+ */
+function track(tag) {
+  if (tag in _ACTIONS && _ACTIONS[tag]) {
+    return;
+  }
+  try {
+    _IG_Analytics(_ANALYTICS_ID, tag);
+    if (tag in _ACTIONS) {
+      _ACTIONS[tag] = true;
+    }
+  } catch(err) {}
+}
+</script>
+
+<script>
+
+// Namespace.
+(function gadgetEbay() {
+
+/**
+ * @class ItemListUI UI component to display items
+ * @constructor
+ * @param {Array} items array of com.ebay.shoppingservice.SimpleItemType
+ * @param {Boolean} if show bid column
+ */
+this.ItemListUI = function(items, showBid) {
+  this.items = items;
+  this.showBid = showBid;
+
+  if (showBid) {
+    this.titles = ['', '', '__MSG_bids__', '__MSG_price__',
+                   '__MSG_shipping__', '__MSG_timeleft__'];
+    this.tdstyle = ['', '', '',
+                    'tdmenuprice__MODULE_ID__',
+                    'tdmenushipping__MODULE_ID__',
+                    'tdmenutimeleft__MODULE_ID__'];
+    this.width = [10, 41, 10, 13, 13, 13];
+  } else {
+    this.titles = ['', '', '__MSG_price__',
+                   '__MSG_shipping__', '__MSG_timeleft__'];
+    this.tdstyle = ['', '',
+                    'tdmenuprice__MODULE_ID__',
+                    'tdmenushipping__MODULE_ID__',
+                    'tdmenutimeleft__MODULE_ID__'];
+    this.width = [10, 45, 15, 15, 15];
+  }
+
+  /**
+   * constructing HTML
+   * @return {String} constructed HTML
+   */
+  this.display = function() {
+    var strArray = [];
+    if ((!this.items.length) || this.items.length == 0) {
+      strArray = ['<tr><td class="tdhint__MODULE_ID__">',
+                  '__MSG_no_result__',
+                  '&nbsp;<b>', g_queryKeyword, '</b>',
+                  '</td></tr>'];
+      return strArray.join('');
+    }
+    if (this.titles) {
+      strArray.push('<tr>');
+      for (var i = 0; i < this.titles.length; i++) {
+        strArray = strArray.concat(
+            ['<td class="', this.tdstyle[i], '" width="',
+             this.width[i], '%">']);
+        if (i == 0) {
+          strArray = strArray.concat(
+              ['<img src=',
+               '"http://pics.ebaystatic.com/aw/pics/logos/logoEbay_x45.gif"',
+               ' height="20" width="45">']);
+        } else {
+          strArray.push(this.titles[i]);
+        }
+        strArray.push('</td>');
+      }
+      strArray.push('</tr>');
+    }
+
+    if (this.items) {
+      for (var i = 0; i< this.items.length; i++) {
+        strArray = strArray.concat(
+            ['<tr onmouseover=',
+             '"changeColor(this);track(\'/ebay_has_hover_actions\')"',
+             ' onmouseout="returnColor(this)">']);
+        var item = this.items[i];
+
+        // fill image.
+        var img_src = item.galleryURL ? item.galleryURL : image;
+        strArray = strArray.concat(
+            ['<td><img class="tdimage__MODULE_ID__"',
+             ' src="', img_src, '"></td>']);
+
+        // fill title.
+        strArray = strArray.concat(
+            ['<td class="tdtitle__MODULE_ID__"><a',
+             ' href="', item.viewItemURLForNaturalSearch,
+             '" onclick="track(\'/ebay_has_click_actions\')" target="_blank">',
+             item.title, '</a></td>']);
+
+        // fill bid count if available.
+        if (this.showBid) {
+          if (item.bidCount) {
+            strArray = strArray.concat(['<td>', item.bidCount, '</td>']);
+          }
+        }
+
+        // fill price.
+        strArray = strArray.concat(
+            ['<td class="tdprice__MODULE_ID__">', g_dollar,
+             item.convertedCurrentPrice.value.toFixed(2), '</td>']);
+
+        // fill shipping cost.
+        var shippingcost = item.shippingCostSummary.shippingServiceCost ?
+            item.shippingCostSummary.shippingServiceCost.value.toFixed(2) :
+            'Not Specified';
+        strArray = strArray.concat(
+            ['<td class="tdshipping__MODULE_ID__">',
+             g_dollar, shippingcost, '</td>']);
+
+        // fill left time.
+        strArray = strArray.concat(
+            ['<td class="tdtimeleft__MODULE_ID__">',
+             item.timeLeft, '</td>']);
+
+        strArray.push('</tr>');
+      }
+    }
+    return strArray.join('');
+  }
+};
+
+/**
+ * @class SearchItemsApp Application for search products in eBay
+ * @constructor
+ * @param {com.ebay.shoppingservice.ShoppingConfig} config The config property
+ */
+this.SearchItemsApp = function(config) {
+  this.items = new Array;
+  this.itemcount = new Array;
+  this.config = config;
+
+  /** function for error handling
+   * @param {ErrorType} error
+   */
+  this.onResponseFailed = function(error) {
+    if (g_queryKeyword = '') {
+      return;
+    }
+    var res = _gel('itemstable__MODULE_ID__');
+    res.innerHTML = ['<tr><td class="tdhint__MODULE_ID__">',
+                     error[0].longMessage,
+                     '__MSG_tryagain__',
+                     '</td></tr>'].join('');
+  };
+
+  /**
+   * callback function for processing returned items
+   */
+  this.onResponse = function() {
+    return function (data) {
+      this.items = this.convertData4ItemListUI(data);
+      this.itemcount = data.totalItems;
+      // waiting until items for all 3 price rangs are received.
+      _gel('itemstable__MODULE_ID__').innerHTML =
+          (new ItemListUI(this.items, false)).display();
+      _IG_AdjustIFrameHeight();
+    };
+  }
+
+  /**
+   * convert returned items into format suitable for display in UI
+   * @param {FindItemsAdvancedResponseType} data
+   * @return {Array}, converted items
+   */
+  this.convertData4ItemListUI = function(data) {
+    if (!data.searchResult) {
+      return [];
+    }
+    var itemArray = data.searchResult[0].itemArray;
+    if (!itemArray) {
+      return [];
+    }
+    var items = [];
+    var count = itemArray.item.length;
+    for (var i = 0; i < count; i++) {
+      if (!itemArray.item[i].buyItNowAvailable &&
+          itemArray.item[i].listingType.value ==
+          com.ebay.shoppingservice.ListingTypeCodeType.Chinese.value) {
+        continue;
+      }
+      items.push(itemArray.item[i]);
+    }
+    return items;
+  };
+
+  /**
+   * call findItemsAdvanced shopping api to get the results
+   * @param {String} queryKeywords
+   **/
+  this.findItems = function(queryKeywords) {
+    var service = new com.ebay.shoppingservice.Shopping(this.config);
+    var request = new com.ebay.shoppingservice.FindItemsAdvancedRequestType(
+      {itemSort: com.ebay.shoppingservice.SimpleItemSortCodeType.BestMatch,
+       QueryKeywords: queryKeywords,
+       itemType: com.ebay.shoppingservice.ItemTypeCodeType.FixedPricedItem,
+       maxEntries: g_item_num
+      });
+    var callback = new com.ebay.shoppingservice.ShoppingCallback(
+      {object: this,
+       success: this.onResponse(),
+       failure: this.onResponseFailed
+      });
+    service.findItemsAdvanced(request, callback);
+  };
+}
+
+/**
+ * Searches results for input query.
+ */
+this.SearchItemsApp.goSearch = function() {
+  if (g_showsearchbox) {
+    g_queryKeyword = _trim(_gel('query__MODULE_ID__').value);
+  }
+  if (g_queryKeyword.length == 0) {
+    _gel('itemstable__MODULE_ID__').innerHTML =
+         '<tr><td class="tdhint__MODULE_ID__">' + '__MSG_hint__' + '</td></tr>';
+    return;
+  }
+
+  _gel('itemstable__MODULE_ID__').innerHTML =
+       '<tr><td class="tdhint__MODULE_ID__">' + '__MSG_loading__' +
+       '</td></tr>';
+
+  if (! this.search_items_app) {
+    // Initializes SearchItemsApp.
+    var props = {};
+    props['appId'] = 'HuangZhe-6262-4b2e-85ff-0c803fcbfaad';
+    var config = new com.ebay.shoppingservice.ShoppingConfig(props);
+    this.search_items_app = new SearchItemsApp(config);
+  }
+  this.search_items_app.findItems(g_queryKeyword);
+};
+
+window.goSearch = this.SearchItemsApp.goSearch;
+})();
+
+
+// Sets up the widget.
+com.ebay.widgets.needs({
+  baseUrl: 'http://w-1.ebay.com/js/2.0/min/',
+  files: ['FindItemsAdvanced.js'],
+  resources: com.ebay.shoppingservice.Shopping.findItemsAdvanced,
+  callback: function() {
+    image = 'http://w-1.ebay.com/images/stockimage1.jpg';
+    window.goSearch();
+  }
+});
+</script>
+]]>
+  </Content>
+</Module>

@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Results>
+  <AuthorInfo description="Job subscribed link" author="Qiao Jian" />
+  <ResultSpec id="EventPerformanceIP">
+    <Query>[EventPerformanceAlias][EventCategory][EventKeywords{0+}]</Query>
+    <Call service="les">
+      <Input name="ip">[loc.ip]</Input>
+      <Input name="get_user_location">true</Input>
+    </Call>
+    <Extract type="EventPerformance" after_call="true">[2.city][0.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[3.name]</Output>
+      <Output name="image_src">/images/classifieds.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=cn_events_clustering&a_y1=1&a_o1=0&a_v1=[3.clusterid]&a_n2=城市&a_y2=1&a_o2=0&a_v2=[3.city]&oi=prbx]]></Output>
+      <Output name="text1">地点：[3.city] - [3.theater]</Output>
+      <Output name="text2">时间：[3.datetime]</Output>
+      <Output name="text3">票价：[3.price]元</Output>
+      <Output name="link4">更多[3.city]演出»</Output>
+      <Output name="url4"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="EventPerformanceIP2">
+    <Query>[EventCategory][EventPerformanceAlias][EventKeywords{0+}]</Query>
+    <Call service="les">
+      <Input name="ip">[loc.ip]</Input>
+      <Input name="get_user_location">true</Input>
+    </Call>
+    <Extract type="EventPerformance" after_call="true">[2.city][1.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[3.name]</Output>
+      <Output name="image_src">/images/classifieds.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=cn_events_clustering&a_y1=1&a_o1=0&a_v1=[3.clusterid]&a_n2=城市&a_y2=1&a_o2=0&a_v2=[3.city]&oi=prbx]]></Output>
+      <Output name="text1">地点：[3.city] - [3.theater]</Output>
+      <Output name="text2">时间：[3.datetime]</Output>
+      <Output name="text3">票价：[3.price]元</Output>
+      <Output name="link4">更多[3.city]演出»</Output>
+      <Output name="url4"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="EventPerformanceIP3">
+    <Query>[EventPerformanceAlias][EventKeywords]</Query>
+    <Call service="les">
+      <Input name="ip">[loc.ip]</Input>
+      <Input name="get_user_location">true</Input>
+    </Call>
+    <Extract type="EventPerformance" after_call="true">[2.city][0.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[3.name]</Output>
+      <Output name="image_src">/images/classifieds.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=cn_events_clustering&a_y1=1&a_o1=0&a_v1=[3.clusterid]&a_n2=城市&a_y2=1&a_o2=0&a_v2=[3.city]&oi=prbx]]></Output>
+      <Output name="text1">地点：[3.city] - [3.theater]</Output>
+      <Output name="text2">时间：[3.datetime]</Output>
+      <Output name="text3">票价：[3.price]元</Output>
+      <Output name="link4">更多[3.city]演出»</Output>
+      <Output name="url4"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="EventPerformance">
+    <Query>[EventPerformanceAlias][EventCategory][EventKeywords{0+}]</Query>
+    <Extract type="EventPerformance">[0.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[2.name]</Output>
+      <Output name="image_src">/images/classifieds.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=cn_events_clustering&a_y1=1&a_o1=0&a_v1=[2.clusterid]&a_n2=城市&a_y2=1&a_o2=0&a_v2=[2.city]&oi=prbx]]></Output>
+      <Output name="text1">地点：[2.city] - [2.theater]</Output>
+      <Output name="text2">时间：[2.datetime]</Output>
+      <Output name="text3">票价：[2.price]元</Output>
+      <Output name="link4">更多[2.city]演出»</Output>
+      <Output name="url4"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.city]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="EventPerformance2">
+    <Query>[EventCategory][EventPerformanceAlias][EventKeywords{0+}]</Query>
+    <Extract type="EventPerformance">[1.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[2.name]</Output>
+      <Output name="image_src">/images/classifieds.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=cn_events_clustering&a_y1=1&a_o1=0&a_v1=[2.clusterid]&a_n2=城市&a_y2=1&a_o2=0&a_v2=[2.city]&oi=prbx]]></Output>
+      <Output name="text1">地点：[2.city] - [2.theater]</Output>
+      <Output name="text2">时间：[2.datetime]</Output>
+      <Output name="text3">票价：[2.price]元</Output>
+      <Output name="link4">更多[2.city]演出»</Output>
+      <Output name="url4"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.city]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="EventPerformance3">
+    <Query>[EventPerformanceAlias][EventKeywords]</Query>
+    <Extract type="EventPerformance">[0.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[2.name]</Output>
+      <Output name="image_src">/images/classifieds.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=cn_events_clustering&a_y1=1&a_o1=0&a_v1=[2.clusterid]&a_n2=城市&a_y2=1&a_o2=0&a_v2=[2.city]&oi=prbx]]></Output>
+      <Output name="text1">地点：[2.city] - [2.theater]</Output>
+      <Output name="text2">时间：[2.datetime]</Output>
+      <Output name="text3">票价：[2.price]元</Output>
+      <Output name="link4">更多[2.city]演出»</Output>
+      <Output name="url4"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.city]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="EventCityPerformance">
+    <Query>[EventCity][EventPerformanceAlias][EventCategory][EventKeywords{0+}]</Query>
+    <Extract type="EventPerformance">[0.name][1.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[3.name]</Output>
+      <Output name="image_src">/images/classifieds.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=cn_events_clustering&a_y1=1&a_o1=0&a_v1=[3.clusterid]&a_n2=城市&a_y2=1&a_o2=0&a_v2=[3.city]&oi=prbx]]></Output>
+      <Output name="text1">地点：[3.city] - [3.theater]</Output>
+      <Output name="text2">时间：[3.datetime]</Output>
+      <Output name="text3">票价：[3.price]元</Output>
+      <Output name="link4">更多[3.city]演出»</Output>
+      <Output name="url4"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="EventCityPerformance2">
+    <Query>[EventCity][EventCategory][EventPerformanceAlias][EventKeywords{0+}]</Query>
+    <Extract type="EventPerformance">[0.name][2.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[3.name]</Output>
+      <Output name="image_src">/images/classifieds.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=cn_events_clustering&a_y1=1&a_o1=0&a_v1=[3.clusterid]&a_n2=城市&a_y2=1&a_o2=0&a_v2=[3.city]&oi=prbx]]></Output>
+      <Output name="text1">地点：[3.city] - [3.theater]</Output>
+      <Output name="text2">时间：[3.datetime]</Output>
+      <Output name="text3">票价：[3.price]元</Output>
+      <Output name="link4">更多[3.city]演出»</Output>
+      <Output name="url4"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="EventCityPerformance3">
+    <Query>[EventCity][EventPerformanceAlias][EventKeywords]</Query>
+    <Extract type="EventPerformance">[0.name][1.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[3.name]</Output>
+      <Output name="image_src">/images/classifieds.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=cn_events_clustering&a_y1=1&a_o1=0&a_v1=[3.clusterid]&a_n2=城市&a_y2=1&a_o2=0&a_v2=[3.city]&oi=prbx]]></Output>
+      <Output name="text1">地点：[3.city] - [3.theater]</Output>
+      <Output name="text2">时间：[3.datetime]</Output>
+      <Output name="text3">票价：[3.price]元</Output>
+      <Output name="link4">更多[3.city]演出»</Output>
+      <Output name="url4"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="EventCityPerformance4">
+    <Query>[EventPerformanceAlias][EventCity][EventKeywords]</Query>
+    <Extract type="EventPerformance">[1.name][0.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[3.name]</Output>
+      <Output name="image_src">/images/classifieds.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=cn_events_clustering&a_y1=1&a_o1=0&a_v1=[3.clusterid]&a_n2=城市&a_y2=1&a_o2=0&a_v2=[3.city]&oi=prbx]]></Output>
+      <Output name="text1">地点：[3.city] - [3.theater]</Output>
+      <Output name="text2">时间：[3.datetime]</Output>
+      <Output name="text3">票价：[3.price]元</Output>
+      <Output name="link4">更多[3.city]演出»</Output>
+      <Output name="url4"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="EventTheater">
+    <Query>[EventTheater][EventKeywords]</Query>
+    <Response format="image_right">
+      <Output name="title">[0.name]演出信息</Output>
+      <Output name="image_src">/images/classifieds.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&q=[0.name]&oi=prbx]]></Output>
+      <Output name="link1" require="[0.hot1.name]">[0.hot1.name]</Output>
+      <Output name="url1" require="[0.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[0.hot1.clusterid]&oi=prbx]]></Output>
+      <Output name="text1b" require="[0.hot1.name]">　[0.hot1.datetime]</Output>
+      <Output name="link2" require="[0.hot2.name]">[0.hot2.name]</Output>
+      <Output name="url2" require="[0.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[0.hot2.clusterid]&oi=prbx]]></Output>
+      <Output name="text2b" require="[0.hot2.name]">　[0.hot2.datetime]</Output>
+      <Output name="link3" require="[0.hot3.name]">[0.hot3.name]</Output>
+      <Output name="url3" require="[0.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[0.hot3.clusterid]&oi=prbx]]></Output>
+      <Output name="text3b" require="[0.hot3.name]">　[0.hot3.datetime]</Output>
+      <Output name="link4" require="[0.hot3.name]">更多[0.name]的演出»</Output>
+      <Output name="url4" require="[0.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&q=[0.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="EventTheaterCategory">
+    <Query>[EventTheater][EventCategory][EventKeywords{0+}]</Query>
+    <Extract type="EventTheaterCategory">[0.city][0.name][1.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[0.name] - [1.name]</Output>
+      <Output name="image_src">/images/classifieds.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=类型&a_y2=1&a_o2=0&a_v2=[1.category]&q=[0.name]&oi=prbx]]></Output>
+      <Output name="link1" require="[2.hot1.name]">[2.hot1.name]</Output>
+      <Output name="url1" require="[2.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[2.hot1.clusterid]&oi=prbx]]></Output>
+      <Output name="text1b" require="[2.hot1.name]">　[2.hot1.datetime]</Output>
+      <Output name="link2" require="[2.hot2.name]">[2.hot2.name]</Output>
+      <Output name="url2" require="[2.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[2.hot2.clusterid]&oi=prbx]]></Output>
+      <Output name="text2b" require="[2.hot2.name]">　[2.hot2.datetime]</Output>
+      <Output name="link3" require="[2.hot3.name]">[2.hot3.name]</Output>
+      <Output name="url3" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[2.hot3.clusterid]&oi=prbx]]></Output>
+      <Output name="text3b" require="[2.hot3.name]">　[2.hot3.datetime]</Output>
+      <Output name="link4" require="[2.hot3.name]">更多[1.queryname]»</Output>
+      <Output name="url4" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.city]&q=[1.queryname]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="EventTheaterCategory2">
+    <Query>[EventCategory][EventTheater][EventKeywords{0+}]</Query>
+    <Extract type="EventTheaterCategory">[1.city][1.name][0.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[1.name] - [0.name]</Output>
+      <Output name="image_src">/images/classifieds.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=类型&a_y2=1&a_o2=0&a_v2=[0.category]&q=[1.name]&oi=prbx]]></Output>
+      <Output name="link1" require="[2.hot1.name]">[2.hot1.name]</Output>
+      <Output name="url1" require="[2.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[2.hot1.clusterid]&oi=prbx]]></Output>
+      <Output name="text1b" require="[2.hot1.name]">　[2.hot1.datetime]</Output>
+      <Output name="link2" require="[2.hot2.name]">[2.hot2.name]</Output>
+      <Output name="url2" require="[2.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[2.hot2.clusterid]&oi=prbx]]></Output>
+      <Output name="text2b" require="[2.hot2.name]">　[2.hot2.datetime]</Output>
+      <Output name="link3" require="[2.hot3.name]">[2.hot3.name]</Output>
+      <Output name="url3" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[2.hot3.clusterid]&oi=prbx]]></Output>
+      <Output name="text3b" require="[2.hot3.name]">　[2.hot3.datetime]</Output>
+      <Output name="link4" require="[2.hot3.name]">更多[0.queryname]»</Output>
+      <Output name="url4" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.city]&q=[0.queryname]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="EventCityCategoryIP">
+    <Query>[EventCategory][EventKeywords{0+}]</Query>
+    <Call service="les">
+      <Input name="ip">[loc.ip]</Input>
+      <Input name="get_user_location">true</Input>
+    </Call>
+    <Extract type="EventCityCategory" after_call="true">[1.city][0.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[2.city][0.name]演出</Output>
+      <Output name="image_src">/images/classifieds.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.city]&q=[0.name]&oi=prbx]]></Output>
+      <Output name="link1" require="[2.hot1.name]">[2.hot1.name]</Output>
+      <Output name="url1" require="[2.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.city]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[2.hot1.clusterid]&oi=prbx]]></Output>
+      <Output name="text1b" require="[2.hot1.name]">　[2.hot1.theater]　 [2.hot1.datetime]</Output>
+      <Output name="link2" require="[2.hot2.name]">[2.hot2.name]</Output>
+      <Output name="url2" require="[2.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.city]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[2.hot2.clusterid]&oi=prbx]]></Output>
+      <Output name="text2b" require="[2.hot2.name]">　[2.hot2.theater]　 [2.hot2.datetime]</Output>
+      <Output name="link3" require="[2.hot3.name]">[2.hot3.name]</Output>
+      <Output name="url3" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.city]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[2.hot3.clusterid]&oi=prbx]]></Output>
+      <Output name="text3b" require="[2.hot3.name]">　[2.hot3.theater]　 [2.hot3.datetime]</Output>
+      <Output name="link4" require="[2.hot3.name]">更多[2.city][0.queryname]»</Output>
+      <Output name="url4" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.city]&q=[0.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="EventCityCategory">
+    <Query>[EventCity][EventCategory][EventKeywords{0+}]</Query>
+    <Extract type="EventCityCategory">[0.name][1.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[0.name][1.name]演出</Output>
+      <Output name="image_src">/images/classifieds.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&q=[1.name]&oi=prbx]]></Output>
+      <Output name="link1" require="[2.hot1.name]">[2.hot1.name]</Output>
+      <Output name="url1" require="[2.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[2.hot1.clusterid]&oi=prbx]]></Output>
+      <Output name="text1b" require="[2.hot1.name]">　[2.hot1.theater]　 [2.hot1.datetime]</Output>
+      <Output name="link2" require="[2.hot2.name]">[2.hot2.name]</Output>
+      <Output name="url2" require="[2.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[2.hot2.clusterid]&oi=prbx]]></Output>
+      <Output name="text2b" require="[2.hot2.name]">　[2.hot2.theater]　 [2.hot2.datetime]</Output>
+      <Output name="link3" require="[2.hot3.name]">[2.hot3.name]</Output>
+      <Output name="url3" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[2.hot3.clusterid]&oi=prbx]]></Output>
+      <Output name="text3b" require="[2.hot3.name]">　[2.hot3.theater]　 [2.hot3.datetime]</Output>
+      <Output name="link4" require="[2.hot3.name]">更多[0.name][1.queryname]»</Output>
+      <Output name="url4" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&q=[1.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="EventCityCategory2">
+    <Query>[EventCategory][EventCity][EventKeywords{0+}]</Query>
+    <Extract type="EventCityCategory">[1.name][0.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">[1.name][0.name]演出</Output>
+      <Output name="image_src">/images/classifieds.gif</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&q=[0.name]&oi=prbx]]></Output>
+      <Output name="link1" require="[2.hot1.name]">[2.hot1.name]</Output>
+      <Output name="url1" require="[2.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[2.hot1.clusterid]&oi=prbx]]></Output>
+      <Output name="text1b" require="[2.hot1.name]">　[2.hot1.theater]　 [2.hot1.datetime]</Output>
+      <Output name="link2" require="[2.hot2.name]">[2.hot2.name]</Output>
+      <Output name="url2" require="[2.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[2.hot2.clusterid]&oi=prbx]]></Output>
+      <Output name="text2b" require="[2.hot2.name]">　[2.hot2.theater]　 [2.hot2.datetime]</Output>
+      <Output name="link3" require="[2.hot3.name]">[2.hot3.name]</Output>
+      <Output name="url3" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/detail?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=cn_events_clustering&a_y2=1&a_o2=0&a_v2=[2.hot3.clusterid]&oi=prbx]]></Output>
+      <Output name="text3b" require="[2.hot3.name]">　[2.hot3.theater]　 [2.hot3.datetime]</Output>
+      <Output name="link4" require="[2.hot3.name]">更多[1.name][0.queryname]»</Output>
+      <Output name="url4" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=活动&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&q=[0.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+</Results>

@@ -1,0 +1,18 @@
+<html>
+  <body>
+    <div id=debug />
+  </body>
+  <script type="text/javascript" src="http://www.corp.google.com/~lenjoy/no_crawl/svn/gadgetmisc/js/callbackend.js"></script>
+  <script>
+    var url = '/a.xml';
+    setInterval(function() {
+    ajax({
+    type: 'GET',
+    url: url,
+    data: 'xml',
+    onSuccess: parseXMLResult,
+    onError: function() {alert('error');}
+    });
+    }, 10000);
+  </script>
+</html>

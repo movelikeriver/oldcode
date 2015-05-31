@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="__MSG_title__"
+               width="560"
+               height="100"
+               author="Lenjoy"
+               author_email="lenjoy@google.com"
+               author_affiliation="Google Inc."
+               author_location="Beijing, China"
+               screenshot="__MSG_screenshot__"
+               thumbnail="__MSG_thumbnail__">
+    <Require feature="dynamic-height" />
+    <Locale messages="/ig/modules/chinagadgets/biosphere/amazon/ALL_ALL.xml" />
+  </ModulePrefs>
+  <UserPref name="showsearchbox"
+            display_name="Show Search Box"
+            datatype="bool"
+            default_value="true" />
+  <UserPref name="query"
+            display_name="Input Query"
+            datatype="string"
+            default_value="" />
+  <UserPref name="item_num"
+            display_name="Item Number"
+            datatype="string"
+            default_value="3" />
+  <Content type="html">
+<![CDATA[
+<style>
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0
+}
+
+.searchbox__MODULE_ID__ {
+  border:0;
+  background-color:#146EB4;
+  display: none
+}
+
+.tablestyle__MODULE_ID__ {
+  border: 1px none #33FF99;
+  font-family: arial, sans-serif;
+  width: 100%
+}
+
+.tdhint__MODULE_ID__ {
+  color: blue;
+  font-size: 13px;
+  text-align: left
+}
+
+.tdmenu__MODULE_ID__ {
+  font-size: 13px;
+  text-align: center
+}
+
+.tdimage__MODULE_ID__ {
+  margin: 0pt 2px;
+  padding-right: 6px;
+  padding-top: 6px;
+  vertical-align:top
+}
+
+.tdtitle__MODULE_ID__ {
+  font-size: 13px;
+  text-align: left;
+  padding-top: 6px;
+  vertical-align:top
+}
+
+.tdprice__MODULE_ID__ {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: right;
+  padding-left: 9px;
+  padding-top: 6px;
+  vertical-align:top
+}
+
+.navLogo__MODULE_ID__ {
+  background-image: url(http://g-ecx.images-amazon.com/images/G/01/gno/images/orangeBlue/navPackedSprites_v10._V224330185_.png);
+  background-position: -9px -8px;
+  display: block;
+  height: 31px;
+  left: 3px;
+  position: relative;
+  top: 3px;
+  width: 151px
+}
+
+.navSearchBar__MODULE_ID__ {
+  text-align: left;
+  height: 35px
+}
+
+.query__MODULE_ID__ {
+  background-color: rgb(255, 255, 255);
+  font-family: arial,sans-serif;
+  font-size: 10pt
+}
+
+.navSprite__MODULE_ID__ {
+  background-image: url(http://g-ecx.images-amazon.com/images/G/01/gno/images/orangeBlue/navPackedSprites_v10._V224330185_.png);
+  background-position: 0 -415px;
+  border: 0 none;
+  display: block;
+  height: 35px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 32px
+}
+</style>
+
+<body>
+<table id="searchbox__MODULE_ID__" class="searchbox__MODULE_ID__">
+  <tr>
+    <td class="navSearchBar__MODULE_ID__">
+      <input id="query__MODULE_ID__" type="text" size="22" maxlength="200"
+             class="query__MODULE_ID__" onkeydown="doKeydown(event)" />
+    </td>
+    <td width="25" align="left">
+      <div class="navSprite__MODULE_ID__">
+         <input onclick="goSearch()" type="image"
+                src="http://g-ecx.images-amazon.com/images/G/01/x-locale/common/transparent-pixel._V42752373_.gif"
+                value="__MSG_search__" />
+      </div>
+    </td>
+  </tr>
+</table>
+<div id="results__MODULE_ID__">
+  <table id="itemstable__MODULE_ID__" class="tablestyle__MODULE_ID__"
+         rules="rows" frame="void" />
+</div>
+</body>
+
+<script>
+var prefs__MODULE_ID__ = new _IG_Prefs(__MODULE_ID__);
+var g_showsearchbox = prefs__MODULE_ID__.getBool('showsearchbox');
+var g_queryKeyword = prefs__MODULE_ID__.getString('query');
+if (g_showsearchbox) {
+  _gel('searchbox__MODULE_ID__').style.display = 'block';
+  _gel('query__MODULE_ID__').value = g_queryKeyword;
+}
+
+var g_item_num = parseInt(prefs__MODULE_ID__.getString('item_num'), 10);
+
+var g_reqUrl = ['http://ecs.amazonaws.com/onca/xml?',
+                'Service=AWSECommerceService&',
+                'Operation=ItemSearch&SearchIndex=All&ResponseGroup=Large&',
+                'AWSAccessKeyId=AKIAJ6U4ZM7AARBXOUTA&AssociateTag=aa01000-20&',
+                'Keywords='].join('');
+
+/**
+ * Sets event handler function when key down.
+ * @param {Event} e The event that resulted in the function call.
+ */
+function doKeydown(e) {
+  var key = 0;
+  if (window.event) {
+    key = e.keyCode;
+  } else if (e.which) {
+    key = e.which;
+  }
+  switch (parseInt(key, 10)) {
+  case 13:
+    goSearch();
+    break;
+  }
+}
+
+/**
+ * Changes element's background color.
+ * @param {HTMLElement} e This is the 'tr' tag.
+ */
+function changeColor(e) {
+  e.style.background = '#e0e040';
+}
+
+/**
+ * Changes element's background color.
+ * @param {HTMLElement} e This is the 'tr' tag.
+ */
+function returnColor(e) {
+  e.style.background = '#ffffff';
+}
+
+/**
+ * Makes menu HTML.
+ * @return {String} HTML
+ */
+function makeMenu() {
+  return '<tr><td height="55" width="85%" colspan="2">' +
+         '<span class="navLogo__MODULE_ID__" /></td><td width="15%" /></tr>';
+}
+
+/**
+ * Makes result HTML.
+ * @return {String} HTML
+ */
+function makeResult(url, image, title, price, review1, review2, total_review) {
+  return '<tr onmouseover="changeColor(this)" onmouseout="returnColor(this)">' +
+         '<td width="10%"><a href="' + url + '" target="_blank">' +
+         '<img class="tdimage__MODULE_ID__" src="' + image + '">' +
+         '</a>' +
+         '</td>' +
+         '<td width="75%" class="tdtitle__MODULE_ID__">' +
+         '<a href="' + url + '" target="_blank">' + title + '</a><br />' +
+         '<span style="padding: 3px 20px 0 0;white-space: nowrap">' +
+         '<img width="55" height="12" border="0" align="absbottom" src="' +
+         'http://g-ecx.images-amazon.com/images/G/01/x-locale/common/' +
+         'customer-reviews/ratings/stars-' + review1 + '-' + review2 +
+         '._V25749362_.gif" />  (' + total_review + ')</span></td>' +
+         '<td width="15%" class="tdprice__MODULE_ID__">' + price +
+         '</td></tr>';
+}
+
+/**
+ * Searches results for input query.
+ */
+function goSearch() {
+  if (g_showsearchbox) {
+    g_queryKeyword = _trim(_gel('query__MODULE_ID__').value);
+  }
+  var container = _gel('itemstable__MODULE_ID__');
+  if (g_queryKeyword.length == 0) {
+    container.innerHTML =
+        '<tr><td class="tdhint__MODULE_ID__">' +
+        '<br />__MSG_hint__' +
+        '</td></tr>';
+    return;
+  }
+  container.innerHTML = '<tr><td class="tdhint__MODULE_ID__">' +
+                        '__MSG_loading__' + '</td></tr>';
+
+  var reqUrl = g_reqUrl + _esc(g_queryKeyword);
+  // Fetch response and return it as XML.
+  // Callback function is defined within local scope.
+  _IG_FetchXmlContent(
+    reqUrl,
+    function(response) {
+      var no_result = ['<tr><td class="tdhint__MODULE_ID__">',
+                       '<b>', g_queryKeyword, '</b>&nbsp;',
+                       '__MSG_no_result__</td></tr>'].join('');
+      if (typeof response == 'undefined') {
+        container.innerHTML = no_result;
+        return;
+      }
+      var items = response.getElementsByTagName('Item');
+      container.innerHTML = makeMenu();
+      if ((!items.length) || items.length == 0) {
+        container.innerHTML = no_result;
+        return;
+      }
+      var added_num = 0;
+      // We only get the top 3 results which have all fields.
+      for (var i = 0; i < items.length && added_num < g_item_num; i++) {
+        var item = items[i];
+        var obj = item.getElementsByTagName('DetailPageURL');
+        if (!obj || obj.length == 0) continue;
+        var url = obj[0].textContent;
+
+        obj = item.getElementsByTagName('SmallImage');
+        if (!obj || obj.length == 0) continue;
+        obj = obj[0].getElementsByTagName('URL');
+        if (!obj || obj.length == 0) continue;
+        var image = obj[0].textContent;
+
+        obj = item.getElementsByTagName('ItemAttributes');
+        if (!obj || obj.length == 0) continue;
+        obj = obj[0].getElementsByTagName('Title');
+        if (!obj || obj.length == 0) continue;
+        var title = obj[0].textContent;
+
+        obj = item.getElementsByTagName('OfferSummary');
+        if (!obj || obj.length == 0) continue;
+        obj = obj[0].getElementsByTagName('LowestNewPrice');
+        if (!obj || obj.length == 0) continue;
+        var obj = obj[0].getElementsByTagName('FormattedPrice');
+        if (!obj || obj.length == 0) continue;
+        var price = obj[0].textContent;
+
+        obj = item.getElementsByTagName('CustomerReviews');
+        if (!obj || obj.length == 0) continue;
+        var customer_reviews = obj[0];
+        var review_score =
+            customer_reviews.getElementsByTagName('AverageRating')[0]
+                            .textContent;
+        var review_f = parseFloat(review_score);
+        var review1 = Math.floor(review_f);
+        var review2 = review_f > review1 ? '5' : '0';
+        var total_review =
+            customer_reviews.getElementsByTagName('TotalReviews')[0]
+                            .textContent;
+        container.innerHTML += makeResult(
+          url, image, title, price, review1, review2, total_review);
+        added_num += 1;
+      }
+      if (added_num == 0) {
+        container.innerHTML = no_result;
+      }
+      _IG_AdjustIFrameHeight();
+    });
+}
+
+goSearch();
+</script>
+]]>
+  </Content>
+</Module> 

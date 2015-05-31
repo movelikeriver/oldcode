@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Results>
+  <AuthorInfo description="Job subscribed link" author="Qiao Jian" />
+  <ResultSpec id="JobKeywordsIP">
+    <Query>[JobKeywords]</Query>
+    <Call service="les">
+      <Input name="ip">[loc.ip]</Input>
+      <Input name="get_user_location">true</Input>
+    </Call>
+    <Extract type="JobCity" after_call="true">[1.city]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[2.name]找[0.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&q=[0.query]&oi=prbx]]></Output>
+      <Output name="link1">找工作([2.post_num])</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&oi=prbx]]></Output>
+      <Output name="text1b">　</Output>
+      <Output name="link1b">找实习([2.intern_num])</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&q=实习&oi=prbx]]></Output>
+      <Output name="text1c">　</Output>
+      <Output name="link1c">找兼职([2.parttime_num])</Output>
+      <Output name="url1c"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&q=兼职&oi=prbx]]></Output>
+      <Output name="link2" require="[2.hot_category1.name]">[2.hot_category1.name]([2.hot_category1.post_num])</Output>
+      <Output name="url2" require="[2.hot_category1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.hot_category1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[2.hot_category2.name]">　</Output>
+      <Output name="link2b" require="[2.hot_category2.name]">[2.hot_category2.name]([2.hot_category2.post_num])</Output>
+      <Output name="url2b" require="[2.hot_category2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.hot_category2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[2.hot_category3.name]">　</Output>
+      <Output name="link2c" require="[2.hot_category3.name]">[2.hot_category3.name]([2.hot_category3.post_num])</Output>
+      <Output name="url2c" require="[2.hot_category3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.hot_category3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[2.hot_category3.name]">　</Output>
+      <Output name="link2d" require="[2.hot_category3.name]">更多职位分类»</Output>
+      <Output name="url2d" require="[2.hot_category3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&oi=prbx]]></Output>
+      <Output name="link3" require="[2.hot_subcategory1.name]">[2.hot_subcategory1.name]([2.hot_subcategory1.post_num])</Output>
+      <Output name="url3" require="[2.hot_subcategory1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.hot_subcategory1.category.name]&q=[2.hot_subcategory1.name]&oi=prbx]]></Output>
+      <Output name="text3b" require="[2.hot_subcategory2.name]">　</Output>
+      <Output name="link3b" require="[2.hot_subcategory2.name]">[2.hot_subcategory2.name]([2.hot_subcategory2.post_num])</Output>
+      <Output name="url3b" require="[2.hot_subcategory2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.hot_subcategory2.category.name]&q=[2.hot_subcategory2.name]&oi=prbx]]></Output>
+      <Output name="text3c" require="[2.hot_subcategory3.name]">　</Output>
+      <Output name="link3c" require="[2.hot_subcategory3.name]">[2.hot_subcategory3.name]([2.hot_subcategory3.post_num])</Output>
+      <Output name="url3c" require="[2.hot_subcategory3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.hot_subcategory3.category.name]&q=[2.hot_subcategory3.name]&oi=prbx]]></Output>
+      <Output name="text3d" require="[2.hot_subcategory3.name]">　</Output>
+      <Output name="link3d" require="[2.hot_subcategory3.name]">更多热门职位»</Output>
+      <Output name="url3d" require="[2.hot_subcategory3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[2.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobKeywords">
+    <Query>[JobKeywords]</Query>
+    <Response format="image_right">
+      <Output name="title">找[0.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&q=[0.query]&oi=prbx]]></Output>
+      <Output name="link1">[0.cities.city1]</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city1]&oi=prbx]]></Output>
+      <Output name="text1b">　</Output>
+      <Output name="link1b">[0.cities.city2]</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city2]&oi=prbx]]></Output>
+      <Output name="text1c">　</Output>
+      <Output name="link1c">[0.cities.city3]</Output>
+      <Output name="url1c"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city3]&oi=prbx]]></Output>
+      <Output name="text1d">　</Output>
+      <Output name="link1d">[0.cities.city4]</Output>
+      <Output name="url1d"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city4]&oi=prbx]]></Output>
+      <Output name="text1e">　</Output>
+      <Output name="link1e">[0.cities.city5]</Output>
+      <Output name="url1e"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city5]&oi=prbx]]></Output>
+      <Output name="link2">[0.cities.city6]</Output>
+      <Output name="url2"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city6]&oi=prbx]]></Output>
+      <Output name="text2b">　</Output>
+      <Output name="link2b">[0.cities.city7]</Output>
+      <Output name="url2b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city7]&oi=prbx]]></Output>
+      <Output name="text2c">　</Output>
+      <Output name="link2c">[0.cities.city8]</Output>
+      <Output name="url2c"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city8]&oi=prbx]]></Output>
+      <Output name="text2d">　</Output>
+      <Output name="link2d">[0.cities.city9]</Output>
+      <Output name="url2d"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.cities.city9]&oi=prbx]]></Output>
+      <Output name="text2e">　</Output>
+      <Output name="link2e">更多»</Output>
+      <Output name="url2e"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCity">
+    <Query>[JobKeywords][JobCity][JobKeywords{0+}]</Query>
+    <Response format="image_right">
+      <Output name="title">在[1.name]找[0.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&q=[0.query]&oi=prbx]]></Output>
+      <Output name="link1">找工作([1.post_num])</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&oi=prbx]]></Output>
+      <Output name="text1b">　</Output>
+      <Output name="link1b">找实习([1.intern_num])</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&q=实习&oi=prbx]]></Output>
+      <Output name="text1c">　</Output>
+      <Output name="link1c">找兼职([1.parttime_num])</Output>
+      <Output name="url1c"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&q=兼职&oi=prbx]]></Output>
+      <Output name="link2" require="[1.hot_category1.name]">[1.hot_category1.name]([1.hot_category1.post_num])</Output>
+      <Output name="url2" require="[1.hot_category1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[1.hot_category1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[1.hot_category2.name]">　</Output>
+      <Output name="link2b" require="[1.hot_category2.name]">[1.hot_category2.name]([1.hot_category2.post_num])</Output>
+      <Output name="url2b" require="[1.hot_category2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[1.hot_category2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[1.hot_category3.name]">　</Output>
+      <Output name="link2c" require="[1.hot_category3.name]">[1.hot_category3.name]([1.hot_category3.post_num])</Output>
+      <Output name="url2c" require="[1.hot_category3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[1.hot_category3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[1.hot_category3.name]">　</Output>
+      <Output name="link2d" require="[1.hot_category3.name]">更多职位分类»</Output>
+      <Output name="url2d" require="[1.hot_category3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&oi=prbx]]></Output>
+      <Output name="link3" require="[1.hot_subcategory1.name]">[1.hot_subcategory1.name]([1.hot_subcategory1.post_num])</Output>
+      <Output name="url3" require="[1.hot_subcategory1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[1.hot_subcategory1.category.name]&q=[1.hot_subcategory1.name]&oi=prbx]]></Output>
+      <Output name="text3b" require="[1.hot_subcategory2.name]">　</Output>
+      <Output name="link3b" require="[1.hot_subcategory2.name]">[1.hot_subcategory2.name]([1.hot_subcategory2.post_num])</Output>
+      <Output name="url3b" require="[1.hot_subcategory2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[1.hot_subcategory2.category.name]&q=[1.hot_subcategory2.name]&oi=prbx]]></Output>
+      <Output name="text3c" require="[1.hot_subcategory3.name]">　</Output>
+      <Output name="link3c" require="[1.hot_subcategory3.name]">[1.hot_subcategory3.name]([1.hot_subcategory3.post_num])</Output>
+      <Output name="url3c" require="[1.hot_subcategory3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[1.hot_subcategory3.category.name]&q=[1.hot_subcategory3.name]&oi=prbx]]></Output>
+      <Output name="text3d" require="[1.hot_subcategory3.name]">　</Output>
+      <Output name="link3d" require="[1.hot_subcategory3.name]">更多热门职位»</Output>
+      <Output name="url3d" require="[1.hot_subcategory3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCity2">
+    <Query>[JobCity][JobKeywords]</Query>
+    <Response format="image_right">
+      <Output name="title">在[0.name]找[1.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&q=[1.query]&oi=prbx]]></Output>
+      <Output name="link1">找工作([0.post_num])</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&oi=prbx]]></Output>
+      <Output name="text1b">　</Output>
+      <Output name="link1b">找实习([0.intern_num])</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&q=实习&oi=prbx]]></Output>
+      <Output name="text1c">　</Output>
+      <Output name="link1c">找兼职([0.parttime_num])</Output>
+      <Output name="url1c"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&q=兼职&oi=prbx]]></Output>
+      <Output name="link2" require="[0.hot_category1.name]">[0.hot_category1.name]([0.hot_category1.post_num])</Output>
+      <Output name="url2" require="[0.hot_category1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[0.hot_category1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[0.hot_category2.name]">　</Output>
+      <Output name="link2b" require="[0.hot_category2.name]">[0.hot_category2.name]([0.hot_category2.post_num])</Output>
+      <Output name="url2b" require="[0.hot_category2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[0.hot_category2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[0.hot_category3.name]">　</Output>
+      <Output name="link2c" require="[0.hot_category3.name]">[0.hot_category3.name]([0.hot_category3.post_num])</Output>
+      <Output name="url2c" require="[0.hot_category3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[0.hot_category3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[0.hot_category3.name]">　</Output>
+      <Output name="link2d" require="[0.hot_category3.name]">更多职位分类»</Output>
+      <Output name="url2d" require="[0.hot_category3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&oi=prbx]]></Output>
+      <Output name="link3" require="[0.hot_subcategory1.name]">[0.hot_subcategory1.name]([0.hot_subcategory1.post_num])</Output>
+      <Output name="url3" require="[0.hot_subcategory1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[0.hot_subcategory1.category.name]&q=[0.hot_subcategory1.name]&oi=prbx]]></Output>
+      <Output name="text3b" require="[0.hot_subcategory2.name]">　</Output>
+      <Output name="link3b" require="[0.hot_subcategory2.name]">[0.hot_subcategory2.name]([0.hot_subcategory2.post_num])</Output>
+      <Output name="url3b" require="[0.hot_subcategory2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[0.hot_subcategory2.category.name]&q=[0.hot_subcategory2.name]&oi=prbx]]></Output>
+      <Output name="text3c" require="[0.hot_subcategory3.name]">　</Output>
+      <Output name="link3c" require="[0.hot_subcategory3.name]">[0.hot_subcategory3.name]([0.hot_subcategory3.post_num])</Output>
+      <Output name="url3c" require="[0.hot_subcategory3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[0.hot_subcategory3.category.name]&q=[0.hot_subcategory3.name]&oi=prbx]]></Output>
+      <Output name="text3d" require="[0.hot_subcategory3.name]">　</Output>
+      <Output name="link3d" require="[0.hot_subcategory3.name]">更多热门职位»</Output>
+      <Output name="url3d" require="[0.hot_subcategory3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCitySubCategoryWithoutKeywords">
+    <Query>[JobCity][JobSubCategory]</Query>
+    <Extract type="JobCitySubCategory">[0.name][1.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[0.name]找[1.queryname]工作</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&q=[1.queryname]&oi=prbx]]></Output>
+      <Output name="link1">[2.category.name]([2.category.post_num])</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.category.name]&oi=prbx]]></Output>
+      <Output name="text1b">　</Output>
+      <Output name="link1b">[1.queryname]([2.post_num])</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.category.name]&q=[2.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[2.related1.name]">[2.related1.name]([2.related1.post_num])</Output>
+      <Output name="url2" require="[2.related1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.category.name]&q=[2.related1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[2.related2.name]">　</Output>
+      <Output name="link2b" require="[2.related2.name]">[2.related2.name]([2.related2.post_num])</Output>
+      <Output name="url2b" require="[2.related2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.category.name]&q=[2.related2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[2.related3.name]">　</Output>
+      <Output name="link2c" require="[2.related3.name]">[2.related3.name]([2.related3.post_num])</Output>
+      <Output name="url2c" require="[2.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.category.name]&q=[2.related3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[2.related3.name]">　</Output>
+      <Output name="link2d" require="[2.related3.name]">更多相关职位»</Output>
+      <Output name="url2d" require="[2.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.category.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCitySubCategoryWithoutKeywords2">
+    <Query>[JobSubCategory][JobCity]</Query>
+    <Extract type="JobCitySubCategory">[1.name][0.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[1.name]找[0.queryname]工作</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&q=[0.queryname]&oi=prbx]]></Output>
+      <Output name="link1">[2.category.name]([2.category.post_num])</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.category.name]&oi=prbx]]></Output>
+      <Output name="text1b">　</Output>
+      <Output name="link1b">[0.queryname]([2.post_num])</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.category.name]&q=[2.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[2.related1.name]">[2.related1.name]([2.related1.post_num])</Output>
+      <Output name="url2" require="[2.related1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.category.name]&q=[2.related1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[2.related2.name]">　</Output>
+      <Output name="link2b" require="[2.related2.name]">[2.related2.name]([2.related2.post_num])</Output>
+      <Output name="url2b" require="[2.related2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.category.name]&q=[2.related2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[2.related3.name]">　</Output>
+      <Output name="link2c" require="[2.related3.name]">[2.related3.name]([2.related3.post_num])</Output>
+      <Output name="url2c" require="[2.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.category.name]&q=[2.related3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[2.related3.name]">　</Output>
+      <Output name="link2d" require="[2.related3.name]">更多相关职位»</Output>
+      <Output name="url2d" require="[2.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[2.category.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCitySubCategory">
+    <Query>[JobKeywords][JobCity][JobSubCategory][JobKeywords{0+}]</Query>
+    <Extract type="JobCitySubCategory">[1.name][2.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[1.name]找[2.queryname][0.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&q=[0.query]+[2.queryname]&oi=prbx]]></Output>
+      <Output name="link1">[3.category.name]([3.category.post_num])</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&oi=prbx]]></Output>
+      <Output name="text1b">　</Output>
+      <Output name="link1b">[2.queryname]([3.post_num])</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[3.related1.name]">[3.related1.name]([3.related1.post_num])</Output>
+      <Output name="url2" require="[3.related1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.related1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[3.related2.name]">　</Output>
+      <Output name="link2b" require="[3.related2.name]">[3.related2.name]([3.related2.post_num])</Output>
+      <Output name="url2b" require="[3.related2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.related2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[3.related3.name]">　</Output>
+      <Output name="link2c" require="[3.related3.name]">[3.related3.name]([3.related3.post_num])</Output>
+      <Output name="url2c" require="[3.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.related3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[3.related3.name]">　</Output>
+      <Output name="link2d" require="[3.related3.name]">更多相关职位»</Output>
+      <Output name="url2d" require="[3.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCitySubCategory2">
+    <Query>[JobCity][JobSubCategory][JobKeywords]</Query>
+    <Extract type="JobCitySubCategory">[0.name][1.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[0.name]找[1.queryname][2.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&q=[2.query]+[1.queryname]&oi=prbx]]></Output>
+      <Output name="link1">[3.category.name]([3.category.post_num])</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&oi=prbx]]></Output>
+      <Output name="text1b">　</Output>
+      <Output name="link1b">[1.queryname]([3.post_num])</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[3.related1.name]">[3.related1.name]([3.related1.post_num])</Output>
+      <Output name="url2" require="[3.related1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.related1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[3.related2.name]">　</Output>
+      <Output name="link2b" require="[3.related2.name]">[3.related2.name]([3.related2.post_num])</Output>
+      <Output name="url2b" require="[3.related2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.related2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[3.related3.name]">　</Output>
+      <Output name="link2c" require="[3.related3.name]">[3.related3.name]([3.related3.post_num])</Output>
+      <Output name="url2c" require="[3.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.related3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[3.related3.name]">　</Output>
+      <Output name="link2d" require="[3.related3.name]">更多相关职位»</Output>
+      <Output name="url2d" require="[3.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCitySubCategory3">
+    <Query>[JobCity][JobKeywords][JobSubCategory][JobKeywords{0+}]</Query>
+    <Extract type="JobCitySubCategory">[0.name][2.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[0.name]找[2.queryname][1.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&q=[1.query]+[2.queryname]&oi=prbx]]></Output>
+      <Output name="link1">[3.category.name]([3.category.post_num])</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&oi=prbx]]></Output>
+      <Output name="text1b">　</Output>
+      <Output name="link1b">[2.queryname]([3.post_num])</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[3.related1.name]">[3.related1.name]([3.related1.post_num])</Output>
+      <Output name="url2" require="[3.related1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.related1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[3.related2.name]">　</Output>
+      <Output name="link2b" require="[3.related2.name]">[3.related2.name]([3.related2.post_num])</Output>
+      <Output name="url2b" require="[3.related2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.related2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[3.related3.name]">　</Output>
+      <Output name="link2c" require="[3.related3.name]">[3.related3.name]([3.related3.post_num])</Output>
+      <Output name="url2c" require="[3.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.related3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[3.related3.name]">　</Output>
+      <Output name="link2d" require="[3.related3.name]">更多相关职位»</Output>
+      <Output name="url2d" require="[3.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCityCategory">
+    <Query>[JobKeywords][JobCity][JobCategory][JobKeywords{0+}]</Query>
+    <Extract type="JobCityCategory">[1.name][2.alias]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[1.name]找[2.queryname][0.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[0.query]+[2.queryname]&oi=prbx]]></Output>
+      <Output name="link1" require="[3.hot1.name]">[3.hot1.name]([3.hot1.post_num])</Output>
+      <Output name="url1" require="[3.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[3.hot1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[3.hot2.name]">　</Output>
+      <Output name="link1b" require="[3.hot2.name]">[3.hot2.name]([3.hot2.post_num])</Output>
+      <Output name="url1b" require="[3.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[3.hot2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[3.hot3.name]">　</Output>
+      <Output name="link1c" require="[3.hot3.name]">[3.hot3.name]([3.hot3.post_num])</Output>
+      <Output name="url1c" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[3.hot3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[3.hot3.name]">　</Output>
+      <Output name="link1d" require="[3.hot3.name]">更多[2.queryname]职位»</Output>
+      <Output name="url1d" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCityCategory2">
+    <Query>[JobCity][JobCategory][JobKeywords]</Query>
+    <Extract type="JobCityCategory">[0.name][1.alias]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[0.name]找[1.queryname][2.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[2.query]+[1.queryname]&oi=prbx]]></Output>
+      <Output name="link1" require="[3.hot1.name]">[3.hot1.name]([3.hot1.post_num])</Output>
+      <Output name="url1" require="[3.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[3.hot1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[3.hot2.name]">　</Output>
+      <Output name="link1b" require="[3.hot2.name]">[3.hot2.name]([3.hot2.post_num])</Output>
+      <Output name="url1b" require="[3.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[3.hot2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[3.hot3.name]">　</Output>
+      <Output name="link1c" require="[3.hot3.name]">[3.hot3.name]([3.hot3.post_num])</Output>
+      <Output name="url1c" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[3.hot3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[3.hot3.name]">　</Output>
+      <Output name="link1d" require="[3.hot3.name]">更多[1.queryname]职位»</Output>
+      <Output name="url1d" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCityCategory3">
+    <Query>[JobCity][JobKeywords][JobCategory][JobKeywords{0+}]</Query>
+    <Extract type="JobCityCategory">[0.name][2.alias]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[0.name]找[2.queryname][1.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[1.query]+[2.queryname]&oi=prbx]]></Output>
+      <Output name="link1" require="[3.hot1.name]">[3.hot1.name]([3.hot1.post_num])</Output>
+      <Output name="url1" require="[3.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[3.hot1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[3.hot2.name]">　</Output>
+      <Output name="link1b" require="[3.hot2.name]">[3.hot2.name]([3.hot2.post_num])</Output>
+      <Output name="url1b" require="[3.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[3.hot2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[3.hot3.name]">　</Output>
+      <Output name="link1c" require="[3.hot3.name]">[3.hot3.name]([3.hot3.post_num])</Output>
+      <Output name="url1c" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[3.hot3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[3.hot3.name]">　</Output>
+      <Output name="link1d" require="[3.hot3.name]">更多[2.queryname]职位»</Output>
+      <Output name="url1d" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCityProfession">
+    <Query>[JobKeywords][JobCity][JobProfession][JobKeywords{0+}]</Query>
+    <Extract type="JobCityProfession">[1.name][2.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[1.name]找[2.queryname][0.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=行业&a_y2=1&a_o2=0&a_v2=[3.name]&q=[0.query]+[2.queryname]&oi=prbx]]></Output>
+      <Output name="link1" require="[3.hot1.name]">[3.hot1.name]([3.hot1.post_num])</Output>
+      <Output name="url1" require="[3.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.hot1.category.name]&q=[3.hot1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[3.hot2.name]">　</Output>
+      <Output name="link1b" require="[3.hot2.name]">[3.hot2.name]([3.hot2.post_num])</Output>
+      <Output name="url1b" require="[3.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.hot2.category.name]&q=[3.hot2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[3.hot3.name]">　</Output>
+      <Output name="link1c" require="[3.hot3.name]">[3.hot3.name]([3.hot3.post_num])</Output>
+      <Output name="url1c" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.hot3.category.name]&q=[3.hot3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[3.hot3.name]">　</Output>
+      <Output name="link1d" require="[3.hot3.name]">更多[2.queryname]职位»</Output>
+      <Output name="url1d" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[1.name]&a_n2=行业&a_y2=1&a_o2=0&a_v2=[3.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCityProfession2">
+    <Query>[JobCity][JobProfession][JobKeywords]</Query>
+    <Extract type="JobCityProfession">[0.name][1.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[0.name]找[1.queryname][2.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=行业&a_y2=1&a_o2=0&a_v2=[3.name]&q=[2.query]+[1.queryname]&oi=prbx]]></Output>
+      <Output name="link1" require="[3.hot1.name]">[3.hot1.name]([3.hot1.post_num])</Output>
+      <Output name="url1" require="[3.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.hot1.category.name]&q=[3.hot1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[3.hot2.name]">　</Output>
+      <Output name="link1b" require="[3.hot2.name]">[3.hot2.name]([3.hot2.post_num])</Output>
+      <Output name="url1b" require="[3.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.hot2.category.name]&q=[3.hot2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[3.hot3.name]">　</Output>
+      <Output name="link1c" require="[3.hot3.name]">[3.hot3.name]([3.hot3.post_num])</Output>
+      <Output name="url1c" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.hot3.category.name]&q=[3.hot3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[3.hot3.name]">　</Output>
+      <Output name="link1d" require="[3.hot3.name]">更多[1.queryname]职位»</Output>
+      <Output name="url1d" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=行业&a_y2=1&a_o2=0&a_v2=[3.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCityProfession3">
+    <Query>[JobCity][JobKeywords][JobProfession][JobKeywords{0+}]</Query>
+    <Extract type="JobCityProfession">[0.name][2.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[0.name]找[2.queryname][1.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=行业&a_y2=1&a_o2=0&a_v2=[3.name]&q=[1.query]+[2.queryname]&oi=prbx]]></Output>
+      <Output name="link1" require="[3.hot1.name]">[3.hot1.name]([3.hot1.post_num])</Output>
+      <Output name="url1" require="[3.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.hot1.category.name]&q=[3.hot1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[3.hot2.name]">　</Output>
+      <Output name="link1b" require="[3.hot2.name]">[3.hot2.name]([3.hot2.post_num])</Output>
+      <Output name="url1b" require="[3.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.hot2.category.name]&q=[3.hot2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[3.hot3.name]">　</Output>
+      <Output name="link1c" require="[3.hot3.name]">[3.hot3.name]([3.hot3.post_num])</Output>
+      <Output name="url1c" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.hot3.category.name]&q=[3.hot3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[3.hot3.name]">　</Output>
+      <Output name="link1d" require="[3.hot3.name]">更多[2.queryname]职位»</Output>
+      <Output name="url1d" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[0.name]&a_n2=行业&a_y2=1&a_o2=0&a_v2=[3.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobSubCategoryIP">
+    <Query>[JobKeywords][JobSubCategory][JobKeywords{0+}]</Query>
+    <Call service="les">
+      <Input name="ip">[loc.ip]</Input>
+      <Input name="get_user_location">true</Input>
+    </Call>
+    <Extract type="JobCitySubCategory" after_call="true">[2.city][1.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[3.city]找[1.queryname][0.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&q=[0.query]+[1.queryname]&oi=prbx]]></Output>
+      <Output name="link1">[3.category.name]([3.category.post_num])</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&oi=prbx]]></Output>
+      <Output name="text1b">　</Output>
+      <Output name="link1b">[1.queryname]([3.post_num])</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[3.related1.name]">[3.related1.name]([3.related1.post_num])</Output>
+      <Output name="url2" require="[3.related1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.related1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[3.related2.name]">　</Output>
+      <Output name="link2b" require="[3.related2.name]">[3.related2.name]([3.related2.post_num])</Output>
+      <Output name="url2b" require="[3.related2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.related2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[3.related3.name]">　</Output>
+      <Output name="link2c" require="[3.related3.name]">[3.related3.name]([3.related3.post_num])</Output>
+      <Output name="url2c" require="[3.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.related3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[3.related3.name]">　</Output>
+      <Output name="link2d" require="[3.related3.name]">更多相关职位»</Output>
+      <Output name="url2d" require="[3.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobSubCategoryIP2">
+    <Query>[JobSubCategory][JobKeywords]</Query>
+    <Call service="les">
+      <Input name="ip">[loc.ip]</Input>
+      <Input name="get_user_location">true</Input>
+    </Call>
+    <Extract type="JobCitySubCategory" after_call="true">[2.city][0.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[3.city]找[0.queryname][1.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&q=[1.query]+[0.queryname]&oi=prbx]]></Output>
+      <Output name="link1">[3.category.name]([3.category.post_num])</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&oi=prbx]]></Output>
+      <Output name="text1b">　</Output>
+      <Output name="link1b">[0.queryname]([3.post_num])</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[3.related1.name]">[3.related1.name]([3.related1.post_num])</Output>
+      <Output name="url2" require="[3.related1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.related1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[3.related2.name]">　</Output>
+      <Output name="link2b" require="[3.related2.name]">[3.related2.name]([3.related2.post_num])</Output>
+      <Output name="url2b" require="[3.related2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.related2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[3.related3.name]">　</Output>
+      <Output name="link2c" require="[3.related3.name]">[3.related3.name]([3.related3.post_num])</Output>
+      <Output name="url2c" require="[3.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&q=[3.related3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[3.related3.name]">　</Output>
+      <Output name="link2d" require="[3.related3.name]">更多相关职位»</Output>
+      <Output name="url2d" require="[3.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.category.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobSubCategory">
+    <Query>[JobKeywords][JobSubCategory][JobKeywords{0+}]</Query>
+    <Extract type="JobCitySubCategory">[1.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">找[1.queryname][0.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&q=[0.query]+[1.queryname]&oi=prbx]]></Output>
+      <Output name="link1">[2.category.name]</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.category.name]&oi=prbx]]></Output>
+      <Output name="text1b">　</Output>
+      <Output name="link1b">[1.queryname]</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.category.name]&q=[2.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[2.related1.name]">[2.related1.name]</Output>
+      <Output name="url2" require="[2.related1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.category.name]&q=[2.related1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[2.related2.name]">　</Output>
+      <Output name="link2b" require="[2.related2.name]">[2.related2.name]</Output>
+      <Output name="url2b" require="[2.related2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.category.name]&q=[2.related2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[2.related3.name]">　</Output>
+      <Output name="link2c" require="[2.related3.name]">[2.related3.name]</Output>
+      <Output name="url2c" require="[2.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.category.name]&q=[2.related3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[2.related3.name]">　</Output>
+      <Output name="link2d" require="[2.related3.name]">更多相关职位»</Output>
+      <Output name="url2d" require="[2.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.category.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobSubCategory2">
+    <Query>[JobSubCategory][JobKeywords]</Query>
+    <Extract type="JobCitySubCategory">[0.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">找[0.queryname][1.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&q=[1.query]+[0.queryname]&oi=prbx]]></Output>
+      <Output name="link1">[2.category.name]</Output>
+      <Output name="url1"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.category.name]&oi=prbx]]></Output>
+      <Output name="text1b">　</Output>
+      <Output name="link1b">[0.queryname]</Output>
+      <Output name="url1b"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.category.name]&q=[2.name]&oi=prbx]]></Output>
+      <Output name="link2" require="[2.related1.name]">[2.related1.name]</Output>
+      <Output name="url2" require="[2.related1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.category.name]&q=[2.related1.name]&oi=prbx]]></Output>
+      <Output name="text2b" require="[2.related2.name]">　</Output>
+      <Output name="link2b" require="[2.related2.name]">[2.related2.name]</Output>
+      <Output name="url2b" require="[2.related2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.category.name]&q=[2.related2.name]&oi=prbx]]></Output>
+      <Output name="text2c" require="[2.related3.name]">　</Output>
+      <Output name="link2c" require="[2.related3.name]">[2.related3.name]</Output>
+      <Output name="url2c" require="[2.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.category.name]&q=[2.related3.name]&oi=prbx]]></Output>
+      <Output name="text2d" require="[2.related3.name]">　</Output>
+      <Output name="link2d" require="[2.related3.name]">更多相关职位»</Output>
+      <Output name="url2d" require="[2.related3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.category.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCategoryIP">
+    <Query>[JobKeywords][JobCategory][JobKeywords{0+}]</Query>
+    <Call service="les">
+      <Input name="ip">[loc.ip]</Input>
+      <Input name="get_user_location">true</Input>
+    </Call>
+    <Extract type="JobCityCategory" after_call="true">[2.city][1.alias]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[3.city]找[1.queryname][0.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[0.query]+[1.queryname]&oi=prbx]]></Output>
+      <Output name="link1" require="[3.hot1.name]">[3.hot1.name]([3.hot1.post_num])</Output>
+      <Output name="url1" require="[3.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[3.hot1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[3.hot2.name]">　</Output>
+      <Output name="link1b" require="[3.hot2.name]">[3.hot2.name]([3.hot2.post_num])</Output>
+      <Output name="url1b" require="[3.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[3.hot2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[3.hot3.name]">　</Output>
+      <Output name="link1c" require="[3.hot3.name]">[3.hot3.name]([3.hot3.post_num])</Output>
+      <Output name="url1c" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[3.hot3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[3.hot3.name]">　</Output>
+      <Output name="link1d" require="[3.hot3.name]">更多[1.queryname]职位»</Output>
+      <Output name="url1d" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCategoryIP2">
+    <Query>[JobCategory][JobKeywords]</Query>
+    <Call service="les">
+      <Input name="ip">[loc.ip]</Input>
+      <Input name="get_user_location">true</Input>
+    </Call>
+    <Extract type="JobCityCategory" after_call="true">[2.city][0.alias]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[3.city]找[0.queryname][1.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[1.query]+[0.queryname]&oi=prbx]]></Output>
+      <Output name="link1" require="[3.hot1.name]">[3.hot1.name]([3.hot1.post_num])</Output>
+      <Output name="url1" require="[3.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[3.hot1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[3.hot2.name]">　</Output>
+      <Output name="link1b" require="[3.hot2.name]">[3.hot2.name]([3.hot2.post_num])</Output>
+      <Output name="url1b" require="[3.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[3.hot2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[3.hot3.name]">　</Output>
+      <Output name="link1c" require="[3.hot3.name]">[3.hot3.name]([3.hot3.post_num])</Output>
+      <Output name="url1c" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&q=[3.hot3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[3.hot3.name]">　</Output>
+      <Output name="link1d" require="[3.hot3.name]">更多[0.queryname]职位»</Output>
+      <Output name="url1d" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCategory">
+    <Query>[JobKeywords][JobCategory][JobKeywords{0+}]</Query>
+    <Extract type="JobCityCategory">[1.alias]</Extract>
+    <Response format="image_right">
+      <Output name="title">找[1.queryname][0.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.name]&q=[0.query]+[1.queryname]&oi=prbx]]></Output>
+      <Output name="link1" require="[2.hot1.name]">[2.hot1.name]</Output>
+      <Output name="url1" require="[2.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.name]&q=[2.hot1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[2.hot2.name]">　</Output>
+      <Output name="link1b" require="[2.hot2.name]">[2.hot2.name]</Output>
+      <Output name="url1b" require="[2.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.name]&q=[2.hot2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[2.hot3.name]">　</Output>
+      <Output name="link1c" require="[2.hot3.name]">[2.hot3.name]</Output>
+      <Output name="url1c" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.name]&q=[2.hot3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[2.hot3.name]">　</Output>
+      <Output name="link1d" require="[2.hot3.name]">更多[1.queryname]职位»</Output>
+      <Output name="url1d" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobCategory2">
+    <Query>[JobCategory][JobKeywords]</Query>
+    <Extract type="JobCityCategory">[0.alias]</Extract>
+    <Response format="image_right">
+      <Output name="title">找[0.queryname][1.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.name]&q=[1.query]+[0.queryname]&oi=prbx]]></Output>
+      <Output name="link1" require="[2.hot1.name]">[2.hot1.name]</Output>
+      <Output name="url1" require="[2.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.name]&q=[2.hot1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[2.hot2.name]">　</Output>
+      <Output name="link1b" require="[2.hot2.name]">[2.hot2.name]</Output>
+      <Output name="url1b" require="[2.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.name]&q=[2.hot2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[2.hot3.name]">　</Output>
+      <Output name="link1c" require="[2.hot3.name]">[2.hot3.name]</Output>
+      <Output name="url1c" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.name]&q=[2.hot3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[2.hot3.name]">　</Output>
+      <Output name="link1d" require="[2.hot3.name]">更多[0.queryname]职位»</Output>
+      <Output name="url1d" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobProfessionIP">
+    <Query>[JobKeywords][JobProfession][JobKeywords{0+}]</Query>
+    <Call service="les">
+      <Input name="ip">[loc.ip]</Input>
+      <Input name="get_user_location">true</Input>
+    </Call>
+    <Extract type="JobCityProfession" after_call="true">[2.city][1.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[3.city]找[1.queryname][0.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=行业&a_y2=1&a_o2=0&a_v2=[3.name]&q=[0.query]+[1.queryname]&oi=prbx]]></Output>
+      <Output name="link1" require="[3.hot1.name]">[3.hot1.name]([3.hot1.post_num])</Output>
+      <Output name="url1" require="[3.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.hot1.category.name]&q=[3.hot1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[3.hot2.name]">　</Output>
+      <Output name="link1b" require="[3.hot2.name]">[3.hot2.name]([3.hot2.post_num])</Output>
+      <Output name="url1b" require="[3.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.hot2.category.name]&q=[3.hot2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[3.hot3.name]">　</Output>
+      <Output name="link1c" require="[3.hot3.name]">[3.hot3.name]([3.hot3.post_num])</Output>
+      <Output name="url1c" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.hot3.category.name]&q=[3.hot3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[3.hot3.name]">　</Output>
+      <Output name="link1d" require="[3.hot3.name]">更多[1.queryname]职位»</Output>
+      <Output name="url1d" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=行业&a_y2=1&a_o2=0&a_v2=[3.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobProfessionIP2">
+    <Query>[JobProfession][JobKeywords]</Query>
+    <Call service="les">
+      <Input name="ip">[loc.ip]</Input>
+      <Input name="get_user_location">true</Input>
+    </Call>
+    <Extract type="JobCityProfession" after_call="true">[2.city][0.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">在[3.city]找[0.queryname][1.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=行业&a_y2=1&a_o2=0&a_v2=[3.name]&q=[1.query]+[0.queryname]&oi=prbx]]></Output>
+      <Output name="link1" require="[3.hot1.name]">[3.hot1.name]([3.hot1.post_num])</Output>
+      <Output name="url1" require="[3.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.hot1.category.name]&q=[3.hot1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[3.hot2.name]">　</Output>
+      <Output name="link1b" require="[3.hot2.name]">[3.hot2.name]([3.hot2.post_num])</Output>
+      <Output name="url1b" require="[3.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.hot2.category.name]&q=[3.hot2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[3.hot3.name]">　</Output>
+      <Output name="link1c" require="[3.hot3.name]">[3.hot3.name]([3.hot3.post_num])</Output>
+      <Output name="url1c" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=职位大类&a_y2=1&a_o2=0&a_v2=[3.hot3.category.name]&q=[3.hot3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[3.hot3.name]">　</Output>
+      <Output name="link1d" require="[3.hot3.name]">更多[0.queryname]职位»</Output>
+      <Output name="url1d" require="[3.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=城市&a_y1=1&a_o1=0&a_v1=[3.city]&a_n2=行业&a_y2=1&a_o2=0&a_v2=[3.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobProfession">
+    <Query>[JobKeywords][JobProfession][JobKeywords{0+}]</Query>
+    <Extract type="JobCityProfession">[1.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">找[1.queryname][0.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=行业&a_y1=1&a_o1=0&a_v1=[2.name]&q=[0.query]+[1.queryname]&oi=prbx]]></Output>
+      <Output name="link1" require="[2.hot1.name]">[2.hot1.name]</Output>
+      <Output name="url1" require="[2.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.hot1.category.name]&q=[2.hot1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[2.hot2.name]">　</Output>
+      <Output name="link1b" require="[2.hot2.name]">[2.hot2.name]</Output>
+      <Output name="url1b" require="[2.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.hot2.category.name]&q=[2.hot2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[2.hot3.name]">　</Output>
+      <Output name="link1c" require="[2.hot3.name]">[2.hot3.name]</Output>
+      <Output name="url1c" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.hot3.category.name]&q=[2.hot3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[2.hot3.name]">　</Output>
+      <Output name="link1d" require="[2.hot3.name]">更多[1.queryname]职位»</Output>
+      <Output name="url1d" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=行业&a_y1=1&a_o1=0&a_v1=[2.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+  <ResultSpec id="JobProfession2">
+    <Query>[JobProfession][JobKeywords]</Query>
+    <Extract type="JobCityProfession">[0.name]</Extract>
+    <Response format="image_right">
+      <Output name="title">找[0.queryname][1.name]</Output>
+      <Output name="inline_image_width">40</Output>
+      <Output name="inline_image_height">30</Output>
+      <Output name="more_url"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=行业&a_y1=1&a_o1=0&a_v1=[2.name]&q=[1.query]+[0.queryname]&oi=prbx]]></Output>
+      <Output name="link1" require="[2.hot1.name]">[2.hot1.name]</Output>
+      <Output name="url1" require="[2.hot1.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.hot1.category.name]&q=[2.hot1.name]&oi=prbx]]></Output>
+      <Output name="text1b" require="[2.hot2.name]">　</Output>
+      <Output name="link1b" require="[2.hot2.name]">[2.hot2.name]</Output>
+      <Output name="url1b" require="[2.hot2.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.hot2.category.name]&q=[2.hot2.name]&oi=prbx]]></Output>
+      <Output name="text1c" require="[2.hot3.name]">　</Output>
+      <Output name="link1c" require="[2.hot3.name]">[2.hot3.name]</Output>
+      <Output name="url1c" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=职位大类&a_y1=1&a_o1=0&a_v1=[2.hot3.category.name]&q=[2.hot3.name]&oi=prbx]]></Output>
+      <Output name="text1d" require="[2.hot3.name]">　</Output>
+      <Output name="link1d" require="[2.hot3.name]">更多[0.queryname]职位»</Output>
+      <Output name="url1d" require="[2.hot3.name]"><![CDATA[http://shenghuo.google.cn/shenghuo/search?a_y0=9&a_n0=工作&a_n1=行业&a_y1=1&a_o1=0&a_v1=[2.name]&oi=prbx]]></Output>
+    </Response>
+  </ResultSpec>
+</Results>

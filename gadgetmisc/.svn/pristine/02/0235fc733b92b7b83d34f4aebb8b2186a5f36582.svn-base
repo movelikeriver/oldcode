@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="__MSG_title__"
+               width="560"
+               height="100"
+               author="Lenjoy"
+               author_email="lenjoy@google.com"
+               author_affiliation="Google Inc."
+               author_location="Beijing, China"
+               screenshot="__MSG_screenshot__"
+               thumbnail="__MSG_thumbnail__">
+    <Require feature="dynamic-height" />
+    <Locale messages="http://gadgetmisc.googlecode.com/svn/trunk/taobao/ALL_ALL.xml" />
+    <Locale lang="zh-CN" messages="http://gadgetmisc.googlecode.com/svn/trunk/taobao/zh-CN_ALL.xml" />
+  </ModulePrefs>
+  <UserPref name="showsearchbox"
+            display_name="Show Search Box"
+            datatype="bool"
+            default_value="true" />
+  <UserPref name="query"
+            display_name="Input Query"
+            datatype="string"
+            default_value="" />
+  <UserPref name="item_num"
+            display_name="Item Number"
+            datatype="string"
+            default_value="3" />
+  <Content type="html">
+<![CDATA[
+<style>
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0
+}
+
+.searchbox__MODULE_ID__ {
+  border: 0;
+  background-color: #FF9000;
+  display: none
+}
+
+.tablestyle__MODULE_ID__ {
+  border: 1px none #33FF99;
+  font-family: arial, sans-serif;
+  width: 100%
+}
+
+.tdhint__MODULE_ID__ {
+  color: blue;
+  font-size: 13px;
+  text-align: left
+}
+
+.tdmenu__MODULE_ID__ {
+  font-size: 13px;
+  text-align: center
+}
+
+.tdmenuprice__MODULE_ID__ {
+  font-size: 13px;
+  padding-bottom: 6px;
+  text-align: right;
+  vertical-align: text-bottom
+}
+
+.tdimage__MODULE_ID__ {
+  width: 40px;
+  height: 40px;
+  margin: 0pt 2px;
+  padding-right: 6px;
+  padding-top: 6px;
+  vertical-align:top
+}
+
+.tdtitle__MODULE_ID__ {
+  font-size: 13px;
+  text-align: left;
+  padding-top: 6px;
+  vertical-align:top
+}
+
+.tdprice__MODULE_ID__ {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: right;
+  padding-left: 9px;
+  padding-top: 6px;
+  vertical-align:top
+}
+
+.navLogo__MODULE_ID__ {
+  background-image: url(http://assets.taobaocdn.com/sys/header/logo.png);
+  background-position: -9px -8px;
+  display: block;
+  height: 31px;
+  left: 3px;
+  position: relative;
+  top: 3px;
+  width: 151px
+}
+
+.navSearchBar__MODULE_ID__ {
+  text-align: left;
+  height: 35px
+}
+
+.query__MODULE_ID__ {
+  background-color: rgb(255, 255, 255);
+  font-family: arial,sans-serif;
+  font-size: 10pt
+}
+
+.navSprite__MODULE_ID__ {
+  background-image: url(http://assets.taobaocdn.com/sys/header/logo.png);
+  background-position: 0 -415px;
+  border: 0 none;
+  display: block;
+  height: 35px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 32px
+}
+</style>
+<body>
+  <div id="searchbox__MODULE_ID__" class="searchbox__MODULE_ID__">
+    <input id="query__MODULE_ID__" type="text" size="22" maxlength="200"
+           onkeydown="doKeydown(event)" value="">
+    <input onclick="window.goSearch()" value="__MSG_search__"
+           type="button">
+  </div>
+  <div id="results__MODULE_ID__">
+    <table id="itemstable__MODULE_ID__" class="tablestyle__MODULE_ID__"
+           rules="rows" frame="void" />
+  </div>
+</body>
+<script src="http://gadgetmisc.googlecode.com/svn/trunk/taobao/md5.js"></script>
+<script>
+var prefs__MODULE_ID__ = new _IG_Prefs(__MODULE_ID__);
+var g_showsearchbox = prefs__MODULE_ID__.getBool('showsearchbox');
+var g_queryKeyword = prefs__MODULE_ID__.getString('query');
+
+if (g_showsearchbox) {
+  _gel('searchbox__MODULE_ID__').style.display = 'block';
+  _gel('query__MODULE_ID__').value = g_queryKeyword;
+}
+
+var g_item_num = parseInt(prefs__MODULE_ID__.getString('item_num'), 10);
+
+/**
+ * Formats the digit.
+ * @param {number} n The input number.
+ * @return {String} The formatted number.
+ */
+function formatDigit(n) {
+  return (n > 9) ? n + '' : '0' + n;
+}
+
+/**
+ * Gets current time as string format.
+ * @return {String} The string format of time.
+ */
+function getCurrentTimeStr() {
+  var t = new Date();
+  var year = t.getFullYear();
+  var month = t.getMonth() + 1;
+  month = formatDigit(month);
+  var day = formatDigit(t.getDate());
+  var hours = formatDigit(t.getHours());
+  var minutes = formatDigit(t.getMinutes());
+  var seconds = formatDigit(t.getSeconds());
+  return [year, '-', month, '-', day, ' ',
+          hours, ':', minutes, ':', seconds].join('');
+}
+
+/**
+ * Creates sign for parameters Array.
+ * @param {Array} params The parameters map.
+ * @return {String} The signature string.
+ */
+function createSign(params) {
+  // Sorts array by key.
+  var ks = new Array();
+  for (var key in params) {
+    ks.push(key);
+  }
+  ks.sort();
+  var sign_arr = new Array();
+  for (var j = 0; j < ks.length; j++) {
+    sign_arr.push(ks[j]);
+    sign_arr.push(params[ks[j]]);
+  }
+  var raw_sign = '094520e0e44b626d11d611e4eda7c655' + sign_arr.join('');
+  return raw_sign;
+}
+
+/**
+ * Creates String for parameters Array.
+ * @param {Array} params The parameters map.
+ * @return {String} The joined string.
+ */
+function createStrParam(params) {
+  var str_arr = new Array();
+  for (var key in params) {
+    str_arr.push(key + '=' + encodeURIComponent(params[key]));
+  }
+  return str_arr.join('&');
+}
+
+/**
+ * Sets event handler function when key down.
+ * @param {Event} e The event that resulted in the function call.
+ */
+function doKeydown(e) {
+  var key = 0;
+  if (window.event) {
+    key = e.keyCode;
+  } else if (e.which) {
+    key = e.which;
+  }
+  switch (parseInt(key, 10)) {
+  case 13:
+    window.goSearch();
+    break;
+  }
+}
+
+/**
+ * Changes element's background color.
+ * @param {HTMLElement} e This is the 'tr' tag.
+ */
+function changeColor(e) {
+  e.style.background = '#e0e040';
+}
+
+/**
+ * Changes element's background color.
+ * @param {HTMLElement} e This is the 'tr' tag.
+ */
+function returnColor(e) {
+  e.style.background = '#ffffff';
+}
+
+/**
+ * Makes menu HTML.
+ * @return {String} HTML
+ */
+function makeMenu() {
+  return ['<tr>',
+          '<td height="55" width="85%" colspan="2">',
+          '<img src="http://assets.taobaocdn.com/sys/header/logo.png" ',
+          'width="100" height="30">',
+          '</td>',
+          '<td width="15%" class="tdmenuprice__MODULE_ID__">__MSG_price__</td>',
+          '</tr>'].join('');
+}
+
+/**
+ * Makes result HTML.
+ * @return {String} HTML
+ */
+function makeResult(image, title, price, iid) {
+  return ['<tr onmouseover="changeColor(this)" onmouseout="returnColor(this)">',
+          '<td width="10%">',
+          '<a id="img', iid, '" target="_blank">',
+          '<img class="tdimage__MODULE_ID__" src="' + image + '">',
+          '</a>',
+          '</td>',
+          '<td width="75%" class="tdtitle__MODULE_ID__">',
+          '<a id="tit', iid, '" target="_blank">',
+          title,
+          '</a>',
+          '</td>',
+          '<td width="15%" class="tdprice__MODULE_ID__">', price,
+          '</td></tr>'].join('');
+}
+
+/**
+ * Goes to the shop by given product item id.
+ * @param {String} iid The product item id.
+ */
+function makeShopURL(nick, iid) {
+  return itemGetSingle(nick, iid);
+}
+
+/**
+ * Gets items by using taobao.items.get API for the input query.
+ * @param {String} query The input query.
+ */
+function itemsGet(query) {
+  var params = new Array();
+  params['api_key'] = '12004345';
+  params['method'] = 'taobao.items.get';
+  params['format'] = 'json';
+  params['v'] = '1.0';
+  params['timestamp'] = getCurrentTimeStr();
+  params['fields'] = ['iid',
+                      'title',
+                      'nick',
+                      'pic_path',
+                      'price'].join(',');
+  params['page_no'] = '1';
+  params['page_size'] = '3';
+  params['q'] = query;
+  var str_params = createStrParam(params);
+  var raw_sign = createSign(params);
+  var sign = hex_md5(raw_sign).toUpperCase();
+  var url = ['http://gw.api.taobao.com/router/rest?',
+             str_params, '&sign=', sign].join('');
+
+  var gadgetparams = {};
+  gadgetparams[gadgets.io.RequestParameters.CONTENT_TYPE] =
+      gadgets.io.ContentType.JSON;
+  gadgets.io.makeRequest(url, itemsGetResponse, gadgetparams);
+}
+
+/**
+ * Handles the response for request in itemsGet().
+ * @param {Object} obj The response returned by gadgets API.
+ */
+function itemsGetResponse(obj) {
+  var jsondata = obj.data;
+  var value = jsondata['rsp'];
+  var no_result = ['<tr><td class="tdhint__MODULE_ID__">',
+                   '<b>', g_queryKeyword, '</b>&nbsp;',
+                   '__MSG_no_result__</td></tr>'].join('');
+  if (value == null) {
+    _gel('itemstable__MODULE_ID__').innerHTML = no_result;
+    return;
+  }
+  value = value['items'];
+  if (value instanceof Array) {
+    var str_arr = new Array();
+    str_arr.push(makeMenu());
+    for (var j = 0; j < value.length; j++) {
+      var item = value[j];
+      var result = makeResult(item.pic_path, item.title, item.price, item.iid);
+      str_arr.push(result);
+    }
+    _gel('itemstable__MODULE_ID__').innerHTML = str_arr.join('');
+    for (var j = 0; j < value.length; j++) {
+      var item = value[j];
+      itemGetSingle(item.nick, item.iid);
+    }
+  } else {
+    _gel('itemstable__MODULE_ID__').innerHTML = no_result;
+  }
+}
+
+/**
+ * Gets items by using taobao.item.get API for the input query.
+ * @param {String} nick The input query.
+ * @param {String} iid The item id.
+ */
+function itemGetSingle(nick, iid) {
+  var params = new Array();
+  params['api_key'] = '12004345';
+  params['method'] = 'taobao.item.get';
+  params['format'] = 'json';
+  params['v'] = '1.0';
+  params['timestamp'] = getCurrentTimeStr();
+  params['fields'] = ['iid',
+                      'detail_url'].join(',');
+  params['nick'] = nick;
+  params['iid'] = iid;
+  var str_params = createStrParam(params);
+  var raw_sign = createSign(params);
+  var sign = hex_md5(raw_sign).toUpperCase();
+  var url = ['http://gw.api.taobao.com/router/rest?',
+             str_params, '&sign=', sign].join('');
+
+  var gadgetparams = {};
+  gadgetparams[gadgets.io.RequestParameters.CONTENT_TYPE] =
+      gadgets.io.ContentType.JSON;
+  gadgets.io.makeRequest(url, itemGetSingleResponse, gadgetparams);
+}
+
+/**
+ * Handles the response for request in itemGetSingle().
+ * @param {Object} obj The response returned by gadgets API.
+ */
+function itemGetSingleResponse(obj) {
+  var jsondata = obj.data;
+  var value = jsondata['rsp'];
+  if (value == null) {
+    return;
+  }
+
+  var iid = value['items'][0].iid;
+  var url = value['items'][0].detail_url;
+  _gel('img' + iid).href = url;
+  _gel('tit' + iid).href = url;
+}
+
+window.goSearch = function() {
+  if (g_showsearchbox) {
+    g_queryKeyword = _trim(_gel('query__MODULE_ID__').value);
+  }
+  if (g_queryKeyword.length == 0) {
+    _gel('itemstable__MODULE_ID__').innerHTML =
+         '<tr><td class="tdhint__MODULE_ID__">' + '__MSG_hint__' + '</td></tr>';
+    return;
+  }
+
+  _gel('itemstable__MODULE_ID__').innerHTML =
+       '<tr><td class="tdhint__MODULE_ID__">' + '__MSG_loading__' +
+       '</td></tr>';
+
+  itemsGet(g_queryKeyword);
+}
+
+window.goSearch();
+
+</script>
+]]>
+  </Content>
+</Module> 

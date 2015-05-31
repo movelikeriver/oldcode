@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="__MSG_title__"
+               width="560"
+               height="100"
+               author="Lenjoy"
+               author_email="lenjoy@google.com"
+               author_affiliation="Google Inc."
+               author_location="Beijing, China"
+               screenshot="__MSG_screenshot__"
+               thumbnail="__MSG_thumbnail__">
+    <Require feature="dynamic-height" />
+    <Locale messages="/ig/modules/chinagadgets/biosphere/taobao/ALL_ALL.xml" />
+    <Locale lang="zh-CN" messages="/ig/modules/chinagadgets/biosphere/taobao/zh-CN_ALL.xml" />
+  </ModulePrefs>
+  <UserPref name="showsearchbox"
+            display_name="Show Search Box"
+            datatype="bool"
+            default_value="true" />
+  <UserPref name="query"
+            display_name="Input Query"
+            datatype="string"
+            default_value="" />
+  <UserPref name="item_num"
+            display_name="Item Number"
+            datatype="string"
+            default_value="3" />
+  <Content type="html">
+<![CDATA[
+<style>body{background-color:#fff;margin:0;padding:0}.searchbox__MODULE_ID__{border:0;background-color:#ff9000;display:none}.tablestyle__MODULE_ID__{border:1px none #3F9;font-family:arial,sans-serif;width:100%}.tdhint__MODULE_ID__{color:#00f;font-size:13px;text-align:left}.tdmenu__MODULE_ID__{font-size:13px;text-align:center}.tdmenuprice__MODULE_ID__{font-size:13px;padding-bottom:6px;text-align:right;vertical-align:text-bottom}.tdimage__MODULE_ID__{width:40px;height:40px;margin:0 2px;padding-right:6px;padding-top:6px;vertical-align:top}.tdtitle__MODULE_ID__{font-size:13px;text-align:left;padding-top:6px;vertical-align:top}.tdprice__MODULE_ID__{font-size:16px;font-weight:bold;text-align:right;padding-left:9px;padding-top:6px;vertical-align:top}.navLogo__MODULE_ID__{background-image:url(http://assets.taobaocdn.com/sys/header/logo.png);background-position:-9px -8px;display:block;height:31px;left:3px;position:relative;top:3px;width:151px}.navSearchBar__MODULE_ID__{text-align:left;height:35px}.query__MODULE_ID__{background-color:#fff;font-family:arial,sans-serif;font-size:10pt}.navSprite__MODULE_ID__{background-image:url(http://assets.taobaocdn.com/sys/header/logo.png);background-position:0 -415px;border:0 none;display:block;height:35px;margin:0;padding:0;position:relative;width:32px}</style>
+<body>
+<div class=searchbox__MODULE_ID__ id=searchbox__MODULE_ID__>
+<input id=query__MODULE_ID__ maxlength=200 onkeydown=doKeydown(event) size=22 value="">
+<input onclick=window.goSearch() type=button value="__MSG_search__">
+</div>
+<div id=results__MODULE_ID__>
+<table class=tablestyle__MODULE_ID__ frame=void id=itemstable__MODULE_ID__ rules=rows />
+</div>
+<script>var hexcase=0,b64pad="";function rstr_md5(c){return binl2rstr(binl_md5(rstr2binl(c),c.length*8))}function rstr_hmac_md5(c,g){var a=rstr2binl(c);if(a.length>16)a=binl_md5(a,c.length*8);for(var b=Array(16),d=Array(16),e=0;e<16;e++){b[e]=a[e]^909522486;d[e]=a[e]^1549556828}var f=binl_md5(b.concat(rstr2binl(g)),512+g.length*8);return binl2rstr(binl_md5(d.concat(f),640))}
+function rstr2hex(c){for(var g=hexcase?"0123456789ABCDEF":"0123456789abcdef",a="",b,d=0;d<c.length;d++){b=c.charCodeAt(d);a+=g.charAt(b>>>4&15)+g.charAt(b&15)}return a}function rstr2b64(c){for(var g="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",a="",b=c.length,d=0;d<b;d+=3)for(var e=c.charCodeAt(d)<<16|(d+1<b?c.charCodeAt(d+1)<<8:0)|(d+2<b?c.charCodeAt(d+2):0),f=0;f<4;f++)a+=d*8+f*6>c.length*8?b64pad:g.charAt(e>>>6*(3-f)&63);return a}
+function rstr2any(c,g){var a=g.length,b,d,e,f,h,i=Array(Math.ceil(c.length/2));for(b=0;b<i.length;b++)i[b]=c.charCodeAt(b*2)<<8|c.charCodeAt(b*2+1);var k=Math.ceil(c.length*8/(Math.log(g.length)/Math.log(2))),j=Array(k);for(d=0;d<k;d++){h=Array();for(b=f=0;b<i.length;b++){f=(f<<16)+i[b];e=Math.floor(f/a);f-=e*a;if(h.length>0||e>0)h[h.length]=e}j[d]=f;i=h}var l="";for(b=j.length-1;b>=0;b--)l+=g.charAt(j[b]);return l}
+function str2rstr_utf8(c){for(var g="",a=-1,b,d;++a<c.length;){b=c.charCodeAt(a);d=a+1<c.length?c.charCodeAt(a+1):0;if(55296<=b&&b<=56319&&56320<=d&&d<=57343){b=65536+((b&1023)<<10)+(d&1023);a++}if(b<=127)g+=String.fromCharCode(b);else if(b<=2047)g+=String.fromCharCode(192|b>>>6&31,128|b&63);else if(b<=65535)g+=String.fromCharCode(224|b>>>12&15,128|b>>>6&63,128|b&63);else if(b<=2097151)g+=String.fromCharCode(240|b>>>18&7,128|b>>>12&63,128|b>>>6&63,128|b&63)}return g}
+function str2rstr_utf16le(c){for(var g="",a=0;a<c.length;a++)g+=String.fromCharCode(c.charCodeAt(a)&255,c.charCodeAt(a)>>>8&255);return g}function str2rstr_utf16be(c){for(var g="",a=0;a<c.length;a++)g+=String.fromCharCode(c.charCodeAt(a)>>>8&255,c.charCodeAt(a)&255);return g}function rstr2binl(c){for(var g=Array(c.length>>2),a=0;a<g.length;a++)g[a]=0;for(a=0;a<c.length*8;a+=8)g[a>>5]|=(c.charCodeAt(a/8)&255)<<a%32;return g}
+function binl2rstr(c){for(var g="",a=0;a<c.length*32;a+=8)g+=String.fromCharCode(c[a>>5]>>>a%32&255);return g}
+function binl_md5(c,g){c[g>>5]|=128<<g%32;c[(g+64>>>9<<4)+14]=g;for(var a=1732584193,b=-271733879,d=-1732584194,e=271733878,f=0;f<c.length;f+=16){var h=a,i=b,k=d,j=e;a=md5_ff(a,b,d,e,c[f+0],7,-680876936);e=md5_ff(e,a,b,d,c[f+1],12,-389564586);d=md5_ff(d,e,a,b,c[f+2],17,606105819);b=md5_ff(b,d,e,a,c[f+3],22,-1044525330);a=md5_ff(a,b,d,e,c[f+4],7,-176418897);e=md5_ff(e,a,b,d,c[f+5],12,1200080426);d=md5_ff(d,e,a,b,c[f+6],17,-1473231341);b=md5_ff(b,d,e,a,c[f+7],22,-45705983);a=md5_ff(a,b,d,e,c[f+8],7,
+1770035416);e=md5_ff(e,a,b,d,c[f+9],12,-1958414417);d=md5_ff(d,e,a,b,c[f+10],17,-42063);b=md5_ff(b,d,e,a,c[f+11],22,-1990404162);a=md5_ff(a,b,d,e,c[f+12],7,1804603682);e=md5_ff(e,a,b,d,c[f+13],12,-40341101);d=md5_ff(d,e,a,b,c[f+14],17,-1502002290);b=md5_ff(b,d,e,a,c[f+15],22,1236535329);a=md5_gg(a,b,d,e,c[f+1],5,-165796510);e=md5_gg(e,a,b,d,c[f+6],9,-1069501632);d=md5_gg(d,e,a,b,c[f+11],14,643717713);b=md5_gg(b,d,e,a,c[f+0],20,-373897302);a=md5_gg(a,b,d,e,c[f+5],5,-701558691);e=md5_gg(e,a,b,d,c[f+
+10],9,38016083);d=md5_gg(d,e,a,b,c[f+15],14,-660478335);b=md5_gg(b,d,e,a,c[f+4],20,-405537848);a=md5_gg(a,b,d,e,c[f+9],5,568446438);e=md5_gg(e,a,b,d,c[f+14],9,-1019803690);d=md5_gg(d,e,a,b,c[f+3],14,-187363961);b=md5_gg(b,d,e,a,c[f+8],20,1163531501);a=md5_gg(a,b,d,e,c[f+13],5,-1444681467);e=md5_gg(e,a,b,d,c[f+2],9,-51403784);d=md5_gg(d,e,a,b,c[f+7],14,1735328473);b=md5_gg(b,d,e,a,c[f+12],20,-1926607734);a=md5_cmn(b^d^e,a,b,c[f+5],4,-378558);e=md5_cmn(a^b^d,e,a,c[f+8],11,-2022574463);d=md5_cmn(e^a^
+b,d,e,c[f+11],16,1839030562);b=md5_cmn(d^e^a,b,d,c[f+14],23,-35309556);a=md5_cmn(b^d^e,a,b,c[f+1],4,-1530992060);e=md5_cmn(a^b^d,e,a,c[f+4],11,1272893353);d=md5_cmn(e^a^b,d,e,c[f+7],16,-155497632);b=md5_cmn(d^e^a,b,d,c[f+10],23,-1094730640);a=md5_cmn(b^d^e,a,b,c[f+13],4,681279174);e=md5_cmn(a^b^d,e,a,c[f+0],11,-358537222);d=md5_cmn(e^a^b,d,e,c[f+3],16,-722521979);b=md5_cmn(d^e^a,b,d,c[f+6],23,76029189);a=md5_cmn(b^d^e,a,b,c[f+9],4,-640364487);e=md5_cmn(a^b^d,e,a,c[f+12],11,-421815835);d=md5_cmn(e^
+a^b,d,e,c[f+15],16,530742520);b=md5_cmn(d^e^a,b,d,c[f+2],23,-995338651);a=md5_ii(a,b,d,e,c[f+0],6,-198630844);e=md5_ii(e,a,b,d,c[f+7],10,1126891415);d=md5_ii(d,e,a,b,c[f+14],15,-1416354905);b=md5_ii(b,d,e,a,c[f+5],21,-57434055);a=md5_ii(a,b,d,e,c[f+12],6,1700485571);e=md5_ii(e,a,b,d,c[f+3],10,-1894986606);d=md5_ii(d,e,a,b,c[f+10],15,-1051523);b=md5_ii(b,d,e,a,c[f+1],21,-2054922799);a=md5_ii(a,b,d,e,c[f+8],6,1873313359);e=md5_ii(e,a,b,d,c[f+15],10,-30611744);d=md5_ii(d,e,a,b,c[f+6],15,-1560198380);
+b=md5_ii(b,d,e,a,c[f+13],21,1309151649);a=md5_ii(a,b,d,e,c[f+4],6,-145523070);e=md5_ii(e,a,b,d,c[f+11],10,-1120210379);d=md5_ii(d,e,a,b,c[f+2],15,718787259);b=md5_ii(b,d,e,a,c[f+9],21,-343485551);a=safe_add(a,h);b=safe_add(b,i);d=safe_add(d,k);e=safe_add(e,j)}return Array(a,b,d,e)}function md5_cmn(c,g,a,b,d,e){return safe_add(bit_rol(safe_add(safe_add(g,c),safe_add(b,e)),d),a)}function md5_ff(c,g,a,b,d,e,f){return md5_cmn(g&a|~g&b,c,g,d,e,f)}
+function md5_gg(c,g,a,b,d,e,f){return md5_cmn(g&b|a&~b,c,g,d,e,f)}function md5_ii(c,g,a,b,d,e,f){return md5_cmn(a^(g|~b),c,g,d,e,f)}function safe_add(c,g){var a=(c&65535)+(g&65535),b=(c>>16)+(g>>16)+(a>>16);return b<<16|a&65535}function bit_rol(c,g){return c<<g|c>>>32-g}var prefs__MODULE_ID__=new _IG_Prefs(__MODULE_ID__),g_showsearchbox=prefs__MODULE_ID__.getBool("showsearchbox"),g_queryKeyword=prefs__MODULE_ID__.getString("query");
+if(g_showsearchbox){_gel("searchbox__MODULE_ID__").style.display="block";_gel("query__MODULE_ID__").value=g_queryKeyword}var g_item_num=parseInt(prefs__MODULE_ID__.getString("item_num"),10);function formatDigit(c){return c>9?c+"":"0"+c}function getCurrentTimeStr(){var c=new Date,g=c.getFullYear(),a=c.getMonth()+1;a=formatDigit(a);var b=formatDigit(c.getDate()),d=formatDigit(c.getHours()),e=formatDigit(c.getMinutes()),f=formatDigit(c.getSeconds());return[g,"-",a,"-",b," ",d,":",e,":",f].join("")}
+function createSign(c){var g=[];for(var a in c)g.push(a);g.sort();for(var b=[],d=0;d<g.length;d++){b.push(g[d]);b.push(c[g[d]])}var e="094520e0e44b626d11d611e4eda7c655"+b.join("");return e}function createStrParam(c){var g=[];for(var a in c)g.push(a+"="+encodeURIComponent(c[a]));return g.join("&")}function doKeydown(c){var g=0;if(window.event)g=c.keyCode;else if(c.which)g=c.which;switch(parseInt(g,10)){case 13:window.goSearch();break}}function changeColor(c){c.style.background="#e0e040"}
+function returnColor(c){c.style.background="#ffffff"}
+function itemsGet(c){var g=[];g.api_key="12004345";g.method="taobao.items.get";g.format="json";g.v="1.0";g.timestamp=getCurrentTimeStr();g.fields="iid,title,nick,pic_path,price";g.page_no="1";g.page_size="3";g.q=c;var a=createStrParam(g),b=createSign(g),d=rstr2hex(rstr_md5(str2rstr_utf8(b))).toUpperCase(),e=["http://gw.api.taobao.com/router/rest?",a,"&sign=",d].join(""),f={};f[gadgets.io.RequestParameters.CONTENT_TYPE]=gadgets.io.ContentType.JSON;gadgets.io.makeRequest(e,itemsGetResponse,f)}
+function itemsGetResponse(c){var g=c.data,a=g.rsp,b=['<tr><td class="tdhint__MODULE_ID__"><b>',g_queryKeyword,"</b>&nbsp;__MSG_no_result__</td></tr>"].join("");if(a==null)_gel("itemstable__MODULE_ID__").innerHTML=b;else{a=a.items;if(a instanceof Array){var d=[];d.push('<tr><td height="55" width="85%" colspan="2"><img src="http://assets.taobaocdn.com/sys/header/logo.png" width="100" height="30"></td><td width="15%" class="tdmenuprice__MODULE_ID__">__MSG_price__</td></tr>');for(var e=0;e<a.length;e++){var f=
+a[e],h=['<tr onmouseover="changeColor(this)" onmouseout="returnColor(this)"><td width="10%"><a id="img',f.iid,'" target="_blank">','<img class="tdimage__MODULE_ID__" src="'+f.pic_path+'">','</a></td><td width="75%" class="tdtitle__MODULE_ID__"><a id="tit',f.iid,'" target="_blank">',f.title,'</a></td><td width="15%" class="tdprice__MODULE_ID__">',f.price,"</td></tr>"].join("");d.push(h)}_gel("itemstable__MODULE_ID__").innerHTML=d.join("");for(e=0;e<a.length;e++){f=a[e];itemGetSingle(f.nick,f.iid)}}else _gel("itemstable__MODULE_ID__").innerHTML=
+b}}function itemGetSingle(c,g){var a=[];a.api_key="12004345";a.method="taobao.item.get";a.format="json";a.v="1.0";a.timestamp=getCurrentTimeStr();a.fields="iid,detail_url";a.nick=c;a.iid=g;var b=createStrParam(a),d=createSign(a),e=rstr2hex(rstr_md5(str2rstr_utf8(d))).toUpperCase(),f=["http://gw.api.taobao.com/router/rest?",b,"&sign=",e].join(""),h={};h[gadgets.io.RequestParameters.CONTENT_TYPE]=gadgets.io.ContentType.JSON;gadgets.io.makeRequest(f,itemGetSingleResponse,h)}
+function itemGetSingleResponse(c){var g=c.data,a=g.rsp;if(!(a==null)){var b=a.items[0].iid,d=a.items[0].detail_url;_gel("img"+b).href=d;_gel("tit"+b).href=d}}
+window.goSearch=function(){if(g_showsearchbox)g_queryKeyword=_trim(_gel("query__MODULE_ID__").value);if(g_queryKeyword.length==0)_gel("itemstable__MODULE_ID__").innerHTML='<tr><td class="tdhint__MODULE_ID__">__MSG_hint__</td></tr>';else{_gel("itemstable__MODULE_ID__").innerHTML='<tr><td class="tdhint__MODULE_ID__">__MSG_loading__</td></tr>';itemsGet(g_queryKeyword)}};window.goSearch();</script>
+]]>
+  </Content>
+</Module> 
