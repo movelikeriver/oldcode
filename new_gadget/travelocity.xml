@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+	<ModulePrefs author="LabPixies" author_email="info+travelocity@labpixies.com" description="Book travel for less with Travelocity's specials on airfares, hotels, cruises, car rentals and more. Get the best price on air tickets, hotels and car rentals. Online travel agent from your google homepage. Book your flight now!"
+		thumbnail="http://cdn.labpixies.com/campaigns/travelocity/Images/thumbnail.jpg" screenshot="http://cdn.labpixies.com/campaigns/travelocity/Images/screenshot.png" title="Travelocity" title_url="http://www.dpbolvw.net/click-1955441-10397371" category="tools" height="305">
+		
+		<Require feature="analytics"/>
+	</ModulePrefs>
+	
+<Content type="html">
+	<![CDATA[
+	<title>Travelocity</title>
+	
+		<style type="text/css">
+	<!--
+	
+	#lp_ad_div a:link, #lp_ad_div a:visited	{text-decoration:none;color:#006CB3;font-family: Verdana, Arial, sans-serif; font-size:11px;}
+	#lp_ad_div a:hover, #lp_ad_div a:active	{text-decoration:underline;color:#006CB3;font-family: Verdana, Arial, sans-serif; font-size:11px;}
+
+	-->
+	</style>
+
+	<!-- 
+	Travelocity Module
+	Design & Code: LabPixies
+	All subsequent code and resources used are proprietary of LabPixies unless directly stated otherwise.
+	Copyright (C) 2008 LabPixies.    
+	www.labpixies.com
+
+	This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivs 2.5 License.
+	To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/2.5/ or
+	send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisco, California, 94105, USA.
+	-->
+	
+	<script language="javascript">
+	
+	var _gadgetID = 4;
+	
+	var mJquery = _IG_GetCachedUrl("http://cdn.labpixies.com/infra/jquery/jquery.js");
+	document.write('<scr'+'ipt type="text/javascript" src="'+mJquery+'"></scr'+'ipt>');
+	var mMENU = _IG_GetCachedUrl("http://cdn.labpixies.com/infra/js/menu.js");
+	document.write('<scr'+'ipt type="text/javascript" src="'+mMENU+'"></scr'+'ipt>');
+	
+	function viewFlights__MODULE_ID__()
+	{
+		var x1=document.getElementById("flight__MODULE_ID__");
+		var x2=document.getElementById("car__MODULE_ID__");
+		var x3=document.getElementById("hotel__MODULE_ID__");
+		x1.style.display = "inline";
+		x2.style.display = "none";
+		x3.style.display = "none";
+	}
+	function viewCars__MODULE_ID__()
+	{
+		var x1=document.getElementById("flight__MODULE_ID__");
+		var x2=document.getElementById("car__MODULE_ID__");
+		var x3=document.getElementById("hotel__MODULE_ID__");
+		x1.style.display = "none";
+		x2.style.display = "inline";
+		x3.style.display = "none";		
+	}
+	function viewHotels__MODULE_ID__()
+	{
+		var x1=document.getElementById("flight__MODULE_ID__");
+		var x2=document.getElementById("car__MODULE_ID__");
+		var x3=document.getElementById("hotel__MODULE_ID__");
+		x1.style.display = "none";
+		x2.style.display = "none";
+		x3.style.display = "inline";
+	}
+	function SetFlightSearchParam__MODULE_ID__()
+	{
+            document.fsearchbox__MODULE_ID__.url.value = 'http://travel.travelocity.com/flights/InitialSearch.do?Service=CJUS&dateLeavingTime=Anytime&dateReturningTime=Anytime&seniors=0&children=0&flightType=roundtrip&dateReturningMonth=' + document.fsearchbox__MODULE_ID__.dateReturningMonth.options[document.fsearchbox__MODULE_ID__.dateReturningMonth.selectedIndex].value + '&dateReturningDay=' + document.fsearchbox__MODULE_ID__.dateReturningDay.options[document.fsearchbox__MODULE_ID__.dateReturningDay.selectedIndex].value + '&adults=' + document.fsearchbox__MODULE_ID__.adults.options[document.fsearchbox__MODULE_ID__.adults.selectedIndex].value + '&leavingFrom=' + document.fsearchbox__MODULE_ID__.leavingFrom.value + '&dateLeavingMonth=' + document.fsearchbox__MODULE_ID__.dateLeavingMonth.options[document.fsearchbox__MODULE_ID__.dateLeavingMonth.selectedIndex].value + '&goingTo=' + document.fsearchbox__MODULE_ID__.goingTo.value + '&dateLeavingDay=' + document.fsearchbox__MODULE_ID__.dateLeavingDay.options[document.fsearchbox__MODULE_ID__.dateLeavingDay.selectedIndex].value;
+	}
+	function SetCarSearchParam__MODULE_ID__()
+	{
+            document.csearchbox__MODULE_ID__.url.value = 'http://travel.travelocity.com/car/PostFrontDoor.do?rdoLocPickup=pu_air&pickupTime=' + document.csearchbox__MODULE_ID__.pickupTime.options[document.csearchbox__MODULE_ID__.pickupTime.selectedIndex].value + '&pickupMonth=' + document.csearchbox__MODULE_ID__.pickupMonth.options[document.csearchbox__MODULE_ID__.pickupMonth.selectedIndex].value + '&pickupDayOfMonth=' + document.csearchbox__MODULE_ID__.pickupDayOfMonth.options[document.csearchbox__MODULE_ID__.pickupDayOfMonth.selectedIndex].value + '&dropoffTime=' + document.csearchbox__MODULE_ID__.dropoffTime.options[document.csearchbox__MODULE_ID__.dropoffTime.selectedIndex].value + '&dropoffMonth=' + document.csearchbox__MODULE_ID__.dropoffMonth.options[document.csearchbox__MODULE_ID__.dropoffMonth.selectedIndex].value + '&dropoffDayOfMonth=' + document.csearchbox__MODULE_ID__.dropoffDayOfMonth.options[document.csearchbox__MODULE_ID__.dropoffDayOfMonth.selectedIndex].value + '&carTypes=' + document.csearchbox__MODULE_ID__.carTypes.options[document.csearchbox__MODULE_ID__.carTypes.selectedIndex].value + '&pickupCity=' + document.csearchbox__MODULE_ID__.pickupCity.value;
+	}
+	function SetHotelsSearchParam__MODULE_ID__()
+	{
+            document.hsearchbox__MODULE_ID__.url.value = 'http://travel.travelocity.com/hotel/HotelCobrand.do?searchMode=city&expr_path=Y&dateReturningMonth=' + document.hsearchbox__MODULE_ID__.dateReturningMonth.options[document.hsearchbox__MODULE_ID__.dateReturningMonth.selectedIndex].value + '&dateReturningDay=' + document.hsearchbox__MODULE_ID__.dateReturningDay.options[document.hsearchbox__MODULE_ID__.dateReturningDay.selectedIndex].value + '&dateLeavingMonth=' + document.hsearchbox__MODULE_ID__.dateLeavingMonth.options[document.hsearchbox__MODULE_ID__.dateLeavingMonth.selectedIndex].value + '&dateLeavingDay=' + document.hsearchbox__MODULE_ID__.dateLeavingDay.options[document.hsearchbox__MODULE_ID__.dateLeavingDay.selectedIndex].value + '&adults=' + document.hsearchbox__MODULE_ID__.adults.options[document.hsearchbox__MODULE_ID__.adults.selectedIndex].value + '&children=' + document.hsearchbox__MODULE_ID__.children.options[document.hsearchbox__MODULE_ID__.children.selectedIndex].value + '&cityCountryCode=' + document.hsearchbox__MODULE_ID__.cityCountryCode.options[document.hsearchbox__MODULE_ID__.cityCountryCode.selectedIndex].value + '&city=' + document.hsearchbox__MODULE_ID__.city.value + '&state=' + document.hsearchbox__MODULE_ID__.state.options[document.hsearchbox__MODULE_ID__.state.selectedIndex].value;
+	}
+
+
+//Parse parameter from request url
+function gup(name){  
+  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");  
+  var regexS = "[\\?&]"+name+"=([^&#]*)";  
+  var regex = new RegExp( regexS );  
+  var results = regex.exec(document.location);  
+  if( results == null )    
+    return "";  
+  else    
+    return results[1];
+}
+
+	
+	</script>
+
+
+<center>
+
+<div id="menu_div" style="margin-bottom:10px;"></div>
+
+
+<div id="flight__MODULE_ID__" style="display : inline;">
+<FORM style="margin:0px;" target="_blank" ACTION="http://www.dpbolvw.net/interactive" method="get" name="fsearchbox__MODULE_ID__" onsubmit="SetFlightSearchParam__MODULE_ID__();" ID="Fsearchbox__MODULE_ID__">
+<div align="left" style="width:260px; height:16px; margin:5px 0px 0px 0px; padding:0px 0px 0px 0px;background:#CED6B5">
+&nbsp;&nbsp;&nbsp;<span style="cursor: default;font-family: Arial, Verdana, sans-serif ; vertical-align: top; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px;background:#003366"><a style=" cursor: pointer; font-size:13px; margin:0px 0px 0px 0px; font-weight:800;padding:1px 1px 1px 1px;text-decoration:none;color:#CED6B5; " onclick="viewFlights__MODULE_ID__();">&nbsp;Flights&nbsp;</a></span>
+				<span style="cursor: default;font-family: Arial, Verdana, sans-serif ; vertical-align: top; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px;background:#CED6B5"><a style="cursor: pointer; font-size:13px; margin:0px 0px 0px 0px; font-weight:800;padding:1px 1px 1px 1px;text-decoration:none;color:#003366; " onclick="viewCars__MODULE_ID__();">&nbsp;Cars&nbsp;</a></span>
+				<span style="cursor: default;font-family: Arial, Verdana, sans-serif ; vertical-align: top; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px;background:#CED6B5"><a style="cursor: pointer; font-size:13px; margin:0px 0px 0px 0px; font-weight:800;padding:1px 1px 1px 1px;text-decoration:none;color:#003366; " onclick="viewHotels__MODULE_ID__();">&nbsp;Hotels&nbsp;</a></span>
+</div>
+		<table cellpadding=0 cellspacing=0 border=0>
+		<tr bgcolor="#003366">
+			<td>
+			<img id="flightBanner" width="260" height="28" alt="" />
+			</td>
+		</tr>
+		<tr><td>
+			<table cellpadding="0" cellspacing="0"  style="padding:3px 5px 3px 5px;border:6px solid #003366;background:#c0c0c0;height:201px;width:260px;font-size:11px;font-family:arial,helvetica,sans-serif;" ID="Table1">
+				<tr>
+					<td style="width:128px;height:38px">From:<br /><input type="text" style="width:110px;font-size:11px;" name="leavingFrom" ID="Text1"/></td>
+					<td>To:<br /><input type="text" style="width:110px;font-size:11px;" name="goingTo" ID="Text2"/></td>
+				</tr>
+				<tr>
+					<td style="height:38px;">Departing:<br />
+						<select name="dateLeavingMonth" style="font-size:11px;" ID="ftvly_fm__MODULE_ID__"><option></option>
+							<option value="Jan">Jan</option> 
+							<option value="Feb">Feb</option>
+							<option value="Mar">Mar</option>
+							<option value="Apr">Apr</option>
+							<option value="May">May</option>
+							<option value="Jun">Jun</option>
+							<option value="Jul">Jul</option>
+							<option value="Aug">Aug</option>
+							<option value="Sep">Sep</option> 
+							<option value="Oct">Oct</option>
+							<option value="Nov">Nov</option>
+							<option value="Dec">Dec</option> 
+							</select> 
+										<select name="dateLeavingDay" style="font-size:11px;" ID="ftvly_fd__MODULE_ID__">
+							<option></option>
+							<option value="01">01</option>  
+							<option value="02">02</option>  
+							<option value="03">03</option>  
+							<option value="04">04</option>  
+							<option value="05">05</option>  
+							<option value="06">06</option>  
+							<option value="07">07</option>  
+							<option value="08">08</option>  
+							<option value="09">09</option>  
+							<option value="10">10</option>  
+							<option value="11">11</option>  
+							<option value="12">12</option>  
+							<option value="13">13</option>  
+							<option value="14">14</option>  
+							<option value="15">15</option>  
+							<option value="16">16</option>  
+							<option value="17">17</option>  
+							<option value="18">18</option>  
+							<option value="19">19</option>  
+							<option value="20">20</option>  
+							<option value="21">21</option>  
+							<option value="22">22</option>  
+							<option value="23">23</option>  
+							<option value="24">24</option>  
+							<option value="25">25</option>  
+							<option value="26">26</option>  
+							<option value="27">27</option>  
+							<option value="28">28</option>  
+							<option value="29">29</option>  
+							<option value="30">30</option>  
+							<option value="31">31</option> 
+							</select>
+
+						</td>
+						<td>Returning:<br />
+							<select name="dateReturningMonth" style="font-size:11px;" ID="ftvly_tm__MODULE_ID__"><option></option>
+							<option value="Jan">Jan</option> 
+							<option value="Feb">Feb</option>
+							<option value="Mar">Mar</option>
+							<option value="Apr">Apr</option>
+							<option value="May">May</option>
+							<option value="Jun">Jun</option>
+							<option value="Jul">Jul</option>
+							<option value="Aug">Aug</option>
+							<option value="Sep">Sep</option> 
+							<option value="Oct">Oct</option>
+							<option value="Nov">Nov</option>
+							<option value="Dec">Dec</option> 
+							</select> 
+										<select name="dateReturningDay" style="font-size:11px;" ID="ftvly_td__MODULE_ID__"><option></option>
+							<option value="01">01</option>  
+							<option value="02">02</option>  
+							<option value="03">03</option>  
+							<option value="04">04</option>  
+							<option value="05">05</option>  
+							<option value="06">06</option>  
+							<option value="07">07</option>  
+							<option value="08">08</option>  
+							<option value="09">09</option>  
+							<option value="10">10</option>  
+							<option value="11">11</option>  
+							<option value="12">12</option>  
+							<option value="13">13</option>  
+							<option value="14">14</option>  
+							<option value="15">15</option>  
+							<option value="16">16</option>  
+							<option value="17">17</option>  
+							<option value="18">18</option>  
+							<option value="19">19</option>  
+							<option value="20">20</option>  
+							<option value="21">21</option>  
+							<option value="22">22</option>  
+							<option value="23">23</option>  
+							<option value="24">24</option>  
+							<option value="25">25</option>  
+							<option value="26">26</option>  
+							<option value="27">27</option>  
+							<option value="28">28</option>  
+							<option value="29">29</option>  
+							<option value="30">30</option>  
+							<option value="31">31</option> 
+							</select>
+
+
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" style="height:38px;"">
+								<div style="float:left;width:33%">Adults (18-64)<br />
+									<select name="adults" style="font-size:11px;" ID="Select5">
+										<option value="0">0</option>
+										<option value="1" selected="selected">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										</select>
+								</div>
+
+								<div style="float:left;width:67%;"><br /><br />
+									<input type="image" src="http://hg.travelocity.com.edgesuite.net/i/promos/photos/tvly-bfree-search.gif" alt="Search"  ID="Image1" NAME="Image1"/>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align:left;height:40px;" colspan="2">
+								<div style="float:left;width:100%"><A style="color:#003366;" HREF="http://www.anrdoezrs.net/click-1955441-10398279?URL=http%3A%2F%2Ftravelocity.com%2FFlights%2F0%2C%2CCJUS%7C%7CY%2C00.html" TARGET="_top">More search options on Travelocity</a>:<br />
+
+								<A style="color:#003366;" HREF="http://www.anrdoezrs.net/click-1955441-10398279?URL=http%3A%2F%2Ftravelocity.com%2FFlights%2F0%2C%2CCJUS%7C%7CY%2C00.html" TARGET="_top">Seniors</A> (65+), 
+								<A style="color:#003366;" HREF="http://www.anrdoezrs.net/click-1955441-10398279?URL=http%3A%2F%2Ftravelocity.com%2FFlights%2F0%2C%2CCJUS%7C%7CY%2C00.html" TARGET="_top">Minors</A> (2-17), 
+								<br>
+								<A style="color:#003366;" HREF="http://www.anrdoezrs.net/click-1955441-10398279?URL=http%3A%2F%2Ftravelocity.com%2FFlights%2F0%2C%2CCJUS%7C%7CY%2C00.html" TARGET="_top">First Class</A>, 
+								<A style="color:#003366;" HREF="http://www.anrdoezrs.net/click-1955441-10398279?URL=http%3A%2F%2Ftravelocity.com%2FFlights%2F0%2C%2CCJUS%7C%7CY%2C00.html" TARGET="_top">One-Way</A></div>
+							</td>
+						</tr>
+						</table>
+					</td>
+					</tr>
+				</table>
+
+<script type="text/javascript">
+function ftvly_setdate__MODULE_ID__(i_tvly){
+	ftvly_d=new Date();
+	ftvly_tom=new Date(ftvly_d.getFullYear(),ftvly_d.getMonth(),ftvly_d.getDate()+i_tvly);
+	return ftvly_tom;
+}
+function fsetuptvly__MODULE_ID__(){
+	if(document.getElementById){
+		fd_tvly_f=ftvly_setdate__MODULE_ID__(1);
+		fd_tvly_t=ftvly_setdate__MODULE_ID__(2);
+		document.getElementById("ftvly_fm__MODULE_ID__").selectedIndex=fd_tvly_f.getMonth()+1;
+		document.getElementById("ftvly_fd__MODULE_ID__").selectedIndex=fd_tvly_f.getDate();
+		document.getElementById("ftvly_tm__MODULE_ID__").selectedIndex=fd_tvly_t.getMonth()+1;
+		document.getElementById("ftvly_td__MODULE_ID__").selectedIndex=fd_tvly_t.getDate();
+	}
+}
+fsetuptvly__MODULE_ID__();
+</script>
+
+
+	<input type="hidden" name="pid" value="1955441" ID="Hidden1">
+<input type="hidden" name="url" value="http://travel.travelocity.com/flights/InitialSearch.do" ID="Hidden2">
+<input type="hidden" name="aid" value="10398279" ID="Hidden3">
+</FORM>
+<img style="position:absolute;" src="http://www.awltovhc.com/image-1955441-10398279" width="1" height="1" border="0">
+</div>
+
+<div id="car__MODULE_ID__" style="display:none;">
+<FORM style="margin:0px;" ACTION="http://www.dpbolvw.net/interactive" method="get" name="csearchbox__MODULE_ID__" onsubmit="SetCarSearchParam__MODULE_ID__();" ID="Csearchbox__MODULE_ID__" target=_blank>
+<div align="left" style="width:260px; height:16px; margin:5px 0px 0px 0px; padding:0px 0px 0px 0px;background:#CED6B5">
+&nbsp;&nbsp;&nbsp;<span style="cursor: default;font-family: Arial, Verdana, sans-serif ; vertical-align: top; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px;background:#CED6B5"><a style="cursor: pointer; font-size:13px; margin:0px 0px 0px 0px; font-weight:800;padding:1px 1px 1px 1px;text-decoration:none;color:#003366; " onclick="viewFlights__MODULE_ID__();">&nbsp;Flights&nbsp;</a></span>
+	<span style="cursor: default;font-family: Arial, Verdana, sans-serif ; vertical-align: top; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px;background:#003366"><a style="cursor: pointer; font-size:13px; margin:0px 0px 0px 0px; font-weight:800;padding:1px 1px 1px 1px;text-decoration:none;color:#CED6B5; " onclick="viewCars__MODULE_ID__();">&nbsp;Cars&nbsp;</a></span>
+	<span style="cursor: default;font-family: Arial, Verdana, sans-serif ; vertical-align: top; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px;background:#CED6B5"><a style="cursor: pointer; font-size:13px; margin:0px 0px 0px 0px; font-weight:800;padding:1px 1px 1px 1px;text-decoration:none;color:#003366; " onclick="viewHotels__MODULE_ID__();">&nbsp;Hotels&nbsp;</a></span>
+</div>
+
+<input type="hidden" name="rdoLocPickup" value="pu_air" ID="Hidden4"/>
+<table cellpadding=0 cellspacing=0 border=0 ID="Table4">
+	<tr bgcolor="#003366">
+		<td>
+			<img id="carBanner" width="260" height="28" alt="">
+		</td>
+	</tr>
+	<tr>
+		<td>
+	<table cellpadding="0" cellspacing="0" border="0" style="padding:3px 5px 3px 5px;border:6px solid #003366;background:#c0c0c0;height:201px;width:260px;font-size:11px;font-family:arial,helvetica,sans-serif;" ID="Table2">
+		<tr>
+			<td>Pick-up / drop-off the car:<br /><input type="text" style="width:110px;font-size:11px;" name="pickupCity" ID="Text3"></td>
+		</tr>
+		<tr>
+			<td style="height:38px;" colspan="2">Pick-up:<br />
+				<select name="pickupTime" id="CO_fromtime" style="font-size:11px;"><option value="0">12:00am</option><option value="1">1:00am</option><option value="2">2:00am</option><option value="3">3:00am</option><option value="4">4:00am</option><option value="5">5:00am</option><option value="6">6:00am</option><option value="7">7:00am</option><option value="8">8:00am</option><option value="9">9:00am</option><option value="10" selected="selected">10:00am</option><option value="11">11:00am</option><option value="12">12:00pm</option><option value="13">1:00pm</option><option value="14">2:00pm</option><option value="15">3:00pm</option><option value="16">4:00pm</option><option value="17">5:00pm</option><option value="18">6:00pm</option><option value="19">7:00pm</option><option value="20">8:00pm</option><option value="21">9:00pm</option><option value="22">10:00pm</option><option value="23">11:00pm</option></select>		
+				<select name="pickupMonth" style="font-size:11px;" id="ctvly_fm__MODULE_ID__"><option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Aug</option><option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option></select> 
+				<select name="pickupDayOfMonth" style="font-size:11px;" id="ctvly_fd__MODULE_ID__"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>			
+			</td>
+		</tr>
+		<tr>
+			<td style="height:38px;" colspan="2">Drop-off:<br />
+				<select name="dropoffTime" id="CO_totime" style="font-size:11px;"><option value="0">12:00am</option><option value="1">1:00am</option><option value="2">2:00am</option><option value="3">3:00am</option><option value="4">4:00am</option><option value="5">5:00am</option><option value="6">6:00am</option><option value="7">7:00am</option><option value="8">8:00am</option><option value="9">9:00am</option><option value="10" selected="selected">10:00am</option><option value="11">11:00am</option><option value="12">12:00pm</option><option value="13">1:00pm</option><option value="14">2:00pm</option><option value="15">3:00pm</option><option value="16">4:00pm</option><option value="17">5:00pm</option><option value="18">6:00pm</option><option value="19">7:00pm</option><option value="20">8:00pm</option><option value="21">9:00pm</option><option value="22">10:00pm</option><option value="23">11:00pm</option></select>		
+				<select name="dropoffMonth" style="font-size:11px;" id="ctvly_tm__MODULE_ID__"><option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Aug</option><option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option></select> 
+				<select name="dropoffDayOfMonth" style="font-size:11px;" id="ctvly_td__MODULE_ID__"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>
+			</td>
+		</tr>
+		<tr>
+			<td style="height:38px;">Car Type:<br />
+				<select name="carTypes" id="CO_type" style="font-size:11px;"><option value="TB" selected="selected">5 basic types</option><option value="EC">Economy</option><option value="CC">Compact</option><option value="IC">Intermediate</option><option value="SC">Standard</option><option value="FC">Full Size</option><option value="PC">Premium</option><option value="LC">Luxury</option><option value="ST">Convertible</option><option value="SW">Station Wagon</option><option value="MV">Van</option><option value="SF">Sport Utility</option><option value="CP">Pickup Truck</option><option value="XC">Specialty</option></select>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align:center;vertical-align:bottom"><input type="image" src="http://hg.travelocity.com.edgesuite.net/i/promos/photos/tvly-bfree-search.gif" alt="Search" ID="Image2" NAME="Image2"/></td>
+		</tr>
+	</table>
+	</td>
+	</tr>
+	
+</table>
+
+<script type="text/javascript">
+function ctvly_setdate__MODULE_ID__(i_tvly){
+	ctvly_d=new Date();
+	tvly_tom=new Date(ctvly_d.getFullYear(),ctvly_d.getMonth(),ctvly_d.getDate()+i_tvly);
+	return tvly_tom;
+}
+function csetuptvly__MODULE_ID__(){
+	if(document.getElementById){
+		cd_tvly_f=ctvly_setdate__MODULE_ID__(1);
+		cd_tvly_t=ctvly_setdate__MODULE_ID__(2);
+		document.getElementById("ctvly_fm__MODULE_ID__").selectedIndex=cd_tvly_f.getMonth();
+		document.getElementById("ctvly_fd__MODULE_ID__").selectedIndex=cd_tvly_f.getDate()-1;
+		document.getElementById("ctvly_tm__MODULE_ID__").selectedIndex=cd_tvly_t.getMonth();
+		document.getElementById("ctvly_td__MODULE_ID__").selectedIndex=cd_tvly_t.getDate()-1;
+	}
+}
+csetuptvly__MODULE_ID__();
+</script>
+
+	<input type="hidden" name="pid" value="1955441" ID="Hidden5">
+<input type="hidden" name="url" value="http://travel.travelocity.com/car/PostFrontDoor.do" ID="Hidden6">
+<input type="hidden" name="aid" value="10414080" ID="Hidden7">
+</FORM>
+
+</div>
+
+<div id="hotel__MODULE_ID__" style="display:none;">
+<FORM style="margin:0px;" target=_blank ACTION="http://www.dpbolvw.net/interactive" method="get" name="hsearchbox__MODULE_ID__" onsubmit="SetHotelsSearchParam__MODULE_ID__();" ID="Hsearchbox__MODULE_ID__">
+<div align="left" style="width:260px; height:16px; margin:5px 0px 0px 0px; padding:0px 0px 0px 0px;background:#CED6B5">
+&nbsp;&nbsp;&nbsp;<span style="cursor: default; font-family: Arial, Verdana, sans-serif ; vertical-align: top; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px;background:#CED6B5"><a style="cursor: pointer; font-size:13px; margin:0px 0px 0px 0px; font-weight:800;padding:1px 1px 1px 1px;text-decoration:none;color:#003366; " onclick="viewFlights__MODULE_ID__();">&nbsp;Flights&nbsp;</a></span>
+	<span style="cursor: default; font-family: Arial, Verdana, sans-serif ; vertical-align: top; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px;background:#CED6B5"><a style="cursor: pointer; font-size:13px; margin:0px 0px 0px 0px; font-weight:800;padding:1px 1px 1px 1px;text-decoration:none;color:#003366; " onclick="viewCars__MODULE_ID__();">&nbsp;Cars&nbsp;</a></span>
+	<span style="cursor: default; font-family: Arial, Verdana, sans-serif ; vertical-align: top; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px;background:#003366"><a style="cursor: pointer; font-size:13px; margin:0px 0px 0px 0px; font-weight:800;padding:1px 1px 1px 1px;text-decoration:none;color:#CED6B5; " onclick="viewHotels__MODULE_ID__();">&nbsp;Hotels&nbsp;</a></span>
+</div>
+<table cellpadding=0 cellspacing=0 border=0 ID="Table5">
+	<tr bgcolor="#003366">
+		<td>
+			<img id="hotelBanner" width="260" height="28" alt="">
+		</td>
+		</tr>
+	<tr>
+		<td>
+		<table cellpadding="0" cellspacing="0" border="0" style="padding:3px 5px 3px 5px;border:6px solid #003366;background:#c0c0c0;height:201px;width:260px;font-size:11px;font-family:arial,helvetica,sans-serif;" ID="Table3">
+			<tr>
+				<td colspan="2" style="height:38px;">Country:<br />
+				<select name="cityCountryCode" id="tvly_country" style="font-size:11px;">
+					<option value="">All Other Destinations</option>
+					<option value="AG">Antigua and Barbuda</option><option value="AW">Aruba</option><option value="AU">Australia</option>
+					<option value="AT">Austria</option><option value="BS">Bahamas</option><option value="BB">Barbados</option><option value="BE">Belgium</option>
+					<option value="BM">Bermuda</option><option value="ANB">Bonaire</option><option value="BR">Brazil</option><option value="CA">Canada</option>
+					<option value="KY">Cayman Islands</option><option value="CN">China</option><option value="ANC">Curacao</option><option value="CZ">Czech Republic</option>
+					<option value="DK">Denmark</option><option value="DO">Dominican Republic</option><option value="GBE">England</option><option value="FI">Finland</option>
+					<option value="FR">France</option><option value="DE">Germany</option><option value="GR">Greece</option><option value="HU">Hungary</option>
+					<option value="IE">Ireland</option><option value="IT">Italy</option><option value="JM">Jamaica</option><option value="MX">Mexico</option>
+					<option value="NL">Netherlands</option><option value="AN">Netherlands Antilles</option><option value="NO">Norway</option><option value="PL">Poland</option>
+					<option value="PT">Portugal</option><option value="PR">Puerto Rico</option><option value="ANS">Saba</option><option value="LC">Saint Lucia</option>
+					<option value="GBS">Scotland</option><option value="SG">Singapore</option><option value="ES">Spain and Canary Islands</option><option value="KN">St Kitts</option>
+					<option value="ANE">St. Eustacius</option><option value="ANM">St. Martin/St. Maarten</option><option value="SE">Sweden</option><option value="CH">Switzerland</option>
+					<option value="TW">Taiwan</option><option value="TH">Thailand</option><option value="TT">Trinidad and Tobago</option><option value="TC">Turks and Caicos Islands</option>
+					<option value="GB">United Kingdom</option><option value="US" selected="selected">United States</option><option value="VG">Virgin Islands British</option><option value="VI">Virgin Islands US</option>
+					<option value="">All Other Destinations</option>
+				</select>		
+				</td>
+			</tr>
+			<tr>
+				<td style="width:138px;height:38px">City or Airport Code:<br /><input type="text" style="width:110px;font-size:11px;" name="city" ID="Text4"></td>
+				<td>State/Province:<br />
+					<select name="state" id="tvly_state" style="font-size:11px;">
+						<option value="">---</option>
+						<optgroup label="US">
+							<option value="AK">AK</option><option value="AL">AL</option><option value="AR">AR</option><option value="AZ">AZ</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DC">DC </option><option value="DE">DE</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="IA">IA</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="MA">MA</option><option value="MD">MD</option><option value="ME">ME</option><option value="MI">MI</option><option value="MN">MN</option><option value="MO">MO</option><option value="MS">MS</option><option value="MT">MT</option><option value="NC">NC</option><option value="ND">ND</option><option value="NE">NE</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NV">NV</option><option value="NY">NY</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VA">VA</option><option value="VT">VT</option><option value="WA">WA</option><option value="WI">WI</option><option value="WV">WV</option><option value="WY">WY</option>
+						</optgroup>
+						<optgroup label="CA">
+							<option value="AB">AB</option><option value="BC">BC</option><option value="MB">MB</option><option value="NB">NB</option><option value="NF">NF</option><option value="NS">NS</option><option value="NT">NT</option><option value="ON">ON</option><option value="PE">PE</option><option value="QC">QC</option><option value="SK">SK</option><option value="YT">YT</option>
+						</optgroup>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td style="height:38px;">Check-in:<br />
+					<select name="dateLeavingMonth" style="font-size:11px;" id="htvly_fm__MODULE_ID__"><option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Aug</option><option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option></select> 
+					<select name="dateLeavingDay" style="font-size:11px;" id="htvly_fd__MODULE_ID__"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>			
+				</td>
+				<td>Check-out:<br />
+					<select name="dateReturningMonth" style="font-size:11px;" id="htvly_tm__MODULE_ID__"><option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Aug</option><option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option></select> 
+					<select name="dateReturningDay" style="font-size:11px;" id="htvly_td__MODULE_ID__"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="height:38px;">
+				<div style="float:left;width:33%">Adults(18-64)<br /><select name="adults" style="font-size:11px;" ID="Select10"><option value="0">0</option><option value="1" selected>1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></div>
+				<div style="float:left;width:33%">Minors(2-17)<br /><select name="children" style="font-size:11px;" ID="Select11"><option value="0" selected>0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></select></div>
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align:center;vertical-align:bottom" colspan="2"><input type="image" src="http://hg.travelocity.com.edgesuite.net/i/promos/photos/tvly-bfree-search.gif" alt="Search" ID="Image3" NAME="Image3"/></td>
+			</tr>
+		</table>
+	</td>
+	</tr>
+	
+</table>
+
+
+
+<script type="text/javascript"> 
+function htvly_setdate(i_tvly){
+	htvly_d=new Date();
+	tvly_tom=new Date(htvly_d.getFullYear(),htvly_d.getMonth(),htvly_d.getDate()+i_tvly);
+	return tvly_tom;
+}
+function hsetuptvly(){
+	if(document.getElementById){
+		hd_tvly_f=htvly_setdate(1);
+		hd_tvly_t=htvly_setdate(2);
+		document.getElementById("htvly_fm__MODULE_ID__").selectedIndex=hd_tvly_f.getMonth();
+		document.getElementById("htvly_fd__MODULE_ID__").selectedIndex=hd_tvly_f.getDate()-1;
+		document.getElementById("htvly_tm__MODULE_ID__").selectedIndex=hd_tvly_t.getMonth();
+		document.getElementById("htvly_td__MODULE_ID__").selectedIndex=hd_tvly_t.getDate()-1;
+	}
+}
+hsetuptvly();
+</script>
+
+
+<input type="hidden" name="pid" value="1955441" ID="Hidden8">
+<input type="hidden" name="url" value="http://travel.travelocity.com/hotel/HotelCobrand.do" ID="Hidden9">
+<input type="hidden" name="aid" value="10413824" ID="Hidden10">
+</FORM>
+</div>
+
+
+
+</center>		
+	
+	
+<script type="text/javascript">
+	var $lp=jQuery.noConflict();
+	
+	$lp(function(){
+			gadgets.lp.menu.deploy("menu_div",{"textDirection":"ltr"});
+	});
+	
+	function loadImages() {
+	
+		var IMAGES_BASE = "http://www.labpixies.com/campaigns/travelocity/images/";
+		document.getElementById("flightBanner").src = _IG_GetImageUrl(IMAGES_BASE+"flight_new.gif");
+		document.getElementById("carBanner").src = _IG_GetImageUrl(IMAGES_BASE+"car_new.gif"); 
+		document.getElementById("hotelBanner").src = _IG_GetImageUrl(IMAGES_BASE+"hotel_new.gif");
+                _gel("Text1").value = unescape(gup("up_from"));
+                _gel("Text2").value = unescape(gup("up_to"));
+	}
+	
+	_IG_RegisterOnloadHandler( function() {
+		loadImages();
+	});
+		
+	_IG_Analytics("UA-345375-1", "/travelocity");
+</script>	
+
+]]> 
+</Content>
+
+</Module>

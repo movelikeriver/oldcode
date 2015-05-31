@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="谷歌生活 - 房屋"
+             title_url="http://shenghuo.google.cn/shenghuo/fw/"
+             author="Google China Classified Search Team"
+             author_email="shenghuogadget+housefeeds@google.com"
+             author_affiliation="Google, Inc."
+             description="Google生活搜索 - 房屋 feeds"
+             screenshot="/ig/modules/shenghuo/housefeeds.png"
+             thumbnail="/ig/modules/shenghuo/shenghuo.gif"
+             height="200">
+<Require feature="setprefs"/>
+<Require feature="dynamic-height"/>
+<Require feature="analytics"/>
+</ModulePrefs>
+<UserPref name="city" display_name="城市" datatype="enum" default_value="北京">
+  <EnumValue value="北京" display_value="北京"/>
+  <EnumValue value="上海" display_value="上海"/>
+  <EnumValue value="广州" display_value="广州"/>
+  <EnumValue value="南京" display_value="南京"/>
+  <EnumValue value="厦门" display_value="厦门"/>
+  <EnumValue value="天津" display_value="天津"/>
+  <EnumValue value="杭州" display_value="杭州"/>
+  <EnumValue value="武汉" display_value="武汉"/>
+  <EnumValue value="深圳" display_value="深圳"/>
+  <EnumValue value="苏州" display_value="苏州"/>
+  <EnumValue value="" display_value="不限"/>
+</UserPref>
+<UserPref name="type" display_name="类别" datatype="enum" default_value="出租">
+  <EnumValue value="出租" display_value="出租"/>
+  <EnumValue value="出售" display_value="出售"/>
+  <EnumValue value="合租" display_value="合租"/>
+</UserPref>
+<UserPref name="room" display_name="房型" datatype="enum" default_value="">
+  <EnumValue value="" display_value="不限"/>
+  <EnumValue value="1" display_value="1室"/>
+  <EnumValue value="2" display_value="2室"/>
+  <EnumValue value="3" display_value="3室"/>
+  <EnumValue value="4" display_value="4室"/>
+</UserPref>
+<UserPref name="minprice" display_name="价格高于" datatype="string"/>
+<UserPref name="maxprice" display_name="价格低于" datatype="string"/>
+<UserPref name="keywords" display_name="关键字" datatype="string"/>
+<UserPref name="numDisplay" display_name="显示数目" datatype="enum" default_value="5">
+  <EnumValue value="3" display_value="3"/>
+  <EnumValue value="4" display_value="4"/>
+  <EnumValue value="5" display_value="5"/>
+  <EnumValue value="6" display_value="6"/>
+  <EnumValue value="7" display_value="7"/>
+  <EnumValue value="8" display_value="8"/>
+  <EnumValue value="9" display_value="9"/>
+  <EnumValue value="10" display_value="10"/>
+</UserPref>
+
+<Content type="html">
+<![CDATA[
+<style>
+  .uftl{padding:4px 0px 4px 0px;border:1px solid #fff;}
+  .uftl2{padding:5px 0px;border:none;border-top:1px dotted #006600;border-bottom:1px dotted #006600;}
+  .fpad {}
+  .fpad2{padding-top:5px;padding-bottom:2px;padding-left:3%;padding-right:2%;width:95%;overflow:auto;}
+  a.fmaxbox,a.fminbox{float:left;margin-right:4px;margin-top:2px;width:12px;height:12px;display:block;overflow:hidden;}
+  a.fmaxbox, a.fminbox {margin-right:5px;}
+  a.fmaxbox {background-image:url('http://img0.gmodules.com/ig/images/skins/teahouse/common/max_dark_blue.gif');}
+  a.fminbox {background-image:url('http://img0.gmodules.com/ig/images/skins/teahouse/common/min_dark_blue.gif');}
+  a.fmaxbox:hover {background-image:url('http://img0.gmodules.com/ig/images/skins/teahouse/common/max_dark_blue_highlight.gif');}
+  a.fminbox:hover {background-image:url('http://img0.gmodules.com/ig/images/skins/teahouse/common/min_dark_blue_highlight.gif');}
+  body,td,div,span,p {font-size: 12px; }
+  .headertable { padding: 0px 5px 5px 5px; }
+  .select { width: 95%; }
+  .disabled { color: gray; }
+</style>
+<div id="top" style="width:95%;font-size:12px;display:block;">
+  <table border="0" cellspacing="0" cellpadding="0" style="padding: 0px 0px 0px 0px;">
+  <tr>
+    <td id="condition"></td>
+  </tr>
+  </table>
+</div>
+<div id="results" style="font-size:12px;display:block;"></div>
+<div id="bottom" style="font-size:12px;display:block;">
+  <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><input type="checkbox" id="showmap" name="showmap" style="margin-left:0;" onclick="updateMap();">显示地图</input></td>
+  </tr>
+  </table>
+</div>
+<div id="housemap" style="width:95%;height:300px;display:none"></div>
+<div id="disclaimer" align="center"></div>
+
+<script src="http://ditu.google.cn/maps?file=api&amp;v=2"
+        type="text/javascript"></script>
+</script>
+
+<script type="text/javascript">
+  
+function getViewportDimensions() {
+  var x,y;
+  if (self.innerHeight) {
+    // all except Explorer
+    x = self.innerWidth;
+    y = self.innerHeight;
+  } else if (document.documentElement &&
+             document.documentElement.clientHeight) {
+    // Explorer 6 Strict Mode
+    x = document.documentElement.clientWidth;
+    y = document.documentElement.clientHeight;
+  } else if (document.body) {
+    // other Explorers
+    x = document.body.clientWidth;
+    y = document.body.clientHeight;
+  } else {
+    x = 0;
+    y = 0;
+  }
+  return { width: x, height: y };
+}
+var ifpc_height = 0;
+var last_opt_height;
+function AdjustIFrameHeight(opt_height) {
+  // When the gadget resizes on the container page, the 'resize' event is
+  // triggered and initiates another call to AdjustIFrameHeight().
+  // We need to make sure opt_height gets passed in every time.
+  // Save it into a global variable so the event handler can access it.
+  last_opt_height = opt_height;
+
+  if (opt_height !== undefined) {
+    opt_height = parseInt(opt_height, 10);
+    opt_height = isNaN(opt_height) ? -1 : opt_height;
+  } else {
+    opt_height = -1;
+  }
+
+  var new_height = ifpc_height;
+  var el = document.body;
+  var el2 = document.documentElement;
+  if (opt_height >= 0) {
+    // Resize the gadget according to what the developer passed in.
+    new_height = opt_height;
+  } else if (el && el2) {
+    // Resize the gadget to fit its content.
+
+    // Calculating inner content height is HARD and different between
+    // browsers rendering in Strict vs. Quirks mode.  We use a combination of
+    // three properties within document.body and document.documentElement:
+    // - scrollHeight
+    // - offsetHeight
+    // - clientHeight
+    // These values differ significantly between browsers and rendering modes.
+    // But there are patterns.  It just takes a lot of time and persistence
+    // to figure out.
+
+    // Get the height of the viewport
+    var vh = getViewportDimensions().height;
+    if (document.compatMode == 'CSS1Compat' && el2.scrollHeight) {
+      // In Strict mode:
+      // The inner content height is contained in either:
+      //    document.documentElement.scrollHeight
+      //    document.documentElement.offsetHeight
+      // Based on studying the values output by different browsers,
+      // use the value that's NOT equal to the viewport height found above.
+      new_height = el2.scrollHeight != vh ? el2.scrollHeight : el2.offsetHeight;
+    } else {
+      // In Quirks mode:
+      // documentElement.clientHeight is equal to documentElement.offsetHeight
+      // except in IE.  In most browsers, document.documentElement can be used
+      // to calculate the inner content height.
+      // However, in other browsers (e.g. IE), document.body must be used
+      // instead.  How do we know which one to use?
+      // If document.documentElement.clientHeight does NOT equal
+      // document.documentElement.offsetHeight, then use document.body.
+      var sh = el2.scrollHeight;
+      var oh = el2.offsetHeight;
+      if (el2.clientHeight != el2.offsetHeight) {
+        sh = el.scrollHeight;
+        oh = el.offsetHeight;
+      }
+
+      // Detect whether the inner content height is bigger or smaller
+      // than the bounding box (viewport).  If bigger, take the larger
+      // value.  If smaller, take the smaller value.
+      if (sh > vh) {
+        // Content is larger
+        new_height = sh > oh ? sh : oh;
+      } else {
+        // Content is smaller
+        new_height = sh < oh ? sh : oh;
+      }
+    }
+  }
+
+  // Only make the IFPC call if height has changed
+  if (ifpc_height != new_height) {
+	alert(new_height);
+    _IFPC.call("remote_iframe_"+_args()["mid"],
+           "resize-iframe-height",
+           [ "remote_iframe_"+_args()["mid"], new_height ],
+           "http://www.corp.google.com/~zhenh/relay.html",
+           null,null); 
+    ifpc_height = new_height;
+  }
+}
+
+var blueMarkerImg = 'http://www.google.com/mapfiles/ms/micons/blue-dot.png';
+var redMarkerImg = 'http://www.google.com/mapfiles/ms/micons/red-dot.png';
+var results = _gel('results');
+// 读取保存的使用偏好
+var prefs = new _IG_Prefs();
+var map = null;
+var housingSearch = null;
+var markers = [];
+var contents = [];
+var listeners = [];
+var tmpMarker = null;
+var lastActive = -1;
+var bounds = null;
+window.onunload = unload;
+
+function init() {
+  loadMap(39.917, 116.397, 12);
+  var resultsNum = parseInt(prefs.getString('numDisplay'), 10);
+  housingSearch = new google.lifestyle.HousingSearch();
+  housingSearch.setSearchCompleteCallback(null, prepareResponse);
+  housingSearch.setResultSetSize(resultsNum);
+  showResults();
+  _IG_Analytics('UA-3173920-1', '/housefeeds');
+}
+_IG_RegisterOnloadHandler(init);
+
+function unload() {
+  clearListeners();
+  results.innerHTML = '';
+  results = null;
+  GUnload();
+}
+
+function clearListeners() {
+  for (var i = 0; i < listeners.length; i += 1) {
+    GEvent.removeListener(listeners[i]);
+  }
+  listeners = [];
+}
+
+function showResults() {
+  clearListeners();
+  markers = [];
+  contents = [];
+  tmpMarker = null;
+  lastActive = -1;
+  map.clearOverlays();
+  _gel('disclaimer').innerHTML = '';
+  results.innerHTML = '<font color="black">载入中...</font>';
+  var city = prefs.getString('city');
+  var type = prefs.getString('type');
+  var room = prefs.getString('room');
+  var minprice = decodePrice(prefs.getString('minprice'));
+  var maxprice = decodePrice(prefs.getString('maxprice'));
+  var keywords = prefs.getString('query');
+  var site = prefs.getString('site');
+  keywords = keywords.replace(/[+":#]/g, '');
+  prefs.set('keywords', keywords);
+
+  if (minprice != null && maxprice != null && maxprice < minprice) {
+    maxprice = null;
+    prefs.set('maxprice', '');
+  }
+  var conditionArray = [city,
+    (room ? room + '居室' : ''),
+    '房屋', type];
+  if (minprice && maxprice) {
+    conditionArray.push('' + minprice + '到' + maxprice + '元');
+  } else if (minprice) {
+    conditionArray.push('高于' + minprice + '元');
+  } else if (maxprice) {
+    conditionArray.push('低于' + maxprice + '元');
+  }
+  if (keywords) {
+    conditionArray.push(', 关键字: "' + keywords + '"');
+  }
+  var queryCondition = conditionArray.join('');
+  _gel('condition').innerHTML = _hesc(queryCondition);
+  housingSearch.clearAllAttributes();
+  var HousingAttributes = google.lifestyle.HousingSearch.Attributes;
+  if (city) {
+    housingSearch.setCity(city);
+  }
+  if (type) {
+    housingSearch.setAttribute(HousingAttributes.CATEGORY, type);
+  }
+  if (room) {
+    housingSearch.setAttribute(HousingAttributes.TYPE, room);
+  }
+  if (minprice || maxprice) {
+    var pricerange = {};
+    if (minprice) {
+      pricerange.from = minprice;
+    }
+    if (maxprice) {
+      pricerange.to = maxprice;
+    }
+    housingSearch.setAttribute(HousingAttributes.PRICE, pricerange);
+  }
+  housingSearch.setSorting('r');
+  housingSearch.execute(keywords+" "+site, 0);
+}
+
+function showNoResult() {
+  results.innerHTML = '<font color="black">没有满足条件的结果</font>';
+  AdjustIFrameHeight();
+}
+
+// 处理用户输入的价格
+function decodePrice(price) {
+  if (!price) {
+    return null;
+  }
+  price = price.replace(/[, \t]/g, '');
+  var fprice = parseFloat(price);
+  if (fprice == null || isNaN(fprice) || fprice <= 0) {
+    return null;
+  }
+  if (price.search(/万/) != -1) {
+    return fprice * 10000;
+  }
+  else {
+    return fprice;
+  }
+}
+
+// 查询结果后, 供回调的函数
+function prepareResponse(resultSet) {
+  var entries = resultSet.results;
+  if (!entries || entries.length == 0) {
+    showNoResult();
+    return;
+  }
+  if (resultSet.disclaimer) {
+    _gel('disclaimer').innerHTML = resultSet.disclaimer;
+  }
+  displayResults(entries);
+}
+
+function toggle(i) {
+  if (_gel('_ftl_' + i).className == 'uftl') {
+    _gel('_ftl_' + i).className = 'uftl2';
+  } else {
+    _gel('_ftl_' + i).className = 'uftl';
+  }
+  if (_gel('_ft_' + i).className == 'fmaxbox') {
+    _gel('_ft_' + i).className = 'fminbox';
+  } else {
+    _gel('_ft_' + i).className = 'fmaxbox';
+  }
+  if (_gel('_fb_' + i).className == 'fpad') {
+    _gel('_fb_' + i).className = 'fpad2';
+    _gel('_fb_' + i).style.display = 'block';
+  } else {
+    _gel('_fb_' + i).className = 'fpad';
+    _gel('_fb_' + i).style.display = 'none';
+  }
+  AdjustIFrameHeight();
+}
+
+function changeColor(i, flg) {
+  if (flg) {
+    // 加上颜色
+    _gel('_ftl_' + i).style.background = '#D0D8FF';
+    _gel('_fb_' + i).style.background = '#D0D8FF';
+  } else {
+    // 去掉颜色
+    _gel('_ftl_' + i).style.background = '#FFFFFF';
+    _gel('_fb_' + i).style.background = '#FFFFFF';
+  }
+}
+
+function activeMarker(i) {
+  if (markers[i]) {
+    tmpMarker = addMarker(markers[i].getPoint(), blueMarkerImg);
+    map.addOverlay(tmpMarker);
+    map.panTo(markers[i].getPoint());
+  }
+}
+
+function disMarker(i) {
+  if (markers[i]) {
+    if (tmpMarker != null) {
+      map.removeOverlay(tmpMarker);
+      tmpMarker = null;
+    }
+  }
+}
+
+function clickMarker() {
+  toggle(this.id);
+  if (lastActive != -1) {
+    changeColor(lastActive, false);
+  }
+  lastActive = this.id;
+  changeColor(this.id, true);
+}
+
+function displayResults(entries) {
+  results.innerHTML = '';
+  bounds = new GLatLngBounds();
+  for (var i = 0; i < entries.length; ++i) {
+    var l = extractData(entries[i]);
+    if (!l) continue;
+    var cur = document.createElement('div');
+    var title = document.createElement('div');
+    var snippet = document.createElement('div');
+    var summary = [];
+    if (l.price) {
+      summary.push(l.price);
+    }
+    if (l.type) {
+      summary.push(l.type);
+    }
+    if (l.area) {
+      summary.push(l.area + ' 平米');
+    }
+    var summaryLine = summary.join(',');
+    if (l.lat) {
+      var point = new GLatLng(l.lat, l.lng);
+      markers[i] = addMarker(point, redMarkerImg);
+      markers[i].id = i;
+      contents[i] = l.title;
+      listeners.push(GEvent.addListener(markers[i], 'click', clickMarker));
+      map.addOverlay(markers[i]);
+      bounds.extend(point);
+    } else {
+      markers[i] = null;
+    }
+    results.appendChild(cur);
+    cur.appendChild(title);
+    cur.className = 'uftl';
+    cur.id = '_ftl_' + i;
+    var titleArray = [
+      '<a href="javascript:void(0)" class="fmaxbox" id="_ft_', i,
+      '" onclick="toggle(', i, ');" onmouseover="activeMarker(', i,
+      ');" onmouseout="disMarker(', i, ');"></a>',
+      '<a href="', l.link, '" target="_blank" onmouseover="activeMarker(', i,
+      ');" onmouseout="disMarker(', i, ');">', l.title, '</a>',
+      '<span style="color: gray;font-size:smaller;">&nbsp;&nbsp;(', l.time,
+      ')</span>'];
+    title.innerHTML = titleArray.join('');
+    var snippetArray = [
+      '<div class="fpad" id="_fb_', i, '" style="display:none"',
+      'onmouseover="activeMarker(', i, ');" onmouseout="disMarker(', i, ');">',
+      summaryLine, "<br>", l.content, "</div>"];
+    snippet.innerHTML = snippetArray.join('');
+    cur.appendChild(snippet);
+  }
+  if (!bounds.isEmpty() && _gel('showmap').checked) {
+    var z = map.getBoundsZoomLevel(bounds);
+    map.setZoom(z);
+    map.panTo(bounds.getCenter());
+  }
+  AdjustIFrameHeight();
+}
+
+function extractData(item) {
+  var l = {};
+  l.title = item.title.replace(/[<\/b>]/g, '');
+  if (l.title.length >= 20) {
+    l.title = l.title.substring(0, 18) + '...';
+  }
+  l.content = item.description;
+  if(item.location) {
+    l.lat = parseFloat(item.location.lat);
+    l.lng = parseFloat(item.location.lng);
+  }
+  if (item.attributes['地址']) {
+    l.location = item.attributes['地址'].values;
+  } else {
+    l.location = '';
+  }
+  if (item.attributes['价格']) {
+    l.price = item.attributes['价格'].values;
+  }
+  l.link = item.url;
+  if (item.attributes['面积']) {
+    l.area = item.attributes['面积'].values;
+  }
+  if (item.attributes['类别']) {
+    l.type = item.attributes['类别'].values;
+  }
+  l.authorname = item.source;
+  if (item.attributes['日期']) {
+    l.time = item.attributes['日期'].values;
+  }
+  return l;
+}
+
+function loadMap(lat, lng, zoom) {
+  if (GBrowserIsCompatible()) {
+    map = new GMap2(_gel('housemap'));
+    map.addControl(new GSmallMapControl());
+    map.setCenter(new GLatLng(lat, lng), zoom);
+  }
+}
+
+function updateMap() {
+  var show = _gel('showmap').checked;
+  if (show) {
+    _gel('housemap').style.display = 'block';
+    map.checkResize();
+    if (bounds != null && !bounds.isEmpty()) {
+      var z = map.getBoundsZoomLevel(bounds);
+      map.setZoom(z);
+      map.panTo(bounds.getCenter());
+    }
+  } else {
+    _gel('housemap').style.display = 'none';
+  }
+  AdjustIFrameHeight();
+}
+
+function addMarker(point, markerimg) {
+  var icon = new GIcon(G_DEFAULT_ICON, markerimg);
+  icon.iconSize = new GSize(32, 32);
+  var marker = new GMarker(point, { icon: icon });
+  return marker;
+}
+</script>
+<script type="text/javascript" src="http://shenghuo.google.cn/shenghuo/api/searchapi_mini.js"></script>
+]]>
+</Content>
+</Module>

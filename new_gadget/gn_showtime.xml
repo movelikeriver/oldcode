@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="Showtimes" scrolling="false" width="480" height="320" />
+<UserPref name="query" display_name="query" required="true" datatype="string" default_value="98033 movies" />
+<UserPref name="feed" required="true" datatype="hidden" default_value="http://0.gadget_server.googlen.an.borg.google.com/showtimes?f=1&amp;q=" />
+<Content type="html"><![CDATA[
+<link rel="stylesheet" type="text/css" href="http://img0.gmodules.com/ig/f/6iPT_XRMaAk/ig.css" />
+<style type="text/css">
+  .toggle {
+    background:url(http://www.google.com/images/nav_logo3.png);
+    cursor:pointer;
+    display:block;
+    width:12px;
+    height:12px;
+  }
+  .greytext{color:#aaa;font-size:small;height:14px}
+</style>
+<script language="JavaScript">
+function JSONscriptRequest(url) {
+  this.url = url; 
+
+  // Keep IE from caching requests
+  this.noCacheIE = "&noCacheIE=" + (new Date()).getTime();
+
+  // Get the DOM location to put the script tag
+  this.headLoc = document.getElementsByTagName("head").item(0);
+ 
+  // Generate a unique script tag id
+  this.scriptId = "JscriptId" + JSONscriptRequest.scriptCounter++;
+}
+
+// Static script ID counter
+JSONscriptRequest.scriptCounter = 1;
+
+JSONscriptRequest.prototype.buildScriptTag = function () {
+  this.scriptObj = document.createElement("script");
+  this.scriptObj.setAttribute("type", "text/javascript");
+  this.scriptObj.setAttribute("charset", "utf-8");
+  this.scriptObj.setAttribute("src", this.url + this.noCacheIE);
+  this.scriptObj.setAttribute("id", this.scriptId);
+}
+
+JSONscriptRequest.prototype.removeScriptTag = function () {
+  this.headLoc.removeChild(this.scriptObj);  
+}
+
+JSONscriptRequest.prototype.addScriptTag = function () {
+  this.headLoc.appendChild(this.scriptObj);
+}
+
+var urlPrefix = "http://www.google.com";
+// User prefs
+var prefs__MODULE_ID__ = new _IG_Prefs(__MODULE_ID__);
+// Request object
+var reqObj;
+
+function searchShowtimes(query) {
+  var feedUrl = prefs__MODULE_ID__.getString("feed") +
+                _esc(query) + "&callback=processShowtimes";
+  reqObj = new JSONscriptRequest(feedUrl);
+  reqObj.buildScriptTag();
+  reqObj.addScriptTag();
+}
+  
+function processShowtimes(showtimes, movies) {
+  if (!showtimes.MoreLinkURL) {
+    _gel("content__MODULE_ID__").innerHTML = "<br><b>Not Found!</b>";
+    return;
+  }
+  if (showtimes.QueryMovieName) {
+    html = getMovieShowtimes(showtimes, movies);
+  } else {
+    html = getLocationShowtimes(showtimes, movies);
+  }
+  reqObj.removeScriptTag();
+  _gel("content__MODULE_ID__").innerHTML = html;
+  
+  for (var m in showtimes.MovieAndTheaterTimes) {
+    var movie = showtimes.MovieAndTheaterTimes[m];
+    if (movie.Movie.IMDBUrl) {
+      var u = movie.Movie.IMDBUrl.split("=");
+      _IG_FetchContent(_unesc(u.pop()), _IG_Callback(addMovie, movie, m));
+    }
+  }
+}
+
+function getRatingStarsHTML(rating) {
+  var html = new Array();
+  var img;
+  rating = rating * 5.0;
+  rating = rating + 0.25;
+  for (i = 1; i <=5; ++i) {
+    var halfoffi = i - 0.5;
+    if (rating < halfoffi) {
+      img = "off";
+    } else if (rating >= halfoffi && rating < i) {
+      img = "half";
+    } else {
+      img = "on";
+    }
+
+    html.push("<img border=\"0\" " +
+              "src='http://www.google.com/ig/images/showtimes-star-" + img + ".gif'" +
+              " width=\"10\" height=\"9\" alt='' />")
+  }
+  return html.join("");
+}  
+  
+function onToggle(obj, m) {
+  block = _gel("theaters__MODULE_ID__" + m);
+  _toggle(block);
+  if (block.style.display=="none") {
+    obj.style.backgroundPosition = "-114px -78px";
+  } else {
+    obj.style.backgroundPosition = "-126px -78px";
+  }
+  return false;
+}
+
+function getMovieShowtimes(showtimes, movies) {
+  var html = new Array();
+  var showtimesUrl = urlPrefix + showtimes.MoreLinkURL;
+  if (showtimes.QueryLocation) {
+    var showtimesTxt = showtimes.QueryMovieName + " showtimes for " + showtimes.QueryLocation;
+    html.push("<div class='modlabel'><a href='" + showtimesUrl + "' target=_blank><b>" +
+              showtimesTxt + "</b></a></div>");
+  }
+  html.push("<table width=100% border=0 cellspacing=5 id=movies__MODULE_ID__>");
+  for (var m in showtimes.MovieAndTheaterTimes) {
+    html.push("<tr><td id=poster__MODULE_ID__" + m + " valign=top></td>");
+    html.push("<td valign=top id=info__MODULE_ID__" + m +"></td></tr>");
+    html.push("<tr><td colspan=2 id=sep__MODULE_ID__" + m + "></td></tr>\n");
+  }
+  html.push("</table>");
+  return html.join("");
+}
+  
+function getLocationShowtimes(showtimes, movies)  {
+  var html = new Array();
+  var showtimesUrl = urlPrefix + showtimes.MoreLinkURL;
+  var showtimesTxt = showtimes.QueryLocation;
+  html.push("<div class='modlabel'><a href='" + showtimesUrl + "' target=_blank><b>" +
+            showtimesTxt + "</b></a></div>");
+  html.push("<table width=100% border=0 cellspacing=5 id=movies__MODULE_ID__>");
+  for (var m in showtimes.MovieAndTheaterTimes) {
+    html.push("<tr><td id=poster__MODULE_ID__" + m + " valign=top></td>");
+    html.push("<td valign=top id=info__MODULE_ID__" + m +"></td></tr>");
+    html.push("<tr><td colspan=2 id=sep__MODULE_ID__" + m + "></td></tr>\n");
+  }
+  html.push("</table>");
+  return html.join("");
+}
+
+function extractContent(content, startText, endText) {
+  var start = content.indexOf(startText);
+  if (start < 0) { return ""; }
+  var end = content.indexOf(endText, start + startText.length);
+  if (end < 0) { return ""; }
+  return content.slice(start, end + endText.length);
+}
+  
+function extractInnerContent(content, startText, endText) {
+  var start = content.indexOf(startText);
+  if (start < 0) { return ""; }
+  var end = content.indexOf(endText, start + startText.length);
+  if (end < 0) { return ""; }
+  return content.slice(start + startText.length, end);
+}
+  
+function extractList(content, endTag) {
+  var list = content.split(endTag);
+  var result = new Array();
+  for (var i = 0; i < list.length - 1; ++i) {
+    var last = list[i].lastIndexOf("/\">");
+    if (last < 0) {
+      return result;
+    } else {
+      result.push(list[i].slice(last + 3));
+    }
+  }
+  return result;
+}
+
+function scrapeIMDB(content) {
+  var imdb = new Object();
+  var block = extractContent(content, "<a name=\"poster\"", "</a>");
+  imdb.poster = _IG_GetImage(extractInnerContent(block, "src=\"", "\""));
+
+  block = extractContent(content, "<h5>Director", "</div>");
+  imdb.directors = extractList(block, "</a>");
+  
+  block = extractContent(content, "<h5>Writer", "</div>");
+  block = extractInnerContent(block, "</h5>", "</div>");
+  imdb.writers = extractList(block, "</a>");
+  
+  block = extractContent(content, "<h5>Release Date:</h5>", "</div>");
+  imdb.release = extractInnerContent(block, "</h5>", "<");
+  
+  block = extractContent(content, "<h5>Genre:</h5>", "</div>");
+  imdb.genres = extractList(block, "</a>");
+  imdb.genres.pop();
+  
+  block = extractContent(content, "<h5>Tagline:</h5>", "</div>");
+  imdb.tagline = extractInnerContent(block, "</h5>", "<");
+  
+  block = extractContent(content, "<h5>Plot Outline:</h5>", "</div>");
+  imdb.plot = extractInnerContent(block, "</h5>", "<");
+  
+  return imdb;
+}
+
+function addMovie(content, movie, m) {
+  var html = new Array();
+  var imdb = scrapeIMDB(content);
+  var landingPageUrl = urlPrefix + movie.Movie.LandingPageUrl;
+  var title = movie.Movie.MovieTitle;
+  var length = movie.Movie.MovieLength;
+  var rating = movie.Movie.MPAARating;
+  var genre = movie.Movie.MovieGenre;
+  var reviewsNum = movie.Movie.ReviewsNum;
+  var reviewsUrl = urlPrefix + movie.Movie.ReviewsUrl;
+  var stars = getRatingStarsHTML(movie.Movie.ReviewsAvgRating);
+  
+  html.push("<p style='margin-bottom:10px'>" +
+            "<a href='" + landingPageUrl + "' target=_blank><b>" + title + "</b></a>");
+  if (movie.Movie.IMDBUrl) {
+    imdbUrl = movie.Movie.IMDBUrl;
+    html.push("&nbsp;-&nbsp;<a href='" + imdbUrl + "' target=_blank>IMDB</a>");
+  }
+  for (l in movie.Movie.MovieLink) {
+    var link = movie.Movie.MovieLink[l];
+    var url = link.Url;
+    if (link.Type == 1) {
+      html.push("&nbsp;-&nbsp;<a href='" + url + "' target=_blank>Trailer</a>");
+    } else if (link.Type == 2) {
+      html.push("&nbsp;-&nbsp;<a href='" + url + "' target=_blank>Site</a>");
+    } else {
+      html.push("&nbsp;-&nbsp;<a href='" + url + "' target=_blank>Poster</a>");
+    }
+  }
+  html.push("<br><a href='" + reviewsUrl + "' target=_blank>" + stars + "</a>" +
+            "&nbsp;<a href='" + reviewsUrl + "' class='gre' target=_blank>" + reviewsNum + " reviews</a></p>");
+  if (imdb.directors) {
+    html.push("<p style='margin-bottom:5px'><b>Director(s):</b> " + imdb.directors.join(", ") + "</p>");
+  }
+  html.push("<p style='margin-bottom:5px'><b>Length:</b> " + length + "</p>");
+  html.push("<p style='margin-bottom:5px'><b>Rating:</b> " + rating + "</p>");
+  html.push("<p style='margin-bottom:5px'><b>Genre:</b> " + genre + "</p>");
+  if (imdb.plot) {
+    html.push("<p style='margin-bottom:5px'><b>Plot Summary:</b> " + imdb.plot + "</p>");
+  }
+  if (movie.TheatersPlaying && movie.TheatersPlaying.length > 0) {
+    html.push("<table border=0><tr><td><b>Showtimes:</b>&nbsp;&nbsp;</td><td valign=middle>");
+    html.push("<div title='' class='toggle' style='background-position:-114px -78px;' onclick='return onToggle(this, " + m + ");'></div>");
+    html.push("</td></tr></table>");
+    html.push("<div id=theaters__MODULE_ID__" + m + " style='margin-top:10px;display:none'>");
+    for (t in movie.TheatersPlaying) {
+      var theater = movie.TheatersPlaying[t];
+      var name = theater.TheaterPlaying.TheaterName;
+      var url = urlPrefix + theater.TheaterPlaying.TheaterUrl;
+      var mapUrl = theater.TheaterPlaying.TheaterMapUrl;
+      html.push("<p style='margin:0px 0px 5px 10px'>" +
+                "<a href='" + url + "' target=_blank>" +
+                "<b>" + name + "</b></a>&nbsp;-&nbsp;" +
+                "<a href='" + mapUrl + "' target=_blank>Map</a><br>\n");
+      for (s in theater.Shows.Showtimes) {
+        var showtime = theater.Shows.Showtimes[s];
+        if (showtime.IsPastShowtime || !showtime.TimeUrl) {
+          html.push(showtime.Time + "&nbsp;");
+        } else {
+          html.push("<a href='" + showtime.TimeUrl + "' target=_blank>" + showtime.Time + "</a>&nbsp;");
+        }
+      }
+      html.push("</p>\n");
+    }
+  }
+    
+  if (imdb.poster) {
+    _gel("poster__MODULE_ID__" + m).innerHTML = "";
+    _gel("poster__MODULE_ID__" + m).appendChild(imdb.poster);
+  }
+  _gel("info__MODULE_ID__" + m).innerHTML = html.join("");
+  _gel("sep__MODULE_ID__" + m).innerHTML = "<hr width=85%>";
+}
+  
+function onSearch() {
+  var searchbox = _gel("searchbox__MODULE_ID__");
+  if (searchbox.value.length > 0) {
+    searchShowtimes(searchbox.value);
+  }
+}
+
+function onLoad() {
+  searchShowtimes(prefs__MODULE_ID__.getString("query"));
+}
+
+_IG_RegisterOnloadHandler(onLoad);
+</script>
+<div><form onSubmit="onSearch(); return false;">
+<input id=searchbox__MODULE_ID__ type=text value="__UP_query__" size=40>
+<input value=search type=submit>
+</form></div>
+<div class=greytext>e.g. "10000 bc 98033" or "98033 movies"</div>
+<div id="content__MODULE_ID__" style="overflow:auto;overflow-x:hidden;overflow-y:auto;height:280px"></div>
+]]></Content>
+</Module>

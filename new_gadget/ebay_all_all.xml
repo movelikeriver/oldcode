@@ -1,0 +1,14 @@
+<messagebundle>
+  <msg name="title">eBay Gadget</msg>
+  <msg name="screenshot">http://new-gadget.googlecode.com/svn/trunk/ebay_ALL_ALL.png</msg>
+  <msg name="thumbnail">http://new-gadget.googlecode.com/svn/trunk/ebay_ALL_ALL-thm.png</msg>
+  <msg name="bids">Bids</msg>
+  <msg name="price">Price</msg>
+  <msg name="shipping">Shipping</msg>
+  <msg name="timeleft">Time left</msg>
+  <msg name="search">Search</msg>
+  <msg name="loading">Loading...</msg>
+  <msg name="hint">Welcome to try some product queries in eBay.</msg>
+  <msg name="no_result">Try another query? No result found for </msg>
+  <msg name="tryagain"> please try again!</msg>
+</messagebundle>

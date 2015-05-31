@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+<ModulePrefs title="RSS" title_url="http://www.google.com/" width="380" height="100">
+    <Require feature="dynamic-height"/>
+</ModulePrefs>
+<UserPref name="rssurl" display_name="RSS URL" default_value=""/>
+<UserPref name="displaytitle" display_name="Display Title" default_value=""/>
+<Content type="html">
+<![CDATA[
+<style>
+caption {background-color:#c3d9ff; PADDING-BOTTOM:2px; HEIGHT:14px}
+div {font-size: 12px; color:#336699;}
+.title {font-size:12px; font-weight:bold}
+</style>
+
+<script type="text/javascript">
+var prefs = new _IG_Prefs(__MODULE_ID__)
+var rssurl = prefs.getString("rssurl");
+var show = false;
+function Toggle(index) {
+  _toggle(_gel("p"+index));
+  _toggle(_gel("m"+index));
+  _toggle(_gel("s"+index));
+  for (var i = 0; i < 3; i++) {
+    if (i != index) {
+      _gel("s" + i).style.display = 'none';
+      _gel("p" + i).style.display = '';
+      _gel("m" + i).style.display = 'none';
+    }
+  }  
+}
+
+function FixTitle(title) {
+  if (title.length < 28) {
+    return title;    
+  } else {
+    return title.substr(0, 28) + "..."; 
+  }
+}
+
+function FixSummary(summary) {
+  if (summary.length < 80) {
+    return summary;    
+  } else {
+    return summary.substr(0, 80) + "..."; 
+  }
+}
+</script>
+
+<table width=380 cellspacing=2 cellpadding=2 border=0 >
+<caption>
+<div align="left" class="title">__UP_displaytitle__</div>
+</caption>
+<tr id=r0><td width=5%>
+    <div id=p0 style="display:block"><a href="javascript:Toggle(0)"><img src="http://www.google.com/images/plusl.png" border=0/></a></div>
+    <div id=m0 style="display:none"><a href="javascript:Toggle(0)"><img src="http://www.google.com/images/minusl.png" border=0/></a></div>
+    </td>
+    <td width=90%>
+    <div id=t0></div></td></tr>
+<tr id=r1><td></td><td> <div id=s0 style="display:none;color:#000"></div> </td></tr>
+
+<tr id=r2><td width=5%>
+    <div id=p1 style="display:block"><a href="javascript:Toggle(1)"><img src="http://www.google.com/images/plusl.png" border=0/></a></div>
+    <div id=m1 style="display:none"><a href="javascript:Toggle(1)"><img src="http://www.google.com/images/minusl.png" border=0/></a></div>
+    </td>
+    <td width=90%>
+    <div id=t1></div></td></tr>
+<tr id=r3><td></td><td> <div id=s1 style="display:none;color:#000"></div> </td></tr>
+
+<tr id=r4><td width=5%>
+    <div id=p2 style="display:block"><a href="javascript:Toggle(2)"><img src="http://www.google.com/images/plusl.png" border=0/></a></div>
+    <div id=m2 style="display:none"><a href="javascript:Toggle(2)"><img src="http://www.google.com/images/minusl.png" border=0/></a></div>
+    </td>
+    <td width=90%>
+    <div id=t2></div></td></tr>
+<tr id=r5><td></td><td> <div id=s2 style="display:none;color:#000"></div> </td></tr>
+
+
+</table>
+
+<script type="text/javascript">
+var entries = 3;
+
+// Use the _IG_FetchFeedAsJSON() function to retrieve core feed data from
+// the specified URL. Then combine the data with HTML markup for display in
+// the gadget.
+_IG_FetchFeedAsJSON(rssurl,
+function(feed) {
+  if (feed == null){
+    alert("There is no data.");
+    return;
+  }
+
+// Start building HTML string that will be displayed in gadget.
+
+
+// Access the data for a given entry
+if (feed.Entry) {
+  for (var i = 0; i < feed.Entry.length; i++) {
+    var str = "<a target='_blank' href='" + feed.Entry[i].Link + "'>"
+              + FixTitle(feed.Entry[i].Title)
+              + "</a> ";
+    _gel("t"+i).innerHTML = str;
+    _gel("s"+i).innerHTML = FixSummary(feed.Entry[i].Summary);
+  }
+}
+
+_IG_AdjustIFrameHeight();
+// The rest of the function parameters, which are optional: the number
+// of entries to return, and whether to return summaries.
+}, entries, true);
+
+</script>
+
+]]>
+</Content>
+ </Module> 

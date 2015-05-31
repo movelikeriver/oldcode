@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+<ModulePrefs>
+  <Require feature="dynamic-height"/>
+</ModulePrefs>
+<Content type="html">
+<![CDATA[
+<div style="height: auto">
+<img src="http://www.corp.google.com/~zhenh/img/mockup.png"/>
+</div>
+<script>
+_IG_AdjustIFrameHeight();
+</script>
+]]>
+</Content>
+</Module>

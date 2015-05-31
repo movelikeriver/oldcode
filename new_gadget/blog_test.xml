@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+<ModulePrefs title="RSS" title_url="http://www.google.com/" width="380" height="100">
+    <Require feature="dynamic-height"/>
+</ModulePrefs>
+<UserPref name="rssurl" display_name="RSS URL" default_value=""/>
+<UserPref name="displaytitle" display_name="Display Title" default_value=""/>
+<Content type="html">
+<![CDATA[
+<style>
+.modboxin__MODULE_ID__ a{
+  margin-left:15px;
+  font-size:14px;
+}
+.description__MODULE_ID__ {
+  margin-left:15px;
+  font-color:#6F6F6F;
+  font-size:12px;
+}
+</style>
+<script type="text/javascript">
+var prefs = new _IG_Prefs(__MODULE_ID__)
+var lang = prefs.getString('lang');
+var rssurl = prefs.getString('feed_url');
+
+function FixTitle(title) {
+  if (title.length < 30) {
+    return title;    
+  } else {
+    return title.substr(0, 30) + "..."; 
+  }
+}
+
+function FixSummary(summary) {
+  if (summary.length < 70) {
+    return summary;    
+  } else {
+    return summary.substr(0, 70) + "..."; 
+  }
+}
+
+function GetTimeStamp(date) {
+  var stamp = "";
+  if (lang == 'zh-CN') {
+    stamp = ""+ date.getFullYear() + "年"+ (date.getMonth() + 1) + "月" + (date.getDate())+"日";
+  } else {
+    stamp= date.toDateString();
+  }
+  return stamp;
+}
+</script>
+
+<div id="content_div__MODULE_ID__" class="modboxin__MODULE_ID__"></div>
+
+<script type="text/javascript">
+var entries = 3;
+
+// Use the _IG_FetchFeedAsJSON() function to retrieve core feed data from
+// the specified URL. Then combine the data with HTML markup for display in
+// the gadget.
+if (rssurl != "") {
+_IG_FetchFeedAsJSON(rssurl,
+function(feed) {
+  if (feed == null){
+    alert("There is no data.");
+    return;
+  }
+
+// Start building HTML string that will be displayed in gadget.
+
+
+// Access the data for a given entry
+if (feed.Entry) {
+  var html = "";
+  for (var i = 0; i < feed.Entry.length; i++) {
+    var date = new Date();
+    date.setTime(parseInt(feed.Entry[i].Date)*1000);
+    html += "<a target='_blank' href='" + feed.Entry[i].Link + "'>"
+              + FixTitle(feed.Entry[i].Title)
+              + "</a> " + '<nobr><span style="color:#6F6F6F;margin-left:15px;font-size:12px">' +
+            GetTimeStamp(date) + '</span></nobr><br/>';
+    var myReg = /<.+?>|&nbsp;/g
+    var text_summary = feed.Entry[i].Summary.replace(myReg, '');
+    html += '<div class="description__MODULE_ID__">' + FixSummary(text_summary) + '</div>';
+  }
+  _gel('content_div__MODULE_ID__').innerHTML = html;
+}
+_IG_AdjustIFrameHeight();
+// The rest of the function parameters, which are optional: the number
+// of entries to return, and whether to return summaries.
+}, entries, true);
+}
+</script>
+
+]]>
+</Content>
+ </Module> 

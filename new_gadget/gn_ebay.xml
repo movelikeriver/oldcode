@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="ebay"  scrolling="false" width="640" height="530">
+<Require feature="dynamic-height"/>
+</ModulePrefs>
+<UserPref name="search_term" datatype="hidden" default_value="ipod touch"/>
+<Content type="html"><![CDATA[
+<script type="text/javascript" src="http://www.json.org/json.js" ></script>
+<script src="http://togo.ebay.com/js/lib/prototype.js?2008013100" type="text/javascript"></script>
+<script src="http://togo.ebay.com/js/lib/scriptaculous/effects.js?2008013100" type="text/javascript"></script>
+<script src="http://togo.ebay.com/js/lib/swfobject.js?2008013100" type="text/javascript"></script>	
+
+<link rel="stylesheet" type="text/css" href="http://togo.ebay.com/css/togo.css?2008013100" />
+<link rel="stylesheet" type="text/css"
+    href="http://include.ebaystatic.com/v4css/en_US/e557/GlobalNavVjo23_EbayStatic_e5576283730_en_US.css"/>
+<div id="logger"></div>
+<div id="itemViewer" style="display: none">
+</div>
+
+<div id="auctionFinder" style="display: block">
+  <div class=top>
+    <div class=left></div>
+    <div class=middle></div>
+    <div class=right></div>
+  </div>
+  <div class=main>
+    <div class="logo"><img src="http://togo.ebay.com/img/logo_small_grey.gif" width="59" height="25" alt="eBay toGo" /></div>
+    <h1>To Go&trade; <span class="finder"><span class="lowlight">Item</span> Finder</span></h1>
+    <div class="search">
+      <img class="loading" src="http://togo.ebay.com/img/loading.gif" style="display:none;"/>
+      <input type="text" name="search" value="Enter Search" />
+      <a href="#" class="browserlink"><div class="button browser"><div>SEARCH</div></div></a>
+      <a href="#" class="closelink"><div class="button close"><div>X</div></div></a>
+    </div>
+    <div class="drawer" style="display: block;">
+      <div class="breadcrumbs"><br/></div>
+      <div class="categories">
+        <h2>CATEGORIES:</h2>
+        <ul></ul>
+      </div>
+      <div class="results">
+        <div class="bg"></div>
+      </div>
+      <div class="numResults"><br /></div>
+      <div class="paging"><span class="pageSet"><br /></span></div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="left"></div>
+    <div class="middle"></div>
+    <div class="right"></div>
+  </div>
+</div>
+<script>
+// Global variables
+var prefs = new _IG_Prefs(__MODULE_ID__);
+
+function show(elem) {
+  elem.style.display = "block";
+}
+function hide(elem) {
+  elem.style.display = "none";
+}
+  
+function resultsToHtml(context, content) {
+  var obj = content.parseJSON();
+  var items = obj.SearchResult[0].ItemArray.Item || [];
+  var categories = obj.CategoryHistogram.Category || [];
+  var html = [];
+  writeBreadCrumbs(html, context);
+  writeCategories(html, categories);
+  writeItems(html, items);
+  html.push('<div class="numResults"><br /></div>  <div class="paging"><span class="pageSet"><br /></span></div>');
+  return html.join("");
+}
+
+function writeBreadCrumbs(html, context) {
+  html.push('<div class="breadcrumbs">');
+  html.push('<a href="#" rel="0">' + _hesc(context.query) + '</a>');
+  var categories = [];
+  if (context.category != null) { categories.push(context.category); }
+
+  for (var i = 0; i < categories.length; ++i) {
+    var category = categories[i];
+    html.push(':<a href="#" rel="' + category.CategoryID + '">');
+    html.push(_hesc(category.CategoryName));
+    html.push('</a>');
+  }
+  html.push('</div>');
+}
+
+function addCategory(html, category, childMap) {
+  html.push('<a href="#" rel="' + category.CategoryID + '"></a>');
+  html.push('<li><a href="#" rel="' + category.CategoryID + '">');
+  html.push(_hesc(category.CategoryName));
+  html.push('</a></li>');
+  if (childMap[category.CategoryID].length > 0) {
+    var children = childMap[category.CategoryID];
+    html.push('<ul>');
+    for (var i = 0; i < children.length; ++i) {
+      var child = children[i];
+      addCategory(html, child, childMap);
+    }
+    html.push('</ul>');
+  }
+}
+
+function writeCategories(html, items) {
+  var childrenMap = {};
+  var topLevel = -1;
+  for (var i = 0; i < items.length; ++i) {
+    var item = items[i];
+    childrenMap[item.CategoryID] = [];
+    if (topLevel < 0 || item.CategoryLevel < topLevel)
+      topLevel = item.CategoryLevel;
+    if (item.CategoryParentID != undefined) {
+      childrenMap[item.CategoryParentID].push(item);
+    }
+  }
+  html.push('<div class="categories">');
+  html.push('<h2>CATEGORIES:</h2>');
+  html.push('<ul>');
+  for (var i = 0; i < items.length; ++i) {
+    var item = items[i];
+    if (item.CategoryLevel == topLevel) {
+      addCategory(html, item, childrenMap);
+    }
+  }
+  html.push('</ul>'); 
+  html.push('</div>'); 
+}
+
+function writeItems(html, items) {
+  html.push('<div class="results">');
+  html.push('<div class="bg">');
+  for (var i = 0; i < items.length; ++i)
+  {
+    var item = items[i];
+    var viewitem = item.ViewItemURLForNaturalSearch;
+    html.push('<div class="item" id="' + item.ItemID + '">');
+    html.push('  <img src="' + item.GalleryURL + '" width=59 height=43>');
+    html.push('  <div class="info">');
+    html.push('    <h2>' + _hesc(item.Title) + '</h2>');
+    html.push('    <div class="timeLeft minute">');
+    html.push('      <span class="shortForm">&lt; ' + '1m' + '</span>');
+    html.push('      <div class="indicatorTrack">');
+    html.push('        <div class="indicator" style="width: 4%;">&nbsp;</div>');
+    html.push('      </div>');
+    html.push('    </div>');
+    html.push('    <div class="currentPrice">');
+    html.push('      <span class="currency">' + item.ConvertedCurrentPrice.CurrencyID + '</span>');
+    html.push(       item.ConvertedCurrentPrice.Value);
+    html.push('    </div>');
+    html.push('  </div>');
+    html.push('  <div class="visit"><img src="http://togo.ebay.com/img/arrow.gif" height="16" width="11"></div>');
+    html.push('</div>');
+  }
+  html.push('</div>');
+  html.push('</div>');
+}
+
+function singleItemToHtml(content) {
+  var obj = content.parseJSON();
+  item = obj.Item;
+  var html = [];
+  html.push('<div class="viewItem">');
+  html.push('  <h1>' + _hesc(item.Title) + '</h1>');
+  html.push('  <div class="col first">');
+  html.push('    <div class="theImage">');
+  html.push('      <img src="' + item.PictureURL[0] + '" height="136" width="136">');
+  html.push('      <div style="top: -139px;" class="imageFrame"></div>');
+  html.push('    </div>');
+  html.push('    <div class="bids"><span class="num"></span>' + item.BidCount + ' BIDS</div>');
+  html.push('    <div class="views"><span class="num"></span>' + item.HitCount + ' VIEWS</div>');
+  html.push('  </div>');
+  html.push('  <div class="col">');
+  html.push('    <div class="ending">');
+  html.push('      <div class="title">ENDING</div>');
+  html.push('      <div class="timeLeft minute">');
+  html.push('        <span class="shortForm">&lt;' + ' 1 MINUTE</span>');
+  html.push('        <span>' + item.EndTime + '</span>');
+  html.push('        <div class="indicatorTrack"><div class="indicator" style="width: 10%;"></div></div>');
+  html.push('      </div>');
+  html.push('    </div>');
+  html.push('    <div class="currentBid">');
+  html.push('      <div class="title">');
+  html.push('        <span class="currentBidTitle">CURRENT BID</span>');
+  html.push('        <span class="numBids">(' + item.BidCount + ' BIDS)</span>');
+  html.push('      </div>');
+  html.push('      <p><span class="prefix">' + item.ConvertedCurrentPrice.CurrencyID + '</span> $' + item.ConvertedCurrentPrice.Value + '</p>');
+  html.push('    </div>');
+  html.push('  </div>');
+  html.push('  <div class="col">');
+  html.push('    <div class="seller">');
+  html.push('      <div class="title">SELLER</div>');
+  html.push('      <p><img class="icon" src="http://togo.ebay.com/img/seller.gif" height="20" width="10">');
+  html.push('        <span>' + _hesc(item.Seller.UserID) + '</span>');
+  html.push('        ( <span>' + item.Seller.FeedbackScore + '</span>');
+  html.push('          <img class="feedback" src="http://togo.ebay.com/img/stars/iconYellowShootingStar_25x25.gif" height="25" width="25">)</p>');
+  html.push('    </div>');
+  if (item.HighBidder != undefined) {
+    html.push('    <div class="highBidder">');
+    html.push('      <div class="title">HIGH BIDDER</div>');
+    html.push('      <p><img class="icon" src="http://togo.ebay.com/img/high-bidder.gif" height="23" width="11">');
+    html.push('         <span>' + _hesc(item.HighBidder.UserID) + '</span>');
+    html.push('         ( <span>' + item.HighBidder.FeedbackScore + '</span>');
+    html.push('         <img class="feedback" src="http://togo.ebay.com/img/stars/iconBlueStar_25x25.gif" height="25" width="25">)</p>');
+    html.push('    </div>');
+  }
+  html.push('  </div>');
+  html.push('</div>');
+  return html.join("");
+}
+
+function query(category) {
+  _gel("itemViewer").innerHTML = "";
+  hide(_gel("itemViewer"));
+  var input = $$('#auctionFinder input')[0];
+  if (input.value == input.defaultValue || input.value == "") return;
+  var context = {};
+  context.query = input.value;
+  context.category = category;
+  loadPage(context);
+}
+
+function loadPage(context) {
+  show($$("#auctionFinder .loading")[0]);
+  var ebayUrl = "http://open.api.ebay.com/shopping" +
+    "?appid=Zhengpin-0c41-4938-88cd-d8ff0e4ab540" +
+    "&version=517" +
+    "&siteid=0" +
+    "&callname=FindItemsAdvanced" +
+    "&MaxEntries=10" +
+    "&IncludeSelector=CategoryHistogram" +
+    "&QueryKeywords=" + _esc(context.query) +
+    "&responseencoding=JSON";
+  if (context.category != null) {
+    ebayUrl += "&CategoryID=" + context.category.CategoryID;
+  }
+  // _gel("logger").innerHTML = ebayUrl;
+  _IG_FetchContent(ebayUrl,
+    _IG_Callback(processQueryJSON, context),
+    {RefreshInterval: 30});
+}
+
+function loadItem(itemID) {
+  show($$("#auctionFinder .loading")[0]);
+  var ebayUrl = "http://open.api.ebay.com/shopping" +
+    "?appid=Zhengpin-0c41-4938-88cd-d8ff0e4ab540" +
+    "&version=517" +
+    "&siteid=0" +
+    "&callname=GetSingleItem" +  
+    "&ItemID=" + itemID +
+    "&IncludeSelector=ShippingCosts,Details" +
+    "&responseencoding=JSON";
+  // _gel("logger").innerHTML = ebayUrl;
+  _IG_FetchContent(ebayUrl, processItemJSON, {RefreshInterval: 30});
+}
+
+function processItemJSON(content) {
+  $$("#auctionFinder .drawer")[0].innerHTML = singleItemToHtml(content);
+  hide($$("#auctionFinder .loading")[0]);  
+  _IG_AdjustIFrameHeight();
+}
+  
+function processQueryJSON(content, context) {
+  $$("#auctionFinder .drawer")[0].innerHTML = resultsToHtml(context, content);
+  $$("#auctionFinder .categories a").each(function(x) {
+    x.onclick = function(e) {
+      Event.stop(e);
+      var category = {
+        "CategoryID": x.rel,
+        "CategoryName": x.text
+      };
+      query(category);
+    };
+  });
+  $$("#auctionFinder .item").each(function(x) {
+    x.onclick = function(e) {
+      Event.stop(e);
+      loadItem(x.id);
+    };
+  });
+  hide($$("#auctionFinder .loading")[0]);
+  _IG_AdjustIFrameHeight();
+}
+
+function init() {
+  var context = {};
+  context.query = prefs.getString("search_term");
+  context.category = null;
+  loadPage(context);
+  $$('#auctionFinder input')[0].value = prefs.getString("search_term");
+  $$('#auctionFinder input')[0].style.height = 20;  
+  $$("#auctionFinder a.browserlink").each(function(x) {
+    x.onclick = function(e) {
+      Event.stop(e);
+      query(null);
+    };
+  }); 
+}
+
+// Set onload event handler to call init()
+_IG_RegisterOnloadHandler(init);
+
+</script>
+]]></Content>
+</Module>
+
+

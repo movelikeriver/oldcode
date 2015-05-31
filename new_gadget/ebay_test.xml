@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs/>
+<Content type="html">
+<![CDATA[
+<div id="itemContent"></div>
+<script TYPE='text/javascript' SRC='http://w-1.ebay.com/js/2.0/min/Shopping.js'></script>
+<script TYPE='text/javascript' SRC='http://w-1.ebay.com/js/2.0/min/FindItemsAdvanced.js'></script>
+<script>
+function FindItemsAdvancedSample(config)
+{
+  this.items = new Array;
+  this.itemcount = new Array;
+  this.queryKeyWords= null;
+  this.config = config;
+  this.errorCount = 0;
+  this.onSomeItemsReturnedFailed = function(error) {
+    var userDiv = document.getElementById("itemContent");
+    if(this.errorCount == 0) {
+      var search = "<div><input id='query' type='text' size='22' maxlength='30'>";
+      search += "<input onclick='FindItemsAdvancedSample.goSearch();'; type='image' src='http://w-1.ebay.com/images/go.gif'>";
+      search += "<br></div>";
+      userDiv.innerHTML = search;
+    }
+    var errorHTML = "<div>" + error[0].longMessage + " please try again!</div>";
+      userDiv.innerHTML = errorHTML + userDiv.innerHTML;
+    this.errorCount ++;
+  };
+  this.onSomeItemsReturned = function () {
+    return function (data) {
+      this.items = this.convertData4ItemListUI(data);
+      this.itemcount = data.totalItems;
+          //waiting until items for all 3 price rangs are received.
+      this.displayItems();
+    };
+  }
+  this.getFiaRequest = function (){
+    var fiaRequest = new com.ebay.shoppingservice.FindItemsAdvancedRequestType({
+      itemSort: com.ebay.shoppingservice.SimpleItemSortCodeType.BestMatch,
+      QueryKeywords: this.queryKeywords,
+      itemType: com.ebay.shoppingservice.ItemTypeCodeType.FixedPricedItem,
+      maxEntries: 10
+      });
+    return fiaRequest;
+  };
+  this.findItems = function(queryKeywords) {
+    this.queryKeywords = queryKeywords;
+    var service = new com.ebay.shoppingservice.Shopping(this.config);
+
+    var request = this.getFiaRequest();
+    var callback = new com.ebay.shoppingservice.ShoppingCallback({object: this, success:this.onSomeItemsReturned(), failure:this.onSomeItemsReturnedFailed});
+    var url = service.findItemsAdvanced(request,callback);
+  };
+  this.convertData4ItemListUI = function(data) {
+    if (data.searchResult !== null) {
+      var itemArray = data.searchResult[0].itemArray;
+    }
+    var items = [];
+    if (itemArray) {
+      var count = itemArray.item.length ;
+
+      var i = 0;
+      while (items.length < 3 && i < count) {
+
+        if (!itemArray.item[i].buyItNowAvailable
+          && itemArray.item[i].listingType.value == com.ebay.shoppingservice.ListingTypeCodeType.Chinese.value) {
+          continue;
+        }
+        var item = itemArray.item[i];
+        items.push(item);
+
+        i++;
+      }
+    }
+    return items;
+  };
+  this.displayItems = function() {
+    var userDiv = document.getElementById("itemContent");
+    if (userDiv) {
+      var newLine = "\n";
+      var src = "<div id='products' >" + newLine;
+      src = src + "<table width='500' cellspacing='0' cellpadding='0' border='0'>" + newLine;
+      src = src + "<tr><td colspan='2'>" + newLine;
+      src = src + (new ItemListUI(this.items, false).display());
+      src = src + "</td></tr>" + newLine;
+      src = src + "</table>" + newLine;
+      src = src + "</div>" + newLine;
+      userDiv.innerHTML = src;
+    }
+  };
+}
+function ItemListUI(items, showBid)
+{
+  this.items = items;
+  this.showBid = showBid;
+  this.newLine = "\n";
+  this.width = null;
+  this.titles = null;
+
+  if (showBid) {
+    this.titles = ["","Item Title","Condition", "Bids", "Price", "Shipping", "Time left"];
+    this.width = [10, 45, 5, 5, 10, 10, 15];
+  } else {
+    this.titles = ["","Item Title","Condition", "Price", "Shipping", "Time Left"];
+    this.width = [10,50,5,10,10,15];
+  }
+  this.display = function() {
+    var str = "<table style='padding: 0px 0px 0px 0px; background: #efefff;' width='100%' cellspacing='0' cellpadding='1'  >" + this.newLine;
+    if (this.titles) {
+      str = str + "<tr style='background: #ccc; font-size: small; font-weight: bold;'> " + this.newLine;
+      if ( com.ebay.widgets.typeOf(this.titles) == 'array') {
+        for (var i = 0; i< this.titles.length; ++i ) {
+          str = str + "<td width='" +this.width[i] + "%' >" + this.titles[i] + "</td>" + this.newLine;
+        }
+      } else {
+        str = str + "<td>" + this.titles + "</td>" + this.newLine;
+      }
+      str = str + "</tr>" + this.newLine;
+    }
+    if (this.items) {
+      if ( com.ebay.widgets.typeOf(this.items) == 'array') {
+        for (i = 0; i< this.items.length; ++i ) {
+          str = str + "<tr height='40' onmouseover='changeColor(this)' onmouseout='returnColor(this)'> " + this.newLine;
+          var item = this.items[i];
+
+          if (this.items[i].galleryURL) {
+            str = str + "<td><img style='margin: 0 2px 0 2px' height='30' width='30' src='" + this.items[i].galleryURL + "' " + "</td>" + this.newLine;
+          } else {
+            str = str + "<td><img style='margin: 0 2px 0 2px' height='30' width='30' src='" + image + "' " + "</td>" + this.newLine;
+          }
+
+          str = str + "<td><a style='font-size: small;' href='" + this.items[i].viewItemURLForNaturalSearch + "'>"
+            + this.items[i].title + "</a>" + "</td>" + this.newLine; // title
+          if (this.items[i].halfItemCondition) {
+            str = str + "<td>" + this.items[i].halfItemCondition.value + "</td>" + this.newLine; // condition
+          } else {
+            str = str + "<td>" + "</td>" + this.newLine;;
+          }
+
+          if (this.showBid) {
+            if (this.items[i].bidCount) {
+              str = str + "<td>" + this.items[i].bidCount + "</td>" + this.newLine;
+            } else {
+              str = str + "<td>" + "-" + "</td>" + this.newLine;
+            }
+          }
+          str = str + "<td style='font-size: small;'>" + "$" + this.items[i].convertedCurrentPrice.value.toFixed(2) + "</td>" + this.newLine;
+          if (this.items[i].shippingCostSummary.shippingServiceCost) {
+            str = str + "<td style='font-size: small;'>" + "$" + this.items[i].shippingCostSummary.shippingServiceCost.value.toFixed(2) + "</td>" + this.newLine;
+          } else {
+            str = str + "<td style='font-size: small;'>" + "Not Specified" + "</td>" + this.newLine;
+          }
+          str = str + "<td style='font-size: small; color:red;' >" + this.items[i].timeLeft + "</td>" + this.newLine;
+
+          str = str + "</tr>" + this.newLine;
+          str = str + "<tr><td colspan='" + this.titles.length + "' style='border-bottom: 2px solid #FFFFFF;'></td></tr>" + this.newLine;
+        }
+      }
+    }
+    str = str + "</table> " + this.newLine;
+    return str;
+  };
+}
+function changeColor(e) {
+  e.style.background = "#e0e040";
+};
+
+function returnColor(e) {
+  e.style.background = "#efefff";
+}
+FindItemsAdvancedSample.goSearch = function() {
+  var prefs__MODULE_ID__ = new _IG_Prefs(__MODULE_ID__);
+  var queryKeyword = prefs__MODULE_ID__.getString("query");
+  var props = {};
+  props["appId"] = "HuangZhe-6262-4b2e-85ff-0c803fcbfaad";
+  var config = new com.ebay.shoppingservice.ShoppingConfig(props);
+  new FindItemsAdvancedSample(config).findItems(queryKeyword);
+};
+
+</script>
+
+<script TYPE='text/javascript'>
+setTimeout(function(){
+image = 'http://w-1.ebay.com/images/stockimage1.jpg';
+FindItemsAdvancedSample.goSearch({g_queryKeyword:"iPod"});
+},0);
+</script>
+]]>
+</Content>
+</Module>

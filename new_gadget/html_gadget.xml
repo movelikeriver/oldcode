@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+<ModulePrefs>
+  <Require feature="dynamic-height"/>
+</ModulePrefs>
+<Content type="html">
+<![CDATA[
+<div id="content" style="height: auto"></div>
+<iframe id="result" frameborder="0" scrolling="no" style="border: 0pt none ; margin: 0pt; padding: 0pt; overflow: hidden; width: 100%; height: auto;">
+</iframe>
+<div id="mock" style="display: none; height: auto"></div>
+
+<script>
+
+var prefs = new _IG_Prefs();
+var url = prefs.getString('source_url');
+var iframe = _gel("result");
+iframe.src=url;
+_IG_AdjustIFrameHeight();
+
+</script>
+]]>
+</Content>
+</Module>

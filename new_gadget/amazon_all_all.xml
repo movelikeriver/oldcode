@@ -1,0 +1,10 @@
+<messagebundle>
+  <msg name="title">Amazon Gadget</msg>
+  <msg name="screenshot">http://new-gadget.googlecode.com/svn/trunk/amazon_ALL_ALL.png</msg>
+  <msg name="thumbnail">http://new-gadget.googlecode.com/svn/trunk/amazon_ALL_ALL-thm.png</msg>
+  <msg name="search">Search</msg>
+  <msg name="loading">Loading...</msg>
+  <msg name="hint">Please try some queries, e.g. ipod, gphone, etc.</msg>
+  <msg name="no_result">No match item found, please try another query?</msg>
+  <msg name="tryagain"> please try again!</msg>
+</messagebundle>

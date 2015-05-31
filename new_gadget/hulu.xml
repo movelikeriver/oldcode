@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+<ModulePrefs>
+  <Require feature="dynamic-height"/>
+</ModulePrefs>
+<Content type="html">
+<![CDATA[
+<style>
+.modboxin__MODULE_ID__ {
+  margin-left:15px;
+  font-size:14px;
+}
+.description__MODULE_ID__ {
+  margin-left:15px;
+  font-color:#6F6F6F;
+  font-size:12px;
+  vertical-align:top;
+}
+</style>
+
+
+<div id="content_div__MODULE_ID__" class="modboxin__MODULE_ID__"></div>
+
+<script type="text/javascript">
+var entries = 3;
+
+var prefs__MODULE_ID__ = new _IG_Prefs(__MODULE_ID__);
+var query = prefs__MODULE_ID__.getString("query");
+_IG_FetchFeedAsJSON("http://www.hulu.com/feed/search?query="+_esc(query)+"&sort_by=relevance",
+  function(feed) {
+    if (feed == null){
+      return;
+    }
+    // Start building HTML string that will be displayed in gadget.
+    if (feed.Entry) {
+      var html = "";
+      for (var i = 0; i < feed.Entry.length; i++) {
+        var date = new Date();
+        date.setTime(parseInt(feed.Entry[i].Date, 10)*1000);
+        html += "<a target='_blank' href='" + feed.Entry[i].Link + "'>"
+             + feed.Entry[i].Title
+             + "</a> " + '<nobr><span style="color:#6F6F6F;margin-left:15px;font-size:12px">'
+             + date.toDateString() + '</span></nobr><br/>';
+        html += '<div class="description__MODULE_ID__">' + feed.Entry[i].Summary + '</div>';
+      }
+      _gel('content_div__MODULE_ID__').innerHTML = html;
+    } else {
+      _gel('content_div__MODULE_ID__').innerHTML = "<i>Infomation is temporarily unavailable.</i>";
+    }
+    _IG_AdjustIFrameHeight();
+  }, entries, true);
+</script>
+
+]]>
+</Content>
+ </Module> 

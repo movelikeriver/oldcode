@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="谷歌生活 - 餐饮"
+             title_url="http://shenghuo.google.cn/shenghuo/cy/"
+             height="200"
+             author="Google China Classified Search Team"
+             author_email="shenghuogadget+dailyfood@google.com"
+             author_affiliation="Google, Inc."
+             description="根据用户指定的条件随机推荐一个餐馆"
+             screenshot="/ig/modules/shenghuo/dailyfood.png"
+             thumbnail="/ig/modules/shenghuo/shenghuo.gif">
+<Require feature="setprefs"/>
+<Require feature="dynamic-height"/>
+<Require feature="analytics"/>
+</ModulePrefs>
+<Content type="html">
+<![CDATA[
+<style>
+  body,td,div,span,p {font-size: 12px; }
+  .headertable { padding: 0px 5px 5px 5px; }
+  .select { width: 95%; }
+  .disabled { color: gray; }
+</style>
+<script>_IG_Analytics("UA-5279764-1","/ig_food");var has_actions=false;function track(tag){try{if(!has_actions){_IG_Analytics("UA-5279764-1","/ig_food_has_actions");has_actions=true}}catch(err){}}</script>
+
+<div id="results" style="font-size:12px;display:block;"></div>
+<div id="bottom" style="font-size:12px;display:block;">
+  <table width="95%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><input type="checkbox" id="showmap" name="showmap" style="margin-left:0;" onclick="updateMap();">显示地图</input></td>
+  </tr>
+  </table>
+</div>
+<div id="foodmap" style="width:95%;height:300px;display:none"></div>
+<div id="disclaimer" align="center"></div>
+
+<script src="http://ditu.google.cn/maps?file=api&amp;v=2"></script>
+</script>
+
+<script>var MAXCOUNT=800;var prefs=new _IG_Prefs;var resulturl=prefs.getString("result_url");var restid=resulturl?resulturl.substring(resulturl.lastIndexOf("/")+1):false;var rand=0;var candidates=[];var candidateId=0;var currentQuery="";
+var queryCondition="";var total=MAXCOUNT;var results=_gel("results");var map=null;var marker=null;var restaurantSearchForCount;var restaurantSearch;window.onunload=unload;function init(){loadMap(39.917,116.397,12);restaurantSearch=new google.lifestyle.RestaurantSearch;restaurantSearch.setSearchCompleteCallback(null,getResults);restaurantSearch.setResultSetSize(1);doSearch()}_IG_RegisterOnloadHandler(init);
+function unload(){if(_gel("prev")){_gel("prev").onclick=null}if(_gel("next")){_gel("next").onclick=null}results.innerHTML="";results=null;GUnload()}function showNoResult(){results.innerHTML='<font color="black">\u6ca1\u6709\u6ee1\u8db3\u6761\u4ef6\u7684\u7ed3\u679c</font>';_IG_AdjustIFrameHeight()}
+function doSearch(){map.clearOverlays();_gel("disclaimer").innerHTML="";results.innerHTML='<font color="black">\u8f7d\u5165\u4e2d...</font>';var RestaurantAttributes=google.lifestyle.RestaurantSearch.Attributes;restaurantSearch.clearAllAttributes();restaurantSearch.setCity("");restaurantSearch.execute(restid,0)}function getResults(resultSet){var entries=resultSet.results;if(!entries||entries.length==0){return}var l=extractData(entries[0]);if(!l){showNoResult()}else{displayResult(l)}}
+function displayResult(l){map.clearOverlays();results.innerHTML="";var score=[l.kwscore?"\u53e3\u5473: "+l.kwscore:"",l.hjscore?"&nbsp;&nbsp;\u73af\u5883: "+l.hjscore:"",l.fwscore?"&nbsp;&nbsp;\u670d\u52a1: "+l.fwscore:"",l.price?"&nbsp;&nbsp;\u4eba\u5747: "+l.price:""];var topline=["<table width=100%><tr><td align=left>","","</td><td align=center><b>",l.title,"</b></td><td align=right>","","</td></tr></table>"];var contenttable=['<table width="100%" style="padding: 0px 0px 0px 0px;"><tr>',"<td><a ",
+'" onClick="javascript: track('+"'url'"+');"',' href="',l.link,'" target="_blank">',l.title,"</a></td></tr>","<tr><td>",score.join(""),"</td></tr>"];if(l.type){contenttable.push("<tr><td>\u83dc\u7cfb: "+l.type+"</td></tr>")}if(l.location){contenttable.push("<tr><td>\u5730\u5740: "+l.location+"</td></tr>")}if(l.tel){contenttable.push("<tr><td>\u7535\u8bdd: "+l.tel+"</td></tr>")}if(l.commend){contenttable.push("<tr><td>\u63a8\u8350\u83dc: "+l.commend+"</td></tr>")}contenttable.push("</table>");var middlearea=
+['<table><tr><td style="vertical-align:top;">'];if(l.imageurl){var imagearea=['<a href="',l.link,'" target="_blank">','<img border=0 width=120 height=120 style="border:1px solid #00c;padding:1px;" src="',l.imageurl,'"></a></td><td style="vertical-align:top;">'];middlearea.push(imagearea.join(""))}middlearea.push(contenttable.join(""));middlearea.push("</td></tr><table>");var infowindow=['<div style="width:100%">','<table width="100%" style="padding: 0px 0px 0px 0px;"><tr><td>',restid?"":topline.join(""),
+"</td></tr><tr><td>",middlearea.join(""),"</td></tr>",'<tr><td><div style="width: 100%; padding-top: 6px;">',l.content,"</td></tr><table>"];results.innerHTML=infowindow.join("");if(l.lat){marker=createMarker(new GLatLng(l.lat,l.lng),l.title);map.addOverlay(marker);map.setCenter(new GLatLng(l.lat,l.lng),12)}_IG_AdjustIFrameHeight()}
+function extractData(item){var l={};l.title=item.title.replace(/[<\/b>]/g,"");l.content=item.description;l.rank=0;if(l.content){l.rank+=2}if(item.location){l.lat=parseFloat(item.location.lat);l.lng=parseFloat(item.location.lng)}if(item.attributes["\u5730\u5740"]){l.location=item.attributes["\u5730\u5740"].values}else{l.location=""}l.link=item.url;l.authorname=item.source;if(item.attributes["\u4eba\u5747\u4ef7\u683c"]){l.price=item.attributes["\u4eba\u5747\u4ef7\u683c"].values}if(item.attributes["\u83dc\u7cfb"]){l.type=
+item.attributes["\u83dc\u7cfb"].values}if(item.attributes["\u7535\u8bdd"]){l.tel=item.attributes["\u7535\u8bdd"].values;l.rank+=2}if(item.attributes["\u6807\u7b7e"]){l.label=item.attributes["\u6807\u7b7e"].values.join(" ")}if(item.attributes["\u63a8\u8350\u83dc"]){l.commend=item.attributes["\u63a8\u8350\u83dc"].values.join(" ")}if(item.attributes["\u73af\u5883\u8bc4\u5206"]){l.hjscore=item.attributes["\u73af\u5883\u8bc4\u5206"].values;l.rank+=parseInt(l.hjscore,10)}if(item.attributes["\u670d\u52a1\u8bc4\u5206"]){l.fwscore=
+item.attributes["\u670d\u52a1\u8bc4\u5206"].values;l.rank+=parseInt(l.fwscore,10)}if(item.attributes["\u53e3\u5473\u8bc4\u5206"]){l.kwscore=item.attributes["\u53e3\u5473\u8bc4\u5206"].values;l.rank+=2*parseInt(l.kwscore,10)}l.imageurl=item.image;if(l.imageurl){l.rank+=4}return l}function loadMap(lat,lng,zoom){if(GBrowserIsCompatible()){map=new GMap2(_gel("foodmap"));map.addControl(new GSmallMapControl);map.setCenter(new GLatLng(lat,lng),zoom)}}
+function updateMap(){var show=_gel("showmap").checked;if(show){_gel("foodmap").style.display="block";map.checkResize();if(marker){map.addOverlay(marker);map.setCenter(marker.getPoint())}}else{_gel("foodmap").style.display="none"}_IG_AdjustIFrameHeight();track("map")}function createMarker(point,text){var marker=new GMarker(point);return marker}</script>
+<script src="http://shenghuo.google.cn/shenghuo/api/searchapi_mini.js"></script>
+]]>
+</Content>
+</Module>

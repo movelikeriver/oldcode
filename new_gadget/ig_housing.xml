@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="谷歌生活 - 房屋"
+             title_url="http://shenghuo.google.cn/shenghuo/fw/"
+             author="Google China Classified Search Team"
+             author_email="shenghuogadget+housefeeds@google.com"
+             author_affiliation="Google, Inc."
+             description="Google生活搜索 - 房屋 feeds"
+             screenshot="/ig/modules/shenghuo/housefeeds.png"
+             thumbnail="/ig/modules/shenghuo/shenghuo.gif"
+             height="200">
+<Require feature="setprefs"/>
+<Require feature="dynamic-height"/>
+<Require feature="analytics"/>
+</ModulePrefs>
+<UserPref name="city" display_name="城市" datatype="enum" default_value="北京">
+  <EnumValue value="北京" display_value="北京"/>
+  <EnumValue value="上海" display_value="上海"/>
+  <EnumValue value="广州" display_value="广州"/>
+  <EnumValue value="南京" display_value="南京"/>
+  <EnumValue value="厦门" display_value="厦门"/>
+  <EnumValue value="天津" display_value="天津"/>
+  <EnumValue value="杭州" display_value="杭州"/>
+  <EnumValue value="武汉" display_value="武汉"/>
+  <EnumValue value="深圳" display_value="深圳"/>
+  <EnumValue value="苏州" display_value="苏州"/>
+  <EnumValue value="" display_value="不限"/>
+</UserPref>
+<UserPref name="type" display_name="类别" datatype="enum" default_value="出租">
+  <EnumValue value="出租" display_value="出租"/>
+  <EnumValue value="出售" display_value="出售"/>
+  <EnumValue value="合租" display_value="合租"/>
+</UserPref>
+<UserPref name="room" display_name="房型" datatype="enum" default_value="">
+  <EnumValue value="" display_value="不限"/>
+  <EnumValue value="1室" display_value="1室"/>
+  <EnumValue value="2室" display_value="2室"/>
+  <EnumValue value="3室" display_value="3室"/>
+  <EnumValue value="4室" display_value="4室"/>
+</UserPref>
+<UserPref name="minprice" display_name="价格高于" datatype="string"/>
+<UserPref name="maxprice" display_name="价格低于" datatype="string"/>
+<UserPref name="keywords" display_name="关键字" datatype="string"/>
+<UserPref name="numDisplay" display_name="显示数目" datatype="enum" default_value="5">
+  <EnumValue value="3" display_value="3"/>
+  <EnumValue value="4" display_value="4"/>
+  <EnumValue value="5" display_value="5"/>
+  <EnumValue value="6" display_value="6"/>
+  <EnumValue value="7" display_value="7"/>
+  <EnumValue value="8" display_value="8"/>
+  <EnumValue value="9" display_value="9"/>
+  <EnumValue value="10" display_value="10"/>
+</UserPref>
+
+<Content type="html">
+<![CDATA[
+<style>
+  .uftl{padding:4px 0px 4px 0px;border:1px solid #fff;}
+  .uftl2{padding:5px 0px;border:none;border-top:1px dotted #006600;border-bottom:1px dotted #006600;}
+  .fpad {}
+  .fpad2{padding-top:5px;padding-bottom:2px;padding-left:3%;padding-right:2%;width:95%;overflow:auto;}
+  a.fmaxbox,a.fminbox{float:left;margin-right:4px;margin-top:2px;width:12px;height:12px;display:block;overflow:hidden;}
+  a.fmaxbox, a.fminbox {margin-right:5px;}
+  a.fmaxbox {background-image:url('http://img0.gmodules.com/ig/images/skins/teahouse/common/max_dark_blue.gif');}
+  a.fminbox {background-image:url('http://img0.gmodules.com/ig/images/skins/teahouse/common/min_dark_blue.gif');}
+  a.fmaxbox:hover {background-image:url('http://img0.gmodules.com/ig/images/skins/teahouse/common/max_dark_blue_highlight.gif');}
+  a.fminbox:hover {background-image:url('http://img0.gmodules.com/ig/images/skins/teahouse/common/min_dark_blue_highlight.gif');}
+  body,td,div,span,p {font-size: 12px; }
+  .headertable { padding: 0px 5px 5px 5px; }
+  .select { width: 95%; }
+  .disabled { color: gray; }
+</style>
+<script>_IG_Analytics("UA-5279764-1","/ig_housing");var has_actions=false;function track(tag){try{if(!has_actions){_IG_Analytics("UA-5279764-1","/ig_housing_has_actions");has_actions=true}}catch(err){}}</script>
+<div id="top" style="width:95%;font-size:12px;display:block;">
+  <table border="0" cellspacing="0" cellpadding="0" style="padding: 0px 0px 0px 0px;">
+  <tr>
+    <td id="condition"></td>
+  </tr>
+  </table>
+</div>
+<div id="results" style="font-size:12px;display:block;"></div>
+<div id="bottom" style="font-size:12px;display:block;">
+  <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><input type="checkbox" id="showmap" name="showmap" style="margin-left:0;" onclick="updateMap();">显示地图</input></td>
+  </tr>
+  </table>
+</div>
+<div id="housemap" style="width:95%;height:300px;display:none"></div>
+<div id="disclaimer" align="center"></div>
+
+<script src="http://ditu.google.cn/maps?file=api&amp;v=2"></script>
+</script>
+
+<script>var blueMarkerImg="http://www.google.com/mapfiles/ms/micons/blue-dot.png";var redMarkerImg="http://www.google.com/mapfiles/ms/micons/red-dot.png";var results=_gel("results");var prefs=new _IG_Prefs;var map=null;var housingSearch=null;
+var markers=[];var contents=[];var listeners=[];var tmpMarker=null;var lastActive=-1;var bounds=null;window.onunload=unload;function init(){loadMap(39.917,116.397,12);var resultsNum=parseInt(prefs.getString("numDisplay"),10);housingSearch=new google.lifestyle.HousingSearch;housingSearch.setSearchCompleteCallback(null,prepareResponse);housingSearch.setResultSetSize(resultsNum);showResults();_IG_Analytics("UA-3173920-1","/housefeeds")}_IG_RegisterOnloadHandler(init);
+function unload(){clearListeners();results.innerHTML="";results=null;GUnload()}function clearListeners(){for(var i=0;i<listeners.length;i+=1){GEvent.removeListener(listeners[i])}listeners=[]}
+function showResults(){clearListeners();markers=[];contents=[];tmpMarker=null;lastActive=-1;map.clearOverlays();_gel("disclaimer").innerHTML="";results.innerHTML='<font color="black">\u8f7d\u5165\u4e2d...</font>';var city=prefs.getString("city");var type=prefs.getString("type");var room=prefs.getString("room");var site=prefs.getString("site");var minprice=decodePrice(prefs.getString("minprice"));var maxprice=decodePrice(prefs.getString("maxprice"));var keywords=prefs.getString("keywords");keywords=
+keywords.replace(/[+":#]/g,"");prefs.set("keywords",keywords);if(minprice!=null&&maxprice!=null&&maxprice<minprice){maxprice=null;prefs.set("maxprice","")}var conditionArray=[city,room?room+"\u5c45\u5ba4":"","\u623f\u5c4b",type];if(minprice&&maxprice){conditionArray.push(""+minprice+"\u5230"+maxprice+"\u5143")}else if(minprice){conditionArray.push("\u9ad8\u4e8e"+minprice+"\u5143")}else if(maxprice){conditionArray.push("\u4f4e\u4e8e"+maxprice+"\u5143")}if(keywords){conditionArray.push(', \u5173\u952e\u5b57: "'+
+keywords+'"')}var queryCondition=conditionArray.join("");_gel("condition").innerHTML=_hesc(queryCondition);housingSearch.clearAllAttributes();var HousingAttributes=google.lifestyle.HousingSearch.Attributes;if(city){housingSearch.setCity(city)}if(type){housingSearch.setAttribute(HousingAttributes.CATEGORY,type)}if(room){housingSearch.setAttribute(HousingAttributes.TYPE,room)}if(minprice||maxprice){var pricerange={};if(minprice){pricerange.from=minprice}if(maxprice){pricerange.to=maxprice}housingSearch.setAttribute(HousingAttributes.PRICE,
+pricerange)}housingSearch.setSorting("r");housingSearch.execute(keywords+" "+site,0)}function showNoResult(){results.innerHTML='<font color="black">\u6ca1\u6709\u6ee1\u8db3\u6761\u4ef6\u7684\u7ed3\u679c</font>';_IG_AdjustIFrameHeight()}function decodePrice(price){if(!price){return null}price=price.replace(/[, \t]/g,"");var fprice=parseFloat(price);if(fprice==null||isNaN(fprice)||fprice<=0){return null}if(price.search(/\u4e07/)!=-1){return fprice*10000}else{return fprice}}
+function prepareResponse(resultSet){var entries=resultSet.results;if(!entries||entries.length==0){showNoResult();return}if(resultSet.disclaimer){_gel("disclaimer").innerHTML=resultSet.disclaimer}displayResults(entries)}
+function toggle(i){if(_gel("_ftl_"+i).className=="uftl"){_gel("_ftl_"+i).className="uftl2"}else{_gel("_ftl_"+i).className="uftl"}if(_gel("_ft_"+i).className=="fmaxbox"){_gel("_ft_"+i).className="fminbox"}else{_gel("_ft_"+i).className="fmaxbox"}if(_gel("_fb_"+i).className=="fpad"){_gel("_fb_"+i).className="fpad2";_gel("_fb_"+i).style.display="block"}else{_gel("_fb_"+i).className="fpad";_gel("_fb_"+i).style.display="none"}_IG_AdjustIFrameHeight();track("toggle")}
+function changeColor(i,flg){if(flg){_gel("_ftl_"+i).style.background="#D0D8FF";_gel("_fb_"+i).style.background="#D0D8FF"}else{_gel("_ftl_"+i).style.background="#FFFFFF";_gel("_fb_"+i).style.background="#FFFFFF"}}function activeMarker(i){if(markers[i]){tmpMarker=addMarker(markers[i].getPoint(),blueMarkerImg);map.addOverlay(tmpMarker);map.panTo(markers[i].getPoint())}}function disMarker(i){if(markers[i]){if(tmpMarker!=null){map.removeOverlay(tmpMarker);tmpMarker=null}}}
+function clickMarker(){toggle(this.id);if(lastActive!=-1){changeColor(lastActive,false)}lastActive=this.id;changeColor(this.id,true)}
+function displayResults(entries){results.innerHTML="";bounds=new GLatLngBounds;for(var i=0;i<entries.length;++i){var l=extractData(entries[i]);if(!l)continue;var cur=document.createElement("div");var title=document.createElement("div");var snippet=document.createElement("div");var summary=[];if(l.price){summary.push(l.price)}if(l.type){summary.push(l.type)}if(l.area){summary.push(l.area+" \u5e73\u7c73")}var summaryLine=summary.join(",");if(l.lat){var point=new GLatLng(l.lat,l.lng);markers[i]=addMarker(point,
+redMarkerImg);markers[i].id=i;contents[i]=l.title;listeners.push(GEvent.addListener(markers[i],"click",clickMarker));map.addOverlay(markers[i]);bounds.extend(point)}else{markers[i]=null}results.appendChild(cur);cur.appendChild(title);cur.className="uftl";cur.id="_ftl_"+i;var titleArray=['<a href="javascript:void(0)" class="fmaxbox" id="_ft_',i,'" onclick="toggle(',i,');" onmouseover="activeMarker(',i,');" onmouseout="disMarker(',i,');"></a>','<a href="',l.link,'" onClick="javascript: track(',"'url'",
+');"',' target="_blank" onmouseover="activeMarker(',i,');" onmouseout="disMarker(',i,');">',l.title,"</a>",'<span style="color: gray;font-size:smaller;">&nbsp;&nbsp;(',l.time,")</span>"];title.innerHTML=titleArray.join("");var snippetArray=['<div class="fpad" id="_fb_',i,'" style="display:none"','onmouseover="activeMarker(',i,');" onmouseout="disMarker(',i,');">',summaryLine,"<br>",l.content,"</div>"];snippet.innerHTML=snippetArray.join("");cur.appendChild(snippet)}if(!bounds.isEmpty()&&_gel("showmap").checked){var z=
+map.getBoundsZoomLevel(bounds);map.setZoom(z);map.panTo(bounds.getCenter())}}
+function extractData(item){var l={};l.title=item.title.replace(/[<\/b>]/g,"");if(l.title.length>=20){l.title=l.title.substring(0,18)+"..."}l.content=item.description;if(item.location){l.lat=parseFloat(item.location.lat);l.lng=parseFloat(item.location.lng)}if(item.attributes["\u5730\u5740"]){l.location=item.attributes["\u5730\u5740"].values}else{l.location=""}if(item.attributes["\u4ef7\u683c"]){l.price=item.attributes["\u4ef7\u683c"].values}l.link=item.url;if(item.attributes["\u9762\u79ef"]){l.area=
+item.attributes["\u9762\u79ef"].values}if(item.attributes["\u7c7b\u522b"]){l.type=item.attributes["\u7c7b\u522b"].values}l.authorname=item.source;if(item.attributes["\u65e5\u671f"]){l.time=item.attributes["\u65e5\u671f"].values}return l}function loadMap(lat,lng,zoom){if(GBrowserIsCompatible()){map=new GMap2(_gel("housemap"));map.addControl(new GSmallMapControl);map.setCenter(new GLatLng(lat,lng),zoom)}}
+function updateMap(){var show=_gel("showmap").checked;if(show){_gel("housemap").style.display="block";map.checkResize();if(bounds!=null&&!bounds.isEmpty()){var z=map.getBoundsZoomLevel(bounds);map.setZoom(z);map.panTo(bounds.getCenter())}}else{_gel("housemap").style.display="none"}_IG_AdjustIFrameHeight();track("map")}function addMarker(point,markerimg){var icon=new GIcon(G_DEFAULT_ICON,markerimg);icon.iconSize=new GSize(32,32);var marker=new GMarker(point,{icon:icon});return marker}</script>
+<script src="http://shenghuo.google.cn/shenghuo/api/searchapi_mini.js"></script>
+]]>
+</Content>
+</Module>

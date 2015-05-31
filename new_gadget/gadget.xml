@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+  <ModulePrefs title="hello world example"/>
+  <Content type="html">
+     <![CDATA[
+<script src="http://www.corp.google.com/~zhenh/rpc/rpc_gadget.js"></script>
+<script src="http://www.corp.google.com/~zhenh/rpc/dynamic-height.js"></script>
+<script>
+var h = 100;
+function onbtnclick() {
+  gadgets.window.adjustHeight(h);
+  h = h + 100;
+}
+</script>
+
+            <div>
+              Hello, world!
+              <input type="button" value="click me" onclick="onbtnclick()"></input>
+            </div>
+<script>
+  gadgets.rpc.setRelayUrl('..','http://www.corp.google.com/aaa');
+  gadgets.rpc.setAuthToken('..');
+</script>
+     ]]>
+  </Content>
+</Module>

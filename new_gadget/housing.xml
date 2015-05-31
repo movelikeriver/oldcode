@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?> 
+ <Module>
+  <ModulePrefs title="生活搜索" />
+ <Content type="html">
+ <![CDATA[
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5279764-1");
+pageTracker._trackPageview();
+</script>
+<script type="text/javascript" src="http://shenghuo.google.cn/shenghuo/api/searchapi.js"></script>
+<script type="text/javascript">
+function simpleBindEvent(element, event, listener) {
+  var onevent = 'on' + event;
+  if (element.addEventListener) {
+    element.addEventListener(event, listener, false);
+  } else if (element.attachEvent) {
+    element.attachEvent(onevent, listener);
+  } else {
+    var old = element[onevent];
+    element[onevent] = function() {
+      var rv1 = old.apply(this, arguments);
+      var rv2 = listener.apply(this, arguments);
+      return rv1 == undefined ? rv2 :
+             (rv2 == undefined ? rv1 : rv2 && rv1);
+    }
+  }
+}
+function createEventHandler(index, size) {
+  return function() {
+    var obj = document.getElementById('titles').firstChild;
+    var open = 0;
+    for (var i = 0; i < size; ++i) {
+      var img = obj.firstChild;
+      var desc = img.nextSibling.nextSibling;
+      if (img.src == 'http://www.google.cn/images/plusl.png') {
+        if (i == index) {
+          img.src = 'http://www.google.cn/images/minusl.png';
+          desc.style.display = '';
+          open = 1;
+        }
+      } else {
+        img.src = 'http://www.google.cn/images/plusl.png';
+        desc.style.display = 'none';
+      }
+      obj = obj.nextSibling;
+    }
+    if (!open) {
+      desc.style.display = '';
+      desc.style.visibility = 'hidden';
+    } else if (index == size - 1) {
+      desc.style.display = '';
+      desc.style.visibility = 'visible';
+    } else {
+      desc.style.display = 'none';
+    }
+  }
+}
+function createLoggingHandler(url) {
+  return function(e) {
+    pageTracker._trackPageview('/housing/' + url);
+  };
+}
+function onSearchComplete(resultSet) {
+  var results = resultSet.results;
+  var divTitles = document.getElementById('titles');
+  if (results.length == 0) {
+    divTitles.innerHTML = '未找到任何结果';
+    return;
+  }
+  var html = [];
+  for (var i = 0; i < results.length; ++i) {
+    html.push('<div style="padding-top:4px;padding-bottom:4px;background-color:#ffffff;white-space:nowrap;overflow-x:hidden">');
+    html.push('<img style="cursor:hand;cursor:pointer" src="http://www.google.cn/images/plusl.png">');
+    html.push('<span style="margin-left:4px">');
+    html.push('<a style="text-overflow:ellipsis" href="');
+    html.push(results[i].url);
+    html.push('" target="about:blank">');
+    var title = results[i].title;
+    var area = results[i].attributes['面积'];
+    var price = results[i].attributes['价格'];
+    if (area || price) {
+      title += ' (';
+      if (area) title += area.values.join(' ') + '平米';
+      if (price) {
+        if (area) title += ' ';
+        title += price.values.join(' ');
+      }
+      title += ')';
+    }
+    html.push(title);
+    html.push('</a>\u00a0\u00a0</span>');
+    html.push('<div style="');
+    if (i == results.length - 1) {
+      html.push('visibility:hidden');
+    } else {
+      html.push('display:none');
+    }
+    html.push(';overflow:hidden;white-space: normal;width:90%;height:48px;text-indent:2em;padding-left:17px">');
+    if (results[i].description) {
+      html.push(results[i].description);
+    } else {
+      html.push('没有可用的详细信息');
+    }
+    html.push('</div></div>');
+  }
+  divTitles.innerHTML = html.join('');
+  var anchors = divTitles.getElementsByTagName('a');
+  var imgs = divTitles.getElementsByTagName('img');
+  for (var i = 0; i < results.length; ++i) {
+    simpleBindEvent(anchors[i], 'click', createLoggingHandler(results[i].url));
+    simpleBindEvent(imgs[i], 'click', createEventHandler(i, results.length));
+  }
+  if (resultSet.totalPageNum > 1) {
+    var divPages = document.getElementById('pages');
+    html = [];
+    html.push('<span style="margin-right:15px');
+    if (resultSet.page <= 0) {
+      html.push(';visibility:hidden');
+    }
+    html.push('"><a href="javascript:housingSearch.gotoPage(');
+    html.push(resultSet.page - 1);
+    html.push(')">上一页</a></span>');
+    for (var i = 0; i < resultSet.totalPageNum; ++i) {
+      html.push('<span');
+      if (i > 0) {
+        html.push(' style="margin-left:15px"');
+      }
+      html.push('>');
+      if (i != resultSet.page) {
+        html.push('<a href="javascript:housingSearch.gotoPage(');
+        html.push(i);
+        html.push(')">');
+      }
+      html.push(i + 1);
+      if (i != resultSet.page) {
+        html.push('</a>');
+      }
+      html.push('</span>');
+    }
+    html.push('<span style="margin-left:15px');
+    if (resultSet.page + 1 >= resultSet.totalPageNum) {
+      html.push(';visibility:hidden');
+    }
+    html.push('"><a href="javascript:housingSearch.gotoPage(');
+    html.push(resultSet.page + 1);
+    html.push(')">下一页</a>');
+    divPages.innerHTML = html.join('');
+  }
+}
+function onLoad() {
+  housingSearch = new google.lifestyle.HousingSearch();
+  housingSearch.setSearchCompleteCallback(null, onSearchComplete);
+  housingSearch.setResultSetSize(3);
+  var prefs = new _IG_Prefs(__MODULE_ID__);
+  var query = prefs.getString('query');
+  var site = prefs.getString('site');
+  var city = prefs.getString('city');
+  var divTitles = document.getElementById('titles');
+  if (query || site) {
+    if (!query) {
+      query = site;
+    } else if (site) {
+      query += ' ' + site;
+    }
+    divTitles.innerHTML = '搜索中……';
+    if (city) {
+      housingSearch.setCity(city);
+    }
+    housingSearch.execute(query);
+  } else {
+    divTitles.innerHTML = '未找到任何结果';
+  }
+}
+</script>
+<div style="font-size:smaller;margin-top:2px;width:100%">
+  <div id="titles"></div>
+  <div id="pages" style="margin:5px auto 0 auto;padding:0 auto"></div>
+</div>
+<script type="text/javascript">
+_IG_RegisterOnloadHandler(onLoad);
+</script>
+  ]]>
+  </Content>
+  </Module>

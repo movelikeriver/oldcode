@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="__MSG_title__"
+               title_url="http://news.google.cn"
+               height="0"
+               scrolling="true"
+               render_inline="optional"
+               screenshot="__MSG_screenshot__"
+               thumbnail="__MSG_thumbnail__"
+               category="tools"
+               category2="lifestyle"
+               author="Xin Zhou (zhounew)"
+               author_email="zhounew.feedback+querynews@gmail.com"
+               author_affiliation="Google Inc."
+               author_location="Beijing, China"
+               description="__MSG_description__">
+  <Require feature="settitle" />
+  <Locale messages="/ig/modules/gugenews/querynews/ALL_ALL.xml"/>
+  <Locale messages="/ig/modules/gugenews/querynews/zh-CN_ALL.xml"/>
+  <Require feature="dynamic-height"/>
+  <Require feature="analytics"/>  
+</ModulePrefs>
+
+<UserPref name="query" display_name="__MSG_query__" default_value=""/>
+<UserPref name="maximum_count" display_name="__MSG_maximum_count__"
+          datatype="enum" default_value="3">
+  <EnumValue value="1" display_value="1" />
+  <EnumValue value="2" display_value="2" />
+  <EnumValue value="3" display_value="3" />
+  <EnumValue value="4" display_value="4" />
+  <EnumValue value="5" display_value="5" />
+  <EnumValue value="6" display_value="6" />
+  <EnumValue value="7" display_value="7" />
+  <EnumValue value="8" display_value="8" />
+  <EnumValue value="9" display_value="9" />
+  <EnumValue value="10" display_value="10" />
+</UserPref>
+<Content type="html">
+<![CDATA[
+<style>
+.modboxin__MODULE_ID__ a:link {
+  margin-left:15px;
+  font-size:14px;
+}
+.description__MODULE_ID__ {
+  margin-left:15px;
+  font-color:#6F6F6F;
+  font-size:12px;
+  margin-bottom:10px;margin-top:2px
+}
+a.fmaxbox, a.fminbox,a.fmaxbox:hover, a.fminbox:hover {
+  background-image:url(/ig/images/sprite_arrow_enlarge_max_min_shrink_x_blue.gif);
+  display:block;
+  float:left;
+  height:12px;
+  margin-right:4px;
+  margin-top:2px;
+  overflow:hidden;
+  width:12px;
+}
+a.fmaxbox {background-position:0 -24px;}
+a.fmaxbox:hover {background-position:0px -36px;}
+a.fminbox {background-position:-12px -24px;}
+a.fminbox:hover {background-position:-12px -36px;}
+</style>
+<script>_IG_Analytics("UA-5279764-1","/ig_news");var has_actions=false;function track(a){try{if(!has_actions){_IG_Analytics("UA-5279764-1","/ig_news_has_actions");has_actions=true}}catch(b){}}</script>
+<div id="content_div__MODULE_ID__" class="modboxin__MODULE_ID__"></div>
+<script>var prefs__MODULE_ID__=new _IG_Prefs(__MODULE_ID__),maximum_count__MODULE_ID__=parseInt(prefs__MODULE_ID__.getString("maximum_count"),10);
+function init__MODULE_ID__(){var a=prefs__MODULE_ID__.getString("query");if(a)makeDOMRequest__MODULE_ID__(a);else _gel("m___MODULE_ID___welcome_news_div").style.display=""}
+function makeDOMRequest__MODULE_ID__(a){_gel("m___MODULE_ID___welcome_news_div").style.display="none";var b="http://news.google.cn/news?hl=zh-CN&ned=ccn&ie=UTF-8&output=rss&nsrc=ig&q="+_esc(a)+"&num="+prefs__MODULE_ID__.getString("maximum_count");if(a.length>15)a=a.substr(0,15)+" ...";_IG_SetTitle(a,__MODULE_ID__);_IG_FetchXmlContent(b,renderer__MODULE_ID__,{refreshInterval:1800})}
+function renderer__MODULE_ID__(a){var b="<i>__MSG_info_unavailable__</i>";if(!a||typeof a!="object"||!a.firstChild)_gel("content_div__MODULE_ID__").innerHTML=b;else{var c=a.getElementsByTagName("item"),h=maximum_count__MODULE_ID__>c.length?c.length:maximum_count__MODULE_ID__;if(h)b="";for(var e=0;e<h;e++){var f=c[e].childNodes[0].childNodes[0].nodeValue,j=f.lastIndexOf("-"),m=f.substr(j+2);f=f.substr(0,j-1);var k=c[e].childNodes[1].childNodes[0].nodeValue,g=c[e].childNodes[4].childNodes[0].nodeValue;
+g=g.match(/<\/font><br><font size=-1>.*<\/font><\/div><\/font><\/td><\/tr><\/table>/)+"";var l=/<.+?>/g;g=g.replace(l,"");b+='<div style="margin-top:5px"><a href="'+k+'" onClick="javascript: track(\'url\');" target=_blank>'+f+'</a></div><div id="ft_'+e+'___MODULE_ID__" class="description__MODULE_ID__">'+g+"</div>"}var d=a.getElementsByTagName("description"),i="";if(d.length>=1&&d[d.length-1].firstChild&&d[d.length-1].firstChild.nodeValue)i=_trim(d[d.length-1].firstChild.nodeValue);if(i)b+='<div style="margin-top:5px"><i><font color=#6f6f6f>'+
+i+"</font></i></div>";_gel("content_div__MODULE_ID__").innerHTML=b;_IG_AdjustIFrameHeight()}}function toggle__MODULE_ID__(a){var b=_gel("mbox_"+a+"___MODULE_ID__"),c=_gel("ft_"+a+"___MODULE_ID__"),h=b.className;if(h=="fmaxbox"){b.className="fminbox";c.style.display="block"}else{b.className="fmaxbox";c.style.display="none"}_IG_AdjustIFrameHeight();track("toggle")}
+function handle_submit__MODULE_ID__(){var a=_gel("m___MODULE_ID___welcome_news_form"),b=a.m___MODULE_ID___q.value;document.forms.m___MODULE_ID___form.m___MODULE_ID___up_query.value=b;prefs__MODULE_ID__.set("query",b);b&&makeDOMRequest__MODULE_ID__(b)}</script>
+<div id="m___MODULE_ID___welcome_news_div" style="display:none">
+<table>
+  <tr>
+    <td width="72" rowspan=3 valign="top" style="padding-top:3px;padding-right:3px" align="left">
+      <img src="/ig/images/news_welcome_image.png">
+    </td>
+    <td colspan=3>
+      __MSG_welcome_news__<br><br>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <nobr>__MSG_news_enter_topic__ </nobr>
+    </td>
+    <td width=100%>
+      <form id=m___MODULE_ID___welcome_news_form onsubmit="handle_submit__MODULE_ID__();return false">
+      <input style="width:98%" type=text maxlength=100 value="" name=m___MODULE_ID___q>
+    </td>
+    <td>
+      <input type=submit value="__MSG_welcome_news_ok__">
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan=2 style="color:gray">
+      __MSG_welcome_new_examples__
+    </td>
+  </tr>
+</table>
+</div>
+<script>init__MODULE_ID__();</script>
+]]>
+</Content>
+</Module>

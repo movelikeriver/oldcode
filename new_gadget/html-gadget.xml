@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+<ModulePrefs>
+  <Require feature="dynamic-height"/>
+</ModulePrefs>
+<Content type="html">
+<![CDATA[
+Hello
+<div id="content" style="display: none; height: auto"></div>
+<iframe id="result" frameborder="0" scrolling="no" style="border: 0pt none ; margin: 0pt; padding: 0pt; overflow: hidden; width: 100%; height: 100%;">
+</iframe>
+<div id="mock" style="display: none; height: auto"></div>
+
+<script>
+
+var prefs = new _IG_Prefs();
+var url = prefs.getString('source_url');
+var id = prefs.getString('element_id');
+var tag = prefs.getString('tag_name');
+var index = prefs.getString('tag_index');
+if (id == '' && tag == '') {
+	var iframe = _gel("result");
+	iframe.src=url;
+	iframe.style["display"]="block";
+}else {
+	_IG_FetchContent(url, function (responseText) {
+		var obj = _gel("mock");
+		obj.innerHTML = responseText;
+		if (id) {
+			obj = document.getElementById(id);
+		}
+		if (tag) {
+			obj = obj.getElementsByTagName(tag)[index];
+		}
+		_gel("content").appendChild(obj);
+		_gel("content").style["display"]="block";
+	});
+}
+
+
+//var iframe = _gel("result");
+//alert(iframe);
+//iframe.src=url;
+//_IG_FetchContent(url, function (responseText) {
+//	_gel("content").innerHTML = responseText;
+//	var form = _gel("mock").getElementsByTagName("form")[0];
+//	form.target = "result";
+//	_gel("content").appendChild(form);
+//});
+</script>
+]]>
+</Content>
+</Module>

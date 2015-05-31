@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+<ModulePrefs title="RSS" title_url="http://www.google.com/" width="380" height="100">
+  <Require feature="dynamic-height"/>
+  <Require feature="analytics"/>  
+</ModulePrefs>
+<UserPref name="rssurl" display_name="RSS URL" default_value=""/>
+<UserPref name="displaytitle" display_name="Display Title" default_value=""/>
+<Content type="html">
+<![CDATA[
+<style>.modboxin__MODULE_ID__ a{margin-left:15px;font-size:14px}.description__MODULE_ID__{margin-left:15px;font-color:#6F6F6F;font-size:12px}</style>
+<script>_IG_Analytics("UA-5279764-1","/blog_en");var has_actions=false;function track(a){try{if(!has_actions){_IG_Analytics("UA-5279764-1","/blog_en_has_actions");has_actions=true}}catch(c){}}</script>
+<script>var prefs=new _IG_Prefs(__MODULE_ID__),lang=prefs.getString("lang"),rssurl=prefs.getString("feed_url");function smartcut(a,c){if(a.length<c)return a;for(var b=c-1;a.charAt(b)!=" "&&b!=0;)b--;if(b==0)return a.substr(0,c)+" ...";return a.substr(0,b)+" ..."}
+function GetTimeStamp(a){var c="";return c=lang=="zh-CN"?""+a.getFullYear()+"\u5e74"+(a.getMonth()+1)+"\u6708"+a.getDate()+"\u65e5":a.toDateString()}</script>
+<div class=modboxin__MODULE_ID__ id=content_div__MODULE_ID__></div>
+<script>var entries=3;
+rssurl!=""&&_IG_FetchFeedAsJSON(rssurl,function(a){if(!(a==null)){if(a.Entry){for(var c="",b=0;b<a.Entry.length;b++){var d=new Date;d.setTime(parseInt(a.Entry[b].Date,10)*1000);c+="<a target='_blank' href='"+a.Entry[b].Link+"' onClick=\"javascript: track('url');\">"+smartcut(a.Entry[b].Title,60)+'</a> <nobr><span style="color:#6F6F6F;margin-left:15px;font-size:12px">'+GetTimeStamp(d)+"</span></nobr><br/>";var e=/<.+?>|&nbsp;/g,f=a.Entry[b].Summary.replace(e,"");c+='<div class="description__MODULE_ID__">'+
+smartcut(f,210)+"</div>"}_gel("content_div__MODULE_ID__").innerHTML=c}else _gel("content_div__MODULE_ID__").innerHTML="<i>Infomation is temporarily unavailable.</i>";_IG_AdjustIFrameHeight()}},entries,true);</script>
+]]>
+</Content>
+ </Module> 

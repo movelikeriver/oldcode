@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="Amazon Product" width="480" height="320">
+   <Require feature="setprefs"/>
+</ModulePrefs>
+<UserPref name="cols" default_value="3"/>
+<UserPref name="width" datatype="hidden" default_value="480"/>
+<UserPref name="rows" default_value="2"/>
+<UserPref name="marketPlace" datatype="hidden" default_value="US"/>
+<UserPref name="theme_version" datatype="hidden" default_value="0"/>
+<UserPref name="text_color" datatype="hidden" default_value="#cacd34"/>
+<UserPref name="category" datatype="hidden" default_value=""/>
+<UserPref name="show_image" datatype="hidden" default_value="1"/>
+<UserPref name="price_color" datatype="hidden" default_value="#cdcdcd"/>
+<UserPref name="templateId" datatype="hidden" default_value="8002"/>
+<UserPref name="show_review" datatype="hidden" default_value="1"/>
+<UserPref name="show_price" datatype="hidden" default_value="1"/>
+<UserPref name="tag" datatype="hidden" default_value="widgetsamazon-20"/>
+<UserPref name="displayTemplate" datatype="hidden" default_value="5"/>
+<UserPref name="head_text_color" datatype="hidden" default_value="#cacd34"/>
+<UserPref name="search_term" default_value=""/>
+<UserPref name="serviceVersion" datatype="hidden" default_value="20070822"/>
+
+<Content type="html"><![CDATA[
+<SCRIPT charset="utf-8" type="text/javascript">
+var prefs = new _IG_Prefs(__MODULE_ID__);
+var amzn_wdgt={
+  "cols": prefs.getInt("cols"),
+  "width": prefs.getInt("width"),
+  "rows": prefs.getInt("rows"),
+  "marketPlace": prefs.getString("marketPlace"),
+  "theme_version": prefs.getString("theme_version"),
+  "text_color": prefs.getString("text_color"),
+  "category": prefs.getString("category"),
+  "show_image": prefs.getBool("show_image"),
+  "price_color": prefs.getString("price_color"),
+  "templateId": prefs.getString("templateId"),
+  "show_review": prefs.getBool("show_review"),
+  "show_price": prefs.getBool("show_price"),
+  "tag": prefs.getString("tag"),
+  "displayTemplate": prefs.getString("displayTemplate"),
+  "head_text_color": prefs.getString("head_text_color"),
+  "use_default_search_term": false,
+  "default_search_term": prefs.getString("search_term"),
+  "serviceVersion": prefs.getString("serviceVersion")}
+
+if (amzn_wdgt.default_search_term != "") {
+  amzn_wdgt.use_default_search_term = true;
+}
+amzn_wdgt.ID = "V20070822/US/widgetsamazon-20/8002/99423c8a-4da0-4f8e-8c2d-f21dacd6a03d";
+</SCRIPT>
+<script charset="utf-8" type="text/javascript" src="http://wms.assoc-amazon.com/20070822/US/js/8002_5.js"> </script>
+]]></Content>
+</Module>
+

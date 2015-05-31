@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="__MSG_title__"
+               title_url="http://news.google.cn"
+               height="150"
+               scrolling="false"
+               render_inline="optional"
+               screenshot="__MSG_screenshot__"
+               thumbnail="__MSG_thumbnail__"
+               category="tools"
+               category2="lifestyle"
+               author="Xin Zhou (zhounew)"
+               author_email="zhounew.feedback+querynews@gmail.com"
+               author_affiliation="Google Inc."
+               author_location="Beijing, China"
+               description="__MSG_description__">
+  <Require feature="settitle" />
+  <Locale messages="/ig/modules/gugenews/querynews/ALL_ALL.xml"/>
+  <Locale messages="/ig/modules/gugenews/querynews/zh-CN_ALL.xml"/>
+</ModulePrefs>
+
+<UserPref name="query" display_name="__MSG_query__" default_value=""/>
+<UserPref name="maximum_count" display_name="__MSG_maximum_count__"
+          datatype="enum" default_value="3">
+  <EnumValue value="1" display_value="1" />
+  <EnumValue value="2" display_value="2" />
+  <EnumValue value="3" display_value="3" />
+  <EnumValue value="4" display_value="4" />
+  <EnumValue value="5" display_value="5" />
+  <EnumValue value="6" display_value="6" />
+  <EnumValue value="7" display_value="7" />
+  <EnumValue value="8" display_value="8" />
+  <EnumValue value="9" display_value="9" />
+  <EnumValue value="10" display_value="10" />
+</UserPref>
+<Content type="html">
+<![CDATA[
+<style>
+.modboxin__MODULE_ID__ a:link {
+  font-size:14px;
+}
+.description__MODULE_ID__ {
+  display:none;
+  margin-left:15px;
+  font-color:#6F6F6F;
+  font-size:12px;
+  border-bottom:1px dotted #6F6F6F;
+  margin-bottom:10px;margin-top:2px
+}
+/* feed max/min icons */
+a.fmaxbox, a.fminbox {
+  display:block;
+  float:left;
+  height:12px;
+  margin-right:4px;
+  margin-top:2px;
+  overflow:hidden;
+  width:12px;
+}
+#gbar{height:22px;padding-left:10px}.gbh,.gbd{border-top:1px solid #c9d7f1;font-size:1px}.gbh{height:0;position:absolute;top:24px;width:100%}#gbi,#gbs{background:#fff;left:0;position:absolute;top:24px;visibility:hidden;z-index:1000}#gbi{border:1px solid;border-color:#c9d7f1 #36c #36c #a2bae7;z-index:1001}#guser{padding-bottom:7px !important}#gbar,#guser{font-size:13px;padding-top:4px !important}@media all{.gb1,.gb3{height:22px;margin-right:.73em;vertical-align:top}#gbar{float:left}}.gb2{display:block;padding:.2em .5em}a.gb1,a.gb2,a.gb3{color:#00c !important}.gb2,.gb3{text-decoration:none}a.gb2:hover{background:#36c;color:#fff !important}.modbox .csl, .modbox .es {display:none;}.modbox_e .el {display:none;}.dm {position:relative;width:1px;height:1px;}.panelo {}.panelc {}.mod {}.unmod {}form {display:inline;}.c {clear:both;}.fbox,.fmaxbox, .fmaxbox_reverse_directionality,.fminbox, .fminbox_reverse_directionality,a.fmaxbox:hover, a.fmaxbox_reverse_directionality:hover,a.fminbox:hover, a.fminbox_reverse_directionality:hover {background-image: url('/ig/images/sprite_arrow_enlarge_max_min_shrink_x_blue.gif');width:12px;height:12px;}.fbox {margin-top:1px;margin-right:6px;display:block;overflow:hidden;background-position:0px 0px;background-repeat: no-repeat;cursor:pointer;}.fmaxbox, .fmaxbox_reverse_directionality {background-position:0px -24px;}.fminbox, .fminbox_reverse_directionality {background-position:-12px -24px;}a.fmaxbox:hover, a.fmaxbox_reverse_directionality:hover{background-position:0px -36px;}a.fminbox:hover, a.fminbox_reverse_directionality:hover{background-position:-12px -36px;}a.ddbox, a.ddbox:hover, a.delbox, a.delbox:hover,a.minbox, a.minbox:hover, a.maxbox, a.maxbox:hover,a.enlargebox, a.enlarge:hover, a.shrinkbox, a.shrink:hover{background-image:url(/ig/images/sprite_arrow_enlarge_max_min_shrink_x_blue.gif);width:12px;height:12px;}a.ddbox {background-position:0px 0px;}a.ddbox:hover {background-position:0px -12px;}a.enlargebox {background-position:-12px 0px;}a.enlargebox:hover {background-position:-12px -12px;}a.maxbox {background-position:-24px 0px;}a.maxbox:hover {background-position:-24px -12px;}a.minbox {background-position:-36px 0px;}a.minbox:hover {background-position:-36px -12px;}a.shrinkbox {background-position:-48px 0px;}a.shrinkbox:hover {background-position:-48px -12px;}a.delbox {background-position:-60px 0px;}a.delbox:hover {background-position:-60px -12px;}.f_tbl {font-size:12px;margin-right:2px;margin-left:2px;padding-top:4px;padding-bottom:4px;}.fr_tbl {margin-right:2px;margin-left:2px;padding-top:4px;padding-bottom:4px;}.fb {font-size:12px;padding:2px;padding-top:4px;border: 1px solid #d1d3d4;border-top:none;overflow:auto;}.sftl {border: 1px solid #d1d3d4;border-bottom:none;}.sftl_reverse_directionality {border: 1px solid #d1d3d4;border-bottom:none;clear: right;text-align: right;}.uftl {border:1px solid white;border-bottom:none;}.uftl_reverse_directionality {border:1px solid white;border-bottom:none;clear: right;text-align: right;}.remote_module_textbox {padding:1px 1px 1px 4px;margin:2px 2px 2px 3px;width: 95%;}.remote_module_textbox {-moz-box-sizing:border-box;}.remote_module_select {padding:0px;width:95%;margin:2px 2px 2px 3px;}#footerwrapinner {height:140px;}#themeinfo {position:absolute;right:0px;}#aboutthistheme {display:block;margin-right:5px;margin-top:5px;}
+
+</style>
+<div id="content_div__MODULE_ID__" class="modboxin__MODULE_ID__"></div>
+<script type="text/javascript">
+function getViewportDimensions() {
+  var x,y;
+  if (self.innerHeight) {
+    // all except Explorer
+    x = self.innerWidth;
+    y = self.innerHeight;
+  } else if (document.documentElement &&
+             document.documentElement.clientHeight) {
+    // Explorer 6 Strict Mode
+    x = document.documentElement.clientWidth;
+    y = document.documentElement.clientHeight;
+  } else if (document.body) {
+    // other Explorers
+    x = document.body.clientWidth;
+    y = document.body.clientHeight;
+  } else {
+    x = 0;
+    y = 0;
+  }
+  return { width: x, height: y };
+}
+var ifpc_height = 0;
+var last_opt_height;
+function AdjustIFrameHeight(opt_height) {
+  // When the gadget resizes on the container page, the 'resize' event is
+  // triggered and initiates another call to _IG_AdjustIFrameHeight().
+  // We need to make sure opt_height gets passed in every time.
+  // Save it into a global variable so the event handler can access it.
+  last_opt_height = opt_height;
+
+  if (opt_height !== undefined) {
+    opt_height = parseInt(opt_height, 10);
+    opt_height = isNaN(opt_height) ? -1 : opt_height;
+  } else {
+    opt_height = -1;
+  }
+
+  var new_height = ifpc_height;
+  var el = document.body;
+  var el2 = document.documentElement;
+  if (opt_height >= 0) {
+    // Resize the gadget according to what the developer passed in.
+    new_height = opt_height;
+  } else if (el && el2) {
+    // Resize the gadget to fit its content.
+
+    // Calculating inner content height is HARD and different between
+    // browsers rendering in Strict vs. Quirks mode.  We use a combination of
+    // three properties within document.body and document.documentElement:
+    // - scrollHeight
+    // - offsetHeight
+    // - clientHeight
+    // These values differ significantly between browsers and rendering modes.
+    // But there are patterns.  It just takes a lot of time and persistence
+    // to figure out.
+
+    // Get the height of the viewport
+    var vh = getViewportDimensions().height;
+    if (document.compatMode == 'CSS1Compat' && el2.scrollHeight) {
+      // In Strict mode:
+      // The inner content height is contained in either:
+      //    document.documentElement.scrollHeight
+      //    document.documentElement.offsetHeight
+      // Based on studying the values output by different browsers,
+      // use the value that's NOT equal to the viewport height found above.
+      new_height = el2.scrollHeight != vh ? el2.scrollHeight : el2.offsetHeight;
+    } else {
+      // In Quirks mode:
+      // documentElement.clientHeight is equal to documentElement.offsetHeight
+      // except in IE.  In most browsers, document.documentElement can be used
+      // to calculate the inner content height.
+      // However, in other browsers (e.g. IE), document.body must be used
+      // instead.  How do we know which one to use?
+      // If document.documentElement.clientHeight does NOT equal
+      // document.documentElement.offsetHeight, then use document.body.
+      var sh = el2.scrollHeight;
+      var oh = el2.offsetHeight;
+      if (el2.clientHeight != el2.offsetHeight) {
+        sh = el.scrollHeight;
+        oh = el.offsetHeight;
+      }
+
+      // Detect whether the inner content height is bigger or smaller
+      // than the bounding box (viewport).  If bigger, take the larger
+      // value.  If smaller, take the smaller value.
+      if (sh > vh) {
+        // Content is larger
+        new_height = sh > oh ? sh : oh;
+      } else {
+        // Content is smaller
+        new_height = sh < oh ? sh : oh;
+      }
+    }
+  }
+
+  // Only make the IFPC call if height has changed
+  if (ifpc_height != new_height) {
+    _IFPC.call("remote_iframe_"+_args()["mid"],
+           "resize-iframe-height",
+           [ "remote_iframe_"+_args()["mid"], new_height ],
+           "http://0.mustang.frontend.gfe.zhenh.ht.borg.google.com/ig/ifpc_relay",
+           null,null); 
+    ifpc_height = new_height;
+  }
+}
+
+
+
+var prefs__MODULE_ID__ = new _IG_Prefs(__MODULE_ID__);
+var maximum_count__MODULE_ID__ = parseInt(prefs__MODULE_ID__.getString("maximum_count"), 10);
+
+function init__MODULE_ID__() {
+  var query = prefs__MODULE_ID__.getString("query");
+  if (!query) {
+    _gel("m___MODULE_ID___welcome_news_div").style.display = "";
+  } else {
+    makeDOMRequest__MODULE_ID__(query);
+  }
+}
+
+function makeDOMRequest__MODULE_ID__(query) {
+  _gel("m___MODULE_ID___welcome_news_div").style.display = "none";
+  var url = "http://news.google.cn/news?hl=zh-CN&ned=ccn&ie=UTF-8&output=rss&nsrc=ig&q=" +
+      _esc(query) + "&num=" + prefs__MODULE_ID__.getString("maximum_count");
+  if (query.length > 15) {
+    query = query.substr(0, 15) + " ...";
+  }
+  _IG_SetTitle(query, __MODULE_ID__);
+  _IG_FetchXmlContent(url, renderer__MODULE_ID__, {refreshInterval:1800})
+};
+
+function renderer__MODULE_ID__(response) {
+  var html = "<i>__MSG_info_unavailable__</i>";
+  if (!response || typeof(response) != 'object' ||
+      !response.firstChild) {
+    _gel('content_div__MODULE_ID__').innerHTML = html;
+    return;
+  }
+  var items = response.getElementsByTagName("item");
+  var count = maximum_count__MODULE_ID__ > items.length ? items.length : maximum_count__MODULE_ID__;
+  if (count) html = "";
+  for (var i = 0; i < count; i ++) {
+    var title = items[i].childNodes[0].childNodes[0].nodeValue;
+    var tIndex = title.indexOf('-');
+    title = title.substr(0, tIndex - 1);
+    var link = items[i].childNodes[1].childNodes[0].nodeValue;
+    var description = items[i].childNodes[4].childNodes[0].nodeValue;
+    var source = description.match(/<font size=-1><font color=#6f6f6f>.*<\/nobr><\/font><br>/);
+    description = description.match(/<\/nobr><\/font><br><font size=-1>.*<\/font><\/div><\/font><\/td><\/tr><\/table>/) + '';
+    var myReg = /<.+?>/g
+    description = description.replace(myReg, '');
+    html += '<div style="margin-top:5px"><a class="fmaxbox" id="mbox_' +
+            i + '___MODULE_ID__" onclick="toggle__MODULE_ID__(' + i +
+            ')" title="Show this story" href="javascript:void(0)"/><a href="' +
+            link + '" target=_blank>' + title +
+            '</a></div><div style="color:#6F6F6F;margin-left:15px">' +
+            source + '</div><div id="ft_' + i +
+            '___MODULE_ID__" class="description__MODULE_ID__">' + description + '</div>';
+  }
+  var disclaimers = response.getElementsByTagName("description");
+  var disclaimer = "";
+  if (disclaimers.length >= 1 &&
+      disclaimers[disclaimers.length - 1].firstChild &&
+      disclaimers[disclaimers.length - 1].firstChild.nodeValue) {
+    disclaimer =
+        _trim(disclaimers[disclaimers.length - 1].firstChild.nodeValue);
+  }
+  if (disclaimer) {
+    html += '<div style="margin-top:5px"><i><font color=#6f6f6f>' +
+            disclaimer + '</font></i></div>';
+  }
+  _gel('content_div__MODULE_ID__').innerHTML = html;
+  AdjustIFrameHeight();
+}
+
+function toggle__MODULE_ID__(index) {
+  var toggleObj = _gel('mbox_' + index + '___MODULE_ID__');
+  var despObj = _gel('ft_' + index + '___MODULE_ID__');
+  var className = toggleObj.className;
+  if (className == "fmaxbox") {
+    toggleObj.className = "fminbox";
+    despObj.style.display = "block";
+  } else {
+    toggleObj.className = "fmaxbox";
+    despObj.style.display = "none";
+  }
+  AdjustIFrameHeight();
+}
+
+function handle_submit__MODULE_ID__() {
+  var form = _gel("m___MODULE_ID___welcome_news_form");
+  var query = form["m___MODULE_ID___q"].value;
+  document.forms["m___MODULE_ID___form"].m___MODULE_ID___up_query.value = query;
+  prefs__MODULE_ID__.set("query", query);
+  if (query) {
+    makeDOMRequest__MODULE_ID__(query);
+  }
+}
+</script>
+<div id="m___MODULE_ID___welcome_news_div" style="display:none">
+<table>
+  <tr>
+    <td width="72" rowspan=3 valign="top" style="padding-top:3px;padding-right:3px" align="left">
+      <img src="/ig/images/news_welcome_image.png">
+    </td>
+    <td colspan=3>
+      __MSG_welcome_news__<br><br>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <nobr>__MSG_news_enter_topic__ </nobr>
+    </td>
+    <td width=100%>
+      <form id=m___MODULE_ID___welcome_news_form onsubmit="handle_submit__MODULE_ID__();return false">
+      <input style="width:98%" type=text maxlength=100 value="" name=m___MODULE_ID___q>
+    </td>
+    <td>
+      <input type=submit value="__MSG_welcome_news_ok__">
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan=2 style="color:gray">
+      __MSG_welcome_new_examples__
+    </td>
+  </tr>
+</table>
+</div>
+<script>init__MODULE_ID__()</script>
+]]>
+</Content>
+</Module>

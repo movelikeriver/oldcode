@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="__MSG_title__"
+               title_url="http://news.google.cn"
+               height="0"
+               scrolling="true"
+               render_inline="optional"
+               screenshot="__MSG_screenshot__"
+               thumbnail="__MSG_thumbnail__"
+               category="tools"
+               category2="lifestyle"
+               author="Xin Zhou (zhounew)"
+               author_email="zhounew.feedback+querynews@gmail.com"
+               author_affiliation="Google Inc."
+               author_location="Beijing, China"
+               description="__MSG_description__" />
+<UserPref name="query" display_name="__MSG_query__" default_value=""/>
+<Content type="html">
+<![CDATA[
+<script src="http://www.corp.google.com/~zhenh/rpc/rpc_gadget.js"></script>
+<script src="http://www.corp.google.com/~zhenh/rpc/dynamic-height.js"></script>
+<script>
+  var prefs__MODULE_ID__ = new gadgets.Prefs();
+  gadgets.rpc.setRelayUrl('..',prefs__MODULE_ID__.getString("parent")+'/aaa');
+  gadgets.rpc.setAuthToken('..');
+</script>
+
+<style>
+.modboxin__MODULE_ID__ a {
+  margin-left:15px;
+  font-size:14px;
+}
+.description__MODULE_ID__ {
+  margin-left:15px;
+  font-color:#6F6F6F;
+  font-size:12px;
+  margin-bottom:10px;margin-top:2px
+}
+</style>
+<script type="text/javascript">
+
+var has_actions = false;
+function track (tag) {
+  try {
+	if (!has_actions) {
+	  has_actions = true;
+	}
+  }catch(err){}
+}
+</script>
+<div id="content_div__MODULE_ID__" class="modboxin__MODULE_ID__"></div>
+<script type="text/javascript">
+var maximum_count__MODULE_ID__ = parseInt(prefs__MODULE_ID__.getString("maximum_count"), 10);
+
+function init__MODULE_ID__() {
+  var query = prefs__MODULE_ID__.getString("query");
+  if (!query) {
+    _gel("m___MODULE_ID___welcome_news_div").style.display = "";
+  } else {
+    makeDOMRequest__MODULE_ID__(query);
+  }
+}
+
+function makeDOMRequest__MODULE_ID__(query) {
+  _gel("m___MODULE_ID___welcome_news_div").style.display = "none";
+  var url = "http://news.google.com/news?hl=en&ned=us&ie=UTF-8&output=rss&num=3&q=" + _esc(query);
+  if (query.length > 15) {
+    query = query.substr(0, 15) + " ...";
+  }
+  var params = {};  
+  params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.FEED;
+  params[gadgets.io.RequestParameters.GET_SUMMARIES] = true;
+  gadgets.io.makeRequest(url, renderer__MODULE_ID__, params);
+};
+
+function renderer__MODULE_ID__(obj) {
+  var html = "<i>Infomation is temporarily unavailable.</i>";
+  var feed = obj.data;
+  if (!feed || !feed.Entry || !feed.Entry.length) {
+    _gel('content_div__MODULE_ID__').innerHTML = html;
+    gadgets.window.adjustHeight();
+    return;
+  }
+  html = feed.Entry[0].Summary.replace('<br \/><div style="padding-top:0.8em;"><img alt="" height="1" width="1" \/><\/div>','');
+  _gel('content_div__MODULE_ID__').innerHTML = html;
+  gadgets.window.adjustHeight();
+}
+
+function handle_submit__MODULE_ID__() {
+  var form = _gel("m___MODULE_ID___welcome_news_form");
+  var query = form["m___MODULE_ID___q"].value;
+  document.forms["m___MODULE_ID___form"].m___MODULE_ID___up_query.value = query;
+  prefs__MODULE_ID__.set("query", query);
+  if (query) {
+    makeDOMRequest__MODULE_ID__(query);
+  }
+}
+</script>
+<div id="m___MODULE_ID___welcome_news_div" style="display:none">
+<table>
+  <tr>
+    <td width="72" rowspan=3 valign="top" style="padding-top:3px;padding-right:3px" align="left">
+      <img src="/ig/images/news_welcome_image.png">
+    </td>
+    <td colspan=3>
+      __MSG_welcome_news__<br><br>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <nobr>__MSG_news_enter_topic__ </nobr>
+    </td>
+    <td width=100%>
+      <form id=m___MODULE_ID___welcome_news_form onsubmit="handle_submit__MODULE_ID__();return false">
+      <input style="width:98%" type=text maxlength=100 value="" name=m___MODULE_ID___q>
+    </td>
+    <td>
+      <input type=submit value="__MSG_welcome_news_ok__">
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan=2 style="color:gray">
+      __MSG_welcome_new_examples__
+    </td>
+  </tr>
+</table>
+</div>
+<script>
+  init__MODULE_ID__();
+</script>
+]]>
+</Content>
+</Module>
