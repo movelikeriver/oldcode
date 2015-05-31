@@ -1,0 +1,47 @@
+.l{background-color:#eee;margin-bottom:3px}
+.n{border:1px solid #808080;margin-left:1px;margin-right:2px}
+.k{color:#008000}.e{vertical-align:middle;border:0}
+#query_box_bottom_form{text-align:center;padding:4px;background-color:#eff3fa}
+.a{padding:5px 0 5px 1px}
+
+.f {
+  margin-bottom: 0;
+  padding-bottom: 0
+}
+
+.p{margin-left:14px}
+.b{color:#008000}
+.q{border-bottom:1px solid #36c;text-align:center;padding:12px 0;font-size:x-small;white-space:nowrap}
+#zig_home_page 
+.q{border-top:1px solid #7aa5d6;border-bottom:1px solid #7aa5d6}
+.j{font-size:x-small;text-align:center}
+.i{margin:2px;padding:2px;text-align:center;width:100%;font-size:x-small}
+.i div{margin:4px auto}
+.d{margin:4px auto;font-size:x-small}
+
+.g {
+  background-color: #ebeff9;
+  border-top: 1px solid #36c;
+  margin: 2px 0 4px 0;
+  padding:2px 2px 4px 2px;
+  width:100%
+}
+
+.c {
+  padding-right: 15px
+}
+
+.h {
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: small
+}
+
+.cr {
+  padding: 4px;
+  background-color: rgb(232, 238, 250)
+}
+
+.m{text-align:center;padding:4px;background-color:#eff3fa;border-top:1px solid #36c;border-bottom:1px solid #36c}
+.o{margin:4px 0 2px;text-align:center;width:100%}
+.o a{padding:0 5px}
+.o #pre_page{color:#77c}

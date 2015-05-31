@@ -1,0 +1,21 @@
+<?php
+
+/*
+
+Please see gpl.txt for licence and disclaimer of warranty.
+
+Seemes CMS
+Copyright 2007, 2008 Samuel C
+Filename: .txt
+Description: Admin Control Panel action module; log the admin user out.
+
+*/
+
+?>
+<?php echo($websiteheaderpretext); ?>Logging out...<?php echo($websiteheaderposttext); ?>
+<?php
+
+session_destroy();
+
+?>
+<p>(You will be redirected to the Admin Control Panel automatically. Click <a href="<?php echo($websiteadminindex . ".php?page=" . $action ); ?>">here</a> if you don't want to wait.)</p>

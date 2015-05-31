@@ -1,0 +1,22 @@
+<?php echo($websiteheaderpretext); ?>Log out<?php echo($websiteheaderposttext); ?>
+<?php
+
+/*
+
+Please see gpl.txt for licence and disclaimer of warranty.
+
+Seemes CMS
+Copyright 2007, 2008 Samuel C
+Filename: logout.txt
+Description: Admin Control Panel module; logs the user out.
+
+*/
+
+?>
+<form action="action.php" method="post">
+<fieldset>
+<input type="hidden" name="action" value="logout" />
+<label for="logout">Click the button to log out.</label><br />
+<input type="submit" value="Log Out" name="logout" id="logout" />
+</fieldset>
+</form>

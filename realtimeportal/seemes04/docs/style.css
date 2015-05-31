@@ -1,0 +1,79 @@
+/*
+
+Please see gpl.txt for licence and disclaimer of warranty.
+
+Seemes CMS
+Copyright 2007, 2008 Samuel Coleman
+Filename: style.css
+Description: Seemes CMS documentation; cascading style sheet.
+
+*/
+
+body {
+	background-color: #ffffff;
+	color: #000000;
+	font-family: "Trebuchet MS", sans-serif;
+	font-size: 11pt;
+}
+
+code, pre {
+	background-color: #f0f0f0;
+	color: #000000;
+	font-family: "Lucida Console", courier;
+}
+
+div#menu {
+	float: right;
+	text-align: right;
+}
+
+div#menu a {
+	display: block;
+}
+
+div.currentdoc {
+	background-color: #e0e0e0 !important;
+	color: #000000;
+	font-weight: bold;
+}
+
+div.docbox {
+	background-color: #f0f0f0;
+	color: #000000;
+	float: left;
+	margin: .25em;
+	padding: .5em;
+	width: 192px;
+}
+
+h1 {
+	font-size: 28pt;
+}
+
+h2 {
+	font-size: 24pt;
+}
+
+h3 {
+	font-size: 20pt;
+}
+
+h4 {
+	font-size: 14pt;
+}
+
+h4.functionname {
+	font-family: "Lucida Console", courier;
+}
+
+h5 {
+	font-size: 12pt;
+}
+
+li {
+	margin: .5em 0px;
+}
+
+p#footer {
+	font-size: 8pt;
+}

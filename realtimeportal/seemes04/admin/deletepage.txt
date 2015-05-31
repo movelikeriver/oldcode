@@ -1,0 +1,41 @@
+<?php echo($websiteheaderpretext); ?>Delete page<?php echo($websiteheaderposttext); ?>
+<?php
+
+/*
+
+Please see gpl.txt for licence and disclaimer of warranty.
+
+Seemes CMS
+Copyright 2007, 2008 Samuel C
+Filename: deletepage.txt
+Description: Admin Control Panel module; delete a page.
+
+This software is released under the GPL licence. Please see gpl.txt.
+
+*/
+
+?>
+<form action="action.php" method="post">
+<fieldset>
+<input type="hidden" name="action" value="deletepage" />
+<?php
+
+$deletepages = listpages($websitedatadir, "home", false, false, "");
+if (count($deletepages) >= 1) {
+	echo("<label for=\"pagefilename\">Page name:</label><br />");
+	echo("<select name=\"pagefilename\" id=\"pagefilename\">\n");
+	foreach ($deletepages as $filename) {
+		echo("<option value=\"" . $filename . "\">" . $filename . "</option>\n");
+	}
+	echo("</select><br />\n");
+	echo("<input type=\"submit\" value=\"Delete page\" />\n");
+}
+else {
+	echo("No pages to delete!");
+}
+
+?>
+</fieldset>
+</form>
+<br />
+<div style="background-color: #ffe0e0; border: 1px solid #ff0000; color: #000000; padding: 4px;"><b>Please note:</b> This is <i>permanent</i>! It is impossible to reverse the deletion process. If you want the page back, you'll have to type it all out again or restore from a backup.</div>

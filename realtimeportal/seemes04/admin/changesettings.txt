@@ -1,0 +1,33 @@
+<?php echo($websiteheaderpretext); ?>Change settings<?php echo($websiteheaderposttext); ?>
+<?php
+
+/*
+
+Please see gpl.txt for licence and disclaimer of warranty.
+
+Seemes CMS
+Copyright 2007, 2008 Samuel C
+Filename: changesettings.txt
+Description: Admin Control Panel module; change Seemes' settings.
+
+*/
+
+?>
+<form action="action.php" method="post">
+<fieldset>
+<input type="hidden" name="action" value="changesettings" />
+<label for="newwebsitename">Website name:</label><br />
+<input type="text" name="newwebsitename" id="newwebsitename" value="<?php echo($websitename); ?>" style="width: 400px;" /><br />
+<label for="newwebsitecopyright">Website copyright:</label><br />
+<input type="text" name="newwebsitecopyright" id="newwebsitecopyright" value="<?php echo(htmlentities($websitecopyright)); ?>" style="width: 400px;" /><br />
+<label for="newwebsitetheme">Website theme:</label><br />
+<input type="text" name="newwebsitetheme" id="newwebsitetheme" value="<?php echo($websitetheme); ?>" style="width: 400px;" /><br />
+<label for="newwebsitepassword">Administrator password (only enter if you want to change it):</label><br />
+<input type="password" name="newwebsitepassword" id="newwebsitepassword" value="" /><br />
+<label for="newwebsitepasswordverify">Administrator password (again, the same, and only enter if you want to change it):</label><br />
+<input type="password" name="newwebsitepasswordverify" id="newwebsitepasswordverify" value="" /><br />
+<input type="submit" value="Change settings" />
+</fieldset>
+</form>
+<p><b>Note:</b> Only new values will be updated - to leave a setting unchanged, just don't enter a value.</p>
+<p><b>Note:</b> More advanced settings may be changed by downloading <code>config.php</code> to your computer via FTP and editing it directly.</p>

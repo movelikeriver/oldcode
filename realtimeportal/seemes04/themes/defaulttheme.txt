@@ -1,0 +1,44 @@
+<?php
+
+/*
+
+Please see gpl.txt for licence and disclaimer of warranty.
+
+Seemes CMS
+Copyright 2007, 2008 Samuel C
+Filename: defaulttheme.txt
+Description: Default theme.
+
+*/
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title><?php echo($websitename); ?> - <?php echo($pagename); ?></title>
+<link rel="stylesheet" href="themes/defaultstyle.css" type="text/css" />
+<?php echo($headextra); ?>
+</head>
+<body<?php echo($bodyextra); ?>>
+<div id="outercontainer">
+<div id="header">
+<h1><a href="<?php echo($websiteindex); ?>.php"><?php echo($websitename); ?></a></h1>
+</div>
+<div id="innercontainer">
+<div id="menu">
+<ul>
+<?php echo($menu); ?>
+</ul>
+</div>
+<div id="main">
+<?php include($page); ?>
+</div>
+<br style="clear: both;" />
+</div>
+<div id="footer">
+<p><?php echo($websitecopyright); ?> &bull; Powered by <a href="http://seemes.org/">Seemes</a> version <?php echo($seemesversion); ?> &bull; Page generated in <?php echo(timerreturn($starttime)); ?> seconds</p>
+</div>
+</div>
+</body>
+</html>

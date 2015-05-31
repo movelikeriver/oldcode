@@ -1,0 +1,27 @@
+<?php
+
+/*
+
+Please see gpl.txt for licence and disclaimer of warranty.
+
+Seemes CMS
+Copyright 2007, 2008 Samuel C
+Filename: editmenu.txt
+Description: Admin Control Panel action module; menu editor.
+
+*/
+
+?>
+<?php echo($websiteheaderpretext); ?>Editing theme...<?php echo($websiteheaderposttext); ?>
+<?php
+
+// Get some POSTed variables.
+$content = stripslashes(trim($_POST["content"]));
+$themefilename = trim($_POST["themefilename"]);
+
+$file = fopen($websitethemedir . $themefilename, "w");
+fwrite($file, $content);
+fclose($file);
+
+?>
+<p>(You will be redirected to the Admin Control Panel automatically. Click <a href="<?php echo($websiteadminindex . ".php?page=" . $action ); ?>">here</a> if you don't want to wait.)</p>
