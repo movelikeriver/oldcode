@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<link href="css/reset.css" rel="stylesheet" type="text/css" />
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="background-image">
+			<div id="distance"></div>
+			<div id="box">
+				<h1>HEY CYCLE</h1>
+
+				<p>Need something? Just tell us what you want, your location and your email. We'll monitor your local Freecycle group, and when we find a match, you'll get an email. Done.</p>
+
+				<form action="/sign" method="post">
+					<ul>
+						<li>
+							<div id="keyword_msg" class="warning" style="display:none">invalid keyword</div>
+							<input type="text" name="keyword" id="keyword" placeholder="What are you looking for?" />
+						</li>
+						<li>
+							<div id="email_msg" class="warning" style="display:none">invalid email</div>
+							<input type="text" name="email" id="email" placeholder="Email" />
+						</li>
+						<li>
+							<select name="location" id="location">
+								<option value="AlamedaFreecycle">Alameda, California</option>
+								<option value="belmontfreecycle">Belmont, California</option>
+								<option value="Berkeley_CA_Freecycle">Berkeley, California</option>
+								<option value="CampbellFreecycle">Campbell, California</option>
+								<option value="Concord_CA_Freecycle">Concord, California</option>
+								<option value="CupertinoCAFreecycle">Cupertino, California</option>
+								<option value="Danville_CA_Freecycle">Danville, California</option>
+								<option value="dublinfreecycle">Dublin, California</option>
+								<option value="FosterCityFreecycle">Foster City, California</option>
+								<option value="fremont-freecycle">Fremont, California</option>
+								<option value="GilroyFreecycle">Gilroy, California</option>
+								<option value="haywardfreecycle">Hayward, California</option>
+								<option value="LosAltosFreecycle">Los Altos, California</option>
+								<option value="los_gatos_freecycle">Los Gatos, California</option>
+								<option value="freecyclemp">Menlo Park, California</option>
+								<option value="MountainViewCAFreecycle">Mountain View</option>
+								<option value="Newark_CA_Freecycle">Newark, California</option>
+								<option value="oaklandfreecycle">Oakland, California</option>
+								<option value="Palo_Alto_CA_Freecycle">Palo Alto, California</option>
+								<option value="redwoodcityfreecycle">Redwood City, California</option>
+								<option value="Richmond_CA_Freecycle">Richmond, California</option>
+								<option value="SanBrunoCAFreecycle">San Bruno, California</option>
+								<option value="SanMateoFreecycle">San Mateo, California</option>
+								<option value="SantaClaraFreecycle">Santa Clara, California</option>
+								<option value="SantaCruzCountyFreecycle">Santa Cruz, California</option>
+								<option value="saratogafreecycle">Saratoga, California</option>
+								<option value="SunnyvaleCAFreecycle">Sunnyvale, California</option>
+								<option value="Vallejo">vallejofreecycle, California</option>
+								<option value="walnutcreekfreecycle">Walnut Creek, California</option>
+							</select>
+						</li>
+						<li>
+							<div id="button-border"><input type="submit" name="submit" id="submit" value="GO!" onclick="return doCheck()"/></div>
+						</li>
+					</ul>				
+				</form>			
+			</div>
+			
+		</div>	
+	</body>
+	<script>
+	function doCheck() {
+		var e = document.getElementById('email');
+		var k = document.getElementById('keyword');
+		document.getElementById('email_msg').style.display = 'none';
+		document.getElementById('keyword_msg').style.display = 'none';
+		var isValid = true;
+		if (e.value == '' || e.value.indexOf('@') < 2) {
+			document.getElementById('email_msg').style.display = 'block';
+			isValid = false;
+		}
+		if (k.value == '') {
+			document.getElementById('keyword_msg').style.display = 'block';
+			isValid = false;
+		}
+		return isValid;
+	}
+	</script>
+</html>

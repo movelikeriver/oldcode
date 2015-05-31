@@ -1,0 +1,4 @@
+cron:
+- description: offline job
+  url: /docron
+  schedule: every 10 minutes
