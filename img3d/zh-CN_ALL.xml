@@ -1,0 +1,15 @@
+<messagebundle>
+  <msg name="title">鼠标浏览的3D图片搜索</msg>
+  <msg name="prev">上一组</msg>
+  <msg name="next">下一组</msg>
+  <msg name="geartab">大旋转</msg>
+  <msg name="slicetab">手幻灯</msg>
+  <msg name="search">搜索</msg>
+  <msg name="hint">输入关键词，比如鸟巢</msg>
+  <msg name="no_result">哎呀，找不到您查询的图片 :( 换别的词试试看</msg>
+  <msg name="hostname">http://images.google.cn</msg>
+  <msg name="hl">zh-CN</msg>
+  <msg name="show_disclaimer">Y</msg>
+  <msg name="screenshot">http://img3d.googlecode.com/svn/trunk/ALL_cn.png</msg>
+  <msg name="thumbnail">http://img3d.googlecode.com/svn/trunk/ALL_cn-thm.png</msg>
+</messagebundle>

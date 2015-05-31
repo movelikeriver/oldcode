@@ -1,0 +1,1112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+  <ModulePrefs title="__MSG_title__"
+               height="450" width="320"
+               author="Lenjoy"
+               author_email="lenjoy@google.com"
+               author_affiliation="Google Inc."
+               author_location="Beijing, China"
+	       description="3D style image search."
+               screenshot="__MSG_screenshot__"
+               thumbnail="__MSG_thumbnail__">
+    <Locale messages="http://img3d.googlecode.com/svn/trunk/ALL_ALL.xml" />
+    <Locale lang="en" messages="http://img3d.googlecode.com/svn/trunk/ALL_ALL.xml" />
+    <Locale lang="zh-CN" messages="http://img3d.googlecode.com/svn/trunk/zh-CN_ALL.xml" />
+  </ModulePrefs>
+  <Content type="html" view="home, canvas">
+  <![CDATA[
+   <style type="text/css">
+      body {
+        background: #fff;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        width: 100%
+      }
+
+      .menu {
+        margin: 0 auto;
+        text-align: center;
+        width: 320px
+      }
+
+      .gear_mod {
+        background: #000;
+        display: block;
+        height: 360px;
+        position: relative;
+        top: -2px;
+        width: 320px
+       }
+
+      .bg_gear {
+        background: #000;
+        height: 300px;
+        left: 10px;
+        width: 300px
+      }
+
+      #bg_gear img {
+        cursor: pointer;
+        height: 100px;
+        position: absolute;
+        width: 100px
+      }
+
+      .fronttab {
+        background: #000;
+        font-size: 12px;
+        width: 60px
+      }
+
+      .behindtab {
+        background: #fff;
+        font-size: 12px;
+        width: 60px
+      }
+
+      .empty_td {
+        width: 50px
+      }
+
+      .title {
+        color: #ddd;
+        font-size: 12px;
+        height: 15px;
+        position: relative;
+        width: 100%;
+        text-align: center;
+        top: 5px
+      }
+
+      .prev_next {
+        position: relative;
+        top: 10px
+      }
+
+      .input_area {
+        background: #000;
+        height: 55px;
+        position: relative;
+        top: -2px;
+        width: 320px
+      }
+
+      .input_text {
+        position:absolute;
+        left: 5px;
+        top: 10px;
+        width: 200px
+      }
+
+      .input_button {
+        position: absolute;
+        top: 2px;
+        width: 100%
+      }
+
+      /* slice_mod below */
+      .slice_mod {
+        background: #000;
+        display: none;
+        height: 360px;
+        position: relative;
+        top: -2px;
+        width: 320px
+      }
+
+      .bg_slice {
+        background: #000;
+        height: 350px;
+        left: 10px;
+        width: 300px
+      }
+
+     .slice_img_div {
+        height: 60%;
+        position: absolute;
+        left: 20%;
+        top: 15%;
+        width: 60%;
+        z-index: 1
+      }
+
+      .sliceimg1 {
+        position: absolute;
+        visibility: hidden;
+        cursor: default
+      }
+
+      .sliceimg2 {
+        position: absolute;
+        visibility: hidden;
+        cursor: default;
+        width: 100px;
+        height: 100px
+      }
+
+      .snippet_text {
+        color: #666;
+        font-size: 12px;
+        position: absolute;
+        left: 0;
+        text-align: center;
+        width: 100%
+      }
+
+      .snippet {
+        left: 0;
+        position: absolute;
+        top: 111%;
+        width: 100%
+      }
+
+      .disclaimer {
+        color: #999;
+        font-size: 12px;
+        position: relative;
+        top: -5px
+      }
+
+      .debug {
+        height: 20px;
+        position: relative;
+        top: 10px;
+        width: 300px
+      }
+    </style>
+
+    <center>
+      <table class="menu">
+        <tr>
+          <td class="empty_td" />
+          <td id="tabGear" />
+          <td id="tabSlice" />
+          <td class="empty_td" />
+        </tr>
+      </table>
+      <div class="gear_mod" id="gear_mod">
+        <div class="bg_gear" id="bg_gear"></div>
+        <div id="title" class="title"></div>
+        <div id="prev_next" class="prev_next">
+            <input id="button_prev" type="button"
+                   value="__MSG_prev__"
+                   onclick="prev()"
+            />
+            <input id="button_next" type="button"
+                   value="__MSG_next__"
+                   onclick="next()"
+            />
+        </div>
+      </div>
+
+      <div class="slice_mod" id="slice_mod">
+        <div class="bg_slice" id="bg_slice">
+          <div id="slice_img_div" class="slice_img_div">
+            <img class="sliceimg1" id="i1">
+            <img class="sliceimg2" id="i2">
+            <div id="snippet" class="snippet">
+              <div id="snippet_text1" class="snippet_text"></div>
+              <div id="snippet_text2" class="snippet_text"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="input_area" id="input_area">
+        <input id="input_text" name="input_text" type="text"
+               onfocus="this.value='';" onkeydown="return keyDown(event)"
+               value="__MSG_hint__"
+        />
+        <input id="input_button" type="button" value="__MSG_search__"
+               onclick="doSearch()"/>
+        <div id="disclaimer" class="disclaimer"></div>
+      </div>
+      <div id="debug"></div>
+      <div id="images" style="visibility:hidden">
+      </div>
+      <div id="titles" name="titles" style="visibility:hidden">
+      </div>
+    </center>
+
+    <script type="text/javascript">
+var img3d = {};
+var prefs = new _IG_Prefs();
+
+/**
+ * Gets HTMLElement.
+ * The tabs have two modes, 'gear_mod' and 'slice_mod'. Different mode has
+ * its own background, which holds all the objects in the view, there're two
+ * backgrounds, one is 'bg_gear' for 'gear_mod' mode, the other is
+ * 'bg_slice'.
+ * In gear mode, the images are arranged and rotated like a gear; while in
+ * slice mode, the image is changed to next one, just like in slice.
+ * The default mode is set to 'gear_mod' and background is set to 'bg_gear'.
+ * Notes that all the fields of tabContainers should be the same.
+ */
+img3d.tabGearContainer = {
+  tab_id_: 1,
+  tab_: _gel('tabGear'),
+  mod_: _gel('gear_mod'),
+  bg_: _gel('bg_gear'),
+  funcname_: 'onGear()',
+  text_: prefs.getMsg('geartab')
+};
+
+img3d.tabSliceContainer = {
+  tab_id_: 2,
+  tab_: _gel('tabSlice'),
+  mod_: _gel('slice_mod'),
+  bg_: _gel('bg_slice'),
+  funcname_: 'onSlice()',
+  text_: prefs.getMsg('slicetab')
+};
+
+/**
+ * Class handling all the images movements in view.
+ * @constructor
+ */
+img3d.View = function() {
+  /**
+   * Records the tab's name, 1: 'gear_mod', 2: 'slice_mod'
+   * @public
+   */
+  this.tab_id_ = -1;
+};
+
+/**
+ * Sets mousemove handler.
+ * @this {img3d.View}
+ * @public
+ */
+img3d.View.prototype.mouseMove = function(e, slice) {
+  if (this.tab_id_ == img3d.tabSliceContainer.tab_id_) {
+    // equalize W3C/IE event models to get event object
+    e = e ? e : window.event;
+    var mod = this.mod_;
+    var bg = this.bg_;
+    slice.mouseX_ = e.clientX - mod.offsetLeft - bg.offsetLeft;
+    slice.mouseY_ = e.clientY - mod.offsetTop - bg.offsetTop;
+    if (slice.mouseX_ < 0 || slice.mouseX_ > bg.offsetWidth ||
+        slice.mouseY_ < 0 || slice.mouseY_ > bg.offsetHeight) {
+      return;
+    }
+    slice.mouseMove(e);
+  }
+};
+
+img3d.View.prototype.hideTab = function(mod, tab, funcname, text) {
+  mod.style.display = 'none';
+  tab.className = 'behindtab';
+  tab.innerHTML = '<a onclick="' + funcname + '"><font color="#0000cc">' +
+                  text + '</font></a>';
+};
+
+img3d.View.prototype.showTab = function(mod, tab, funcname, text) {
+  mod.style.display = 'block';
+  tab.className = 'fronttab';
+  tab.innerHTML = '<a onclick="' + funcname + '"><font color="#eeeeee">' +
+                  text + '</font></a>';
+};
+
+/**
+ * Swaps the tabs in two modes.
+ * @param {img3d.View.tabGearContainer} conHide {img3d.View.tabSliceContainer}
+ * conShow These two containers have the parameters in theirselves'
+ * tab. Notes that conHide and conShow have the same fields.
+ * @this {img3d.View}
+ * @public
+ */
+img3d.View.prototype.tabSwap = function(conHide, conShow) {
+  this.tab_id_ = conShow.tab_id_;
+  this.hideTab(conHide.mod_, conHide.tab_, conHide.funcname_, conHide.text_);
+  this.bg_ = conShow.bg_;
+  this.mod_ = conShow.mod_;
+  this.showTab(conShow.mod_, conShow.tab_, conShow.funcname_, conShow.text_);
+};
+
+/**
+ * Class handling the images' movements in gear mode.
+ * @constructor
+ */
+img3d.View.Gear = function() {};
+
+// Object array for pictures
+img3d.View.Gear.pics_ = null;
+// The number of pictures in a group, -1 means it need to reset.
+img3d.View.Gear.picStart_ = -1;
+// The start index number of picture. 
+img3d.View.Gear.picNum_ = -1;
+// Image HTML elements.
+img3d.View.Gear.imgs_ = null;
+
+img3d.View.Gear.targetAlpha_ = 0;
+img3d.View.Gear.moveAlpha_ = -Math.PI * 3;
+img3d.View.Gear.STEP = Math.PI / 12;
+img3d.View.Gear.EPSILON = Math.PI / 71;
+img3d.View.Gear.direction_ = 1;
+img3d.View.Gear.isMovingMode_ = false;
+img3d.View.Gear.GROUP_PIC_NUM = 10;
+img3d.View.Gear.GROUP_PIC_MAX_NUM = 15;
+
+/**
+ * Resets all the vars when resize the window.
+ * @param {img3d.tabGearContainer} tabCon This contains all basic parameters in
+ * gear mode.
+ * @this {img3d.View.Gear}
+ * @public
+ */
+img3d.View.Gear.prototype.resize = function(tabCon) {
+  var mod = tabCon.mod_;
+  var bg = tabCon.bg_;
+  // Sets screen's width, height, left, top.
+  this.width_ = bg.offsetWidth;
+  this.height_ = bg.offsetHeight;
+  this.left_ = mod.offsetLeft + bg.offsetLeft;
+  this.top_ = mod.offsetTop + bg.offsetTop;
+  // The center of the circle.
+  this.ox_ = this.width_ * 0.55;
+  this.oy_ = this.height_ * 0.4;
+  this.maxR_ = this.ox_ * 0.5;
+};
+
+/**
+ * Initializes the image objects in gear mode.
+ * @param {HTMLElement} bg This is the background 'DIV' tag.
+ * @this {img3d.View.Gear}
+ * @public
+ */
+img3d.View.Gear.prototype.init = function(bg) {
+  var pics = this.getAndOrientImages();
+  if (pics == null || pics.length == 0) {
+    img3d.View.Gear.setButtonStatus();
+    return;
+  }
+  bg.innerHTML = '';
+  img3d.View.Gear.pics_ = pics;
+  for (var i = 0, p; p = pics[i]; i++) {
+    p.draw();
+    bg.appendChild(p);
+  }
+  img3d.View.Gear.update();
+};
+
+/**
+ * Gets all the images from 'img' tags, and sets their position informations
+ * according to the view angle. The image in front is bigger than behind.
+ * @return {Object} The array of img elements.
+ * @this {img3d.View.Gear}
+ * @private
+ */
+img3d.View.Gear.prototype.getAndOrientImages = function() {
+  var imgs = _gel('images').getElementsByTagName('img');
+  if (imgs == null || imgs.length == 0) {
+    return null;
+  }
+  img3d.View.Gear.imgs_ = imgs;
+  if (img3d.View.Gear.picStart_ == -1) {
+    img3d.View.Gear.picStart_ = 0;
+  }
+
+  // Splits the image search results into small groups, two groups which contain
+  // less than 15 images are acceptable to put them in a small gadget's screen.
+  var len = img3d.View.Gear.GROUP_PIC_NUM;
+  if (imgs.length < img3d.View.Gear.GROUP_PIC_MAX_NUM) {
+    len = imgs.length;
+  }
+  var pics = [];
+  img3d.View.Gear.moveAlpha_ = -3 * Math.PI;
+  img3d.View.Gear.targetAlpha_ = 0;
+  var alpha = 0;
+  var start = img3d.View.Gear.picStart_;
+  var end = img3d.View.Gear.picStart_ + len;
+  // If this group's pictures' number is less than expected number,
+  // the 'end' var need to be changed to actual value.
+  if (imgs[end - 1] == null) {
+    for (var i = end - 2; i > start; i--) {
+      if (imgs[i] != null) {
+        len = i - img3d.View.Gear.picStart_;
+        end = i;
+        break;
+      }
+    }
+  }
+  if (len == 0) {
+    return null;
+  }
+  img3d.View.Gear.picNum_ = len;
+  var alphastep = Math.PI * 2 / img3d.View.Gear.picNum_;
+  for (var i = start; i < end; i++) {
+    pics.push(this.createPic(imgs[i], alpha));
+    alpha += alphastep;
+  }
+  return pics;
+};
+
+/**
+ * Creates picture object.
+ * @param {HTMLElement} img The HTML element.
+ * @param {number} input_alpha The input alpha angle value.
+ * @return {HTMLElement} Gets the created 'img' Element.
+ * @this {img3d.View.Gear}
+ * @private
+ */
+img3d.View.Gear.prototype.createPic = function(img, input_alpha) {
+  var gear_height = this.height_;
+  var ox = this.ox_;
+  var oy = this.oy_;
+  var maxR = this.maxR_;
+
+  var p = img.cloneNode(true);
+  var pic_width = this.width_ * 0.7;
+  var pic_height = gear_height * 0.7;
+  var pic_alpha = input_alpha;
+  /**
+   * Opens the link of the image for which is on the top.
+   * Rotates the image object in circle and makes it on the top of view, when
+   * clicks on the image, for which is not on the top.
+   * @this {HTMLElement} 'image' tag.
+   * @public
+   */
+  p.onclick = function() {
+    var move = img3d.View.Gear.moveAlpha_;
+    img3d.View.Gear.targetAlpha_ = pic_alpha;
+    if (Math.abs(img3d.View.Gear.targetAlpha_ - move) <
+        img3d.View.Gear.STEP) {
+      window.open(this.alt, '_blank');
+      return;
+    }
+    if (img3d.View.Gear.targetAlpha_ > move) {
+      img3d.View.Gear.direction_ = 1;
+    } else {
+      img3d.View.Gear.direction_ = -1;
+    }
+    img3d.View.Gear.update();
+  };
+
+  /**
+   * Draws the image object in particular position, the position and size
+   * are calculated by alpha in the circle of all the pictures.
+   * @this {HTMLElement} 'image' tag.
+   * @public
+   */
+  p.draw = function() {
+    var move = img3d.View.Gear.moveAlpha_;
+    var a = move - pic_alpha;
+    if (Math.abs(a) > img3d.View.Gear.EPSILON + Math.PI * 3) {
+      this.style.width = 0;
+      return;
+    }
+    var rr = maxR;
+    var yy = rr * Math.cos(a) + oy;
+    var xx = rr * Math.sin(a) + ox;
+    var ss = yy / gear_height;
+    var w = Math.round(pic_width * ss);
+    var h = Math.round(pic_height * ss);
+    this.style.width = w;
+    this.style.height = h;
+    this.style.left = (xx - w / 2) + 'px';
+    this.style.top = (yy - h / 2) + 'px';
+    this.style.zIndex = w * 10;
+    this.expectedZIndex = this.style.zIndex;
+  };
+
+  /**
+   * Sets mouse over event handler.
+   * @this {HTMLElement} 'image' tag.
+   * @public
+   */
+  p.onmouseover = function() {
+    var obj = _gel('title' + this.id);
+    _gel('title').innerHTML = obj.innerHTML;
+    this.style.zIndex = 8000;
+    this.style.border = '2px solid #00ff00';
+  };
+
+  /**
+   * Sets mouse out event handler.
+   * @this {HTMLElement} 'image' tag.
+   * @public
+   */
+  p.onmouseout = function() {
+    this.style.zIndex = this.expectedZIndex;
+    this.style.border = '0';
+  };
+  return p;
+};
+
+/**
+ * Updates the status in gear mode.
+ * @public
+ */
+img3d.View.Gear.update = function() {
+  var step = img3d.View.Gear.STEP;
+
+  if (img3d.View.Gear.direction_ == 1 &&
+      img3d.View.Gear.moveAlpha_ < img3d.View.Gear.targetAlpha_) {
+    img3d.View.Gear.moveAlpha_ += step;
+    img3d.View.Gear.isMovingMode_ = true;
+  } else if (img3d.View.Gear.direction_ == -1 &&
+             img3d.View.Gear.moveAlpha_ > img3d.View.Gear.targetAlpha_) {
+    img3d.View.Gear.moveAlpha_ -= step;
+    img3d.View.Gear.isMovingMode_ = true;
+  } else {
+    img3d.View.Gear.setButtonStatus();
+    img3d.View.Gear.isMovingMode_ = false;
+  }
+  if (img3d.View.Gear.isMovingMode_) {
+    for (var i = 0, p; p = img3d.View.Gear.pics_[i]; i++) {
+      p.draw();
+    }
+    setTimeout(img3d.View.Gear.update, 120);
+  }
+};
+
+/**
+ * Sets the enable or disable status for buttons of 'prev' and 'next'.
+ * @public
+ */
+img3d.View.Gear.setButtonStatus = function() {
+  var picStart = img3d.View.Gear.picStart_;
+  var picNum = img3d.View.Gear.picNum_;
+  _gel('button_prev').disabled = (picNum == -1 || picStart <= 0);
+  _gel('button_next').disabled = (
+    picNum == -1 || picStart + picNum >= img3d.View.Gear.imgs_.length)
+};
+
+/**
+ * Shows previous group of images.
+ * @this {img3d.View.Gear}
+ * @public
+ */
+img3d.View.Gear.prototype.prev = function() {
+  if (img3d.View.Gear.isMovingMode_ ||
+      img3d.View.Gear.picStart_ < img3d.View.Gear.picNum_) {
+    return;
+  }
+  if (img3d.View.Gear.picStart_ != -1 &&
+      img3d.View.Gear.picNum_ != -1) {
+    img3d.View.Gear.picStart_ -= img3d.View.Gear.picNum_;
+  }
+  this.init(img3d.manager.view_.bg_);
+};
+
+/**
+ * Shows next group of images.
+ * @this {img3d.View.Gear}
+ * @public
+ */
+img3d.View.Gear.prototype.next = function() {
+  if (img3d.View.Gear.isMovingMode_ ||
+      img3d.View.Gear.picStart_ >= img3d.View.Gear.picNum_) {
+    return;
+  }
+  if (img3d.View.Gear.picStart_ != -1 &&
+      img3d.View.Gear.picNum_ != -1) {
+    img3d.View.Gear.picStart_ += img3d.View.Gear.picNum_;
+  }
+  this.init(img3d.manager.view_.bg_);
+};
+
+/**
+ * Class handling the images' movements in gear mode.
+ * @constructor
+ */
+img3d.View.Slice = function() {
+  // Image HTML elements.
+  this.imgs_ = null;
+  // DIV HTML elements.
+  this.titles_ = null;
+  this.direction_ = 0;
+  this.imageIndex_ = 0;
+  this.onImage_ = false;
+  this.slice_img_div = _gel('slice_img_div');
+  this.i1 = _gel('i1');
+  this.i2 = _gel('i2');
+};
+
+img3d.View.Slice.RIGHT_TOP = 1;
+img3d.View.Slice.LEFT_TOP = 2;
+img3d.View.Slice.LEFT_BOTTOM = 3;
+img3d.View.Slice.RIGHT_BOTTOM = 4;
+
+/**
+ * Resets all the vars when resize the window.
+ * @this {img3d.View.Slice}
+ * @public
+ */
+img3d.View.Slice.prototype.resize = function() {
+  // Sets screen's width, height, left, top.
+  this.width_ = this.slice_img_div.offsetWidth;
+  this.height_ = this.slice_img_div.offsetHeight;
+  this.area_ = this.height_ * this.width_;
+  this.cur_area_ = 0;
+  this.halfWidth_ = this.width_ / 2;
+  this.halfHeight_ = this.height_ / 2;
+  var i1 = this.i1;
+  var i2 = this.i2;
+  i1.style.left = i2.style.left = 0;
+  i1.style.top = i2.style.top = 0;
+  i1.style.width = i2.style.width = this.width_ + 'px';
+  i1.style.height = i2.style.height = this.height_ + 'px';
+};
+
+/**
+ * In the div, there are two images, set one image as background and clip the
+ * other and only show part of it according to the coordinate of moving mouse.
+ * For example, in case of direction is from right bottom, looking at the
+ * chart below:
+ * Quadrangle ABCD is the original image's as background, it's also the
+ * position of next image. Point E is the coordinate of current mouse, then for
+ * the next image, Quadrangle CGFE of next image will be clipped and filled
+ * over the original image. When the mouse moves to Point A, the whole original
+ * image will be replaced by next image.
+ *
+ *   A           B
+ *     +--------+
+ *     |   E    |  
+ *     |   +----+ G
+ *     |   |    |
+ *   D +---+----+ C
+ *         F
+ *
+ * @param {Event} e The event that resulted in the function call.
+ * @param {number} direction The direction of mouse moving.
+ * @this {img3d.View.Slice}
+ * @private
+ */
+img3d.View.Slice.prototype.moveImage = function(e, direction) {
+  var mx = this.mouseX_ - this.slice_img_div.offsetLeft;
+  var my = this.mouseY_ - this.slice_img_div.offsetTop;
+  // Sets rect(top, right, bottom, left) according to mouse's position.
+  switch (direction) {
+  case img3d.View.Slice.RIGHT_TOP:
+    this.cur_area_ = (this.slice_img_div.offsetWidth - mx) * my;
+    this.i2.style.clip = 'rect(' + this.i2.style.top + ',' +
+                         this.i2.style.width + ',' +
+                         my + ',' +
+                         mx + ')';
+    break;
+  case img3d.View.Slice.LEFT_TOP:
+    this.cur_area_ = mx * my;
+    this.i2.style.clip = 'rect(' + 0 + ',' +
+                         mx + ',' +
+                         my + ',' +
+                         0 + ')';
+    break;
+  case img3d.View.Slice.LEFT_BOTTOM:
+    this.cur_area_ = mx * (this.slice_img_div.offsetHeight - my);
+    this.i2.style.clip = 'rect(' + my + ',' +
+                         mx + ',' +
+                         this.i2.style.height + ',' +
+                         0 + ')';
+    break;
+  case img3d.View.Slice.RIGHT_BOTTOM:
+    this.cur_area_ = (this.slice_img_div.offsetWidth - mx) *
+                     (this.slice_img_div.offsetHeight - my);
+    this.i2.style.clip = 'rect(' + my + ',' +
+                         this.i2.style.width + ',' +
+                         this.i2.style.height + ',' +
+                         mx + ')';
+    break;
+  default:
+    this.cur_area_ = 0;
+    this.i2.style.left = this.i1.style.left;
+    this.i2.style.top = this.i1.style.top;
+  }
+};
+
+/**
+ * Checks whether the hidden image has been shown fully.
+ * @param {number} x This is x coorderinate.
+ * @param {number} y This is y coorderinate.
+ * @param {number} direction The direction of mouse moving.
+ * @return {boolean} It means full when true.
+ * @this {img3d.View.Slice}
+ * @public
+ */
+img3d.View.Slice.prototype.checkFullImage = function(x, y, direction) {
+  var finished = false;
+  switch (direction) {
+  case img3d.View.Slice.RIGHT_TOP:
+    if (x <= 0 &&
+        y >= this.slice_img_div.offsetHeight) {
+      finished = true;
+    }
+    break;
+  case img3d.View.Slice.LEFT_TOP:
+    if (x >= this.slice_img_div.offsetWidth &&
+        y >= this.slice_img_div.offsetHeight) {
+      finished = true;
+    }
+    break;
+  case img3d.View.Slice.LEFT_BOTTOM:
+    if (x >= this.slice_img_div.offsetWidth &&
+        y <= 0) {
+      finished = true;
+    }
+    break;
+  case img3d.View.Slice.RIGHT_BOTTOM:
+    if (x <= 0 && y <= 0) {
+      finished = true;
+    }
+    break;
+  }
+  return finished;
+};
+
+/**
+ * Sets mousemove handler in slice mode.
+ * @param {Event} e The event that resulted in the function call.
+ * @this {img3d.View.Slice}
+ * @public
+ */
+img3d.View.Slice.prototype.mouseMove = function(e) {
+  var o = (e.target) ? e.target : ((e.srcElement) ? e.srcElement : null);
+  var mx = this.mouseX_;
+  var my = this.mouseY_;
+  if (o == this.i1) {
+    // Mouse is on the image, calculating the offset
+    if (!this.onImage_) {
+      if (mx - this.slice_img_div.offsetLeft < this.halfWidth_) {
+        if (my - this.slice_img_div.offsetTop < this.halfHeight_) {
+          this.direction_ = img3d.View.Slice.LEFT_TOP;
+        } else {
+          this.direction_ = img3d.View.Slice.LEFT_BOTTOM;
+        }
+      } else {
+        if (my - this.slice_img_div.offsetTop < this.halfHeight_) {
+          this.direction_ = img3d.View.Slice.RIGHT_TOP;
+        } else {
+          this.direction_ = img3d.View.Slice.RIGHT_BOTTOM;
+        }
+      }
+      this.onImage_ = true;
+    }
+  } else {
+    if (mx < this.slice_img_div.offsetLeft ||
+        mx > this.slice_img_div.offsetLeft + this.slice_img_div.offsetWidth ||
+        my < this.slice_img_div.offsetTop ||
+        my > this.slice_img_div.offsetTop + this.slice_img_div.offsetHeight) {
+      if (this.onImage_ &&
+          this.direction_ > 0 &&
+          this.checkFullImage(mx - this.slice_img_div.offsetLeft,
+                              my - this.slice_img_div.offsetTop,
+                              this.direction_)) {
+        this.setImage(this.imgs_);
+        this.onImage_ = false;
+        this.direction_ = 0;
+      }
+    }
+  }
+
+  this.moveImage(e, this.direction_);
+  var s = this.cur_area_;
+  var area = this.area_;
+  s = Math.max(0, s);
+  s = Math.min(area, s);
+  var color = Math.min(Math.round((area - s) / area * 280), 250);
+  var text1 = _gel('snippet_text1');
+  var text2 = _gel('snippet_text2');
+  this.fadeText(text1, text2, color);
+};
+
+/**
+ * Initializes the image objects in slice mode.
+ * @this {img3d.View.Slice}
+ * @public
+ */
+img3d.View.Slice.prototype.init = function() {
+  var imgs = _gel('images').getElementsByTagName('img');
+  if (imgs == null || imgs.length == 0) {
+    return;
+  }
+  var titles = _gel('titles').getElementsByTagName('div');
+  if (titles == null || titles.length == 0) {
+    return;
+  }
+  this.imgs_ = imgs;
+  this.titles_ = titles;
+  this.setImage(this.imgs_);
+};
+
+/**
+ * @param {number} color The integer value, ranges in [0, 255].
+ * @return {string} This returns the RGB color string.
+ * @private
+ */
+img3d.View.Slice.prototype.rgb = function(color) {
+  color = color % 255;
+  return 'RGB(' + color + ',' + color + ',' + color + ')';
+};
+
+/**
+ * Fades the color between two DIV elements.
+ * @param {Object} obj1 The HTML element.
+ * @param {Object} obj2 The HTML element.
+ * @param {number} color The integer value. [0, 255].
+ * @this {img3d.View.Slice}
+ * @private
+ */
+img3d.View.Slice.prototype.fadeText = function(obj1, obj2, color) {
+  obj1.style.color = this.rgb(color);
+  obj2.style.color = this.rgb(250 - color);
+  obj1.style.zIndex = color;
+  obj2.style.zIndex = 250 - color;
+};
+
+/**
+ * Sets the images in slice mode.
+ * @param {Array.<HTMLElement>} imgs The 'image' tags array for id of 'images'.
+ * @this {img3d.View.Slice}
+ * @private
+ */
+img3d.View.Slice.prototype.setImage = function(imgs) {
+  var titles = this.titles_;
+  var text1 = _gel('snippet_text1');
+  var text2 = _gel('snippet_text2');
+  text1.innerHTML = titles[this.imageIndex_].innerHTML;
+  this.i1.src = imgs[this.imageIndex_].src;
+  this.imageIndex_ = (this.imageIndex_ + 1) % imgs.length;
+  this.i1.style.visibility = this.i2.style.visibility = 'visible';
+  this.i2.style.clip = 'rect(0, 0, 0, 0)';
+  this.i2.src = imgs[this.imageIndex_].src;
+  text2.innerHTML = titles[this.imageIndex_].innerHTML;
+  this.fadeText(text1, text2, 200);
+};
+
+/**
+ * Class handling the methods for this page.
+ * @constructor
+ */
+img3d.PageManager = function() {
+  this.view_ = new img3d.View();
+  this.gear_ = new img3d.View.Gear();
+  this.slice_ = new img3d.View.Slice();
+};
+
+/**
+ * Shows image search results by giving a query.
+ * @param {string} query The input query.
+ * @this {img3d.PageManager}
+ * @public
+ */
+img3d.PageManager.prototype.showResult = function(query) {
+  var url = [prefs.getMsg('hostname'), '/images?ijn&oe=utf8&q=', _esc(query),
+             '&hl=', prefs.getMsg('hl'),
+             '&start=0&num=', img3d.View.Gear.GROUP_PIC_NUM * 2,
+             '&gbv=2&sa=1&aq=f&oq=&aqi=&social=false'].join('');
+  _IG_FetchContent(url, this.parse);
+};
+
+/**
+ * Parses the result page's response and sets 'disclaimer' DIV.
+ * @param {string} response The HTML string.
+ * @public
+ */
+img3d.PageManager.prototype.parse = function(responseJson) {
+  if (responseJson == '') {
+    _gel('images').innerHTML = '';
+    return;
+  }
+
+  var result_text = '';
+  var title_text = '';
+
+  var response = eval('(' + responseJson.replace(/(^\/\*|\*\/$)/g, '') + ')');
+
+  for (var i = 0; i < Math.min(response['images'].length,
+                               img3d.View.Gear.GROUP_PIC_NUM * 2);
+       ++i) {
+    var id = i;
+    var res = response['images'][i];
+    var alt = [res[0], '&tbnid=', res[2], '&tbnh=', res[5],
+               '&tbnw=', res[4]].join('');
+    var src = [res[14], '?q=', 'tbn:', res[2], res[3]].join('');
+    var title = res[6];
+    result_text += '<img id=' + id + ' src="' + src +
+                     '" alt="' + alt + '">';
+    title_text += '<div id=title' + id + '>' + title + '</div>';
+  }
+  img3d.extractDisclaimer(response);
+
+  _gel('images').innerHTML = result_text;
+  _gel('titles').innerHTML = title_text;
+  if (result_text == '') {
+    _gel('disclaimer').innerHTML = prefs.getMsg('no_result');
+  }
+  img3d.viewInit();
+};
+
+img3d.manager = new img3d.PageManager();
+
+/**
+ * Initializes the page, called by parse().
+ * @private
+ */
+img3d.viewInit = function() {
+  var view = img3d.manager.view_;
+  switch (view.tab_id_) {
+  case img3d.tabGearContainer.tab_id_:
+    img3d.manager.gear_.init(view.bg_);
+    break;
+  case img3d.tabSliceContainer.tab_id_:
+    img3d.manager.slice_.init();
+    break;
+  }
+};
+
+/**
+ * Splits the input HTML by array of tags.
+ * @param {string} inputhtml Input HTML string.
+ * @param {Array.<string>} tags Array of tag.
+ * @return {Array.<string>} Returns array of results splited by tags.
+ * @public
+ */
+img3d.splitString = function(inputhtml, tags) {
+  var strhtml = inputhtml;
+  var res = [];
+  while (true) {
+    var prev = -1;
+    var tmpres = [];
+    for (var i = 0, tag; tag = tags[i]; i++) {
+      var idx = strhtml.indexOf(tags[i], prev + 1);
+      if (-1 == idx) {
+        break;
+      }
+      if (i > 0) {
+        tmpres.push(strhtml.substring(prev + tags[i - 1].length, idx));
+      }
+      prev = idx;
+    }  // end for
+    if (tmpres.length == 0) {
+      break;
+    }
+    if (tmpres.length == tags.length - 1) {
+      var tmpres_len = tmpres.length;
+      for (var j = 0; j < tmpres_len; j++) {
+        res.push(tmpres[j]);
+      }
+    }
+    strhtml = strhtml.substring(prev, strhtml.length);
+  }
+  if (res.length == 0) {
+    return null;
+  }
+  return res;
+};
+
+/**
+ * Extracts the disclaimer in the response and sets 'disclaimer' DIV.
+ * @param {Object} response The response from JSON.
+ * @private
+ */
+img3d.extractDisclaimer = function(response) {
+  _gel('disclaimer').innerHTML = '';
+  if ('__MSG_show_disclaimer__' != 'Y') {
+    return;
+  }
+  _gel('disclaimer').innerHTML = response['fr'];
+};
+
+/**
+ * The event handler when on click gear tab in menu.
+ */
+function onGear() {
+  var view = img3d.manager.view_;
+  if (view.tab_id_ == img3d.tabGearContainer.tab_id_) {
+    return;
+  }
+  view.tabSwap(img3d.tabSliceContainer, img3d.tabGearContainer);
+  img3d.manager.gear_.resize(img3d.tabGearContainer);
+  img3d.manager.gear_.init(view.bg_);
+}
+
+/**
+ * The event handler when on click slice tab in menu.
+ */
+function onSlice() {
+  var view = img3d.manager.view_;
+  if (view.tab_id_ == img3d.tabSliceContainer.tab_id_) {
+    return;
+  }
+  view.tabSwap(img3d.tabGearContainer, img3d.tabSliceContainer);
+  img3d.manager.slice_.resize();
+  img3d.manager.slice_.init();
+}
+
+/**
+ * Sets event handler function when on click search button.
+ */
+function doSearch() {
+  var query = _gel('input_text').value;
+  img3d.manager.showResult(query);
+}
+
+/**
+ * Sets event handler function when key down.
+ * @param {Event} e The event that resulted in the function call.
+ */
+function keyDown(e) {
+  var key = 0;
+  if (window.event) {
+    key = e.keyCode;
+  } else if (e.which) {
+    key = e.which;
+  }
+  switch (parseInt(key, 10)) {
+  case 13:
+    doSearch();
+    break;
+  }
+}
+
+/**
+ * Sets event handler function when on click prev button.
+ */
+function prev() {
+  img3d.manager.gear_.prev();
+}
+
+/**
+ * Sets event handler function when on click next button.
+ */
+function next() {
+  img3d.manager.gear_.next();
+}
+
+/**
+ * Sets onmousemove event handler function.
+ * @param {Event} e The mouse move event.
+ */
+document.onmousemove = function(e) {
+  img3d.manager.view_.mouseMove(e, img3d.manager.slice_);
+};
+
+/**
+ * Sets onresize event handler function.
+ */
+document.onresize = function() {
+  var view = img3d.manager.view_;
+  switch (view.tab_id_) {
+  case img3d.tabGear.tab_id_:
+    img3d.manager.gear_.resize(img3d.tabGearContainer);
+    break;
+  case img3d.tabSlice.tab_id_:
+    img3d.manager.slice_.resize();
+    break;
+  }
+};
+
+/**
+ * Sets default tab when page loads.
+ */
+function start() {
+  onGear();
+}
+
+_IG_RegisterOnloadHandler(start);
+    </script>
+]]>
+</Content>
+</Module>

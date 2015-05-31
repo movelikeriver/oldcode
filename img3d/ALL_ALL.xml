@@ -1,0 +1,15 @@
+<messagebundle>
+  <msg name="title">3D image search, browse by mouse</msg>
+  <msg name="prev">Prev</msg>
+  <msg name="next">Next</msg>
+  <msg name="geartab">Gear</msg>
+  <msg name="slicetab">Slice</msg>
+  <msg name="search">Search</msg>
+  <msg name="hint">Inputs query here, e.g. beijing</msg>
+  <msg name="no_result">No match any document, try another one.</msg>
+  <msg name="hostname">http://images.google.cn</msg>
+  <msg name="hl">en</msg>
+  <msg name="show_disclaimer">N</msg>
+  <msg name="screenshot">http://img3d.googlecode.com/svn/trunk/ALL.png</msg>
+  <msg name="thumbnail">http://img3d.googlecode.com/svn/trunk/ALL-thm.png</msg>
+</messagebundle>
