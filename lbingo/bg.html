@@ -1,0 +1,90 @@
+<html>
+<style>
+.bt {
+	border: 1px solid;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.bt td {
+	background-color: white;
+}
+
+</style>
+<body>
+table size: <input id="table_size" type="text" value="5"/>
+number: <input id="table_num" type="text" value="5"/>
+<input type="button" value="Go!" onclick="generate()">
+<br/>
+<div id="bingo">
+</div>
+</body>
+<script>
+function changeColor(td) {
+	if (td.style.backgroundColor == 'yellow') {
+		td.style.backgroundColor = 'white';
+	} else {
+		td.style.backgroundColor = 'yellow';
+	}
+}
+function getValueByIndex(idx) {
+	return idx + 1;
+}
+
+function genValueMap(num) {
+	var arr = {};
+	for (var j = 0; j < num; ++j) {
+		arr[j] = -1;
+	}
+	var pos = -1;
+	for (var j = num; j > 0; --j) {
+		var step = Math.floor(Math.random() * j) + 1;
+		var k = pos + 1;
+		var cnt = 0;
+		while (true) {
+			if (arr[k] == -1) {
+				++cnt;
+				if (cnt == step) {
+					break;
+				}
+			}
+			k = (k+1) % num;
+		}
+		if (k == pos) {
+			alert("error.... " + step + "__" + pos);
+		}
+		if (arr[k] != -1) {
+			alert("!!!!");
+		}
+		pos = k;
+		arr[pos] = getValueByIndex(j-1);
+	}
+	return arr;
+}
+
+function genTb(row, column, value_map) {
+	var arr = ['<div style="float:left"><table border=1 class="bt">'];
+	for (var i = 0; i < row; ++i) {
+		arr.push('<tr>');
+		for (var j = 0; j < column; ++j) {
+			arr.push('<td onclick="changeColor(this)">' + value_map[i * column + j] + '</td>');
+		}
+		arr.push('</tr>');
+	}
+	arr.push('</table></div>');
+	return arr.join('');
+}
+
+function generate() {
+  var table_size = document.getElementById('table_size').value;
+  var table_num = document.getElementById('table_num').value;
+  var row = table_size;
+  var column = table_size;
+  var str_arr = [];
+  for (var j = 0; j < table_num; ++j) {
+    var value_map = genValueMap(row * column);
+    str_arr.push(genTb(row, column, value_map));
+  }
+  document.getElementById('bingo').innerHTML = str_arr.join('');
+}
+</script>
+</html>
